@@ -71,5 +71,5 @@ git remote add origin [direccion_repositorio] //decimos que el proyecto local es
 git push origin master //indentificamos en que rama queremos subir el cambio al servidor
 
 
-
+xd
 
