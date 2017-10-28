@@ -72,4 +72,4 @@ git push origin master //indentificamos en que rama queremos subir el cambio al 
 
 
 xd
-
+ nico
