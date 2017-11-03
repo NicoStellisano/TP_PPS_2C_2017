@@ -22,7 +22,11 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-
+$loading-md-background: transparent;
+$loading-ios-background: transparent;
+$loading-md-background: $loading-ios-background;
+$loading-wp-background: $loading-ios-background;
+$toast-md-background: rgba(0, 0, 0, 0.733);
 
 
 // Named Color Variables
@@ -32,6 +36,9 @@ $app-direction: ltr;
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
+
+
+
 
 $colors: (
   primary:    #488aff,

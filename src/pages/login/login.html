@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Inicio de Sesión</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-image:url('assets/album.jpg')">
+ 
+  <form class="form-group">
+    <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
+      <ion-label  style="color:white" floating>Usuario</ion-label>
+<ion-input clearInput type="text"  [(ngModel)]="usuario" name="usuario" id="usuario"></ion-input></ion-item>
+<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
+    <ion-label style="color:white" floating>Contraseña</ion-label>      
+<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>
+<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
+  <ion-label style="color:white">Elige tu usuario</ion-label>
+  <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">
+   <!-- <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>-->
+   <ion-option>nicostellisano@hotmail.com</ion-option>
+  </ion-select>
+</ion-item>
+<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>
+<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>
+<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>
+<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>
+
+<br><br><br><br>
+
+</form>
+</ion-content>
