@@ -1,0 +1,75 @@
+----- comando git  ---------
+
+//CONFIGURACION DE GIT
+git config --global user.name "NOMBRE"
+git config --global user.email "EMAIL"
+//MUESTRA SOLO LA INFORMACION
+git config --global user.name
+git config --global user.email
+
+//CONFIGURAR COLOR EN GIT
+git config --global color.ui true
+
+-------------------------------
+git init //inicializa el proyecto con git
+
+git status //permite ver si se realizo algun cambio
+
+git add "nombre" //agrega algun archivo especifico para preparar el commit
+
+git add . //agrega todos los archivos que tengan cambio
+
+git commit -m "mi mensaje" //realiza una persistencia de los cambios realizados 
+
+git log //muestra los commit relizados con su respectiva informacion fecha y hora
+
+git checkout [numero hash] //regresa al commit mensionado
+
+git master //vuelve al estado actual del ultimo commit
+
+---- git reset matar commit ----- (cuidado)
+
+git reset --soft [numero hash]// no toca el codigo
+
+git reset --mixed [numero hash] (no recomendado)
+
+git reset --hard [numero hash] // borra todo no deja rastros de codigo
+
+---------------------------------
+
+git log > commit.txt // guarda informacion de los commit en un txt para por verlos mejor
+
+git help
+
+
+--------------------- Ramas -------------------------------
+head // es el commit donde estamos parados
+ramas// son las diferentes lineas de tiempo del proyecto
+fusion// unir una rama a la principal o rama padre
+
+git branch //muestra las diferentes ramas del proyecto
+
+//nos situamos en la rama principal con checkout
+git merge [nombre_de_la_rama] //fusiona la rama a la principal
+
+git branch -b [nombre_de_la_rama] //se craa un rama nueva en el proyecto
+
+*Cuando se realiza una funsion puede que sea fordware-merge(sin autorizacion) o manual-merge(con autorizacion)
+
+git	branch -D [nombre_de_la_rama] //se elimina la rama ya que se dejara de utilizar
+
+--------------------- Clonar Proyecto ----------------------
+
+git clone [direccion_a_clonar] // la clonacion se puede dar en https o ssh
+
+--------------------- Agregar el proyecto a remoto -----------------
+
+git remote -v //ver estado del remote
+
+git remote add origin [direccion_repositorio] //decimos que el proyecto local es el mismo que el del repositorio
+
+git push origin master //indentificamos en que rama queremos subir el cambio al servidor
+
+
+
+
