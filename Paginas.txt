@@ -1,5 +1,18 @@
-Login,Perfil
-Admin:InicioAdmin,Empleados
-Administrativo:InicioAdministrativo,Aula,Alumnos,TomarLista,
-Profesor:InicioProfesor,Cuestionarios,CrearCuestionario,MostrarCuestionario
+Compartidas:Login,Perfil
+Admin:InicioAdmin
+Administrativo:InicioAdministrativo,Aula,Alumnos,TomarLista.
+Profesor:InicioProfesor,MateriasProfesor,MateriaProfesor,Cuestionarios,CrearCuestionario,MostrarCuestionario
 Alumno:InicioAlumno,Materias,Materia
+
+Stellisano:(InicioAdmin,Alumnos,TomarLista,CrearCuestionario,MostrarCuestionario) ( Tablas de ABM )
+Freire:(Aula,Perfil,Materia,MateriaProfesor) ( Descripcion de Objeto )
+Suppan:(InicioAdministrativo,InicioProfesor,InicioAlumno,Materias,Cuestionarios,MateriasProfesor) ( Botones de redireccion )
+
+InicioAdministrativo ->Aula ->Alumnos
+			    ->TomarLista
+
+InicioProfesor(Es la página MateriasProfesor)->Materia->  (INPUT textArea de mensaje para notificar con botón)     
+		    					 ->Cuestionarios->CrearCuestionario
+                              					        ->MostrarCuestionario
+
+InicioAlumno(Es la pagina "Aula") ->Materias->Materia
