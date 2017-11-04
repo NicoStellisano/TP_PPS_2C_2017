@@ -25683,3 +25683,7 @@ ion-navbar.toolbar {
 ion-heder, ion-content {
   font-family: 'Kalam', cursive;
 }
+
+.fondo {
+  background: 100% 100%;
+}
