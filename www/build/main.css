@@ -25685,5 +25685,6 @@ ion-heder, ion-content {
 }
 
 .fondo {
-  background: 100% 100%;
+  background-repeat: no-repeat;
+  background: 50%;
 }
