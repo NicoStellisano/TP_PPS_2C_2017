@@ -4,9 +4,12 @@ Administrativo:InicioAdministrativo,Aula,Alumnos,TomarLista.
 Profesor:InicioProfesor,MateriasProfesor,MateriaProfesor,Cuestionarios,CrearCuestionario,MostrarCuestionario
 Alumno:InicioAlumno,Materias,Materia
 
-Stellisano:(InicioAdmin,Alumnos,TomarLista,CrearCuestionario,MostrarCuestionario) ( Tablas de ABM )
-Freire:(Aula,Perfil,Materia,MateriaProfesor) ( Descripcion de Objeto )
+Stellisano:(InicioAdmin,Alumnos,TomarLista,CrearCuestionario,MostrarCuestionario,Empleados) ( Tablas de ABM )
+Freire:(Aula,Perfil,Materia,MateriaProfesor,AulasProfesor,MateriasProfesorAdmin,MateriaProfesorAdmin) ( Descripcion de Objeto )
 Suppan:(InicioAdministrativo,InicioProfesor,InicioAlumno,Materias,Cuestionarios,MateriasProfesor) ( Botones de redireccion )
+
+InicioAdmin          ->Empleados->AulasProfesor->MateriasProfesorAdmin->MateriaProfesorAdmin
+		     
 
 InicioAdministrativo ->Aula ->Alumnos
 			    ->TomarLista

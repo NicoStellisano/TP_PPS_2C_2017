@@ -16,6 +16,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FireBaseServiceProvider } from '../providers/fire-base-service/fire-base-service';
 import {HttpModule} from '@angular/http';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import {HttpModule} from '@angular/http';
   imports: [
     BrowserModule,
     HttpModule,
+    Ng2SmartTableModule,    
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

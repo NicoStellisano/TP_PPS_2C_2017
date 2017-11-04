@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 
 /**
  * Generated class for the InicioAdminPage page.
@@ -14,12 +15,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'inicio-admin.html',
 })
 export class InicioAdminPage {
-
+  settings = {
+    columns: {
+      id: {
+        title: 'DNI',
+        filter: false
+      },
+      name: {
+        title: 'Apellido',
+        filter: false
+      },
+      username: {
+        title: 'Nombre',
+        filter: false
+      },
+      email: {
+        title: 'Email',
+        filter: false
+      }
+    }
+  };
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InicioAdminPage');
   }
+
 
 }
