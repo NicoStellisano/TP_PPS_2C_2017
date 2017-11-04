@@ -33,6 +33,16 @@ export class InicioAdminPage {
         title: 'Email',
         filter: false
       }
+      ,
+      perfil: {
+        title: 'Perfil',
+        filter: false
+      }
+      ,
+      accion: {
+        title: 'Acción',
+        filter: false
+      }
     }
   };
   constructor(public navCtrl: NavController, public navParams: NavParams) {
