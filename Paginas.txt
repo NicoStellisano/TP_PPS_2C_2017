@@ -1,0 +1,5 @@
+Login,Perfil
+Admin:InicioAdmin,Empleados
+Administrativo:InicioAdministrativo,Aula,Alumnos,TomarLista,
+Profesor:InicioProfesor,Cuestionarios,CrearCuestionario,MostrarCuestionario
+Alumno:InicioAlumno,Materias,Materia
