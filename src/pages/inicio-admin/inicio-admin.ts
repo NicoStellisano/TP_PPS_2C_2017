@@ -17,35 +17,43 @@ import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 export class InicioAdminPage {
   settings = {
     columns: {
-      id: {
+      DNI: {
         title: 'DNI',
         filter: false
       },
-      name: {
+      Apellido: {
         title: 'Apellido',
         filter: false
       },
-      username: {
+      Nombre: {
         title: 'Nombre',
         filter: false
       },
-      email: {
+      Email: {
         title: 'Email',
         filter: false
       }
       ,
-      perfil: {
+      Perfil: {
         title: 'Perfil',
         filter: false
       }
       ,
-      accion: {
+      Accion: {
         title: 'Acción',
-        filter: false
+        filter: false,
+        valuePrepareFunction:(cell,row)=>{
+          return `<button ion-button color='secondary' (click)='asignar(row.DNI)'>Asignar Materia</button>`
+        },
       }
     }
   };
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  asignar(dni:number)
+  {
+    alert(dni);
   }
 
   ionViewDidLoad() {
