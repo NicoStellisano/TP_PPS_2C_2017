@@ -1,7 +1,8 @@
+import {AngularFireDatabase} from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import 'rxjs/add/operator/take';
 /*
   Generated class for the FireBaseServiceProvider provider.
 
@@ -11,8 +12,96 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FireBaseServiceProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello FireBaseServiceProvider Provider');
-  }
+  constructor(public http: Http,public afd: AngularFireDatabase) {
+    
+      }
+    
+      getItems()
+      {
+        return this.afd.list('/items');
+        
+      }
 
-}
+    
+      getTipoCod()
+      {
+        return this.afd.list('/tipocodigo');
+      }
+    
+      getCargas()
+      {
+        return this.afd.list('/cargas');
+      }
+    
+      addCarga(carga)
+      {
+        return this.afd.list('/cargas').push(carga);
+      }
+    
+      getUser(nombre:string)
+      {
+        return this.afd.list('/users/' ,{
+          query: {
+            orderByChild :"nombre",
+            equalTo:nombre
+    
+          }
+        });
+        
+      }
+    
+      getUsers()
+      {
+    
+        return this.afd.list('/users');
+      }
+
+      getMessages()
+      {
+    
+        return this.afd.list('/messages');
+      }
+
+      getMessages2()
+      {
+    
+        return this.afd.list('/messages2');
+      }
+
+      addMessage(message)
+      {
+        return this.afd.list("/messages").push(message);
+      }
+
+      addMessage2(message)
+      {
+        return this.afd.list("/messages2").push(message);
+      }
+    
+      
+      addItem(item)
+      {
+        return this.afd.list('/items').push(item);
+        
+      }
+
+      removeMessages()
+      {
+        return this.afd.list('/messages').remove();
+        
+      }
+      
+
+      removeMessages2()
+      {
+        return this.afd.list('/messages2').remove();
+        
+      }
+    
+      removeItem(id)
+      {
+        return this.afd.list('/items').remove(id);
+        
+      }
+    }
+    

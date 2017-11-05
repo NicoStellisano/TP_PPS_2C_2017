@@ -17,7 +17,16 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FireBaseServiceProvider } from '../providers/fire-base-service/fire-base-service';
 import {HttpModule} from '@angular/http';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { ButtonRenderComponent } from '../components/button-renderer/button-renderer';
 
+var config = {
+  apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
+  authDomain: "controlalumnos-6cbb9.firebaseapp.com",
+  databaseURL: "https://controlalumnos-6cbb9.firebaseio.com",
+  projectId: "controlalumnos-6cbb9",
+  storageBucket: "",
+  messagingSenderId: "822117994633"
+};
 
 @NgModule({
   declarations: [
@@ -27,13 +36,18 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     InicioAdminPage,
     InicioAdministrativoPage,
     InicioProfesorPage,
-    InicioAlumnoPage
+    InicioAlumnoPage,
+    ButtonRenderComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     Ng2SmartTableModule,    
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireDatabaseModule,    
+    AngularFireModule.initializeApp(config)
+
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +57,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     InicioAdminPage,
     InicioAdministrativoPage,
     InicioProfesorPage,
-    InicioAlumnoPage
+    InicioAlumnoPage,
+    ButtonRenderComponent
   ],
   providers: [
     StatusBar,

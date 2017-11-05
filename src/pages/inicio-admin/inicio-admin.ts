@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
-
+import { ButtonRenderComponent } from '../../components/button-renderer/button-renderer';
 /**
  * Generated class for the InicioAdminPage page.
  *
@@ -42,12 +42,20 @@ export class InicioAdminPage {
       Accion: {
         title: 'Acción',
         filter: false,
-        valuePrepareFunction:(cell,row)=>{
-          return `<button ion-button color='secondary' (click)='asignar(row.DNI)'>Asignar Materia</button>`
-        },
-      }
+        type:'custom',
+        renderComponent: ButtonRenderComponent,
+        onComponentInitFunction(instance) {
+          instance.save.subscribe(row => {
+            alert(`${row.DNI} `)
+          });
+        }
+        ,
+        editable:false,
+        isAddable:false,
+      
     }
-  };
+  }
+};
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
