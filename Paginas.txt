@@ -6,12 +6,12 @@ Alumno:InicioAlumno,Materias,Materia
 
 Stellisano:(InicioAdmin,Alumnos,TomarLista,CrearCuestionario,MostrarCuestionario,Empleados) ( Tablas de ABM )
 Freire:(Aula,Perfil,Materia,MateriaProfesor,AulasProfesor,MateriasProfesorAdmin,MateriaProfesorAdmin) ( Descripcion de Objeto )
-Suppan:(InicioAdministrativo,InicioProfesor,InicioAlumno,Materias,Cuestionarios,MateriasProfesor) ( Botones de redireccion )
+Suppan:(InicioAdministrativo (Lista aulas),InicioProfesor(Listada de aulas por profesor),InicioAlumno(esperar a eze),Materias(lista de materias de alumno),Cuestionarios(lista de cuestionarios por profesor) ,MateriasProfesor(listado de materias por profesor) ( Botones de redireccion )
 
 InicioAdmin          ->Empleados->AulasProfesor->MateriasProfesorAdmin->MateriaProfesorAdmin
 		     
 
-InicioAdministrativo ->Aula ->Alumnos
+InicioAdministrativo(aulas) ->Aula ->Alumnos
 			    ->TomarLista
 
 InicioProfesor(Es la página MateriasProfesor)->Materia->  (INPUT textArea de mensaje para notificar con botón)     

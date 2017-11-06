@@ -22,4 +22,59 @@ export class InicioProfesorPage {
     console.log('ionViewDidLoad InicioProfesorPage');
   }
 
+    //harcodeado para mostrar, despues se debe eliminar y tomarar las aulas de firebase
+    listaAulasProfesor: any[] = [
+      {
+        "aula": "1° A"
+      },
+      {
+        "aula": "3° A"
+      },
+      {
+        "aula": "3° B"
+      }
+     
+    ];
+
+    RedireccionAula(aula: string)
+    {
+      switch(aula)
+      {
+      
+        case "1° A":
+        alert("Se redireccionara al aula: 1° A ");
+        //this.navCtrl.push();
+        break;
+        case "1° B":
+        alert("Se redireccionara al aula: 1° B");
+        //this.navCtrl.push();
+        break;
+        case "2° A":
+        alert("Se redireccionara al aula: 2° A ");
+        //this.navCtrl.push();
+        break;
+        case "2° B":
+        alert("Se redireccionara al aula: 2° B ");
+        //this.navCtrl.push();
+        break;
+        case "3° A":
+        alert("Se redireccionara al aula: 3° A ");
+        //this.navCtrl.push();
+        break;
+        case "3° B":
+        alert("Se redireccionara al aula: 3° B ");
+        //this.navCtrl.push();
+        break;
+        case "4° A":
+        alert("Se redireccionara al aula: 4° A ");
+        //this.navCtrl.push();
+        break;
+        case "4° B":
+        alert("Se redireccionara al aula: 4° B ");
+        //this.navCtrl.push();
+        break;
+  
+      }
+    }
+
 }

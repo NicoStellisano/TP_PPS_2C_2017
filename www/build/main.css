@@ -25846,6 +25846,28 @@ ion-heder, ion-content {
   font-family: 'Kalam', cursive;
 }
 
+page-inicio-administrativo .fondo {
+  background-repeat: no-repeat;
+  background: 50%;
+}
+
+page-inicio-administrativo button {
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+}
+
+page-inicio-profesor .fondo {
+  background-repeat: no-repeat;
+  background: 50%;
+}
+
+page-inicio-profesor button {
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+}
+
 .fondo {
   background-repeat: no-repeat;
   background: 50%;
