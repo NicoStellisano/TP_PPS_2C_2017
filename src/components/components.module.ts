@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { ButtonRendererComponent } from './button-renderer/button-renderer';
+//modifico mauro el nombre del componenete porque estaba mal
+import { ButtonRenderComponent } from './button-renderer/button-renderer';
 @NgModule({
-	declarations: [ButtonRendererComponent],
+	declarations: [ButtonRenderComponent],
 	imports: [],
-	exports: [ButtonRendererComponent]
+	exports: [ButtonRenderComponent]
 })
 export class ComponentsModule {}
