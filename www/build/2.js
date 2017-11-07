@@ -29,7 +29,7 @@ InicioProfesorPageModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__inicio_profesor__["a" /* InicioProfesorPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__inicio_profesor__["a" /* InicioProfesorPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__inicio_profesor__["a" /* InicioProfesorPage */]),
         ],
     })
 ], InicioProfesorPageModule);

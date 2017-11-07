@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AulaItem } from '../../models/aula-item/aula.interface';
+import { AulaAlumnoItem } from '../../models/aula-alumno-item/aula-alumno.interface';
 
 @IonicPage()
 @Component({
@@ -9,10 +9,10 @@ import { AulaItem } from '../../models/aula-item/aula.interface';
 })
 export class AulaAlumnoPage {
 
-  miAula : AulaItem;
+  miAulaAlumno : AulaAlumnoItem;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.miAula = {
+    this.miAulaAlumno = {
       turno:"tarde",
       profesor:"Pepe",
       materia:"Literatura"
@@ -21,7 +21,6 @@ export class AulaAlumnoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AulaPage');
-   
   }
 
 }
