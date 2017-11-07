@@ -11,7 +11,7 @@ import { InicioAdminPage} from '../pages/inicio-admin/inicio-admin';
 import { InicioAdministrativoPage} from '../pages//inicio-administrativo/inicio-administrativo';
 import { InicioProfesorPage} from '../pages/inicio-profesor/inicio-profesor';
 import { InicioAlumnoPage} from '../pages/inicio-alumno/inicio-alumno';
-import { AulaAlumnoPage } from '../pages/aula-alumno/aula-alumno';
+import { AulaPage } from '../pages/aula/aula';
 import { AulaAdministrativoPage } from '../pages/aula-administrativo/aula-administrativo';
 import { AulaProfesorPage } from '../pages/aula-profesor/aula-profesor';
 
@@ -41,7 +41,7 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
-    AulaAlumnoPage,
+    AulaPage,
     AulaProfesorPage,
     AulaAdministrativoPage,
     ButtonRenderComponent
@@ -63,7 +63,7 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
-    AulaAlumnoPage,
+    AulaPage,
     AulaAdministrativoPage,
     AulaProfesorPage,
     ButtonRenderComponent

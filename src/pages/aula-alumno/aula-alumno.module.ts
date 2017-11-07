@@ -10,4 +10,4 @@ import { AulaAlumnoPage } from './aula-alumno';
     IonicPageModule.forChild(AulaAlumnoPage),
   ],
 })
-export class AulaPageModule {}
+export class AulaAlumnoPageModule {}
