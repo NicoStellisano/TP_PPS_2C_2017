@@ -53,8 +53,6 @@ var config = {
     IonicModule.forRoot(MyApp),
     AngularFireDatabaseModule,    
     AngularFireModule.initializeApp(config)
-
-    
   ],
   bootstrap: [IonicApp],
   entryComponents: [

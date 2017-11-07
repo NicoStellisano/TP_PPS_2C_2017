@@ -25852,6 +25852,22 @@ button {
   border-style: solid;
 }
 
+.miItem {
+  background-color: rgba(0, 0, 0, 0.747);
+  color: white;
+}
+
+.miLabel {
+  color: white;
+}
+
+.miBoton {
+  margin: auto;
+  text-align: center;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.747);
+}
+
 /*!
  * animate.css -http://daneden.me/animate
  * Version - 3.5.2
