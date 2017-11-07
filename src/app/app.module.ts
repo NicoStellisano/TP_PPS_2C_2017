@@ -11,6 +11,8 @@ import { InicioAdminPage} from '../pages/inicio-admin/inicio-admin';
 import { InicioAdministrativoPage} from '../pages//inicio-administrativo/inicio-administrativo';
 import { InicioProfesorPage} from '../pages/inicio-profesor/inicio-profesor';
 import { InicioAlumnoPage} from '../pages/inicio-alumno/inicio-alumno';
+import { AulaPage } from '../pages/aula/aula';
+
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -37,6 +39,7 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
+    AulaPage,
     ButtonRenderComponent
   ],
   imports: [
@@ -58,6 +61,7 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
+    AulaPage,
     ButtonRenderComponent
   ],
   providers: [

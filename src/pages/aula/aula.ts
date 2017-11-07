@@ -12,15 +12,16 @@ export class AulaPage {
   miAula : AulaItem;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AulaPage');
     this.miAula = {
       turno:"tarde",
       profesor:"Pepe",
       materia:"Literatura"
     }
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad AulaPage');
+   
   }
 
 }

@@ -16,24 +16,24 @@
 <ion-content padding style="background-image:url('assets/aula.jpg')" class="fondo">
 
   <ion-list>
-    <ion-item class="animated flipInX">
-      <ion-label floating>Turno</ion-label>
-      <ion-input type="text" [(ngModel)]="miAula.turno"></ion-input> 
+    <ion-item class="animated flipInX miItem">
+      <ion-label class="miLabel" floating>Turno</ion-label>
+      <ion-input type="text" [(ngModel)]="miAula.turno" disabled="true"></ion-input> 
     </ion-item>
         
-    <ion-item class="animated flipInY">
-      <ion-label floating>Profesor</ion-label>
-      <ion-input type="text" [(ngModel)]="miAula.profesor"></ion-input>
+    <ion-item class="animated flipInY miItem">
+      <ion-label class="miLabel" floating>Profesor</ion-label>
+      <ion-input type="text" [(ngModel)]="miAula.profesor" disabled="true"></ion-input>
     </ion-item>
     
-    <ion-item class="animated flipInX">
-        <ion-label floating>Materia</ion-label>
-        <ion-input type="text" [(ngModel)]="miAula.materia"></ion-input>
+    <ion-item class="animated flipInX miItem" >
+        <ion-label class="miLabel" floating >Materia</ion-label>
+        <ion-input type="text" [(ngModel)]="miAula.materia" disabled="true"></ion-input>
       </ion-item> 
   </ion-list>
   
 
-  <button ion-button round full large> 
+  <button ion-button round full large class="miBoton"> 
     <ion-icon name="arrow-round-back"></ion-icon> Volver
   </button>
 

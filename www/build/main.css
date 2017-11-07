@@ -28941,16 +28941,16 @@ button {
   animation-name: slideOutUp;
 }
 
-page-aula ion-list {
+page-aula .miItem {
   background-color: rgba(0, 0, 0, 0.747);
   color: white;
 }
 
-page-aula ion-label {
+page-aula .miLabel {
   color: white;
 }
 
-page-aula ion-button {
+page-aula .miBoton {
   margin: auto;
   text-align: center;
   display: block;
