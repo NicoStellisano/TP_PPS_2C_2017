@@ -1,25 +1,14 @@
 webpackJsonp([2],{
 
-<<<<<<< HEAD
-/***/ 505:
-=======
-/***/ 509:
->>>>>>> 942aa3e53d342a004c6593d619e7b7a41afd51bf
+/***/ 513:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-<<<<<<< HEAD
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MateriasProfesorPageModule", function() { return MateriasProfesorPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(167);
-=======
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InicioProfesorPageModule", function() { return InicioProfesorPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inicio_profesor__ = __webpack_require__(166);
->>>>>>> 942aa3e53d342a004c6593d619e7b7a41afd51bf
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materias_profesor__ = __webpack_require__(167);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -29,43 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-<<<<<<< HEAD
-var LoginPageModule = (function () {
-    function LoginPageModule() {
+var MateriasProfesorPageModule = (function () {
+    function MateriasProfesorPageModule() {
     }
-    return LoginPageModule;
+    return MateriasProfesorPageModule;
 }());
-LoginPageModule = __decorate([
+MateriasProfesorPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+            __WEBPACK_IMPORTED_MODULE_2__materias_profesor__["a" /* MateriasProfesorPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__materias_profesor__["a" /* MateriasProfesorPage */]),
         ],
     })
-], LoginPageModule);
+], MateriasProfesorPageModule);
 
-//# sourceMappingURL=login.module.js.map
-=======
-var InicioProfesorPageModule = (function () {
-    function InicioProfesorPageModule() {
-    }
-    return InicioProfesorPageModule;
-}());
-InicioProfesorPageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
-        declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__inicio_profesor__["a" /* InicioProfesorPage */],
-        ],
-        imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__inicio_profesor__["a" /* InicioProfesorPage */]),
-        ],
-    })
-], InicioProfesorPageModule);
-
-//# sourceMappingURL=inicio-profesor.module.js.map
->>>>>>> 942aa3e53d342a004c6593d619e7b7a41afd51bf
+//# sourceMappingURL=materias-profesor.module.js.map
 
 /***/ })
 

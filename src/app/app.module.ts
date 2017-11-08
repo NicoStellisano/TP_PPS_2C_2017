@@ -43,16 +43,13 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
-<<<<<<< HEAD
-    ButtonRenderComponent,
-    MateriasPage,
-    MateriasProfesorPage
-=======
     AulaPage,
     AulaProfesorPage,
     AulaAdministrativoPage,
-    ButtonRenderComponent
->>>>>>> 942aa3e53d342a004c6593d619e7b7a41afd51bf
+    ButtonRenderComponent,
+    MateriasPage,
+    MateriasProfesorPage
+
   ],
   imports: [
     BrowserModule,
@@ -71,16 +68,12 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
-<<<<<<< HEAD
-    ButtonRenderComponent,
-    MateriasPage,
-    MateriasProfesorPage
-=======
     AulaPage,
     AulaAdministrativoPage,
     AulaProfesorPage,
-    ButtonRenderComponent
->>>>>>> 942aa3e53d342a004c6593d619e7b7a41afd51bf
+    ButtonRenderComponent,
+    MateriasPage,
+    MateriasProfesorPage
   ],
   providers: [
     StatusBar,
