@@ -11,6 +11,10 @@ import { InicioAdminPage} from '../pages/inicio-admin/inicio-admin';
 import { InicioAdministrativoPage} from '../pages//inicio-administrativo/inicio-administrativo';
 import { InicioProfesorPage} from '../pages/inicio-profesor/inicio-profesor';
 import { InicioAlumnoPage} from '../pages/inicio-alumno/inicio-alumno';
+import { AulaPage } from '../pages/aula/aula';
+import { AulaAdministrativoPage } from '../pages/aula-administrativo/aula-administrativo';
+import { AulaProfesorPage } from '../pages/aula-profesor/aula-profesor';
+
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -39,9 +43,16 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
+<<<<<<< HEAD
     ButtonRenderComponent,
     MateriasPage,
     MateriasProfesorPage
+=======
+    AulaPage,
+    AulaProfesorPage,
+    AulaAdministrativoPage,
+    ButtonRenderComponent
+>>>>>>> 942aa3e53d342a004c6593d619e7b7a41afd51bf
   ],
   imports: [
     BrowserModule,
@@ -50,8 +61,6 @@ var config = {
     IonicModule.forRoot(MyApp),
     AngularFireDatabaseModule,    
     AngularFireModule.initializeApp(config)
-
-    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,9 +71,16 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
+<<<<<<< HEAD
     ButtonRenderComponent,
     MateriasPage,
     MateriasProfesorPage
+=======
+    AulaPage,
+    AulaAdministrativoPage,
+    AulaProfesorPage,
+    ButtonRenderComponent
+>>>>>>> 942aa3e53d342a004c6593d619e7b7a41afd51bf
   ],
   providers: [
     StatusBar,
