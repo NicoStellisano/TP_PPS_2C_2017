@@ -54,8 +54,10 @@ export class InicioAdministrativoPage {
 
   RedireccionAula(aula: string)
   {
+    
     switch(aula)
     {
+     
     
       case "1° A":
       alert("Se redireccionara al aula: 1° A ");

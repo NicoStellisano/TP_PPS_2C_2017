@@ -18,6 +18,8 @@ import { FireBaseServiceProvider } from '../providers/fire-base-service/fire-bas
 import {HttpModule} from '@angular/http';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ButtonRenderComponent } from '../components/button-renderer/button-renderer';
+import { MateriasPage} from '../pages/materias/materias';
+import { MateriasProfesorPage} from '../pages/materias-profesor/materias-profesor';
 
 var config = {
   apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
@@ -37,7 +39,9 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
-    ButtonRenderComponent
+    ButtonRenderComponent,
+    MateriasPage,
+    MateriasProfesorPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,9 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
-    ButtonRenderComponent
+    ButtonRenderComponent,
+    MateriasPage,
+    MateriasProfesorPage
   ],
   providers: [
     StatusBar,

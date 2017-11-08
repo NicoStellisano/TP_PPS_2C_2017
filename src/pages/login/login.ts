@@ -11,6 +11,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 // for Observables
 import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+
+
 /**
  * Generated class for the LoginPage page.
  *

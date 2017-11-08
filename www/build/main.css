@@ -25872,3 +25872,25 @@ page-inicio-profesor button {
   background-repeat: no-repeat;
   background: 50%;
 }
+
+page-materias .fondo {
+  background-repeat: no-repeat;
+  background: 50%;
+}
+
+page-materias button {
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+}
+
+page-materias-profesor .fondo {
+  background-repeat: no-repeat;
+  background: 50%;
+}
+
+page-materias-profesor button {
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+}
