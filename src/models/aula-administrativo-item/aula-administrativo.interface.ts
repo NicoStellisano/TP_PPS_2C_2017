@@ -1,6 +1,6 @@
 export interface AulaAdministrativoItem{
     profesor:string;
-    divicion:string;
+    division:string;
     materia:string;
     cantidadAlumno:number;
 }

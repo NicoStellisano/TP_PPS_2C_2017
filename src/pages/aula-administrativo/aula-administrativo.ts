@@ -21,9 +21,9 @@ export class AulaAdministrativoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.miAulaAdministrativo = {
       profesor:"Juan Peralta",
-      divicion:"2°B",
+      division:"2°B",
       materia:"Laboratorio IV",
-      cantidadAlumno:35
+      cantidadAlumno:25
     };
   }
 

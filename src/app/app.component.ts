@@ -6,13 +6,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { AulaAlumnoPage } from '../pages/aula-alumno/aula-alumno'; //test
+import { AulaAdministrativoPage } from '../pages/aula-administrativo/aula-administrativo';
+import { AulaProfesorPage } from '../pages/aula-profesor/aula-profesor';
+
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   //rootPage:any = LoginPage;
-  rootPage:any = AulaAlumnoPage; //test
+  rootPage:any = AulaProfesorPage; //test
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
