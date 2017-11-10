@@ -66,6 +66,11 @@ var AulaAlumnoPage = (function () {
     function AulaAlumnoPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.miAulaAlumno = {
+            turno: "tarde",
+            profesor: "Pepe",
+            materia: "Literatura"
+        };
     }
     AulaAlumnoPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad AulaAlumnoPage');
@@ -74,11 +79,12 @@ var AulaAlumnoPage = (function () {
 }());
 AulaAlumnoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-aula-alumno',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\TP_PPS_2C_2017\src\pages\aula-alumno\aula-alumno.html"*/'<!--\n\n  Generated template for the AulaAlumnoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>aula-alumno</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\TP_PPS_2C_2017\src\pages\aula-alumno\aula-alumno.html"*/,
+        selector: 'page-aula-alumno',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-alumno/aula-alumno.html"*/'<!--\n  Generated template for the AulaAlumnoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar class="dark">\n    <ion-title>Aula Alumno</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/aula.jpg\')" class="fondo">\n\n    <ion-list>\n        <ion-item class="animated flipInX miItem">\n          <ion-label class="miLabel" floating>Turno</ion-label>\n          <ion-input type="text" [(ngModel)]="miAula.turno" disabled="true"></ion-input> \n        </ion-item>\n            \n        <ion-item class="animated flipInY miItem">\n          <ion-label class="miLabel" floating>Profesor</ion-label>\n          <ion-input type="text" [(ngModel)]="miAula.profesor" disabled="true"></ion-input>\n        </ion-item>\n        \n        <ion-item class="animated flipInX miItem" >\n            <ion-label class="miLabel" floating >Materia</ion-label>\n            <ion-input type="text" [(ngModel)]="miAula.materia" disabled="true"></ion-input>\n          </ion-item> \n      </ion-list>\n      \n    \n      <button ion-button round full large class="miBoton"> \n        <ion-icon name="arrow-round-back"></ion-icon> Volver\n      </button>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-alumno/aula-alumno.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
 ], AulaAlumnoPage);
 
+var _a, _b;
 //# sourceMappingURL=aula-alumno.js.map
 
 /***/ })
