@@ -13,9 +13,10 @@ import { AulaAlumnoItem } from '../../models/aula-alumno-item/aula-alumno.interf
   selector: 'page-aula-alumno',
   templateUrl: 'aula-alumno.html',
 })
+
 export class AulaAlumnoPage {
 
-  miAulaAlumno : AulaAlumnoItem;
+  miAulaAlumno = {} as AulaAlumnoItem;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.miAulaAlumno = {
@@ -26,8 +27,7 @@ export class AulaAlumnoPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AulaAlumnoPage');
-    
+    console.log('ionViewDidLoad AulaAlumnoPage');    
   }
 
 }

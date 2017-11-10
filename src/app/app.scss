@@ -19,7 +19,7 @@ ion-header,ion-content{
     font-family: 'Kalam', cursive;
 }
 
-button{
+.miButton{
     border-color:white;
     border-width: 2px;
     border-style: solid;
@@ -38,8 +38,11 @@ button{
   margin:auto;
   text-align:center;
   display:block;
-  background-color:rgba(0, 0, 0, 0.747)
+  background-color:rgba(250, 103, 18, 0.979)
+  //color: orangered;
 }
+
+
 
 // --------------------------------------- Estilos de animacion -------------------------------------//
 

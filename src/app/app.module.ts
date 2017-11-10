@@ -11,9 +11,9 @@ import { InicioAdminPage} from '../pages/inicio-admin/inicio-admin';
 import { InicioAdministrativoPage} from '../pages//inicio-administrativo/inicio-administrativo';
 import { InicioProfesorPage} from '../pages/inicio-profesor/inicio-profesor';
 import { InicioAlumnoPage} from '../pages/inicio-alumno/inicio-alumno';
-import { AulaPage } from '../pages/aula/aula';
 import { AulaAdministrativoPage } from '../pages/aula-administrativo/aula-administrativo';
 import { AulaProfesorPage } from '../pages/aula-profesor/aula-profesor';
+import { AulaAlumnoPage } from '../pages/aula-alumno/aula-alumno';
 
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
@@ -43,9 +43,9 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
-    AulaPage,
     AulaProfesorPage,
     AulaAdministrativoPage,
+    AulaAlumnoPage,
     ButtonRenderComponent,
     MateriasPage,
     MateriasProfesorPage
@@ -68,9 +68,9 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
-    AulaPage,
     AulaAdministrativoPage,
     AulaProfesorPage,
+    AulaAlumnoPage,
     ButtonRenderComponent,
     MateriasPage,
     MateriasProfesorPage

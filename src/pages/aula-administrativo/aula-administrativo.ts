@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AulaAdministrativoItem } from '../../models/aula-administrativo-item/aula-administrativo.interface';
 
 /**
  * Generated class for the AulaAdministrativoPage page.
@@ -15,7 +16,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AulaAdministrativoPage {
 
+  miAulaAdministrativo = {} as AulaAdministrativoItem;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.miAulaAdministrativo = {
+      profesor:"Juan Peralta",
+      divicion:"2°B",
+      materia:"Laboratorio IV",
+      cantidadAlumno:35
+    };
   }
 
   ionViewDidLoad() {
