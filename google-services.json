@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "822117994633",
+    "firebase_url": "https://controlalumnos-6cbb9.firebaseio.com",
+    "project_id": "controlalumnos-6cbb9",
+    "storage_bucket": "controlalumnos-6cbb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822117994633:android:17b464ae9d266f23",
+        "android_client_info": {
+          "package_name": "io.ionic.controlUniversidad11"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822117994633-1rr3su8pkmsrkjo6knq2t9tp48u645p2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.controlUniversidad11",
+            "certificate_hash": "bbea475b6a71378c6a6b342eb4641da415a974f9"
+          }
+        },
+        {
+          "client_id": "822117994633-eau5gidg0q2f1sqltdbnq68mscsrpfui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIuFlTHPpVddKb8gWZkC01ws922FqwiXs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822117994633-eau5gidg0q2f1sqltdbnq68mscsrpfui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

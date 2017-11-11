@@ -11,26 +11,27 @@ import { InicioAdminPage} from '../pages/inicio-admin/inicio-admin';
 import { InicioAdministrativoPage} from '../pages//inicio-administrativo/inicio-administrativo';
 import { InicioProfesorPage} from '../pages/inicio-profesor/inicio-profesor';
 import { InicioAlumnoPage} from '../pages/inicio-alumno/inicio-alumno';
+import { AulaAlumnoPage } from '../pages/aula-alumno/aula-alumno';
 import { AulaAdministrativoPage } from '../pages/aula-administrativo/aula-administrativo';
 import { AulaProfesorPage } from '../pages/aula-profesor/aula-profesor';
-import { AulaAlumnoPage } from '../pages/aula-alumno/aula-alumno';
-
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FireBaseServiceProvider } from '../providers/fire-base-service/fire-base-service';
 import {HttpModule} from '@angular/http';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { Ng2SmartTableModule,LocalDataSource } from 'ng2-smart-table';
 import { ButtonRenderComponent } from '../components/button-renderer/button-renderer';
 import { MateriasPage} from '../pages/materias/materias';
 import { MateriasProfesorPage} from '../pages/materias-profesor/materias-profesor';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 var config = {
   apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
   authDomain: "controlalumnos-6cbb9.firebaseapp.com",
   databaseURL: "https://controlalumnos-6cbb9.firebaseio.com",
   projectId: "controlalumnos-6cbb9",
-  storageBucket: "",
+  storageBucket: "controlalumnos-6cbb9.appspot.com",
   messagingSenderId: "822117994633"
 };
 
@@ -43,9 +44,9 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
+    AulaAlumnoPage,
     AulaProfesorPage,
     AulaAdministrativoPage,
-    AulaAlumnoPage,
     ButtonRenderComponent,
     MateriasPage,
     MateriasProfesorPage
@@ -54,7 +55,7 @@ var config = {
   imports: [
     BrowserModule,
     HttpModule,
-    Ng2SmartTableModule,    
+    Ng2SmartTableModule,
     IonicModule.forRoot(MyApp),
     AngularFireDatabaseModule,    
     AngularFireModule.initializeApp(config)
@@ -68,9 +69,9 @@ var config = {
     InicioAdministrativoPage,
     InicioProfesorPage,
     InicioAlumnoPage,
+    AulaAlumnoPage,
     AulaAdministrativoPage,
     AulaProfesorPage,
-    AulaAlumnoPage,
     ButtonRenderComponent,
     MateriasPage,
     MateriasProfesorPage
@@ -78,6 +79,8 @@ var config = {
   providers: [
     StatusBar,
     SplashScreen,
+    GooglePlus,
+    ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FireBaseServiceProvider
   ]

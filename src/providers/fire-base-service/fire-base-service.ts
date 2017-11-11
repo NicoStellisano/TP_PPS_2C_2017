@@ -53,7 +53,7 @@ export class FireBaseServiceProvider {
       getUsers()
       {
     
-        return this.afd.list('/users');
+        return this.afd.list('/personas');
       }
 
       getMessages()
@@ -82,6 +82,12 @@ export class FireBaseServiceProvider {
       addItem(item)
       {
         return this.afd.list('/items').push(item);
+        
+      }
+
+      addUser(item)
+      {
+        return this.afd.list('/personas').push(item);
         
       }
 
