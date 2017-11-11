@@ -6,13 +6,37 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>aula-profesor</ion-title>
+  <ion-navbar color="dark">
+    <ion-title>Aula Profesor</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content padding style="background-image:url('assets/aula-profesor.jpg')" class="fondo">
 
-<ion-content padding>
+  <ion-list>
+              
+    <ion-item class="animated flipInX miItem">
+      <ion-label class="miLabel" floating>Divicion</ion-label>
+      <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> 
+    </ion-item>
+                    
+    <ion-item class="animated flipInY miItem">
+      <ion-label class="miLabel" floating>Materia</ion-label>
+      <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>
+    </ion-item>
+                
+    <ion-item class="animated flipInX miItem" >
+      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>
+      <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>
+    </ion-item> 
+  
+  </ion-list>
+
+  <div>
+    <button ion-button round full large  class="animated flipInX miBoton miButton"> 
+      <ion-icon name="arrow-round-back"></ion-icon> Volver
+    </button>
+  </div>
 
 </ion-content>

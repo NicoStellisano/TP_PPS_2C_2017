@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 506:
+/***/ 564:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AulaAlumnoPageModule", function() { return AulaAlumnoPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PerfilPageModule", function() { return PerfilPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aula_alumno__ = __webpack_require__(517);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__perfil__ = __webpack_require__(565);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AulaAlumnoPageModule = (function () {
-    function AulaAlumnoPageModule() {
+var PerfilPageModule = (function () {
+    function PerfilPageModule() {
     }
-    return AulaAlumnoPageModule;
+    return PerfilPageModule;
 }());
-AulaAlumnoPageModule = __decorate([
+PerfilPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__aula_alumno__["a" /* AulaAlumnoPage */],
+            __WEBPACK_IMPORTED_MODULE_2__perfil__["a" /* PerfilPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__aula_alumno__["a" /* AulaAlumnoPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__perfil__["a" /* PerfilPage */]),
         ],
     })
-], AulaAlumnoPageModule);
+], PerfilPageModule);
 
-//# sourceMappingURL=aula-alumno.module.js.map
+//# sourceMappingURL=perfil.module.js.map
 
 /***/ }),
 
-/***/ 517:
+/***/ 565:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AulaAlumnoPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PerfilPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(16);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,29 +57,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the AulaAlumnoPage page.
+ * Generated class for the PerfilPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var AulaAlumnoPage = (function () {
-    function AulaAlumnoPage(navCtrl, navParams) {
+var PerfilPage = (function () {
+    function PerfilPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
-    AulaAlumnoPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad AulaAlumnoPage');
+    PerfilPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PerfilPage');
     };
-    return AulaAlumnoPage;
+    return PerfilPage;
 }());
-AulaAlumnoPage = __decorate([
+PerfilPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-aula-alumno',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\TP_PPS_2C_2017\src\pages\aula-alumno\aula-alumno.html"*/'<!--\n\n  Generated template for the AulaAlumnoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>aula-alumno</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\TP_PPS_2C_2017\src\pages\aula-alumno\aula-alumno.html"*/,
+        selector: 'page-perfil',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\TP_PPS_2C_2017\src\pages\perfil\perfil.html"*/'<!--\n\n  Generated template for the PerfilPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Perfil</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\TP_PPS_2C_2017\src\pages\perfil\perfil.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
-], AulaAlumnoPage);
+], PerfilPage);
 
-//# sourceMappingURL=aula-alumno.js.map
+//# sourceMappingURL=perfil.js.map
 
 /***/ })
 
