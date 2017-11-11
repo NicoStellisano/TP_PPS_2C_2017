@@ -14,6 +14,7 @@ import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/da
 import { GooglePlus } from '@ionic-native/google-plus';
 
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { AulaAlumnoPage} from '../aula-alumno/aula-alumno';
 
 
 /**
@@ -99,7 +100,7 @@ loading.present();
                 this.navCtrl.setRoot(InicioProfesorPage);
                 break;
                 case "alumno":
-                this.navCtrl.setRoot(InicioAlumnoPage);
+                this.navCtrl.setRoot(AulaAlumnoPage);
                 break;
           
               }

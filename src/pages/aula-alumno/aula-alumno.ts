@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AulaAlumnoItem } from '../../models/aula-alumno-item/aula-alumno.interface';
+import { MateriasPage} from '../materias/materias';
 /**
  * Generated class for the AulaAlumnoPage page.
  *
@@ -28,6 +29,11 @@ export class AulaAlumnoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AulaAlumnoPage');    
+  }
+
+  RedireccionMaterias()
+  {
+    this.navCtrl.push(MateriasPage);
   }
 
 }
