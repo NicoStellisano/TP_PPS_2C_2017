@@ -28973,6 +28973,17 @@ page-aula .miBoton {
   background-color: rgba(0, 0, 0, 0.747);
 }
 
+page-cuestionarios .fondo {
+  background-repeat: no-repeat;
+  background: 50%;
+}
+
+page-cuestionarios button {
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+}
+
 page-inicio-administrativo .fondo {
   background-repeat: no-repeat;
   background: 50%;
