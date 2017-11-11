@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {InicioProfesorPage} from '../inicio-profesor/inicio-profesor';
+import {AulaProfesorPage} from '../aula-profesor/aula-profesor';
 
 /**
  * Generated class for the MateriasProfesorPage page.
@@ -60,7 +61,8 @@ export class MateriasProfesorPage {
   }
   RedireccionMateria(materia:string)
   {
-    
+    this.navCtrl.push(AulaProfesorPage);
+    /*
       switch(materia)
       {
       
@@ -82,7 +84,8 @@ export class MateriasProfesorPage {
         break;
   
       }
-    
+  */  
   }
+  
 
 }

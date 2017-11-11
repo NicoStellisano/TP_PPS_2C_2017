@@ -1,4 +1,5 @@
 npm install
 npm install firebase@4.4.0 angularfire2@4.0.0-rc0
 npm install --save ng2-smart-table
-
+npm install --save @ionic-native/google-plus
+npm install --save @ionic-native/screen-orientation

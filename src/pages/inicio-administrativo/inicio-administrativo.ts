@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrativo';
 
 /**
  * Generated class for the InicioAdministrativoPage page.
@@ -54,7 +55,8 @@ export class InicioAdministrativoPage {
 
   RedireccionAula(aula: string)
   {
-    
+    this.navCtrl.push(AulaAdministrativoPage);
+    /*
     switch(aula)
     {
      
@@ -92,7 +94,7 @@ export class InicioAdministrativoPage {
       //this.navCtrl.push();
       break;
 
-    }
+    }*/
   }
 
 
