@@ -14,7 +14,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 @IonicPage()
 @Component({
   template: `
-  <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"
+  <ng2-smart-table style='width:100%;height:100%' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"
   (editConfirm)="onSaveConfirm($event)"
   (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
 `,
@@ -26,17 +26,24 @@ export class InicioAdminPage {
   settings = {
     delete: {
       confirmDelete: true,
+      deleteButtonContent: 'Borrar',
     },
     add: {
       confirmCreate: true,
+      addButtonContent:"Agregar"
     },
     edit: {
       confirmSave: true,
+      editButtonContent: 'Editar',
+      saveButtonContent: 'Guardar',
     },
     columns: {
       DNI: {
         title: 'DNI',
-        filter: false
+        filter: false,
+        editor: {
+          type: 'number',
+        },
       },
       Apellido: {
         title: 'Apellido',
@@ -53,13 +60,25 @@ export class InicioAdminPage {
       ,
       Perfil: {
         title: 'Perfil',
-        filter: false
+        filter: false,
+        type: 'html',
+        editor: {
+          type: 'list',
+          config: {
+            list: [{ value: 'Admin', title: 'Admin' },{ value: 'Profesor', title: 'Profesor' }, { value: 'Administrativo', title: 'Administrativo' }, {
+              value: '<b>Profesor</b>',
+              title: 'Profesor',
+            }],
+          },
+        },
       }
       ,
       Accion: {
         title: 'Acción',
         filter: false,
         type:'custom',
+        add: false,
+        edit: false,  
         renderComponent: ButtonRenderComponent,
         onComponentInitFunction(instance) {
           instance.save.subscribe(row => {
@@ -99,6 +118,15 @@ export class InicioAdminPage {
       
 
   }
+ionViewDidEnter()
+{
+  this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+  
+}
+  ionViewWillLeave()
+  {
+    this.screenOrientation.unlock();
+  }
   onDeleteConfirm(event) {
     if (window.confirm('¿Eliminar?')) {
       event.confirm.resolve();
@@ -117,9 +145,38 @@ export class InicioAdminPage {
 
   onCreateConfirm(event) {
     if (window.confirm('¿Crear?')) {
-      event.confirm.resolve(event.newData);
+     if(event.newData.DNI!=null && event.newData.Apellido!=null && event.newData.Nombre!=null && event.newData.Email!=null && event.newData.Perfil!=null
+    && event.newData.DNI!=undefined && event.newData.Apellido!=undefined && event.newData.Nombre!=undefined && event.newData.Email!=undefined && event.newData.Perfil!=undefined &&
+     event.newData.DNI!="" && event.newData.Apellido!="" && event.newData.Nombre!="" && event.newData.Email!="" && event.newData.Perfil!="")
+     {
+       
+       if(event.newData.Email.includes('@'))
+       {
+         if(event.newData.DNI.length==8)
+         {
+           event.newData.Accion=null;
+           this.fireService.addUser(event.newData);
+           event.confirm.reject();
+           
+         }else{
+           alert("DNI inválido");
+           event.confirm.reject();
+           
+         }
+       }else{
+         alert("Email inválido");
+         event.confirm.reject();
+         
+       }
+     }else{
+       alert("Completa los datos");
+       event.confirm.reject();
+       
+     }
+     
+      
      // this.fireService.addUser(event.newData);
-      alert(event.newData);
+      alert(event.newData.DNI);
       
     } else {
       event.confirm.reject();

@@ -59,7 +59,11 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  }
+  ionViewWillLeave()
+  {
+    this.screenOrientation.unlock();
   }
 
   loginGoogle()
@@ -90,16 +94,16 @@ loading.present();
             {
               switch(element.Perfil)
               {
-                case "admin":
+                case "Admin":
                 this.navCtrl.setRoot(InicioAdminPage);
                 break;
-                case "administrativo":
+                case "Administrativo":
                 this.navCtrl.setRoot(InicioAdministrativoPage);
                 break;
-                case "profesor":
+                case "Profesor":
                 this.navCtrl.setRoot(InicioProfesorPage);
                 break;
-                case "alumno":
+                case "Alumno":
                 this.navCtrl.setRoot(AulaAlumnoPage);
                 break;
           
