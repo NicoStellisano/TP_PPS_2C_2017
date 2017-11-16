@@ -14,7 +14,7 @@
 
 <ion-content padding style="background-image:url('assets/aula-profesor.jpg')" class="fondo">
 
-  <ion-list>
+ <!-- <ion-list>
               
     <ion-item class="animated flipInX miItem">
       <ion-label class="miLabel" floating>Divicion</ion-label>
@@ -31,11 +31,17 @@
       <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>
     </ion-item> 
   
-  </ion-list>
+  </ion-list>-->
 
   <div>
-    <button ion-button round full large  class="animated flipInX miBoton miButton"> 
-      <ion-icon name="arrow-round-back"></ion-icon> Volver
+    <button ion-button round full large (click)="tomaLista()" class="animated flipInX miBoton miButton"> 
+      <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista
+    </button>
+    <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> 
+      <ion-icon name="arrow-round-back"></ion-icon> Crear Notificacion
+    </button>
+    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
+      <ion-icon name="arrow-round-back"></ion-icon> Cargar Lista
     </button>
   </div>
 

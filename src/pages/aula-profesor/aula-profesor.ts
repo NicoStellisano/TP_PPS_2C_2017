@@ -30,4 +30,16 @@ export class AulaProfesorPage {
     console.log('ionViewDidLoad AulaProfesorPage');
   }
 
+  tomaLista(){
+    alert("voy a tomar lista");
+  }
+
+  crearNotificacion(){
+    alert("voy a tomar notificacion");
+  }
+
+  cargarLista(){
+    alert("voy a cargar lista");
+  }
+
 }
