@@ -1,4 +1,4 @@
-import {AngularFireDatabase} from 'angularfire2/database';
+import {AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -56,6 +56,22 @@ export class FireBaseServiceProvider {
         return this.afd.list('/personas');
       }
 
+      getProfesores()
+      {
+        return this.afd.list('/personas/profesores');
+        
+      }
+      getAdministrativos()
+      {
+        return this.afd.list('/personas/administrativos');
+        
+      }
+      getAlumnos()
+      {
+        return this.afd.list('/personas/alumnos');
+        
+      }
+
       getMessages()
       {
     
@@ -85,6 +101,21 @@ export class FireBaseServiceProvider {
         
       }
 
+      addProfesor(item)
+      {
+        return this.afd.list('/personas/profesores').push(item);
+        
+      }
+      addAdministrativo(item)
+      {
+        return this.afd.list('/personas/administrativos').push(item);
+        
+      }
+      addAlumno(item)
+      {
+        return this.afd.list('/personas/alumnos').push(item);
+        
+      }
       addUser(item)
       {
         return this.afd.list('/personas').push(item);
@@ -109,5 +140,10 @@ export class FireBaseServiceProvider {
         return this.afd.list('/items').remove(id);
         
       }
+
+      /*modifyProfesor(dni:FirebaseObjectObservable)
+      {
+        return this.afd.list('/personas/profesores').update(dni)
+      }*/
     }
     
