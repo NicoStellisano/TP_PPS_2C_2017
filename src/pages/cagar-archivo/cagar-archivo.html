@@ -17,9 +17,11 @@
 
   <ion-list>
     <ion-item>
-      <label>{{label}}</label>
-      <input type="file" (change)="fileUpload($event)" id="file-input" style="opacity: 0" #fileInp>
-      <ion-icon name="cloud-done" (click)="onClick()"></ion-icon>
+      <!--<label>{{label}}</label>-->
+      <!--(change)="fileUpload($event)"-->
+      <!--<input type='file' name='userFile' id='file' (change)="onFileSelect($event.target)" style="display: none" multiple>-->
+      <input type="file" (change)="onFileSelect($event.target)"  id="file-input" style="display: none" multiple class="animated flipInX" style="opacity: 0" #fileInp>
+     <!-- <ion-icon name="cloud-done" (click)="onClick()"></ion-icon> -->
       <!--<button ion-button (click)="onClick()">Cargar</button>-->
     </ion-item>
   </ion-list>

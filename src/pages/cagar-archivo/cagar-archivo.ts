@@ -1,5 +1,7 @@
-import { Component,ElementRef,Input,Output,EventEmitter, ViewChild } from '@angular/core';
+import { Component,ElementRef,Input,Output,EventEmitter, ViewChild,OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
+import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 //import { FileOpener } from '@ionic-native/file-opener';
 
 /**
@@ -13,6 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * 
  */
 
+export class GeochemComponent implements OnInit {
+  
+    static muestras:string[][]=[];
+    static muestras2:string[][]=[];
+    ngOnInit(){}
+  }
+
 @IonicPage()
 @Component({
   selector: 'page-cagar-archivo',
@@ -23,7 +32,9 @@ export class CagarArchivoPage {
   @ViewChild('fileInp') fileInput: ElementRef;
   @Input() label: string;
   @Output() data = new EventEmitter<FormData>();
-  dato:any; 
+  dato: Observable<AlumnoItem[]>; 
+  alumno:AlumnoItem;
+  alumbos:AlumnoItem[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -32,35 +43,61 @@ export class CagarArchivoPage {
     console.log('ionViewDidLoad CagarArchivoPage');
   }
   
-  fileUpload(event) {
-   /* let fd = new FormData();
-    fd.append('file', event.srcElement.files[0]);
-    
-    console.log(fd.getAll);
-    this.data.emit(fd);*/
+  leeArchivos(numarchivo:number,file:any) {
 
-    if(event.target.files && event.target.files[0]){
-      let reader = new FileReader();
+    let alumno = {} as AlumnoItem;
+    var fr = new FileReader();
+    var arrayFilas:string[][];
 
-      reader.onload = (event:any) => {
-        this.dato = event.target.result;
-        //console.log(this.dato);
-      }
-     reader.readAsDataURL(event.target.files[0]);
-    }
-      let fileList: FileList = event.target.files;  
-      let file: File = fileList[0];
-      //console.log(file);
-      //console.log(file.webkitRelativePath.split(";"));
+    fr.onload = function(e) {
+      var text = fr.result;
+      var rows = text.split("\n");
+      arrayFilas=[];
       
-      for (let index = 0; index < file.size; index++) {
-          file[index].reader();
-          console.log(file[index]);
+      //guardo todas las filas en un array separando cada atributo que tenga ;
+      for (var t=0;t<rows.length-1;t++) {
+        if (rows[t].length!=0) {
+       
+            //console.log(rows[t].split(";"));
+            arrayFilas.push(rows[t].split(";"));
+        }
       }
-  }
+
+      for (let index = 0; index < arrayFilas.length; index++) {
+        const elemento = arrayFilas[index];
+        //console.log(element0);
+        alumno.legajo = elemento[0];
+        alumno.nombre = elemento[1];
+        alumno.turno = elemento[2];
+        console.log(alumno);
+      }
+
+      if(numarchivo==0) {
+        GeochemComponent.muestras=arrayFilas.slice();
+      } else if (numarchivo==1) {
+        GeochemComponent.muestras2=arrayFilas.slice();
+      }
+    };
+    fr.readAsText(file,'ISO-8859-4');
+   // console.log(arrayFilas[0]);
+
+    
+    //fr.readAsArrayBuffer;
   
-  onClick() {
-    this.fileInput.nativeElement.click();
   }
 
+  onFileSelect(input: HTMLInputElement) {
+    var files = input.files;
+    var len = files.length;
+    for (var b=0;b<len;b++) {
+      this.leeArchivos(b,files[b]);
+    }
+  }
+
+
+  cargarLista(){
+    console.log("Carga lista a firebase");
+  }
 }
+
+
