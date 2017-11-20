@@ -31261,6 +31261,10 @@ ion-header, ion-content {
   z-index: 999;
 }
 
+p {
+  color: white;
+}
+
 page-cuestionarios .fondo {
   background-repeat: no-repeat;
   background: 50%;

@@ -29,12 +29,10 @@ export class GeochemComponent implements OnInit {
 })
 export class CagarArchivoPage {
 
-  @ViewChild('fileInp') fileInput: ElementRef;
-  @Input() label: string;
-  @Output() data = new EventEmitter<FormData>();
-  dato: Observable<AlumnoItem[]>; 
   alumno:AlumnoItem;
-  alumbos:AlumnoItem[];
+  listaAlumnos:AlumnoItem[];
+  nombreArchivo:string;
+  sizeArchivo:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -63,6 +61,7 @@ export class CagarArchivoPage {
         }
       }
 
+      //Tomo cada elemento del arrayFilas y lo transformo en un alumnno para guardalos en listaAlumno
       for (let index = 0; index < arrayFilas.length; index++) {
         const elemento = arrayFilas[index];
         //console.log(element0);
@@ -79,10 +78,11 @@ export class CagarArchivoPage {
       }
     };
     fr.readAsText(file,'ISO-8859-4');
-   // console.log(arrayFilas[0]);
 
-    
-    //fr.readAsArrayBuffer;
+    console.log(file.name);
+    console.log(file.size);
+    this.nombreArchivo = file.name;
+    this.sizeArchivo = file.size/1000 + " Kb";
   
   }
 
@@ -94,9 +94,12 @@ export class CagarArchivoPage {
     }
   }
 
-
   cargarLista(){
     console.log("Carga lista a firebase");
+  }
+
+  descargarArchvio(){
+    console.log("Descarga archivo PDF");
   }
 }
 

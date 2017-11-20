@@ -375,124 +375,6 @@ AulaProfesorPage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export GeochemComponent */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CagarArchivoPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-//import { FileOpener } from '@ionic-native/file-opener';
-/**
- * Generated class for the CagarArchivoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- *
- * $ ionic cordova plugin add cordova-plugin-file-opener2
- * $ npm install --save @ionic-native/file-opener
- *
- */
-var GeochemComponent = (function () {
-    function GeochemComponent() {
-    }
-    GeochemComponent.prototype.ngOnInit = function () { };
-    return GeochemComponent;
-}());
-
-GeochemComponent.muestras = [];
-GeochemComponent.muestras2 = [];
-var CagarArchivoPage = (function () {
-    function CagarArchivoPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.data = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-    }
-    CagarArchivoPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CagarArchivoPage');
-    };
-    CagarArchivoPage.prototype.leeArchivos = function (numarchivo, file) {
-        var alumno = {};
-        var fr = new FileReader();
-        var arrayFilas;
-        fr.onload = function (e) {
-            var text = fr.result;
-            var rows = text.split("\n");
-            arrayFilas = [];
-            //guardo todas las filas en un array separando cada atributo que tenga ;
-            for (var t = 0; t < rows.length - 1; t++) {
-                if (rows[t].length != 0) {
-                    //console.log(rows[t].split(";"));
-                    arrayFilas.push(rows[t].split(";"));
-                }
-            }
-            for (var index = 0; index < arrayFilas.length; index++) {
-                var elemento = arrayFilas[index];
-                //console.log(element0);
-                alumno.legajo = elemento[0];
-                alumno.nombre = elemento[1];
-                alumno.turno = elemento[2];
-                console.log(alumno);
-            }
-            if (numarchivo == 0) {
-                GeochemComponent.muestras = arrayFilas.slice();
-            }
-            else if (numarchivo == 1) {
-                GeochemComponent.muestras2 = arrayFilas.slice();
-            }
-        };
-        fr.readAsText(file, 'ISO-8859-4');
-        // console.log(arrayFilas[0]);
-        //fr.readAsArrayBuffer;
-    };
-    CagarArchivoPage.prototype.onFileSelect = function (input) {
-        var files = input.files;
-        var len = files.length;
-        for (var b = 0; b < len; b++) {
-            this.leeArchivos(b, files[b]);
-        }
-    };
-    CagarArchivoPage.prototype.cargarLista = function () {
-        console.log("Carga lista a firebase");
-    };
-    return CagarArchivoPage;
-}());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])('fileInp'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */]) === "function" && _a || Object)
-], CagarArchivoPage.prototype, "fileInput", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", String)
-], CagarArchivoPage.prototype, "label", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
-    __metadata("design:type", Object)
-], CagarArchivoPage.prototype, "data", void 0);
-CagarArchivoPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-cagar-archivo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cagar-archivo/cagar-archivo.html"*/'<!--\n  Generated template for the CagarArchivoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Cagar Archivo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n  <ion-list>\n    <ion-item>\n      <!--<label>{{label}}</label>-->\n      <!--(change)="fileUpload($event)"-->\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple>-->\n      <input type="file" (change)="onFileSelect($event.target)"  id="file-input" style="display: none" multiple class="animated flipInX" style="opacity: 0" #fileInp>\n     <!-- <ion-icon name="cloud-done" (click)="onClick()"></ion-icon> -->\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n    </ion-item>\n  </ion-list>\n  \n  <div>\n    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="cloud-done"></ion-icon> Subir\n    </button>\n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cagar-archivo/cagar-archivo.html"*/,
-    }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _c || Object])
-], CagarArchivoPage);
-
-var _a, _b, _c;
-//# sourceMappingURL=cagar-archivo.js.map
-
-/***/ }),
-
-/***/ 184:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InicioAdminPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
@@ -797,7 +679,7 @@ InicioAdminPage = __decorate([
 
 /***/ }),
 
-/***/ 185:
+/***/ 184:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -913,7 +795,7 @@ InicioAdministrativoPage = __decorate([
 
 /***/ }),
 
-/***/ 186:
+/***/ 185:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -958,14 +840,14 @@ InicioAlumnoPage = __decorate([
 
 /***/ }),
 
-/***/ 187:
+/***/ 186:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InicioProfesorPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materias_profesor_materias_profesor__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materias_profesor_materias_profesor__ = __webpack_require__(187);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1037,7 +919,7 @@ InicioProfesorPage = __decorate([
 
 /***/ }),
 
-/***/ 188:
+/***/ 187:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1135,227 +1017,17 @@ MateriasProfesorPage = __decorate([
 
 /***/ }),
 
-/***/ 193:
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 193;
-
-/***/ }),
-
-/***/ 234:
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"../pages/aula-administrativo/aula-administrativo.module": [
-		554,
-		12
-	],
-	"../pages/aula-alumno/aula-alumno.module": [
-		555,
-		11
-	],
-	"../pages/aula-profesor/aula-profesor.module": [
-		556,
-		10
-	],
-	"../pages/cagar-archivo/cagar-archivo.module": [
-		557,
-		9
-	],
-	"../pages/cuestionarios/cuestionarios.module": [
-		558,
-		8
-	],
-	"../pages/inicio-admin/inicio-admin.module": [
-		559,
-		7
-	],
-	"../pages/inicio-administrativo/inicio-administrativo.module": [
-		560,
-		6
-	],
-	"../pages/inicio-alumno/inicio-alumno.module": [
-		561,
-		5
-	],
-	"../pages/inicio-profesor/inicio-profesor.module": [
-		562,
-		4
-	],
-	"../pages/login/login.module": [
-		563,
-		3
-	],
-	"../pages/materias-profesor/materias-profesor.module": [
-		564,
-		2
-	],
-	"../pages/materias/materias.module": [
-		565,
-		1
-	],
-	"../pages/perfil/perfil.module": [
-		566,
-		0
-	]
-};
-function webpackAsyncContext(req) {
-	var ids = map[req];
-	if(!ids)
-		return Promise.reject(new Error("Cannot find module '" + req + "'."));
-	return __webpack_require__.e(ids[1]).then(function() {
-		return __webpack_require__(ids[0]);
-	});
-};
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-webpackAsyncContext.id = 234;
-module.exports = webpackAsyncContext;
-
-/***/ }),
-
-/***/ 248:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ButtonRenderComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var ButtonRenderComponent = (function () {
-    function ButtonRenderComponent() {
-        this.save = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
-    }
-    ButtonRenderComponent.prototype.ngOnInit = function () {
-        this.renderValue = this.value.toString().toUpperCase();
-    };
-    ButtonRenderComponent.prototype.onClick = function () {
-        this.save.emit(this.rowData);
-    };
-    return ButtonRenderComponent;
-}());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", Object)
-], ButtonRenderComponent.prototype, "value", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-    __metadata("design:type", Object)
-], ButtonRenderComponent.prototype, "rowData", void 0);
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
-], ButtonRenderComponent.prototype, "save", void 0);
-ButtonRenderComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        template: "\n  <button  ion-button color='secondary' (click)=\"onClick()\">Asignar Materia</button>",
-    })
-], ButtonRenderComponent);
-
-//# sourceMappingURL=button-renderer.js.map
-
-/***/ }),
-
-/***/ 339:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CuestionariosPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the CuestionariosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var CuestionariosPage = (function () {
-    function CuestionariosPage(navCtrl, navParams) {
-        //NO ES LA FUNCIONALIDAD CORRECTA
-        /* this.listaCuestionariosProfesor=[
-           {nombre:"Examen: ¿parcial o tp?"},
-           {nombre:"¿Hacemos rifas para comprar maquinas?"}
-        ];
-        */
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-    }
-    CuestionariosPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CuestionariosPage');
-    };
-    //NO ES LA FUNCION CORRECTA
-    /*
-    RedireccionCuestionario(cuestionario:string)
-    {
-      alert("se vera la informacion de este cuestionario");
-      switch(cuestionario)
-      {
-        case "":
-       //this.navCtrl.push();
-        break;
-      }
-    }
-    */
-    CuestionariosPage.prototype.RedireccionCrearCuestionario = function () {
-        alert("aca el profesor podra crear cuestionarios");
-    };
-    CuestionariosPage.prototype.MostrarCuestionariosProfesor = function () {
-        alert("aca el profesor podra ver los cuestionarios");
-    };
-    return CuestionariosPage;
-}());
-CuestionariosPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-cuestionarios',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cuestionarios/cuestionarios.html"*/'<!--\n  Generated template for the MateriasProfesorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Seleccione un cuestionario</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> \n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="MostrarCuestionariosProfesor()">Mostrar cuestionarios</button> \n          \n        </ion-content>'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cuestionarios/cuestionarios.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
-], CuestionariosPage);
-
-//# sourceMappingURL=cuestionarios.js.map
-
-/***/ }),
-
-/***/ 340:
+/***/ 188:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inicio_admin_inicio_admin__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inicio_administrativo_inicio_administrativo__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inicio_profesor_inicio_profesor__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inicio_alumno_inicio_alumno__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inicio_admin_inicio_admin__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inicio_administrativo_inicio_administrativo__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inicio_profesor_inicio_profesor__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inicio_alumno_inicio_alumno__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_fire_base_service_fire_base_service__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_firebase__ = __webpack_require__(510);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_firebase__);
@@ -1528,6 +1200,326 @@ LoginPage = __decorate([
 
 /***/ }),
 
+/***/ 193:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 193;
+
+/***/ }),
+
+/***/ 234:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"../pages/aula-administrativo/aula-administrativo.module": [
+		554,
+		12
+	],
+	"../pages/aula-alumno/aula-alumno.module": [
+		555,
+		11
+	],
+	"../pages/aula-profesor/aula-profesor.module": [
+		556,
+		10
+	],
+	"../pages/cagar-archivo/cagar-archivo.module": [
+		557,
+		9
+	],
+	"../pages/cuestionarios/cuestionarios.module": [
+		558,
+		8
+	],
+	"../pages/inicio-admin/inicio-admin.module": [
+		559,
+		7
+	],
+	"../pages/inicio-administrativo/inicio-administrativo.module": [
+		560,
+		6
+	],
+	"../pages/inicio-alumno/inicio-alumno.module": [
+		561,
+		5
+	],
+	"../pages/inicio-profesor/inicio-profesor.module": [
+		562,
+		4
+	],
+	"../pages/login/login.module": [
+		563,
+		3
+	],
+	"../pages/materias-profesor/materias-profesor.module": [
+		564,
+		2
+	],
+	"../pages/materias/materias.module": [
+		565,
+		1
+	],
+	"../pages/perfil/perfil.module": [
+		566,
+		0
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
+	});
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+webpackAsyncContext.id = 234;
+module.exports = webpackAsyncContext;
+
+/***/ }),
+
+/***/ 248:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ButtonRenderComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ButtonRenderComponent = (function () {
+    function ButtonRenderComponent() {
+        this.save = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+    }
+    ButtonRenderComponent.prototype.ngOnInit = function () {
+        this.renderValue = this.value.toString().toUpperCase();
+    };
+    ButtonRenderComponent.prototype.onClick = function () {
+        this.save.emit(this.rowData);
+    };
+    return ButtonRenderComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Object)
+], ButtonRenderComponent.prototype, "value", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Object)
+], ButtonRenderComponent.prototype, "rowData", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* Output */])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */])
+], ButtonRenderComponent.prototype, "save", void 0);
+ButtonRenderComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        template: "\n  <button  ion-button color='secondary' (click)=\"onClick()\">Asignar Materia</button>",
+    })
+], ButtonRenderComponent);
+
+//# sourceMappingURL=button-renderer.js.map
+
+/***/ }),
+
+/***/ 339:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export GeochemComponent */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CagarArchivoPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+//import { FileOpener } from '@ionic-native/file-opener';
+/**
+ * Generated class for the CagarArchivoPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ *
+ * $ ionic cordova plugin add cordova-plugin-file-opener2
+ * $ npm install --save @ionic-native/file-opener
+ *
+ */
+var GeochemComponent = (function () {
+    function GeochemComponent() {
+    }
+    GeochemComponent.prototype.ngOnInit = function () { };
+    return GeochemComponent;
+}());
+
+GeochemComponent.muestras = [];
+GeochemComponent.muestras2 = [];
+var CagarArchivoPage = (function () {
+    function CagarArchivoPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    CagarArchivoPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad CagarArchivoPage');
+    };
+    CagarArchivoPage.prototype.leeArchivos = function (numarchivo, file) {
+        var alumno = {};
+        var fr = new FileReader();
+        var arrayFilas;
+        fr.onload = function (e) {
+            var text = fr.result;
+            var rows = text.split("\n");
+            arrayFilas = [];
+            //guardo todas las filas en un array separando cada atributo que tenga ;
+            for (var t = 0; t < rows.length - 1; t++) {
+                if (rows[t].length != 0) {
+                    //console.log(rows[t].split(";"));
+                    arrayFilas.push(rows[t].split(";"));
+                }
+            }
+            //Tomo cada elemento del arrayFilas y lo transformo en un alumnno para guardalos en listaAlumno
+            for (var index = 0; index < arrayFilas.length; index++) {
+                var elemento = arrayFilas[index];
+                //console.log(element0);
+                alumno.legajo = elemento[0];
+                alumno.nombre = elemento[1];
+                alumno.turno = elemento[2];
+                console.log(alumno);
+            }
+            if (numarchivo == 0) {
+                GeochemComponent.muestras = arrayFilas.slice();
+            }
+            else if (numarchivo == 1) {
+                GeochemComponent.muestras2 = arrayFilas.slice();
+            }
+        };
+        fr.readAsText(file, 'ISO-8859-4');
+        console.log(file.name);
+        console.log(file.size);
+        this.nombreArchivo = file.name;
+        this.sizeArchivo = file.size / 1000 + " Kb";
+    };
+    CagarArchivoPage.prototype.onFileSelect = function (input) {
+        var files = input.files;
+        var len = files.length;
+        for (var b = 0; b < len; b++) {
+            this.leeArchivos(b, files[b]);
+        }
+    };
+    CagarArchivoPage.prototype.cargarLista = function () {
+        console.log("Carga lista a firebase");
+    };
+    CagarArchivoPage.prototype.descargarArchvio = function () {
+        console.log("Descarga archivo PDF");
+    };
+    return CagarArchivoPage;
+}());
+CagarArchivoPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-cagar-archivo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cagar-archivo/cagar-archivo.html"*/'<!--\n  Generated template for the CagarArchivoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Cagar Archivo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n  <ion-list>\n    <ion-item>\n      <!--<label>{{label}}</label>-->\n      <!--(change)="fileUpload($event)"-->\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->\n      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">\n      <ion-icon name="cloud-done">Sellecionar archivo .csv</ion-icon>\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n    </ion-item>\n\n    <ion-item>\n      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>\n      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>\n    </ion-item>\n  </ion-list>\n  \n  <div>\n    <button center ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="cloud-done"></ion-icon> Subir\n    </button>\n    <button center ion-button round full large (click)="descargarArchvio()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="cloud-done"></ion-icon> Descargar\n    </button>\n  </div>\n  \n  \n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cagar-archivo/cagar-archivo.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+], CagarArchivoPage);
+
+//# sourceMappingURL=cagar-archivo.js.map
+
+/***/ }),
+
+/***/ 340:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CuestionariosPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the CuestionariosPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CuestionariosPage = (function () {
+    function CuestionariosPage(navCtrl, navParams) {
+        //NO ES LA FUNCIONALIDAD CORRECTA
+        /* this.listaCuestionariosProfesor=[
+           {nombre:"Examen: ¿parcial o tp?"},
+           {nombre:"¿Hacemos rifas para comprar maquinas?"}
+        ];
+        */
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    CuestionariosPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad CuestionariosPage');
+    };
+    //NO ES LA FUNCION CORRECTA
+    /*
+    RedireccionCuestionario(cuestionario:string)
+    {
+      alert("se vera la informacion de este cuestionario");
+      switch(cuestionario)
+      {
+        case "":
+       //this.navCtrl.push();
+        break;
+      }
+    }
+    */
+    CuestionariosPage.prototype.RedireccionCrearCuestionario = function () {
+        alert("aca el profesor podra crear cuestionarios");
+    };
+    CuestionariosPage.prototype.MostrarCuestionariosProfesor = function () {
+        alert("aca el profesor podra ver los cuestionarios");
+    };
+    return CuestionariosPage;
+}());
+CuestionariosPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-cuestionarios',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cuestionarios/cuestionarios.html"*/'<!--\n  Generated template for the MateriasProfesorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Seleccione un cuestionario</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> \n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="MostrarCuestionariosProfesor()">Mostrar cuestionarios</button> \n          \n        </ion-content>'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cuestionarios/cuestionarios.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+], CuestionariosPage);
+
+//# sourceMappingURL=cuestionarios.js.map
+
+/***/ }),
+
 /***/ 341:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1554,11 +1546,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(338);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(551);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(552);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(340);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_inicio_admin_inicio_admin__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_inicio_administrativo_inicio_administrativo__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_inicio_profesor_inicio_profesor__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_inicio_alumno_inicio_alumno__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_inicio_admin_inicio_admin__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_inicio_administrativo_inicio_administrativo__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_inicio_profesor_inicio_profesor__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_inicio_alumno_inicio_alumno__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_aula_alumno_aula_alumno__ = __webpack_require__(180);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_aula_administrativo_aula_administrativo__ = __webpack_require__(179);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_aula_profesor_aula_profesor__ = __webpack_require__(182);
@@ -1569,11 +1561,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ng2_smart_table__ = __webpack_require__(235);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_button_renderer_button_renderer__ = __webpack_require__(248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_materias_materias__ = __webpack_require__(181);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_materias_profesor_materias_profesor__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_materias_profesor_materias_profesor__ = __webpack_require__(187);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_google_plus__ = __webpack_require__(297);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_screen_orientation__ = __webpack_require__(151);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_cuestionarios_cuestionarios__ = __webpack_require__(339);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_cagar_archivo_cagar_archivo__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_cuestionarios_cuestionarios__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_cagar_archivo_cagar_archivo__ = __webpack_require__(339);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1705,7 +1697,7 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(338);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(337);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_cagar_archivo_cagar_archivo__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(188);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1719,14 +1711,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-//import { AulaAlumnoPage } from '../pages/aula-alumno/aula-alumno'; //test
-//import { AulaAdministrativoPage } from '../pages/aula-administrativo/aula-administrativo';
-//import { AulaProfesorPage } from '../pages/aula-profesor/aula-profesor';
 
 var MyApp = (function () {
+    //rootPage:any = CagarArchivoPage; //test
     function MyApp(platform, statusBar, splashScreen) {
-        //rootPage:any = LoginPage;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_cagar_archivo_cagar_archivo__["a" /* CagarArchivoPage */]; //test
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_login_login__["a" /* LoginPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.

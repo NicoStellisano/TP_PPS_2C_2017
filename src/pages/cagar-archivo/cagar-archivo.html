@@ -19,17 +19,26 @@
     <ion-item>
       <!--<label>{{label}}</label>-->
       <!--(change)="fileUpload($event)"-->
-      <!--<input type='file' name='userFile' id='file' (change)="onFileSelect($event.target)" style="display: none" multiple>-->
-      <input type="file" (change)="onFileSelect($event.target)"  id="file-input" style="display: none" multiple class="animated flipInX" style="opacity: 0" #fileInp>
-     <!-- <ion-icon name="cloud-done" (click)="onClick()"></ion-icon> -->
+      <!--<input type='file' name='userFile' id='file' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->
+      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">
+      <ion-icon name="cloud-done">Sellecionar archivo .csv</ion-icon>
       <!--<button ion-button (click)="onClick()">Cargar</button>-->
+    </ion-item>
+
+    <ion-item>
+      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>
+      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>
     </ion-item>
   </ion-list>
   
   <div>
-    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
+    <button center ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
       <ion-icon name="cloud-done"></ion-icon> Subir
     </button>
+    <button center ion-button round full large (click)="descargarArchvio()" class="animated flipInX miBoton miButton"> 
+      <ion-icon name="cloud-done"></ion-icon> Descargar
+    </button>
   </div>
+  
   
 </ion-content>
