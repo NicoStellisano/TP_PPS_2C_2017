@@ -15,15 +15,18 @@
 
 <ion-content padding style="background-image:url('assets/nube.jpg')" class="fondo">
 
-  <ion-item>
-    <label>{{label}}</label>
-    <input type="file" (change)="fileUpload($event)" id="file-input" style="opacity: 0" #fileInp>
-    <button ion-button (click)="onClick()">Carrgar</button>
-  </ion-item>
-
+  <ion-list>
+    <ion-item>
+      <label>{{label}}</label>
+      <input type="file" (change)="fileUpload($event)" id="file-input" style="opacity: 0" #fileInp>
+      <ion-icon name="cloud-done" (click)="onClick()"></ion-icon>
+      <!--<button ion-button (click)="onClick()">Cargar</button>-->
+    </ion-item>
+  </ion-list>
+  
   <div>
     <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
-      <ion-icon name="arrow-round-back"></ion-icon> Cargar Lista
+      <ion-icon name="cloud-done"></ion-icon> Subir
     </button>
   </div>
   

@@ -94,4 +94,5 @@
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.822117994633-eau5gidg0q2f1sqltdbnq68mscsrpfui" />
     </plugin>
     <plugin name="cordova-plugin-screen-orientation" spec="https://github.com/Exilz/cordova-plugin-screen-orientation.git" />
+    <plugin name="cordova-plugin-file-opener2" spec="^2.0.19" />
 </widget>

@@ -31251,6 +31251,16 @@ ion-header, ion-content {
   animation-name: slideOutUp;
 }
 
+#file-input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  z-index: 999;
+}
+
 page-cuestionarios .fondo {
   background-repeat: no-repeat;
   background: 50%;
