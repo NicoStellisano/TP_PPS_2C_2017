@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MateriasProfesorPage} from '../materias-profesor/materias-profesor';
+import { AulaProfesorPage } from '../aula-profesor/aula-profesor';
 
 /**
  * Generated class for the InicioProfesorPage page.
@@ -52,11 +53,11 @@ export class InicioProfesorPage {
         break;
         case "4° A":
         //alert("Se redireccionara al aula: 4° A ");
-        this.navCtrl.push(MateriasProfesorPage,{aulaa:aula});
+        this.navCtrl.push(AulaProfesorPage,{aulaa:aula});
         break;
         case "4° B":
        // alert("Se redireccionara al aula: 4° B ");
-        this.navCtrl.push(MateriasProfesorPage,{aulaa:aula});
+        this.navCtrl.push(AulaProfesorPage,{aulaa:aula});
         break;
   
       }

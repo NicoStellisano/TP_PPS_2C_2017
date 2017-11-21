@@ -1,7 +1,8 @@
-import { Component,ElementRef,Input,Output,EventEmitter, ViewChild,OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 //import { FileOpener } from '@ionic-native/file-opener';
 
 /**

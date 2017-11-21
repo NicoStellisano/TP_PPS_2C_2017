@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AulaProfesorItem } from '../../models/aula-profesor-item/aula-profesor.interface';
+import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 
 /**
  * Generated class for the AulaProfesorPage page.
@@ -17,13 +18,11 @@ import { AulaProfesorItem } from '../../models/aula-profesor-item/aula-profesor.
 export class AulaProfesorPage {
 
   miAulaProfesor = {} as AulaProfesorItem;
+  aula:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.miAulaProfesor = {
-      division: "1°A",
-      materia:"Programacion I",
-      cantidadAlumnos:20
-    };
+    this.aula = this.navParams.get('aulaa');
+    alert(this.aula);
   }
 
   ionViewDidLoad() {
@@ -39,6 +38,7 @@ export class AulaProfesorPage {
   }
 
   cargarLista(){
+    this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula});
     alert("voy a cargar lista");
   }
 
