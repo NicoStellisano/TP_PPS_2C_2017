@@ -29,6 +29,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { CuestionariosPage} from '../pages/cuestionarios/cuestionarios';
 import { CagarArchivoPage } from '../pages/cagar-archivo/cagar-archivo';
+import { AlumnosPage } from '../pages/alumnos/alumnos';
 
 var config = {
   apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
@@ -55,7 +56,8 @@ var config = {
     MateriasPage,
     MateriasProfesorPage,
     CuestionariosPage,
-    CagarArchivoPage
+    CagarArchivoPage,
+    AlumnosPage
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,8 @@ var config = {
     MateriasPage,
     MateriasProfesorPage,
     CuestionariosPage,
-    CagarArchivoPage
+    CagarArchivoPage,
+    AlumnosPage
   ],
   providers: [
     StatusBar,

@@ -121,6 +121,31 @@ export class FireBaseServiceProvider {
         return this.afd.list('/personas').push(item);
         
       }
+      updateAlumno(data)
+      {
+        return this.afd.list('/personas').update('alumnos',data);
+      }
+      updateProfesor(data)
+      {
+        return this.afd.list('/personas').update('profesores',data);
+      }
+      updateAdministrativo(data)
+      {
+        return this.afd.list('/personas').update('administrativos',data);
+      }
+
+      removeAlumno(key)
+      {
+        return this.afd.list('/personas/alumnos').remove(key);
+      }
+      removeProfesor(key)
+      {
+        return this.afd.list('/personas/profesores').remove(key);
+      }
+      removeAdministrativo(key)
+      {
+        return this.afd.list('/personas/administrativos').remove(key);
+      }
 
       removeMessages()
       {

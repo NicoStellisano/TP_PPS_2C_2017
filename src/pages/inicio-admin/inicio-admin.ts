@@ -52,12 +52,15 @@ export class InicioAdminPage {
     },
     add: {
       confirmCreate: true,
-      addButtonContent:"Agregar"
+      addButtonContent:"Agregar",
+      createButtonContent:'Crear',
+      cancelButtonContent:'Cancelar'
     },
     edit: {
       confirmSave: true,
       editButtonContent: 'Editar',
       saveButtonContent: 'Guardar',
+      cancelButtonContent:'Cancelar'
     },
     columns: {
       DNI: {
@@ -132,12 +135,15 @@ settings2 = {
   },
   add: {
     confirmCreate: true,
-    addButtonContent:"Agregar"
+    addButtonContent:"Agregar",
+    createButtonContent:'Crear',
+    cancelButtonContent:'Cancelar'
   },
   edit: {
     confirmSave: true,
     editButtonContent: 'Editar',
     saveButtonContent: 'Guardar',
+    cancelButtonContent:'Cancelar'
   },
   columns: {
     DNI: {
@@ -225,10 +231,23 @@ settings2 = {
     {
       
       this.profesor=false;
+      this.fireService.getAdministrativos().subscribe(data=>
+        {
+          this.source2 = new LocalDataSource(data); // create the source
+          this.listadoAdministrativos=data;
+          
+        }); 
       
     }else if(this.personas=='p'){
       
       this.profesor=true;   
+      this.fireService.getProfesores().subscribe(data=>
+        {
+          this.source = new LocalDataSource(data); // create the source
+          this.listadoProfesores=data;
+          
+        }); 
+     
       
     }
   }
@@ -245,15 +264,66 @@ ionViewDidEnter()
   }
   onDeleteConfirm(event) {
     if (window.confirm('¿Eliminar?')) {
-      event.confirm.resolve();
+      if(event.data.Perfil=="Profesor")
+      {
+      for (let i = 0; i <  this.listadoProfesores.length; i++) {
+        const element =  this.listadoProfesores[i];
+        console.log(element);          
+        
+        if(element.Email==event.data.Email)
+        {
+         
+         this.fireService.removeProfesor(element['$key']);
+         
+          //event.confirm.reject();      
+          event.confirm.resolve();
+
+          this.fireService.getProfesores().subscribe(data=>
+            {
+              this.source = new LocalDataSource(data); // create the source
+              this.listadoProfesores=data;
+              
+            }); 
+                  
+          break;
+        }
+      }
+    }else if(event.data.Perfil=="Administrativo")
+    {
+      for (let i = 0; i <  this.listadoAdministrativos.length; i++) {
+        const element =  this.listadoAdministrativos[i];
+        console.log(element);          
+        
+        if(element.Email==event.data.Email)
+        {
+          this.fireService.removeAdministrativo(element['$key']);
+         
+          //event.confirm.reject();      
+          event.confirm.resolve();
+
+          this.fireService.getAdministrativos().subscribe(data=>
+            {
+              this.source2 = new LocalDataSource(data); // create the source
+              this.listadoAdministrativos=data;
+              
+            }); 
+                  
+          break;
+        }
+      }
     } else {
       event.confirm.reject();
     }
   }
+}
 
   onSaveConfirm(event) {
     if (window.confirm('¿Editar?')) {
       console.log(event.newData);  
+      if(event.newData.DNI!=null && event.newData.Apellido!=null && event.newData.Nombre!=null && event.newData.Email!=null && event.newData.Perfil!=null
+        && event.newData.DNI!=undefined && event.newData.Apellido!=undefined && event.newData.Nombre!=undefined && event.newData.Email!=undefined && event.newData.Perfil!=undefined &&
+         event.newData.DNI!="" && event.newData.Apellido!="" && event.newData.Nombre!="" && event.newData.Email!="" && event.newData.Perfil!="")
+         {
       if(event.newData.Perfil=="Profesor")
       {
         for (let i = 0; i <  this.listadoProfesores.length; i++) {
@@ -262,9 +332,21 @@ ionViewDidEnter()
           
           if(element.Email==event.newData.Email)
           {
-            alert('entre');
+            let listadoAux=this.listadoProfesores;
+            listadoAux[i]=event.newData;
             console.log(element);
-            event.confirm.reject();
+            //const key = element['$key'];
+            this.fireService.updateProfesor(listadoAux);
+           
+            //event.confirm.reject();
+            this.fireService.getProfesores().subscribe(data=>
+              {
+                this.source = new LocalDataSource(data); // create the source
+                this.listadoProfesores=data;
+                
+              }); 
+                    
+            break;
           }
         }
       
@@ -275,8 +357,19 @@ ionViewDidEnter()
           const element =  this.listadoAdministrativos[i];
           if(element.Email==event.newData.Email)
           {
-            alert(element.getKey());
-            event.confirm.reject();
+
+           
+            this.listadoAdministrativos[i]=event.newData;
+            console.log(element);
+            this.fireService.updateAdministrativo(this.listadoAdministrativos);
+            
+            this.fireService.getAdministrativos().subscribe(data=>
+              {
+                this.source2 = new LocalDataSource(data); // create the source
+                this.listadoAdministrativos=data;
+                
+              }); 
+            break;
           }
         }
       
@@ -292,7 +385,7 @@ ionViewDidEnter()
       event.confirm.reject();
     }
   }
-
+  }
    
 
   onCreateConfirm(event) {
@@ -306,15 +399,35 @@ ionViewDidEnter()
        {
          if(event.newData.DNI.length==8)
          {
-           event.newData.Accion=null;
-           if(event.newData.Perfil="Profesor")
+           event.newData.Accion=" ";
+           if(event.newData.Perfil=="Profesor")
            {
-            this.fireService.addProfesor(event.newData);
-            event.confirm.reject();
-           }else if(event.newData.Perfil="Administrativo")
+            this.listadoProfesores.push(event.newData);
+             this.fireService.updateProfesor(this.listadoProfesores);
+             event.confirm.resolve();
+             
+             this.fireService.getProfesores().subscribe(data=>
+              {
+                this.source = new LocalDataSource(data); // create the source
+                this.listadoProfesores=data;
+                
+              });        
+              
+              
+           }else if(event.newData.Perfil=="Administrativo")
            {
-            this.fireService.addAdministrativo(event.newData);
-            event.confirm.reject();
+            this.listadoAdministrativos.push(event.newData);
+            event.confirm.resolve();
+            
+             this.fireService.updateAdministrativo(this.listadoAdministrativos);
+             this.fireService.getAdministrativos().subscribe(data=>
+              {
+                this.source2 = new LocalDataSource(data); // create the source
+                this.listadoAdministrativos=data;
+                
+              }); 
+
+              
            }else
            {
             alert("Perfil inválido");
@@ -341,11 +454,16 @@ ionViewDidEnter()
      
       
      // this.fireService.addUser(event.newData);
-      alert(event.newData.DNI);
       
     } else {
       event.confirm.reject();
     }
+
+    
+      event.confirm.reject();
+      
+    
+    
   }
 
   asignar(dni:number)
