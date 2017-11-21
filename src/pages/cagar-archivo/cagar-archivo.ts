@@ -31,11 +31,15 @@ export class GeochemComponent implements OnInit {
 export class CagarArchivoPage {
 
   alumno:AlumnoItem;
-  listaAlumnos:AlumnoItem[];
+  listaAlumnos:AlumnoItem[] = [];
   nombreArchivo:string;
   sizeArchivo:string;
+  aula:string;
+  alumnoLista$: FirebaseListObservable<AlumnoItem[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private database: AngularFireDatabase) {
+    this.aula = this.navParams.get('aulaa');
+    this.alumnoLista$ = this.database.list('alumno-lista');
   }
 
   ionViewDidLoad() {
@@ -45,6 +49,7 @@ export class CagarArchivoPage {
   leeArchivos(numarchivo:number,file:any) {
 
     let alumno = {} as AlumnoItem;
+    let lista:AlumnoItem[] = [];
     var fr = new FileReader();
     var arrayFilas:string[][];
 
@@ -66,10 +71,13 @@ export class CagarArchivoPage {
       for (let index = 0; index < arrayFilas.length; index++) {
         const elemento = arrayFilas[index];
         //console.log(element0);
-        alumno.legajo = elemento[0];
-        alumno.nombre = elemento[1];
-        alumno.turno = elemento[2];
-        console.log(alumno);
+        alumno.legajo = elemento[0].trim();
+        alumno.nombre = elemento[1].trim();
+        alumno.turno = elemento[2].trim();
+        console.log(alumno.turno);
+        lista.push(alumno);
+
+        alumno = {} as AlumnoItem;
       }
 
       if(numarchivo==0) {
@@ -80,6 +88,8 @@ export class CagarArchivoPage {
     };
     fr.readAsText(file,'ISO-8859-4');
 
+    this.listaAlumnos = lista;
+    console.log(this.listaAlumnos);
     console.log(file.name);
     console.log(file.size);
     this.nombreArchivo = file.name;
@@ -97,6 +107,10 @@ export class CagarArchivoPage {
 
   cargarLista(){
     console.log("Carga lista a firebase");
+    this.alumnoLista$.push({
+      aula:this.aula,
+      alumnos:this.listaAlumnos
+    });
   }
 
   descargarArchvio(){

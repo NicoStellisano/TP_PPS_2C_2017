@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AulaProfesorItem } from '../../models/aula-profesor-item/aula-profesor.interface';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 
 /**
@@ -17,12 +16,12 @@ import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 })
 export class AulaProfesorPage {
 
-  miAulaProfesor = {} as AulaProfesorItem;
+  
   aula:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.aula = this.navParams.get('aulaa');
-    alert(this.aula);
+    //alert(this.aula);
   }
 
   ionViewDidLoad() {
