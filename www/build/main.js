@@ -55,10 +55,9 @@ AulaProfesorPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-aula-profesor',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-profesor/aula-profesor.html"*/'<!--\n  Generated template for the AulaProfesorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Aula Profesor {{aula}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n <!--gi <ion-list>\n              \n    <ion-item class="animated flipInX miItem">\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n    </ion-item>\n                    \n    <ion-item class="animated flipInY miItem">\n      <ion-label class="miLabel" floating>Materia</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n    </ion-item>\n                \n    <ion-item class="animated flipInX miItem" >\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n    </ion-item> \n  \n  </ion-list>-->\n\n  <div>\n    <button ion-button round full large (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n    </button>\n    <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Crear Notificacion\n    </button>\n    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n    </button>\n    <button ion-button round full large (click)="mostrarQr()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> QR Aula\n    </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-profesor/aula-profesor.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], AulaProfesorPage);
 
-var _a, _b;
 //# sourceMappingURL=aula-profesor.js.map
 
 /***/ }),
@@ -160,10 +159,9 @@ AulaAdministrativoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-aula-administrativo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-administrativo/aula-administrativo.html"*/'<!--\n  Generated template for the AulaAdministrativoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Aula Administrativo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n <!-- <ion-list>\n        \n    <ion-item class="animated flipInX miItem">\n      <ion-label class="miLabel" floating>Profesor</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.profesor" disabled="true"></ion-input> \n    </ion-item>\n              \n    <ion-item class="animated flipInY miItem">\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.division" disabled="true"></ion-input>\n    </ion-item>\n          \n    <ion-item class="animated flipInX miItem" >\n      <ion-label class="miLabel" floating >Materia</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.materia" disabled="true"></ion-input>\n    </ion-item> \n\n    <ion-item class="animated flipInX miItem" >\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n      <ion-input type="number" [(ngModel)]="miAulaAdministrativo.cantidadAlumno" disabled="true"></ion-input>\n    </ion-item> \n\n  </ion-list>-->\n\n  <div>\n    <button ion-button round full large (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n    </button>\n    <button ion-button round full large (click)="mostrarQR()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Qr Aula\n    </button>\n    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n    </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-administrativo/aula-administrativo.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], AulaAdministrativoPage);
 
-var _a, _b;
 //# sourceMappingURL=aula-administrativo.js.map
 
 /***/ }),
@@ -354,6 +352,7 @@ GeochemComponent.muestras = [];
 GeochemComponent.muestras2 = [];
 var CagarArchivoPage = (function () {
     function CagarArchivoPage(navCtrl, navParams, database) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.database = database;
@@ -362,6 +361,12 @@ var CagarArchivoPage = (function () {
         this.listaAlumnosCsv = [];
         this.aula = this.navParams.get('aulaa');
         this.alumnoLista$ = this.database.list('alumno-lista');
+        //traigo los datos del aula que necesito
+        this.lista(this.aula).subscribe(function (dato) {
+            //console.log(dato.values().next().value.alumnos);
+            //lista de alumnos en el aula
+            _this.listaAlumnosCsv = dato.values().next().value.alumnos;
+        });
     }
     ;
     CagarArchivoPage.prototype.ionViewDidLoad = function () {
@@ -410,33 +415,33 @@ var CagarArchivoPage = (function () {
         this.sizeArchivo = file.size / 1000 + " Kb";
     };
     CagarArchivoPage.prototype.generaCSV = function () {
-        this.lista();
-        var texto;
-        for (var index = 0; index < this.listaAlumnosCsv.length; index++) {
-            var elemento = this.listaAlumnosCsv[index];
-            texto += this.generarLinea(elemento);
-        }
-        console.log("csv" + texto);
-        //El contructor de Blob requiere un Array en el primer parámetro
-        //así que no es necesario usar toString. el segundo parámetro
-        //es el tipo MIME del archivo
-        /*return new Blob(texto, {
-          type: 'text/plain'
-         });*/
+        var _this = this;
+        var csvContent = "data:text/csv;charset=utf-8,";
+        this.listaAlumnosCsv.forEach(function (alumno) {
+            //alumno
+            console.log(alumno);
+            csvContent += _this.generarLinea(alumno);
+        });
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "alumnos.csv");
+        document.body.appendChild(link); // Required for FF
+        link.click();
     };
     CagarArchivoPage.prototype.generarLinea = function (alumno) {
         var texto;
         texto = alumno.legajo + ";" + alumno.nombre + ";" + alumno.turno + ";\r\n";
-        console.log("g" + texto);
+        console.log("genera linea: " + texto);
         return texto;
     };
-    CagarArchivoPage.prototype.lista = function () {
-        var _this = this;
-        this.alumnoLista$.subscribe(function (dato) {
-            console.log("dato" + dato);
-            _this.listaAlumnosCsv = dato;
+    CagarArchivoPage.prototype.lista = function (aula) {
+        return this.database.list('/alumno-lista/', {
+            query: {
+                orderByChild: "aula",
+                equalTo: aula
+            }
         });
-        console.log(this.listaAlumnosCsv);
     };
     CagarArchivoPage.prototype.onFileSelect = function (input) {
         var files = input.files;
@@ -452,8 +457,7 @@ var CagarArchivoPage = (function () {
             alumnos: this.listaAlumnos
         });
     };
-    CagarArchivoPage.prototype.descargarArchvio = function () {
-        console.log("Descarga archivo PDF");
+    CagarArchivoPage.prototype.descargaArchivo = function () {
     };
     return CagarArchivoPage;
 }());
@@ -1248,10 +1252,22 @@ var LoginPage = (function () {
         this.toast = toast;
         this.googlePlus = googlePlus;
         this.screenOrientation = screenOrientation;
-        this.listadoUsuarios = [];
+        this.listadoAdmins = [];
+        this.listadoAlumnos = [];
+        this.listadoProfesores = [];
+        this.listadoAdministrativos = [];
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-        this.fireService.getUsers().subscribe(function (data) {
-            _this.listadoUsuarios = data;
+        this.fireService.getAdmins().subscribe(function (data) {
+            _this.listadoAdmins = data;
+        });
+        this.fireService.getAdministrativos().subscribe(function (data) {
+            _this.listadoAdministrativos = data;
+        });
+        this.fireService.getProfesores().subscribe(function (data) {
+            _this.listadoProfesores = data;
+        });
+        this.fireService.getAlumnos().subscribe(function (data) {
+            _this.listadoAlumnos = data;
         });
         var loading = this.loadingCtrl.create({
             spinner: 'hide',
@@ -1272,6 +1288,7 @@ var LoginPage = (function () {
     };
     LoginPage.prototype.loginGoogle = function () {
         var _this = this;
+        var flag = false;
         var loading = this.loadingCtrl.create({
             spinner: 'hide',
             content: "\n       <img src=\"assets/spinner.gif\">",
@@ -1289,25 +1306,55 @@ var LoginPage = (function () {
             .then(function (res) {
             var firecreds = __WEBPACK_IMPORTED_MODULE_7_firebase___default.a.auth.GoogleAuthProvider.credential(res.idToken);
             __WEBPACK_IMPORTED_MODULE_7_firebase___default.a.auth().signInWithCredential(firecreds).then(function (res) {
-                for (var i = 0; i < _this.listadoUsuarios.length; i++) {
-                    var element = _this.listadoUsuarios[i];
+                for (var i = 0; i < _this.listadoAdmins.length; i++) {
+                    var element = _this.listadoAdmins[i];
                     if (element.Email == __WEBPACK_IMPORTED_MODULE_7_firebase___default.a.auth().currentUser.email) {
-                        switch (element.Perfil) {
-                            case "Admin":
-                                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__inicio_admin_inicio_admin__["a" /* InicioAdminPage */]);
-                                break;
-                            case "Administrativo":
-                                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__inicio_administrativo_inicio_administrativo__["a" /* InicioAdministrativoPage */]);
-                                break;
-                            case "Profesor":
-                                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__inicio_profesor_inicio_profesor__["a" /* InicioProfesorPage */]);
-                                break;
-                            case "Alumno":
-                                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_10__aula_alumno_aula_alumno__["a" /* AulaAlumnoPage */]);
-                                break;
+                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__inicio_admin_inicio_admin__["a" /* InicioAdminPage */]);
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) {
+                    for (var i = 0; i < _this.listadoAdministrativos.length; i++) {
+                        var element = _this.listadoAdministrativos[i];
+                        if (element.Email == __WEBPACK_IMPORTED_MODULE_7_firebase___default.a.auth().currentUser.email) {
+                            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__inicio_administrativo_inicio_administrativo__["a" /* InicioAdministrativoPage */]);
+                            flag = true;
+                            break;
                         }
                     }
                 }
+                if (!flag) {
+                    for (var i = 0; i < _this.listadoAlumnos.length; i++) {
+                        var element = _this.listadoAlumnos[i];
+                        if (element.Email == __WEBPACK_IMPORTED_MODULE_7_firebase___default.a.auth().currentUser.email) {
+                            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_10__aula_alumno_aula_alumno__["a" /* AulaAlumnoPage */]);
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+                if (!flag) {
+                    for (var i = 0; i < _this.listadoProfesores.length; i++) {
+                        var element = _this.listadoProfesores[i];
+                        if (element.Email == __WEBPACK_IMPORTED_MODULE_7_firebase___default.a.auth().currentUser.email) {
+                            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__inicio_profesor_inicio_profesor__["a" /* InicioProfesorPage */]);
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+                /*
+                case "Administrativo":
+                this.navCtrl.setRoot(InicioAdministrativoPage);
+                break;
+                case "Profesor":
+                this.navCtrl.setRoot(InicioProfesorPage);
+                break;
+                case "Alumno":
+                this.navCtrl.setRoot(AulaAlumnoPage);
+                break;
+          */
                 if (element.Email != __WEBPACK_IMPORTED_MODULE_7_firebase___default.a.auth().currentUser.email) {
                     _this.googlePlus.disconnect();
                     var toast = _this.toast.create({
@@ -2116,6 +2163,9 @@ var FireBaseServiceProvider = (function () {
     };
     FireBaseServiceProvider.prototype.getAlumnos = function () {
         return this.afd.list('/personas/alumnos');
+    };
+    FireBaseServiceProvider.prototype.getAdmins = function () {
+        return this.afd.list('/personas/admins');
     };
     FireBaseServiceProvider.prototype.getMessages = function () {
         return this.afd.list('/messages');

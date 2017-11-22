@@ -43,6 +43,13 @@ export class CagarArchivoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private database: AngularFireDatabase) {
     this.aula = this.navParams.get('aulaa');
     this.alumnoLista$ = this.database.list('alumno-lista');
+
+    //traigo los datos del aula que necesito
+    this.lista(this.aula).subscribe(dato => {
+      //console.log(dato.values().next().value.alumnos);
+      //lista de alumnos en el aula
+      this.listaAlumnosCsv = dato.values().next().value.alumnos;
+    });
   }
 
   ionViewDidLoad() {
@@ -101,34 +108,40 @@ export class CagarArchivoPage {
   }
 
   generaCSV(){
-    this.lista();
-    var texto:string;
-    for (let index = 0; index < this.listaAlumnosCsv.length; index++) {
-      const elemento = this.listaAlumnosCsv[index];
-      texto+=this.generarLinea(elemento);
-    }
-    console.log("csv"+texto);
-     //El contructor de Blob requiere un Array en el primer parámetro
-    //así que no es necesario usar toString. el segundo parámetro
-    //es el tipo MIME del archivo
-    /*return new Blob(texto, {
-      type: 'text/plain'
-     });*/
+
+    let csvContent = "data:text/csv;charset=utf-8,";
+
+    this.listaAlumnosCsv.forEach(alumno => {
+      //alumno
+      console.log(alumno);
+      csvContent += this.generarLinea(alumno);
+    });
+
+     var encodedUri = encodeURI(csvContent);
+     var link = document.createElement("a");
+     link.setAttribute("href", encodedUri);
+     link.setAttribute("download", "alumnos.csv");
+     document.body.appendChild(link); // Required for FF
+     
+     link.click();
+    
   }
 
   generarLinea(alumno:AlumnoItem):string{ 
     var texto:string;
     texto = alumno.legajo+";"+alumno.nombre+";"+alumno.turno+";\r\n";
-    console.log("g"+texto);
+    console.log("genera linea: "+texto);
     return texto;
   }
 
-  lista(){
-    this.alumnoLista$.subscribe(dato => {
-      console.log("dato"+dato);
-      this.listaAlumnosCsv = dato;
+  lista(aula){
+
+    return this.database.list('/alumno-lista/' ,{
+      query: {
+        orderByChild :"aula",
+        equalTo:aula
+      }
     });
-    console.log(this.listaAlumnosCsv);
   }
 
 
@@ -148,9 +161,7 @@ export class CagarArchivoPage {
     });
   }
 
-  descargarArchvio(){
-    console.log("Descarga archivo PDF");
-  }
+
 }
 
 
