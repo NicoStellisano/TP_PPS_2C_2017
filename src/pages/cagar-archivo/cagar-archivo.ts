@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { GeneratedFile } from '@angular/compiler';
+
 //import { FileOpener } from '@ionic-native/file-opener';
 
 /**
@@ -30,8 +32,9 @@ export class GeochemComponent implements OnInit {
 })
 export class CagarArchivoPage {
 
-  alumno:AlumnoItem;
+  alumno = {} as AlumnoItem;;
   listaAlumnos:AlumnoItem[] = [];
+  listaAlumnosCsv:AlumnoItem[] = [];
   nombreArchivo:string;
   sizeArchivo:string;
   aula:string;
@@ -87,7 +90,7 @@ export class CagarArchivoPage {
       }
     };
     fr.readAsText(file,'ISO-8859-4');
-
+    
     this.listaAlumnos = lista;
     console.log(this.listaAlumnos);
     console.log(file.name);
@@ -96,6 +99,38 @@ export class CagarArchivoPage {
     this.sizeArchivo = file.size/1000 + " Kb";
   
   }
+
+  generaCSV(){
+    this.lista();
+    var texto:string;
+    for (let index = 0; index < this.listaAlumnosCsv.length; index++) {
+      const elemento = this.listaAlumnosCsv[index];
+      texto+=this.generarLinea(elemento);
+    }
+    console.log("csv"+texto);
+     //El contructor de Blob requiere un Array en el primer parámetro
+    //así que no es necesario usar toString. el segundo parámetro
+    //es el tipo MIME del archivo
+    /*return new Blob(texto, {
+      type: 'text/plain'
+     });*/
+  }
+
+  generarLinea(alumno:AlumnoItem):string{ 
+    var texto:string;
+    texto = alumno.legajo+";"+alumno.nombre+";"+alumno.turno+";\r\n";
+    console.log("g"+texto);
+    return texto;
+  }
+
+  lista(){
+    this.alumnoLista$.subscribe(dato => {
+      console.log("dato"+dato);
+      this.listaAlumnosCsv = dato;
+    });
+    console.log(this.listaAlumnosCsv);
+  }
+
 
   onFileSelect(input: HTMLInputElement) {
     var files = input.files;

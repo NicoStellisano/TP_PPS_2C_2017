@@ -41,4 +41,8 @@ export class AulaProfesorPage {
     alert("voy a cargar lista");
   }
 
+  mostrarQr(){
+    alert("voy a qr");
+  }
+
 }

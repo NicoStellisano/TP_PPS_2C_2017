@@ -31,4 +31,8 @@ export class AulaAdministrativoPage {
     console.log('ionViewDidLoad AulaAdministrativoPage');
   }
 
+  mostrarQR(){
+    
+  }
+
 }
