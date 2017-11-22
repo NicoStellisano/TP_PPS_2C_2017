@@ -72,6 +72,12 @@ export class FireBaseServiceProvider {
         
       }
 
+      getAdmins()
+      {
+        return this.afd.list('/personas/admins');
+        
+      }
+
       getMessages()
       {
     

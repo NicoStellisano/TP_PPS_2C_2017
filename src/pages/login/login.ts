@@ -35,15 +35,31 @@ export class LoginPage {
   usuarioo:any;
   password:string;
   objeto:FirebaseListObservable<any[]>;
-  listadoUsuarios:any[] =[];
+  listadoAdmins:any[] =[];
+  listadoAlumnos:any[] =[];
+  listadoProfesores:any[] =[];
+  listadoAdministrativos:any[] =[];
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl:LoadingController,public fireService:FireBaseServiceProvider
     ,public toast:ToastController,public googlePlus:GooglePlus ,private screenOrientation: ScreenOrientation ) {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
       
-       this.fireService.getUsers().subscribe(data=>
+       this.fireService.getAdmins().subscribe(data=>
         {
-          this.listadoUsuarios=data;
+          this.listadoAdmins=data;
         });  
+        this.fireService.getAdministrativos().subscribe(data=>
+          {
+            this.listadoAdministrativos=data;
+          });
+          this.fireService.getProfesores().subscribe(data=>
+            {
+              this.listadoProfesores=data;
+            });
+            this.fireService.getAlumnos().subscribe(data=>
+              {
+                this.listadoAlumnos=data;
+              });
             let loading = this.loadingCtrl.create({
         spinner: 'hide',
         content: `
@@ -68,6 +84,7 @@ export class LoginPage {
 
   loginGoogle()
   {
+    let flag:boolean=false;
     let loading = this.loadingCtrl.create({
       spinner: 'hide',
       content: `
@@ -85,18 +102,56 @@ loading.present();
       'webClientId': '822117994633-eau5gidg0q2f1sqltdbnq68mscsrpfui.apps.googleusercontent.com',
       'offline': true
     })
+    
       .then((res) => {
         const firecreds = firebase.auth.GoogleAuthProvider.credential(res.idToken);
         firebase.auth().signInWithCredential(firecreds).then((res) => {
-          for (var i = 0; i < this.listadoUsuarios.length; i++) {
-            var element = this.listadoUsuarios[i];
+          for (var i = 0; i < this.listadoAdmins.length; i++) {
+            var element = this.listadoAdmins[i];
             if(element.Email==firebase.auth().currentUser.email)
-            {
-              switch(element.Perfil)
-              {
-                case "Admin":
+            {                
                 this.navCtrl.setRoot(InicioAdminPage);
+                flag=true;
                 break;
+              }
+            }
+            if(!flag)
+            {
+              for (var i = 0; i < this.listadoAdministrativos.length; i++) {
+                var element = this.listadoAdministrativos[i];
+                if(element.Email==firebase.auth().currentUser.email)
+                {                
+                    this.navCtrl.setRoot(InicioAdministrativoPage);
+                    flag=true;
+                    break;
+                  }
+                }
+            }
+            if(!flag)
+            {
+              for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                var element = this.listadoAlumnos[i];
+                if(element.Email==firebase.auth().currentUser.email)
+                {                
+                    this.navCtrl.setRoot(AulaAlumnoPage);
+                    flag=true;
+                    break;
+                  }
+                }
+            }
+            if(!flag)
+            {
+              for (var i = 0; i < this.listadoProfesores.length; i++) {
+                var element = this.listadoProfesores[i];
+                if(element.Email==firebase.auth().currentUser.email)
+                {                
+                    this.navCtrl.setRoot(InicioProfesorPage);
+                    flag=true;
+                    break;
+                  }
+                }
+            }
+                /*
                 case "Administrativo":
                 this.navCtrl.setRoot(InicioAdministrativoPage);
                 break;
@@ -106,10 +161,9 @@ loading.present();
                 case "Alumno":
                 this.navCtrl.setRoot(AulaAlumnoPage);
                 break;
+          */
+            
           
-              }
-            }
-          }
 
 if(element.Email!=firebase.auth().currentUser.email)
 {
