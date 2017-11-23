@@ -84,6 +84,7 @@ export class CagarArchivoPage {
         alumno.legajo = elemento[0].trim();
         alumno.nombre = elemento[1].trim();
         alumno.turno = elemento[2].trim();
+        alumno.mail = elemento[3].trim();
         console.log(alumno.turno);
         lista.push(alumno);
 
@@ -96,7 +97,7 @@ export class CagarArchivoPage {
         GeochemComponent.muestras2=arrayFilas.slice();
       }
     };
-    
+
     fr.readAsText(file,'ISO-8859-4');
     
     this.listaAlumnos = lista;
@@ -130,7 +131,7 @@ export class CagarArchivoPage {
 
   generarLinea(alumno:AlumnoItem):string{ 
     var texto:string;
-    texto = alumno.legajo+";"+alumno.nombre+";"+alumno.turno+";\r\n";
+    texto = alumno.legajo+";"+alumno.nombre+";"+alumno.turno+";"+alumno.mail+";\r\n";
     console.log("genera linea: "+texto);
     return texto;
   }

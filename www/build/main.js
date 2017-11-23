@@ -396,6 +396,7 @@ var CagarArchivoPage = (function () {
                 alumno.legajo = elemento[0].trim();
                 alumno.nombre = elemento[1].trim();
                 alumno.turno = elemento[2].trim();
+                alumno.mail = elemento[3].trim();
                 console.log(alumno.turno);
                 lista.push(alumno);
                 alumno = {};
@@ -432,7 +433,7 @@ var CagarArchivoPage = (function () {
     };
     CagarArchivoPage.prototype.generarLinea = function (alumno) {
         var texto;
-        texto = alumno.legajo + ";" + alumno.nombre + ";" + alumno.turno + ";\r\n";
+        texto = alumno.legajo + ";" + alumno.nombre + ";" + alumno.turno + ";" + alumno.mail + ";\r\n";
         console.log("genera linea: " + texto);
         return texto;
     };
