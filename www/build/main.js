@@ -964,6 +964,7 @@ var InicioAdminPage = (function () {
                         event.newData.Accion = " ";
                         if (event.newData.Perfil == "Profesor") {
                             this.listadoProfesores.push(event.newData);
+                            this.listadoProfesores[this.listadoProfesores.lastIndexOf(event.newData)].password = event.newData.DNI;
                             this.fireService.updateProfesor(this.listadoProfesores);
                             event.confirm.resolve();
                             this.fireService.getProfesores().subscribe(function (data) {
@@ -974,6 +975,7 @@ var InicioAdminPage = (function () {
                         else if (event.newData.Perfil == "Administrativo") {
                             this.listadoAdministrativos.push(event.newData);
                             event.confirm.resolve();
+                            this.listadoAdministrativos[this.listadoAdministrativos.lastIndexOf(event.newData)].password = event.newData.DNI;
                             this.fireService.updateAdministrativo(this.listadoAdministrativos);
                             this.fireService.getAdministrativos().subscribe(function (data) {
                                 _this.source2 = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](data); // create the source
@@ -1019,10 +1021,10 @@ InicioAdminPage = __decorate([
         template: "\n  <ion-item style='float:right'>\n  <ion-label>Personas</ion-label>\n  <ion-select [(ngModel)]=\"personas\" (ionChange)=\"changeList($event)\">\n    <ion-option value=\"p\">Profesores</ion-option>\n    <ion-option value=\"a\">Administrativos</ion-option>\n  </ion-select>\n</ion-item>\n<div style='width:100%;height:100%' *ngIf='profesor'>\n  <ng2-smart-table style='width:100%;height:100%' [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n  <div style='width:100%;height:100%' *ngIf='!profesor'>\n  <ng2-smart-table style='width:100%;height:100%'  [settings]=\"settings2\" [source]=\"source2\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n",
         selector: 'page-inicio-admin',
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _e || Object])
 ], InicioAdminPage);
 
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=inicio-admin.js.map
 
 /***/ }),
@@ -1059,24 +1061,6 @@ var InicioAdministrativoPage = (function () {
         this.navParams = navParams;
         //harcodeado para mostrar, despues se debe eliminar y tomarar las aulas de firebase
         this.listaAulas = [
-            {
-                "nombre": "1° A"
-            },
-            {
-                "nombre": "1° B"
-            },
-            {
-                "nombre": "2° A"
-            },
-            {
-                "nombre": "2° B"
-            },
-            {
-                "nombre": "3° A"
-            },
-            {
-                "nombre": "3° B"
-            },
             {
                 "nombre": "4° A"
             },
@@ -1136,9 +1120,10 @@ InicioAdministrativoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-inicio-administrativo',template:/*ion-inline-start:"D:\Nico\TP_PPS_2C_2017\src\pages\inicio-administrativo\inicio-administrativo.html"*/'<!--\n\n  Generated template for the InicioAdministrativoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Seleccione un aula</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n\n\n    <div *ngFor="let lista of listaAulas; let i = index"> \n\n        <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.nombre)">{{ lista.nombre }}</button> \n\n    </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\TP_PPS_2C_2017\src\pages\inicio-administrativo\inicio-administrativo.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
 ], InicioAdministrativoPage);
 
+var _a, _b;
 //# sourceMappingURL=inicio-administrativo.js.map
 
 /***/ }),
@@ -1461,6 +1446,7 @@ var LoginPage = (function () {
         this.listadoProfesores = [];
         this.listadoAdministrativos = [];
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+        this.google = false;
         this.fireService.getAdmins().subscribe(function (data) {
             _this.listadoAdmins = data;
         });
@@ -1513,6 +1499,7 @@ var LoginPage = (function () {
                 for (var i = 0; i < _this.listadoAdmins.length; i++) {
                     var element = _this.listadoAdmins[i];
                     if (element.Email == __WEBPACK_IMPORTED_MODULE_7_firebase___default.a.auth().currentUser.email) {
+                        element.password = null;
                         _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__inicio_admin_inicio_admin__["a" /* InicioAdminPage */]);
                         flag = true;
                         break;
@@ -1522,6 +1509,7 @@ var LoginPage = (function () {
                     for (var i = 0; i < _this.listadoAdministrativos.length; i++) {
                         var element = _this.listadoAdministrativos[i];
                         if (element.Email == __WEBPACK_IMPORTED_MODULE_7_firebase___default.a.auth().currentUser.email) {
+                            element.password = null;
                             _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__inicio_administrativo_inicio_administrativo__["a" /* InicioAdministrativoPage */]);
                             flag = true;
                             break;
@@ -1532,6 +1520,7 @@ var LoginPage = (function () {
                     for (var i = 0; i < _this.listadoAlumnos.length; i++) {
                         var element = _this.listadoAlumnos[i];
                         if (element.Email == __WEBPACK_IMPORTED_MODULE_7_firebase___default.a.auth().currentUser.email) {
+                            element.password = null;
                             _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_10__aula_alumno_aula_alumno__["a" /* AulaAlumnoPage */]);
                             flag = true;
                             break;
@@ -1542,6 +1531,7 @@ var LoginPage = (function () {
                     for (var i = 0; i < _this.listadoProfesores.length; i++) {
                         var element = _this.listadoProfesores[i];
                         if (element.Email == __WEBPACK_IMPORTED_MODULE_7_firebase___default.a.auth().currentUser.email) {
+                            element.password = null;
                             _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__inicio_profesor_inicio_profesor__["a" /* InicioProfesorPage */]);
                             flag = true;
                             break;
@@ -1610,20 +1600,93 @@ var LoginPage = (function () {
                 break;
         }
     };
-    LoginPage.prototype.selectChange = function () {
-        this.usuario = "nicostellisano@hotmail.com";
-        this.password = "niconico";
+    LoginPage.prototype.loginNormal = function () {
+        var flag;
+        for (var i = 0; i < this.listadoAdmins.length; i++) {
+            var element = this.listadoAdmins[i];
+            if (element.Email == this.email && element.password == this.password) {
+                this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__inicio_admin_inicio_admin__["a" /* InicioAdminPage */]);
+                flag = true;
+                break;
+            }
+            else if (element.Email == this.email && element.password == null) {
+                alert("Inicia Sesión con Google porfavor");
+                this.google = true;
+            }
+        }
+        if (!flag) {
+            for (var i = 0; i < this.listadoAdministrativos.length; i++) {
+                var element = this.listadoAdministrativos[i];
+                if (element.Email == this.email && element.password == this.password) {
+                    this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__inicio_administrativo_inicio_administrativo__["a" /* InicioAdministrativoPage */]);
+                    flag = true;
+                    break;
+                }
+                else if (element.Email == this.email && element.password == null) {
+                    alert("Inicia Sesión con Google porfavor");
+                    this.google = true;
+                }
+            }
+        }
+        if (!flag) {
+            for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                var element = this.listadoAlumnos[i];
+                if (element.Email == this.email && element.password == this.password) {
+                    this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_10__aula_alumno_aula_alumno__["a" /* AulaAlumnoPage */]);
+                    flag = true;
+                    break;
+                }
+                else if (element.Email == this.email && element.password == null) {
+                    alert("Inicia Sesión con Google porfavor");
+                    this.google = true;
+                }
+            }
+        }
+        if (!flag) {
+            for (var i = 0; i < this.listadoProfesores.length; i++) {
+                var element = this.listadoProfesores[i];
+                if (element.Email == this.email && element.password == this.password) {
+                    this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__inicio_profesor_inicio_profesor__["a" /* InicioProfesorPage */]);
+                    flag = true;
+                    break;
+                }
+                else if (element.Email == this.email && element.password == null) {
+                    alert("Inicia Sesión con Google porfavor");
+                    this.google = true;
+                }
+            }
+        }
+        /*
+        case "Administrativo":
+        this.navCtrl.setRoot(InicioAdministrativoPage);
+        break;
+        case "Profesor":
+        this.navCtrl.setRoot(InicioProfesorPage);
+        break;
+        case "Alumno":
+        this.navCtrl.setRoot(AulaAlumnoPage);
+        break;
+  */
+        if (!flag) {
+            this.googlePlus.disconnect();
+            var toast = this.toast.create({
+                message: 'Usuario no registrado o contraseña incorrecta',
+                duration: 3000,
+                position: 'bottom'
+            });
+            toast.present();
+        }
     };
     return LoginPage;
 }());
 LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-login',template:/*ion-inline-start:"D:\Nico\TP_PPS_2C_2017\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Inicio de Sesión</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n \n\n<div style="width:100%;height:100%">\n\n  <br><br><br><br><br>\n\n  \n\n<button ion-button icon-only color="danger" style="margin:auto;text-align:center;display:block;width:60%;height:30%"  round (click)="loginGoogle()">\n\n  <ion-icon style="font-size:700%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>\n\n</button>\n\n</div>\n\n    <br><br><br>\n\n   <!-- <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n      <ion-label  style="color:white" floating>Usuario</ion-label>\n\n<ion-input clearInput type="text"  [(ngModel)]="usuario" name="usuario" id="usuario"></ion-input></ion-item>\n\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n    <ion-label style="color:white" floating>Contraseña</ion-label>      \n\n<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>\n\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n  <ion-label style="color:white">Elige tu usuario</ion-label>\n\n  <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">\n\n   <!-- <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>\n\n   <ion-option>nicostellisano@hotmail.com</ion-option>\n\n  </ion-select>\n\n</ion-item>-->\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>\n\n\n\n<br><br><br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\TP_PPS_2C_2017\src\pages\login\login.html"*/,
+        selector: 'page-login',template:/*ion-inline-start:"D:\Nico\TP_PPS_2C_2017\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Inicio de Sesión</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n \n\n<div style="width:100%;height:100%">\n\n  <br>\n\n  \n\n<button ion-button icon-right color="danger" style="font-size:130%;margin:auto;text-align:center;display:block;width:40%;height:10%"  round (click)="loginGoogle()">\n\n  Iniciar con Google<ion-icon style="font-size:350%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>\n\n</button>\n\n\n\n    <br><br><br>\n\n    <div *ngIf="!google">\n\n   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n      <ion-label  style="color:white" floating>Email</ion-label>\n\n<ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>\n\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n    <ion-label style="color:white" floating>Contraseña</ion-label>      \n\n<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>\n\n <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n  <ion-label style="color:white">Elige tu usuario</ion-label>\n\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">\n\n   <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>\n\n   <ion-option>nicostellisano@hotmail.com</ion-option>\n\n  </ion-select>\n\n</ion-item>-->\n\n<br>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>\n\n</div>\n\n</div>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>\n\n\n\n<br><br><br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\TP_PPS_2C_2017\src\pages\login\login.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_6__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_google_plus__["a" /* GooglePlus */], __WEBPACK_IMPORTED_MODULE_9__ionic_native_screen_orientation__["a" /* ScreenOrientation */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ToastController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_native_google_plus__["a" /* GooglePlus */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_native_google_plus__["a" /* GooglePlus */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_9__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _g || Object])
 ], LoginPage);
 
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=login.js.map
 
 /***/ }),
@@ -1939,6 +2002,7 @@ var AlumnosPage = (function () {
                     event.newData.Accion = " ";
                     if (event.newData.Perfil == "Alumno") {
                         this.listadoAlumnos.push(event.newData);
+                        this.listadoAlumnos[this.listadoAlumnos.lastIndexOf(event.newData)].password = event.newData.Legajo;
                         this.fireService.updateAlumno(this.listadoAlumnos);
                         event.confirm.resolve();
                         this.fireService.getAlumnos().subscribe(function (data) {
@@ -1974,10 +2038,10 @@ AlumnosPage = __decorate([
         selector: 'page-alumnos',
         template: "\n  <ion-item style='float:right'>\n  \n<div style='width:100%;height:100%' >\n  <ng2-smart-table style='width:100%;height:100%' [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n",
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _e || Object])
 ], AlumnosPage);
 
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=alumnos.js.map
 
 /***/ }),

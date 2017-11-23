@@ -403,6 +403,7 @@ ionViewDidEnter()
            if(event.newData.Perfil=="Profesor")
            {
             this.listadoProfesores.push(event.newData);
+            this.listadoProfesores[this.listadoProfesores.lastIndexOf(event.newData)].password=event.newData.DNI;
              this.fireService.updateProfesor(this.listadoProfesores);
              event.confirm.resolve();
              
@@ -418,6 +419,7 @@ ionViewDidEnter()
            {
             this.listadoAdministrativos.push(event.newData);
             event.confirm.resolve();
+            this.listadoAdministrativos[this.listadoAdministrativos.lastIndexOf(event.newData)].password=event.newData.DNI;
             
              this.fireService.updateAdministrativo(this.listadoAdministrativos);
              this.fireService.getAdministrativos().subscribe(data=>

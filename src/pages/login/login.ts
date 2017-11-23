@@ -31,7 +31,7 @@ import { AulaAlumnoPage} from '../aula-alumno/aula-alumno';
 })
 export class LoginPage {
   usuarios:FirebaseListObservable<any[]>;
-  usuario:string;
+  email:string;
   usuarioo:any;
   password:string;
   objeto:FirebaseListObservable<any[]>;
@@ -39,11 +39,12 @@ export class LoginPage {
   listadoAlumnos:any[] =[];
   listadoProfesores:any[] =[];
   listadoAdministrativos:any[] =[];
+  google:boolean;
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl:LoadingController,public fireService:FireBaseServiceProvider
     ,public toast:ToastController,public googlePlus:GooglePlus ,private screenOrientation: ScreenOrientation ) {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-      
+      this.google=false;
        this.fireService.getAdmins().subscribe(data=>
         {
           this.listadoAdmins=data;
@@ -110,6 +111,7 @@ loading.present();
             var element = this.listadoAdmins[i];
             if(element.Email==firebase.auth().currentUser.email)
             {                
+               element.password=null;
                 this.navCtrl.setRoot(InicioAdminPage);
                 flag=true;
                 break;
@@ -120,7 +122,8 @@ loading.present();
               for (var i = 0; i < this.listadoAdministrativos.length; i++) {
                 var element = this.listadoAdministrativos[i];
                 if(element.Email==firebase.auth().currentUser.email)
-                {                
+                {            
+                  element.password=null;                  
                     this.navCtrl.setRoot(InicioAdministrativoPage);
                     flag=true;
                     break;
@@ -132,7 +135,9 @@ loading.present();
               for (var i = 0; i < this.listadoAlumnos.length; i++) {
                 var element = this.listadoAlumnos[i];
                 if(element.Email==firebase.auth().currentUser.email)
-                {                
+                {      
+                   element.password=null;
+                  
                     this.navCtrl.setRoot(AulaAlumnoPage);
                     flag=true;
                     break;
@@ -144,7 +149,8 @@ loading.present();
               for (var i = 0; i < this.listadoProfesores.length; i++) {
                 var element = this.listadoProfesores[i];
                 if(element.Email==firebase.auth().currentUser.email)
-                {                
+                {      
+                  element.password=null;                  
                     this.navCtrl.setRoot(InicioProfesorPage);
                     flag=true;
                     break;
@@ -230,14 +236,106 @@ if(element.Email!=firebase.auth().currentUser.email)
     
   }
 
-  selectChange()
+  loginNormal()
+  {
+    
+    let flag:boolean;
+    for (var i = 0; i < this.listadoAdmins.length; i++) {
+      var element = this.listadoAdmins[i];
+      if(element.Email==this.email && element.password==this.password)
+      {                
+          this.navCtrl.setRoot(InicioAdminPage);
+          flag=true;
+          break;
+        }else if(element.Email==this.email && element.password==null)
+        {
+          alert("Inicia Sesión con Google porfavor");
+          this.google=true;
+        }
+      }
+      if(!flag)
+      {
+        for (var i = 0; i < this.listadoAdministrativos.length; i++) {
+          var element = this.listadoAdministrativos[i];
+          if(element.Email==this.email && element.password==this.password)
+          {                
+              this.navCtrl.setRoot(InicioAdministrativoPage);
+              flag=true;
+              break;
+            }else if(element.Email==this.email && element.password==null)
+            {
+              alert("Inicia Sesión con Google porfavor");
+              this.google=true;
+            }
+          }
+      }
+      if(!flag)
+      {
+        for (var i = 0; i < this.listadoAlumnos.length; i++) {
+          var element = this.listadoAlumnos[i];
+          if(element.Email==this.email && element.password==this.password)
+          {                
+              this.navCtrl.setRoot(AulaAlumnoPage);
+              flag=true;
+              break;
+            }else if(element.Email==this.email && element.password==null)
+            {
+              alert("Inicia Sesión con Google porfavor");
+              this.google=true;
+            }
+          }
+      }
+      if(!flag)
+      {
+        for (var i = 0; i < this.listadoProfesores.length; i++) {
+          var element = this.listadoProfesores[i];
+          if(element.Email==this.email && element.password==this.password)
+          {                
+              this.navCtrl.setRoot(InicioProfesorPage);
+              flag=true;
+              break;
+            }else if(element.Email==this.email && element.password==null)
+            {
+              alert("Inicia Sesión con Google porfavor");
+              this.google=true;
+            }
+          }
+      }
+          /*
+          case "Administrativo":
+          this.navCtrl.setRoot(InicioAdministrativoPage);
+          break;
+          case "Profesor":
+          this.navCtrl.setRoot(InicioProfesorPage);
+          break;
+          case "Alumno":
+          this.navCtrl.setRoot(AulaAlumnoPage);
+          break;
+    */
+      
+    
+    if(!flag)
+{
+this.googlePlus.disconnect();          
+const toast = this.toast.create({
+message: 'Usuario no registrado o contraseña incorrecta',
+duration: 3000,
+position: 'bottom'
+});
+
+
+toast.present();
+}
+  }
+
+  /*selectChange()
   {
     
 
 
-     this.usuario="nicostellisano@hotmail.com";
+     this.email="nicostellisano@hotmail.com";
      this.password="niconico";
  
-}
+}*/
 
 }
