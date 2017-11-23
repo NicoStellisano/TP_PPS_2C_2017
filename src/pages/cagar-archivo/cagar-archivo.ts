@@ -63,6 +63,7 @@ export class CagarArchivoPage {
     var fr = new FileReader();
     var arrayFilas:string[][];
 
+    //--------------------- Lectura del archivo -------------------------//
     fr.onload = function(e) {
       var text = fr.result;
       var rows = text.split("\n");
@@ -71,9 +72,8 @@ export class CagarArchivoPage {
       //guardo todas las filas en un array separando cada atributo que tenga ;
       for (var t=0;t<rows.length-1;t++) {
         if (rows[t].length!=0) {
-       
-            //console.log(rows[t].split(";"));
-            arrayFilas.push(rows[t].split(";"));
+          //console.log(rows[t].split(";"));
+          arrayFilas.push(rows[t].split(";"));
         }
       }
 
@@ -96,6 +96,7 @@ export class CagarArchivoPage {
         GeochemComponent.muestras2=arrayFilas.slice();
       }
     };
+    
     fr.readAsText(file,'ISO-8859-4');
     
     this.listaAlumnos = lista;

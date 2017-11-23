@@ -377,6 +377,7 @@ var CagarArchivoPage = (function () {
         var lista = [];
         var fr = new FileReader();
         var arrayFilas;
+        //--------------------- Lectura del archivo -------------------------//
         fr.onload = function (e) {
             var text = fr.result;
             var rows = text.split("\n");
@@ -456,8 +457,6 @@ var CagarArchivoPage = (function () {
             aula: this.aula,
             alumnos: this.listaAlumnos
         });
-    };
-    CagarArchivoPage.prototype.descargaArchivo = function () {
     };
     return CagarArchivoPage;
 }());
