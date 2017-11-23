@@ -30,6 +30,9 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { CuestionariosPage} from '../pages/cuestionarios/cuestionarios';
 import { CagarArchivoPage } from '../pages/cagar-archivo/cagar-archivo';
 import { AlumnosPage } from '../pages/alumnos/alumnos';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { MateriaPage } from '../pages/materia/materia';
+import { EditarPerfilPage } from '../pages/editar-perfil/editar-perfil';
 
 var config = {
   apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
@@ -57,7 +60,9 @@ var config = {
     MateriasProfesorPage,
     CuestionariosPage,
     CagarArchivoPage,
-    AlumnosPage
+    AlumnosPage,
+    MateriaPage,
+    EditarPerfilPage
   ],
   imports: [
     BrowserModule,
@@ -84,7 +89,9 @@ var config = {
     MateriasProfesorPage,
     CuestionariosPage,
     CagarArchivoPage,
-    AlumnosPage
+    AlumnosPage,
+    MateriaPage,
+    EditarPerfilPage
   ],
   providers: [
     StatusBar,
@@ -92,7 +99,8 @@ var config = {
     GooglePlus,
     ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FireBaseServiceProvider
+    FireBaseServiceProvider,
+    BarcodeScanner
   ]
 })
 export class AppModule {}

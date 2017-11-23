@@ -3,3 +3,7 @@ npm install firebase@4.4.0 angularfire2@4.0.0-rc0
 npm install --save ng2-smart-table
 npm install --save @ionic-native/google-plus
 npm install --save @ionic-native/screen-orientation
+
+mauro:
+ionic cordova plugin add phonegap-plugin-barcodescanner
+npm install --save @ionic-native/barcode-scanner

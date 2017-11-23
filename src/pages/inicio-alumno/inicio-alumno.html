@@ -5,14 +5,20 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>InicioAlumno</ion-title>
+  <ion-navbar color="dark">
+    <ion-title>Seleccione un aula</ion-title>
+   
   </ion-navbar>
-
+  <button  ion-button round class="botonEditar"  (click)="EditarPerfil()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Editar perfil</button>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-image:url('assets/hallowenProfesor.jpg')" class="fondo">
 
-</ion-content>
+  
+      <div *ngFor="let lista of listaAulasProfesor; let i = index"> 
+          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.aula)">{{ lista.aula }}</button> 
+      </div>
+     
+  
+  </ion-content>

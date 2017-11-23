@@ -207,6 +207,7 @@ export class AlumnosPage {
               listadoAux[i]=event.newData;
               console.log(element);
               //const key = element['$key'];
+
               this.fireService.updateAlumno(listadoAux);
              
               //event.confirm.reject();
@@ -254,6 +255,8 @@ export class AlumnosPage {
              if(event.newData.Perfil=="Alumno")
              {
               this.listadoAlumnos.push(event.newData);
+              this.listadoAlumnos[this.listadoAlumnos.lastIndexOf(event.newData)].password=event.newData.Legajo;
+              
                this.fireService.updateAlumno(this.listadoAlumnos);
                event.confirm.resolve();
                

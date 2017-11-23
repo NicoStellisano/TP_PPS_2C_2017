@@ -7,26 +7,31 @@
 <ion-content padding style="background-image:url('assets/hallowenAdministrativo.jpg')" class="fondo">
  
 <div style="width:100%;height:100%">
-  <br><br><br><br><br>
+  <br>
   
-<button ion-button icon-only color="danger" style="margin:auto;text-align:center;display:block;width:60%;height:30%"  round (click)="loginGoogle()">
-  <ion-icon style="font-size:700%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>
+<button ion-button icon-right color="danger" style="font-size:130%;margin:auto;text-align:center;display:block;width:40%;height:10%"  round (click)="loginGoogle()">
+  Iniciar con Google<ion-icon style="font-size:350%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>
 </button>
-</div>
+
     <br><br><br>
-   <!-- <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
-      <ion-label  style="color:white" floating>Usuario</ion-label>
-<ion-input clearInput type="text"  [(ngModel)]="usuario" name="usuario" id="usuario"></ion-input></ion-item>
+    <div *ngIf="!google">
+   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
+      <ion-label  style="color:white" floating>Email</ion-label>
+<ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>
 <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
     <ion-label style="color:white" floating>Contraseña</ion-label>      
 <ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>
-<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
+ <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
   <ion-label style="color:white">Elige tu usuario</ion-label>
-  <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">
-   <!-- <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>
+ <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">
+   <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>
    <ion-option>nicostellisano@hotmail.com</ion-option>
   </ion-select>
 </ion-item>-->
+<br>
+<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>
+</div>
+</div>
 <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>
 <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>
 <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>
