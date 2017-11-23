@@ -31276,6 +31276,19 @@ page-cuestionarios button {
   border-style: solid;
 }
 
+page-editar-perfil .botonGuardar {
+  color: black;
+  text-align: center;
+  display: block;
+  background-color: lightgreen;
+  border-width: 2px;
+  border: black;
+  height: 1.5cm;
+  width: 3cm;
+  margin-left: 5.5cm;
+  margin-top: 0.25cm;
+}
+
 page-inicio-administrativo .fondo {
   background-repeat: no-repeat;
   background: 50%;
@@ -31296,6 +31309,18 @@ page-inicio-alumno button {
   border-color: white;
   border-width: 2px;
   border-style: solid;
+}
+
+page-inicio-alumno .botonEditar {
+  color: black;
+  text-align: center;
+  display: block;
+  background-color: yellow;
+  border-width: 1px;
+  height: 0.75cm;
+  width: 4.5cm;
+  margin-left: 5cm;
+  margin-top: 0.25cm;
 }
 
 page-inicio-profesor .fondo {

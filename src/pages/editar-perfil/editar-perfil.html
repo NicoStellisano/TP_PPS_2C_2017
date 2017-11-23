@@ -1,0 +1,30 @@
+<!--
+  Generated template for the EditarPerfilPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Editar perfil</ion-title>
+   </ion-navbar>
+  
+</ion-header>
+
+
+<ion-content padding style="background-image:url('assets/aula-administrativo.jpeg')" class="fondo">
+
+  <ion-list >  
+<ion-item class="animated flipInX miItem">
+<ion-label class="miLabel" floating>Nombre</ion-label>
+<ion-input type="text" [(ngModel)]="datosUsuario.nombre" disabled="false"></ion-input> 
+</ion-item>
+          
+<ion-item class="animated flipInY miItem">
+<ion-label class="miLabel" floating>Apellido</ion-label>
+<ion-input type="text" [(ngModel)]="datosUsuario.apellido" disabled="false"></ion-input>
+</ion-item>
+
+</ion-list>
+<button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>
+</ion-content>

@@ -32,6 +32,7 @@ import { CagarArchivoPage } from '../pages/cagar-archivo/cagar-archivo';
 import { AlumnosPage } from '../pages/alumnos/alumnos';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { MateriaPage } from '../pages/materia/materia';
+import { EditarPerfilPage } from '../pages/editar-perfil/editar-perfil';
 
 var config = {
   apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
@@ -60,7 +61,8 @@ var config = {
     CuestionariosPage,
     CagarArchivoPage,
     AlumnosPage,
-    MateriaPage
+    MateriaPage,
+    EditarPerfilPage
   ],
   imports: [
     BrowserModule,
@@ -88,7 +90,8 @@ var config = {
     CuestionariosPage,
     CagarArchivoPage,
     AlumnosPage,
-    MateriaPage
+    MateriaPage,
+    EditarPerfilPage
   ],
   providers: [
     StatusBar,

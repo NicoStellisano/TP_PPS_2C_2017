@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MateriasPage } from '../materias/materias';
+import { EditarPerfilPage } from '../editar-perfil/editar-perfil';
 
 /**
  * Generated class for the InicioAlumnoPage page.
@@ -57,6 +58,11 @@ export class InicioAlumnoPage {
         break;
   
       }
+    }
+
+    EditarPerfil()
+    {
+      this.navCtrl.push(EditarPerfilPage);
     }
 
 }
