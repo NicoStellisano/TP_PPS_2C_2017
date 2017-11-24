@@ -15,6 +15,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
 
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { AulaAlumnoPage} from '../aula-alumno/aula-alumno';
+import { RealInicioAdministrativoPage } from '../real-inicio-administrativo/real-inicio-administrativo';
+
 
 
 /**
@@ -40,6 +42,7 @@ export class LoginPage {
   listadoProfesores:any[] =[];
   listadoAdministrativos:any[] =[];
   google:boolean;
+  listaAux: any[]=[];
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl:LoadingController,public fireService:FireBaseServiceProvider
     ,public toast:ToastController,public googlePlus:GooglePlus ,private screenOrientation: ScreenOrientation ) {
@@ -124,7 +127,7 @@ loading.present();
                 if(element.Email==firebase.auth().currentUser.email)
                 {            
                   element.password=null;                  
-                    this.navCtrl.setRoot(InicioAdministrativoPage);
+                    this.navCtrl.setRoot(RealInicioAdministrativoPage);
                     flag=true;
                     break;
                   }
@@ -222,7 +225,7 @@ if(element.Email!=firebase.auth().currentUser.email)
       this.navCtrl.push(InicioAdminPage);
       break;
       case 1:
-      this.navCtrl.push(InicioAdministrativoPage);
+      this.navCtrl.push(RealInicioAdministrativoPage);
       break;
       case 2:
       this.navCtrl.push(InicioProfesorPage);
@@ -259,7 +262,7 @@ if(element.Email!=firebase.auth().currentUser.email)
           var element = this.listadoAdministrativos[i];
           if(element.Email==this.email && element.password==this.password)
           {                
-              this.navCtrl.setRoot(InicioAdministrativoPage);
+              this.navCtrl.setRoot(RealInicioAdministrativoPage);
               flag=true;
               break;
             }else if(element.Email==this.email && element.password==null)
@@ -271,7 +274,35 @@ if(element.Email!=firebase.auth().currentUser.email)
       }
       if(!flag)
       {
-        for (var i = 0; i < this.listadoAlumnos.length; i++) {
+
+       
+        for (let i = 0; i < this.listadoAlumnos.length; i++) {
+          const element = this.listadoAlumnos[i];
+          if(element.aula=="4° A")
+          {
+            for (let j = 0; j < element.alumnos.length; j++) {
+              const element2 = element.alumnos[j];
+              if(element2.mail==this.email && element2.legajo == this.password)
+              {
+                localStorage.setItem("nombre",element2.nombre);
+                localStorage.setItem("mail",element2.mail);
+                localStorage.setItem("legajo",element2.legajo);
+                localStorage.setItem("turno",element2.turno);
+                this.navCtrl.setRoot(AulaAlumnoPage);
+                flag=true;
+                break;
+              }else if(element2.mail==this.email && element2.legajo==this.password)
+              {
+                alert("Inicia Sesión con Google porfavor");
+                this.google=true;
+              } 
+            }
+            
+          }
+        }
+
+
+       /* for (var i = 0; i < this.listadoAlumnos.length; i++) {
           var element = this.listadoAlumnos[i];
           if(element.Email==this.email && element.password==this.password)
           {                
@@ -283,7 +314,7 @@ if(element.Email!=firebase.auth().currentUser.email)
               alert("Inicia Sesión con Google porfavor");
               this.google=true;
             }
-          }
+          }*/
       }
       if(!flag)
       {

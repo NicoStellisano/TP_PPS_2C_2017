@@ -68,7 +68,19 @@ export class FireBaseServiceProvider {
       }
       getAlumnos()
       {
-        return this.afd.list('/personas/alumnos');
+        return this.afd.list('/alumno-lista');
+        
+      }
+
+      getMaterias()
+      {
+        return this.afd.list('/materias');
+        
+      }
+
+      addMateria(materia)
+      {
+        return this.afd.list('/materias').push(materia);
         
       }
 

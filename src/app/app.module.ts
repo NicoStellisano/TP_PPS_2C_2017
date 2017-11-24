@@ -33,12 +33,11 @@ import { AlumnosPage } from '../pages/alumnos/alumnos';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { MateriaPage } from '../pages/materia/materia';
 import { EditarPerfilPage } from '../pages/editar-perfil/editar-perfil';
-<<<<<<< HEAD
 import { DescargarArchivoPage } from '../pages/descargar-archivo/descargar-archivo';
 
-=======
 import { NotificacionPage } from '../pages/notificacion/notificacion';
->>>>>>> 56f5364c4d7f3a666def9bec0a957a9ec6f69f75
+import { RealInicioAdministrativoPage } from '../pages/real-inicio-administrativo/real-inicio-administrativo';
+import { AsignarMateriaPage } from '../pages/asignar-materia/asignar-materia';
 
 var config = {
   apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
@@ -69,11 +68,10 @@ var config = {
     AlumnosPage,
     MateriaPage,
     EditarPerfilPage,
-<<<<<<< HEAD
-    DescargarArchivoPage
-=======
-    NotificacionPage
->>>>>>> 56f5364c4d7f3a666def9bec0a957a9ec6f69f75
+    DescargarArchivoPage,
+    NotificacionPage,
+    RealInicioAdministrativoPage,
+    AsignarMateriaPage
   ],
   imports: [
     BrowserModule,
@@ -103,11 +101,10 @@ var config = {
     AlumnosPage,
     MateriaPage,
     EditarPerfilPage,
-<<<<<<< HEAD
-    DescargarArchivoPage
-=======
-    NotificacionPage
->>>>>>> 56f5364c4d7f3a666def9bec0a957a9ec6f69f75
+    DescargarArchivoPage,
+    NotificacionPage,
+    RealInicioAdministrativoPage,
+    AsignarMateriaPage
   ],
   providers: [
     StatusBar,
