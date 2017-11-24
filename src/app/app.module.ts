@@ -33,6 +33,7 @@ import { AlumnosPage } from '../pages/alumnos/alumnos';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { MateriaPage } from '../pages/materia/materia';
 import { EditarPerfilPage } from '../pages/editar-perfil/editar-perfil';
+import { DescargarArchivoPage } from '../pages/descargar-archivo/descargar-archivo';
 
 
 var config = {
@@ -63,7 +64,8 @@ var config = {
     CagarArchivoPage,
     AlumnosPage,
     MateriaPage,
-    EditarPerfilPage
+    EditarPerfilPage,
+    DescargarArchivoPage
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,8 @@ var config = {
     CagarArchivoPage,
     AlumnosPage,
     MateriaPage,
-    EditarPerfilPage
+    EditarPerfilPage,
+    DescargarArchivoPage
   ],
   providers: [
     StatusBar,

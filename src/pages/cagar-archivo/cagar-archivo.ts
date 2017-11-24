@@ -6,7 +6,7 @@ import { AlumnoListaItem } from '../../models/alumno-lista/alumno-lista.interfac
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { GeneratedFile } from '@angular/compiler';
 import { AulaAlumnoItem } from '../../models/aula-alumno-item/aula-alumno.interface';
-
+import { DescargarArchivoPage } from '../descargar-archivo/descargar-archivo';
 
 export class GeochemComponent implements OnInit {
   
@@ -24,7 +24,7 @@ export class CagarArchivoPage {
 
   //Atributos de descarga
   listaAlumnos:AlumnoItem[] = [];
-  listaAlumnosCsv:AlumnoItem[] = [];
+  
   listaAlumnoItem:AlumnoListaItem[]=[];
   
   nombreArchivo:string;
@@ -43,13 +43,7 @@ export class CagarArchivoPage {
       this.listaAlumnoItem = alumLista;
     });
 
- 
-    //Toma lista para leer y crear archivo
-    this.lista(this.aula).subscribe(dato => {
-      //console.log(dato.values().next().value.alumnos);
-      //lista de alumnos en el aula
-      this.listaAlumnosCsv = dato.values().next().value.alumnos;
-    });
+
      
     
   }
@@ -112,45 +106,7 @@ export class CagarArchivoPage {
 
   }
 
-  generaCSV(){
-
-    console.log(this.listaAlumnosCsv);
-
-    let csvContent = "data:text/csv;charset=utf-8,";
-
-    this.listaAlumnosCsv.forEach(alumno => {
-      //alumno
-      console.log(alumno);
-      csvContent += this.generarLinea(alumno);
-    });
-
-     var encodedUri = encodeURI(csvContent);
-     var link = document.createElement("a");
-     link.setAttribute("href", encodedUri);
-     link.setAttribute("download", "alumnos.csv");
-     document.body.appendChild(link); // Required for FF
-     
-     link.click();
-    
-  }
-
-  generarLinea(alumno:AlumnoItem):string{ 
-    var texto:string;
-    texto = alumno.legajo+";"+alumno.mail+";"+alumno.nombre+";"+alumno.turno+";\r\n";
-    console.log("genera linea: "+texto);
-    return texto;
-  }
-
-   lista(aula){
-
-    return this.database.list('/alumno-lista/' ,{
-      query: {
-        orderByChild :"aula",
-        equalTo:aula
-      }
-    });
-    
-  }
+ 
 
   onFileSelect(input: HTMLInputElement) {
     var files = input.files;
@@ -180,7 +136,7 @@ export class CagarArchivoPage {
 
     if(miAula == this.aula){
       alert("Ir a descarga");
-      this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula});
+      this.navCtrl.push(DescargarArchivoPage,{aulaa:this.aula});
     }else{
       alert("No hya nada que descargar");
     }
