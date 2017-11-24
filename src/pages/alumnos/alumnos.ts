@@ -22,16 +22,28 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 @Component({
   selector: 'page-alumnos',
   template: `
+
   <ion-item style='float:right'>
-  
-<div style='width:100%;height:100%' >
+  <ion-label>seleccion</ion-label>
+  <ion-select [(ngModel)]="seleccion" (ionChange)="changeList($event)">
+    <ion-option value="p">4º A</ion-option>
+    <ion-option value="a">4º B</ion-option>
+  </ion-select>
+</ion-item>
+<div style='width:100%;height:100%' *ngIf='seleccion=="a"'>
   <ng2-smart-table style='width:100%;height:100%' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"
   (editConfirm)="onSaveConfirm($event)"
   (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>
+  <div style='width:100%;height:100%' *ngIf='seleccion=="b"'>
+  <ng2-smart-table style='width:100%;height:100%'  [settings]="settings" [source]="source2" (deleteConfirm)="onDeleteConfirm($event)"
+  (editConfirm)="onSaveConfirm($event)"
+  (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>
+
 `,
 })
 export class AlumnosPage {
   listadoAlumnos:any[] =[];
+  listaAux:any[]=[];
   settings = {
     actions:{
       columnTitle:'',
@@ -54,45 +66,30 @@ export class AlumnosPage {
       cancelButtonContent:'Cancelar'
     },
     columns: {
-      Legajo: {
+      legajo: {
         title: 'Legajo',
         filter: false,
         editor: {
           type: 'number',
         },
       },
-      Apellido: {
-        title: 'Apellido',
-        filter: false
-      },
-      Nombre: {
+      nombre: {
         title: 'Nombre',
         filter: false
       },
-      Email: {
+      turno: {
+        title: 'Turno',
+        filter: false
+      },
+      email: {
         title: 'Email',
         filter: false
       }
-      ,
-      Perfil: {
-        title: 'Perfil',
-        filter: false,
-        type: 'text',
-        add: false,
-        edit: false,  
-        addable: false,
-        editable:false,
-        defaultValue:'Alumno',        
-        isEditable:false,
-        isAddable:false,
-        editor: {
-          type: 'text',
-          defaultValue:'Alumno'
-         
-        }
+      
+     
       }
       ,
-      Accion: {
+     /* Accion: {
         title: 'Acción',
         filter: false,
         type:'custom',
@@ -107,47 +104,65 @@ export class AlumnosPage {
           instance.save.subscribe(row => {
             alert(`${row.Legajo} `)
           });
-        }
+        
         
         
       
-    }
-  }
+    }}*/
+  
 };
   source:LocalDataSource;
+  source2:LocalDataSource;
+  
+  seleccion:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
     public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ) {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
 
-      this.fireService.getAlumnos().subscribe(data=>
-        {
-          this.source = new LocalDataSource(data); // create the source
-          this.listadoAlumnos=data;
-          
-        }); 
-        
-        
-      
-      let loading = this.loadingCtrl.create({
-        spinner: 'hide',
-        content: `
-         <img src="assets/spinner.gif">`,
-        duration: 50000000,
-        showBackdrop:false
-        
-      });
-  loading.present();
-      setTimeout(() => {
-        loading.dismiss();
-      }, 3000);
-
-      
-
+     
   }
   ionViewDidEnter()
   {
     
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+
+    this.fireService.getAlumnos().subscribe(data=>
+      {
+        this.listadoAlumnos=data;
+        
+      }); 
+
+      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+        const element = this.listadoAlumnos[i];
+        if(element.aula=="4° A")
+        {
+          for (let j = 0; j < element.alumnos.length; j++) {
+            const element2 = element.alumnos[j];
+            this.listaAux.push(element2);
+          }
+          
+        }
+      }
+      this.source= new LocalDataSource(this.listaAux);
+      this.seleccion="a";
+      
+      
+    
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+       <img src="assets/spinner.gif">`,
+      duration: 50000000,
+      showBackdrop:false
+      
+    });
+loading.present();
+    setTimeout(() => {
+      loading.dismiss();
+    }, 3000);
+
+    
+
     
   }
     ionViewWillLeave()
@@ -239,7 +254,55 @@ export class AlumnosPage {
       }
     }
   
-     
+    changeList(event)
+    {
+      this.seleccion=event;
+      if(this.seleccion=='a')
+      {
+        
+        this.fireService.getAlumnos().subscribe(data=>
+          {
+            this.listadoAlumnos=data;
+            
+          }); 
+    
+          for (let i = 0; i < this.listadoAlumnos.length; i++) {
+            const element = this.listadoAlumnos[i];
+            if(element.aula=="4° A")
+            {
+              for (let j = 0; j < element.alumnos.length; j++) {
+                const element2 = element.alumnos[j];
+                this.listaAux.push(element2);
+              }
+              
+            }
+          }
+          this.source= new LocalDataSource(this.listaAux);
+        
+      }else if(this.seleccion=='b'){
+        
+        this.fireService.getAlumnos().subscribe(data=>
+          {
+            this.listadoAlumnos=data;
+            
+          }); 
+    
+          for (let i = 0; i < this.listadoAlumnos.length; i++) {
+            const element = this.listadoAlumnos[i];
+            if(element.aula=="4° B")
+            {
+              for (let j = 0; j < element.alumnos.length; j++) {
+                const element2 = element.alumnos[j];
+                this.listaAux.push(element2);
+              }
+              
+            }
+          }
+          this.source2= new LocalDataSource(this.listaAux);
+       
+        
+      }
+    }
   
     onCreateConfirm(event) {
       if (window.confirm('¿Crear?')) {
