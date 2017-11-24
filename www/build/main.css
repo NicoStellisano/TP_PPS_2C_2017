@@ -28669,8 +28669,8 @@ ion-header, ion-content {
     transform: skewX(-0.78125deg) skewY(-0.78125deg);
   }
   77.7% {
-    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
-    transform: skewX(0.39062deg) skewY(0.39062deg);
+    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
+    transform: skewX(0.39063deg) skewY(0.39063deg);
   }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
@@ -28704,8 +28704,8 @@ ion-header, ion-content {
     transform: skewX(-0.78125deg) skewY(-0.78125deg);
   }
   77.7% {
-    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
-    transform: skewX(0.39062deg) skewY(0.39062deg);
+    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
+    transform: skewX(0.39063deg) skewY(0.39063deg);
   }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
@@ -31359,4 +31359,17 @@ page-materias-profesor button {
   border-color: white;
   border-width: 2px;
   border-style: solid;
+}
+
+page-notificacion .botonGuardar {
+  color: black;
+  text-align: center;
+  display: block;
+  background-color: lightgreen;
+  border-width: 2px;
+  border: black;
+  height: 1.5cm;
+  width: 3cm;
+  margin-left: 5.5cm;
+  margin-top: 0.25cm;
 }

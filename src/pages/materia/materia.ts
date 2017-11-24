@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
 
@@ -23,7 +23,7 @@ export class MateriaPage {
   public datos;
   aulaMateria:any= {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public barcodeScanner: BarcodeScanner,public db: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public barcodeScanner: BarcodeScanner,public db: AngularFireDatabase, public alertCtrl: AlertController) {
     this.materia = this.navParams.get('materiaa');
     this.curso = this.navParams.get('aulaaa');
 
@@ -50,6 +50,10 @@ export class MateriaPage {
     subscribe( data => {
     this.datos=data;
     });
+
+    
+
+    
   }
 
   ionViewDidLoad() {

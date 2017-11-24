@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
+import { NotificacionPage } from '../notificacion/notificacion';
 
 /**
  * Generated class for the AulaProfesorPage page.
@@ -33,7 +34,9 @@ export class AulaProfesorPage {
   }
 
   crearNotificacion(){
-    alert("voy a tomar notificacion");
+    console.log(this.aula);
+    this.navCtrl.push(NotificacionPage,{aulaa:this.aula});
+    
   }
 
   cargarLista(){
