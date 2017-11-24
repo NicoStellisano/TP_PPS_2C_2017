@@ -27,9 +27,6 @@ export class InicioProfesorPage {
     //harcodeado para mostrar, despues se debe eliminar y tomarar las aulas del profesor de firebase
     listaAulasProfesor: any[] = [
       {
-        "aula": "3° A"
-      },
-      {
         "aula": "4° A"
       },
       {

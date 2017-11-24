@@ -81,14 +81,14 @@ export class AlumnosPage {
         title: 'Turno',
         filter: false
       },
-      email: {
+      mail: {
         title: 'Email',
         filter: false
       }
       
      
       }
-      ,
+      
      /* Accion: {
         title: 'Acción',
         filter: false,
@@ -145,6 +145,7 @@ export class AlumnosPage {
       }
       this.source= new LocalDataSource(this.listaAux);
       this.seleccion="a";
+      console.log(this.listaAux);
       
       
     
