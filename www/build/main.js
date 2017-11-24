@@ -23,6 +23,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var GeochemComponent = (function () {
     function GeochemComponent() {
     }
@@ -33,11 +34,12 @@ var GeochemComponent = (function () {
 GeochemComponent.muestras = [];
 GeochemComponent.muestras2 = [];
 var CagarArchivoPage = (function () {
-    function CagarArchivoPage(navCtrl, navParams, database) {
+    function CagarArchivoPage(navCtrl, navParams, database, alertCtrl) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.database = database;
+        this.alertCtrl = alertCtrl;
         //Atributos de descarga
         this.listaAlumnos = [];
         this.listaAlumnoItem = [];
@@ -89,9 +91,9 @@ var CagarArchivoPage = (function () {
         };
         fr.readAsText(file, 'ISO-8859-4');
         this.listaAlumnos = lista;
-        console.log(this.listaAlumnos);
-        console.log(file.name);
-        console.log(file.size);
+        //console.log(this.listaAlumnos);
+        //console.log(file.name);
+        //console.log(file.size);
         this.nombreArchivo = file.name;
         this.sizeArchivo = file.size / 1000 + " Kb";
     };
@@ -103,7 +105,8 @@ var CagarArchivoPage = (function () {
         }
     };
     CagarArchivoPage.prototype.cargarLista = function () {
-        console.log("Carga lista a firebase");
+        //console.log("Carga lista a firebase");
+        this.presentAlert("Guardar Lista", "Se guado correcetamente la lista");
         this.alumnoLista$.push({
             aula: this.aula,
             alumnos: this.listaAlumnos
@@ -119,12 +122,21 @@ var CagarArchivoPage = (function () {
             }
         });
         if (miAula == this.aula) {
-            alert("Ir a descarga");
+            //alert("Ir a descarga");
             this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__descargar_archivo_descargar_archivo__["a" /* DescargarArchivoPage */], { aulaa: this.aula });
         }
         else {
-            alert("No hya nada que descargar");
+            //alert("No hya nada que descargar");
+            this.presentAlert("Sin alumnos", "No hya nada que descargar");
         }
+    };
+    CagarArchivoPage.prototype.presentAlert = function (titulo, subtitulo) {
+        var alert = this.alertCtrl.create({
+            title: titulo,
+            subTitle: subtitulo,
+            buttons: ['Aceptar']
+        });
+        alert.present();
     };
     return CagarArchivoPage;
 }());
@@ -132,9 +144,10 @@ CagarArchivoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-cagar-archivo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cagar-archivo/cagar-archivo.html"*/'<!--\n  Generated template for the CagarArchivoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Cagar Archivo de {{aula}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n  <ion-list>\n    <ion-item>\n      <!--<label>{{label}}</label>-->\n      <!--(change)="fileUpload($event)"-->\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->\n      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">\n      <ion-icon name="cloud-done">Sellecionar archivo .csv</ion-icon>\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n    </ion-item>\n\n    <ion-item>\n      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>\n      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>\n    </ion-item>\n  </ion-list>\n  \n  <div>\n    <button center ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="cloud-done"></ion-icon> Subir\n    </button>\n    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="cloud-done"></ion-icon> Descargar\n    </button>\n  </div>\n  \n  \n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cagar-archivo/cagar-archivo.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object])
 ], CagarArchivoPage);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=cagar-archivo.js.map
 
 /***/ }),
@@ -472,7 +485,7 @@ var DescargarArchivoPage = (function () {
 }());
 DescargarArchivoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-descargar-archivo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/'<!--\n  Generated template for the DescargarArchivoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Descargar Archivo {{aula}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="generaCSV()">\n        <ion-icon name="logo-dropbox"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let alumno of listaAlumnosCsv ">\n      <h3>{{alumno.legajo}}</h3>\n      <h2>{{alumno.mail}}</h2>\n      <h2>{{alumno.nombre}}</h2>\n      <h2>{{alumno.turno}}</h2>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/,
+        selector: 'page-descargar-archivo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/'<!--\n  Generated template for the DescargarArchivoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Descargar Archivo {{aula}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="generaCSV()">\n        <ion-icon name="logo-dropbox"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/descarga-archivo.png\')" class="fondo">\n  <ion-list>\n    <ion-item *ngFor="let alumno of listaAlumnosCsv " class="animated flipInX miItem">\n      <h3>Legajo: {{alumno.legajo}}</h3>\n      <h2>Mail: {{alumno.mail}}</h2>\n      <h2>Nombre: {{alumno.nombre}}</h2>\n      <h2>Tuno: {{alumno.turno}}</h2>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], DescargarArchivoPage);

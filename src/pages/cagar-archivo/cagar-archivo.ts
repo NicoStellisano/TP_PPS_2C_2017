@@ -8,6 +8,8 @@ import { GeneratedFile } from '@angular/compiler';
 import { AulaAlumnoItem } from '../../models/aula-alumno-item/aula-alumno.interface';
 import { DescargarArchivoPage } from '../descargar-archivo/descargar-archivo';
 
+import { AlertController } from 'ionic-angular';
+
 export class GeochemComponent implements OnInit {
   
     static muestras:string[][]=[];
@@ -34,7 +36,7 @@ export class CagarArchivoPage {
   alumnoLista$: FirebaseListObservable<AlumnoItem[]>;
   alumnoListaItem$: FirebaseListObservable<AlumnoListaItem[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private database: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private database: AngularFireDatabase,private alertCtrl: AlertController) {
     this.aula = this.navParams.get('aulaa');
     this.alumnoLista$ = this.database.list('alumno-lista');
     this.alumnoListaItem$ = this.database.list('alumno-lista');
@@ -44,8 +46,6 @@ export class CagarArchivoPage {
     });
 
 
-     
-    
   }
 
   ionViewDidLoad() {
@@ -98,15 +98,13 @@ export class CagarArchivoPage {
     fr.readAsText(file,'ISO-8859-4');
     
     this.listaAlumnos = lista;
-    console.log(this.listaAlumnos);
-    console.log(file.name);
-    console.log(file.size);
+    //console.log(this.listaAlumnos);
+    //console.log(file.name);
+    //console.log(file.size);
     this.nombreArchivo = file.name;
     this.sizeArchivo = file.size/1000 + " Kb";
 
   }
-
- 
 
   onFileSelect(input: HTMLInputElement) {
     var files = input.files;
@@ -117,7 +115,8 @@ export class CagarArchivoPage {
   }
 
   cargarLista(){
-    console.log("Carga lista a firebase");
+    //console.log("Carga lista a firebase");
+    this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
     this.alumnoLista$.push({
       aula:this.aula,
       alumnos:this.listaAlumnos
@@ -135,12 +134,22 @@ export class CagarArchivoPage {
     });
 
     if(miAula == this.aula){
-      alert("Ir a descarga");
+      //alert("Ir a descarga");
       this.navCtrl.push(DescargarArchivoPage,{aulaa:this.aula});
     }else{
-      alert("No hya nada que descargar");
+      //alert("No hya nada que descargar");
+      this.presentAlert("Sin alumnos","No hya nada que descargar");
     }
     
+  }
+
+  presentAlert(titulo,subtitulo) {
+    let alert = this.alertCtrl.create({
+      title: titulo,
+      subTitle: subtitulo,
+      buttons: ['Aceptar']
+    });
+    alert.present();
   }
 
 
