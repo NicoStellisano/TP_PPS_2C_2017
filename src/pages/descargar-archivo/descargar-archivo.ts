@@ -24,6 +24,7 @@ export class DescargarArchivoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private database: AngularFireDatabase) {
     this.aula = this.navParams.get('aulaa');
 
+
     //Toma lista para leer y crear archivo
     this.lista(this.aula).subscribe(dato => {
       //console.log(dato.values().next().value.alumnos);
@@ -37,42 +38,39 @@ export class DescargarArchivoPage {
   }
 
   generaCSV(){
-
+  
+    let csvContent = "data:text/csv;charset=utf-8,";
     
-        let csvContent = "data:text/csv;charset=utf-8,";
+    this.listaAlumnosCsv.forEach(alumno => {
+      //alumno
+      console.log(alumno);
+      csvContent += this.generarLinea(alumno);
+    });
     
-        this.listaAlumnosCsv.forEach(alumno => {
-          //alumno
-          console.log(alumno);
-          csvContent += this.generarLinea(alumno);
-        });
-    
-         var encodedUri = encodeURI(csvContent);
-         var link = document.createElement("a");
-         link.setAttribute("href", encodedUri);
-         link.setAttribute("download", "alumnos.csv");
-         document.body.appendChild(link); // Required for FF
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "alumnos.csv");
+    document.body.appendChild(link); // Required for FF
          
-         link.click();
-        
-      }
+    link.click();      
+  }
     
-      generarLinea(alumno:AlumnoItem):string{ 
-        var texto:string;
-        texto = alumno.legajo+";"+alumno.mail+";"+alumno.nombre+";"+alumno.turno+";\r\n";
-        console.log("genera linea: "+texto);
-        return texto;
-      }
+  generarLinea(alumno:AlumnoItem):string{ 
+    var texto:string;
+    texto = alumno.legajo+";"+alumno.mail+";"+alumno.nombre+";"+alumno.turno+";\r\n";
+    console.log("genera linea: "+texto);
+    return texto;
+  }
     
-      lista(aula){
+  lista(aula){
     
-        return this.database.list('/alumno-lista/' ,{
-          query: {
-            orderByChild :"aula",
-            equalTo:aula
-          }
-        });
-        
-      }
+    return this.database.list('/alumno-lista/' ,{
+            query: {
+              orderByChild :"aula",
+              equalTo:aula
+            }
+           });
+  }
 
 }
