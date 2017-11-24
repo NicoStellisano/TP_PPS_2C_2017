@@ -27,6 +27,7 @@ export class MateriaPage {
     this.materia = this.navParams.get('materiaa');
     this.curso = this.navParams.get('aulaaa');
 
+    console.log(this.materia);
     //CARGA DATOS EN FIREBASE
     /*
     this.db.list('/codigoQrMaterias').push({

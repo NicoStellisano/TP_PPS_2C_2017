@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
 
-
+import { InicioAlumnoPage } from '../inicio-alumno/inicio-alumno';
 /**
  * Generated class for the EditarPerfilPage page.
  *
@@ -19,9 +19,10 @@ export class EditarPerfilPage {
   public datos;
   datosUsuario:any= {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public db: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public db: AngularFireDatabase,public alertCtrl:AlertController) {
     //deberia traer que usuario esta logueado y hacer una busqueda en firebase, mostrar los datos y modificar
     let mail= "mauro@algo.com"
+
     this.db.list('/personas/alumnos').
     subscribe( data => {
     this.datos=data;
@@ -31,8 +32,8 @@ export class EditarPerfilPage {
       {
         if(this.datos[i].Email==mail)
           {
-            this.datosUsuario.nombre=this.datos[i].Nombre;
-            this.datosUsuario.apellido=this.datos[i].Apellido;
+         //   this.datosUsuario.password=this.datos[i].password;
+            
           }
       }
 
@@ -45,9 +46,26 @@ export class EditarPerfilPage {
     console.log('ionViewDidLoad EditarPerfilPage');
   }
 
+
+
+
+
   Guardar()
   {
-    alert("guardara los datos modificados");
+    let alert = this.alertCtrl.create({
+      title: "Exitosamente!",
+      subTitle: "Su contraseña a sido modificada" ,
+    buttons: ['OK']
+  });
+   alert.present();
+   this.navCtrl.push(InicioAlumnoPage);
   }
+
+
+
+
+
+
+
 
 }

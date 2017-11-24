@@ -19,7 +19,11 @@ export class MateriasPage {
 
   public aula:string;
   public datos;
-  
+  public datosfaltas;
+
+  //HAY QUE CAMBIARLO POR ALGO REAL
+  public nombreUsuario="Mauro";
+
     constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController, public db: AngularFireDatabase) {
       this.aula = this.navParams.get('aulaa');
 
@@ -79,8 +83,42 @@ export class MateriasPage {
 
       });
 
-    
 
+      //PARA CARGAR EN FIREBASE FALTAS
+/*
+      this.db.list('/notificacionFalta').push({
+        nombre: this.nombreUsuario,
+        cantidadFaltas: 4,
+        curso: this.aula    
+      }).then( () => {
+  
+      })
+      .catch( () => {
+      });
+    
+*/
+
+      this.db.list('/notificacionFalta').
+      subscribe( data => {
+      this.datosfaltas=data;
+      //console.log(this.datos);
+
+
+      for(let i=0;i<this.datosfaltas.length;i++){
+
+        if(this.nombreUsuario==this.datosfaltas[i].nombre)
+          {
+
+        let alert = this.alertCtrl.create({
+          title: "Aviso de faltas",
+          subTitle: this.nombreUsuario+" tiene 4 faltas. A una de quedar LIBRE!" ,
+        buttons: ['OK']
+      });
+       alert.present();
+        }
+
+                              } 
+      });
 
       
     }
@@ -107,10 +145,9 @@ export class MateriasPage {
       {
         "materia": "Laboratorio 4"
       },
-     
-      {
-        "materia": "Base de datos 1"
-      },
+
+
+      
       {
         "materia": "Practica profesional"
       }
