@@ -2,21 +2,11 @@ import { Component,OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
+import { AlumnoListaItem } from '../../models/alumno-lista/alumno-lista.interface';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { GeneratedFile } from '@angular/compiler';
+import { AulaAlumnoItem } from '../../models/aula-alumno-item/aula-alumno.interface';
 
-//import { FileOpener } from '@ionic-native/file-opener';
-
-/**
- * Generated class for the CagarArchivoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- * 
- * $ ionic cordova plugin add cordova-plugin-file-opener2
- * $ npm install --save @ionic-native/file-opener
- * 
- */
 
 export class GeochemComponent implements OnInit {
   
@@ -32,28 +22,41 @@ export class GeochemComponent implements OnInit {
 })
 export class CagarArchivoPage {
 
-  alumno = {} as AlumnoItem;;
+  //Atributos de descarga
   listaAlumnos:AlumnoItem[] = [];
   listaAlumnosCsv:AlumnoItem[] = [];
+  listaAlumnoItem:AlumnoListaItem[]=[];
+  
   nombreArchivo:string;
   sizeArchivo:string;
   aula:string;
+
   alumnoLista$: FirebaseListObservable<AlumnoItem[]>;
+  alumnoListaItem$: FirebaseListObservable<AlumnoListaItem[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private database: AngularFireDatabase) {
     this.aula = this.navParams.get('aulaa');
     this.alumnoLista$ = this.database.list('alumno-lista');
+    this.alumnoListaItem$ = this.database.list('alumno-lista');
 
-    //traigo los datos del aula que necesito
+    this.alumnoListaItem$.subscribe(alumLista =>{
+      this.listaAlumnoItem = alumLista;
+    });
+
+ 
+    //Toma lista para leer y crear archivo
     this.lista(this.aula).subscribe(dato => {
       //console.log(dato.values().next().value.alumnos);
       //lista de alumnos en el aula
       this.listaAlumnosCsv = dato.values().next().value.alumnos;
     });
+     
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CagarArchivoPage');
+    
   }
   
   leeArchivos(numarchivo:number,file:any) {
@@ -85,7 +88,7 @@ export class CagarArchivoPage {
         alumno.nombre = elemento[1].trim();
         alumno.turno = elemento[2].trim();
         alumno.mail = elemento[3].trim();
-        console.log(alumno.turno);
+        //console.log(alumno);
         lista.push(alumno);
 
         alumno = {} as AlumnoItem;
@@ -106,10 +109,12 @@ export class CagarArchivoPage {
     console.log(file.size);
     this.nombreArchivo = file.name;
     this.sizeArchivo = file.size/1000 + " Kb";
-  
+
   }
 
   generaCSV(){
+
+    console.log(this.listaAlumnosCsv);
 
     let csvContent = "data:text/csv;charset=utf-8,";
 
@@ -131,12 +136,12 @@ export class CagarArchivoPage {
 
   generarLinea(alumno:AlumnoItem):string{ 
     var texto:string;
-    texto = alumno.legajo+";"+alumno.nombre+";"+alumno.turno+";"+alumno.mail+";\r\n";
+    texto = alumno.legajo+";"+alumno.mail+";"+alumno.nombre+";"+alumno.turno+";\r\n";
     console.log("genera linea: "+texto);
     return texto;
   }
 
-  lista(aula){
+   lista(aula){
 
     return this.database.list('/alumno-lista/' ,{
       query: {
@@ -144,8 +149,8 @@ export class CagarArchivoPage {
         equalTo:aula
       }
     });
+    
   }
-
 
   onFileSelect(input: HTMLInputElement) {
     var files = input.files;
@@ -161,6 +166,25 @@ export class CagarArchivoPage {
       aula:this.aula,
       alumnos:this.listaAlumnos
     });
+  }
+
+  descargarArchivo(){
+    let miAula:string;
+
+    this.listaAlumnoItem.forEach(aula => {
+      console.log(aula);
+      if(aula.aula == this.aula){
+        miAula = aula.aula;
+      }
+    });
+
+    if(miAula == this.aula){
+      alert("Ir a descarga");
+      this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula});
+    }else{
+      alert("No hya nada que descargar");
+    }
+    
   }
 
 

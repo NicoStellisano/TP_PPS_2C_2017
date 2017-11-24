@@ -34,6 +34,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { MateriaPage } from '../pages/materia/materia';
 import { EditarPerfilPage } from '../pages/editar-perfil/editar-perfil';
 
+
 var config = {
   apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
   authDomain: "controlalumnos-6cbb9.firebaseapp.com",

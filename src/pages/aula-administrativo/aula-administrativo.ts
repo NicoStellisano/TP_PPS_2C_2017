@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AulaAdministrativoItem } from '../../models/aula-administrativo-item/aula-administrativo.interface';
+//import { AulaAdministrativoItem } from '../../models/aula-administrativo-item/aula-administrativo.interface';
+import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 
 /**
  * Generated class for the AulaAdministrativoPage page.
@@ -16,15 +17,17 @@ import { AulaAdministrativoItem } from '../../models/aula-administrativo-item/au
 })
 export class AulaAdministrativoPage {
 
-  miAulaAdministrativo = {} as AulaAdministrativoItem;
+  aula:string;
+  //miAulaAdministrativo = {} as AulaAdministrativoItem;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.miAulaAdministrativo = {
+    /*this.miAulaAdministrativo = {
       profesor:"Juan Peralta",
       division:"2°B",
       materia:"Laboratorio IV",
       cantidadAlumno:25
-    };
+    };*/
+    this.aula = this.navParams.get('aulaa');
   }
 
   ionViewDidLoad() {
@@ -33,6 +36,11 @@ export class AulaAdministrativoPage {
 
   mostrarQR(){
     
+  }
+
+  cargarLista(){
+    this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula});
+    alert("voy a cargar lista");
   }
 
 }
