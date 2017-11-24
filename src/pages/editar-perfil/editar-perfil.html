@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar color="dark">
-    <ion-title>Editar perfil</ion-title>
+    <ion-title>Modifique su contraseña</ion-title>
    </ion-navbar>
   
 </ion-header>
@@ -16,14 +16,12 @@
 
   <ion-list >  
 <ion-item class="animated flipInX miItem">
-<ion-label class="miLabel" floating>Nombre</ion-label>
-<ion-input type="text" [(ngModel)]="datosUsuario.nombre" disabled="false"></ion-input> 
+<ion-label class="miLabel" floating>Contraseña</ion-label>
+<ion-input type="text" [(ngModel)]="datosUsuario.password" disabled="false"></ion-input> 
 </ion-item>
-          
-<ion-item class="animated flipInY miItem">
-<ion-label class="miLabel" floating>Apellido</ion-label>
-<ion-input type="text" [(ngModel)]="datosUsuario.apellido" disabled="false"></ion-input>
-</ion-item>
+
+
+
 
 </ion-list>
 <button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>

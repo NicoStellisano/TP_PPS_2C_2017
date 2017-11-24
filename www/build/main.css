@@ -31360,3 +31360,16 @@ page-materias-profesor button {
   border-width: 2px;
   border-style: solid;
 }
+
+page-notificacion .botonGuardar {
+  color: black;
+  text-align: center;
+  display: block;
+  background-color: lightgreen;
+  border-width: 2px;
+  border: black;
+  height: 1.5cm;
+  width: 3cm;
+  margin-left: 5.5cm;
+  margin-top: 0.25cm;
+}

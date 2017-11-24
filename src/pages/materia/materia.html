@@ -14,10 +14,13 @@
 
 <ion-content padding style="background-image:url('assets/aula-administrativo.jpeg')" class="fondo">
 
-  <button ion-button full icon-left *ngIf="codigoScaneado==null"  (click)="scanCode()" class="botonscan" color="secondary"><ion-icon name="qr-scanner"></ion-icon>Leer codigo</button>
 
-  <br>
+
+
   
+  <button ion-button round full large *ngIf="codigoScaneado==null"  (click)="scanCode()" class="animated flipInX miBoton miButton"> 
+    <ion-icon name="arrow-round-back"></ion-icon> Escaner QR
+  </button>
   
   <ion-list *ngIf="codigoScaneado!=null" >
     
