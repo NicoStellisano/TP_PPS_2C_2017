@@ -15,6 +15,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { AulaAlumnoPage} from '../aula-alumno/aula-alumno';
+import { RealInicioAdministrativoPage } from '../real-inicio-administrativo/real-inicio-administrativo';
 
 
 /**
@@ -124,7 +125,7 @@ loading.present();
                 if(element.Email==firebase.auth().currentUser.email)
                 {            
                   element.password=null;                  
-                    this.navCtrl.setRoot(InicioAdministrativoPage);
+                    this.navCtrl.setRoot(RealInicioAdministrativoPage);
                     flag=true;
                     break;
                   }
@@ -222,7 +223,7 @@ if(element.Email!=firebase.auth().currentUser.email)
       this.navCtrl.push(InicioAdminPage);
       break;
       case 1:
-      this.navCtrl.push(InicioAdministrativoPage);
+      this.navCtrl.push(RealInicioAdministrativoPage);
       break;
       case 2:
       this.navCtrl.push(InicioProfesorPage);
@@ -259,7 +260,7 @@ if(element.Email!=firebase.auth().currentUser.email)
           var element = this.listadoAdministrativos[i];
           if(element.Email==this.email && element.password==this.password)
           {                
-              this.navCtrl.setRoot(InicioAdministrativoPage);
+              this.navCtrl.setRoot(RealInicioAdministrativoPage);
               flag=true;
               break;
             }else if(element.Email==this.email && element.password==null)
