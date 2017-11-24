@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
-<<<<<<< HEAD
 ;
-=======
 import { NotificacionPage } from '../notificacion/notificacion';
->>>>>>> 56f5364c4d7f3a666def9bec0a957a9ec6f69f75
 
 /**
  * Generated class for the AulaProfesorPage page.
