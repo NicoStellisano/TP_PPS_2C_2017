@@ -45,6 +45,7 @@ TomarListaPageModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TomarListaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(29);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,6 +57,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
  * Generated class for the TomarListaPage page.
  *
@@ -63,22 +65,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var TomarListaPage = (function () {
-    function TomarListaPage(navCtrl, navParams) {
+    function TomarListaPage(navCtrl, navParams, database) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.database = database;
+        this.alumnoPresente = {};
+        this.listaAlumnosCsv = [];
+        this.alumnoPresenteLista = [];
+        this.aula = this.navParams.get('aulaa');
+        //Toma lista para leer y crear archivo
+        this.lista(this.aula).subscribe(function (dato) {
+            //lista de alumnos en el aula
+            _this.listaAlumnosCsv = dato.values().next().value.alumnos;
+        });
     }
     TomarListaPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad TomarListaPage');
+    };
+    TomarListaPage.prototype.tomarLista = function () {
+    };
+    TomarListaPage.prototype.lista = function (aula) {
+        return this.database.list('/alumno-lista/', {
+            query: {
+                orderByChild: "aula",
+                equalTo: aula
+            }
+        });
     };
     return TomarListaPage;
 }());
 TomarListaPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-tomar-lista',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/tomar-lista/tomar-lista.html"*/'<!--\n  Generated template for the TomarListaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>TomarLista</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/tomar-lista/tomar-lista.html"*/,
+        selector: 'page-tomar-lista',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/tomar-lista/tomar-lista.html"*/'<!--\n  Generated template for the TomarListaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar class="dark">\n    <ion-title>Tomar Lista</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/descarga-archivo.png\')" class="fondo">\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/tomar-lista/tomar-lista.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _c || Object])
 ], TomarListaPage);
 
+var _a, _b, _c;
 //# sourceMappingURL=tomar-lista.js.map
 
 /***/ })

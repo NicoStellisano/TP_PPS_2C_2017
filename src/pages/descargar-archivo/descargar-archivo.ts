@@ -27,7 +27,6 @@ export class DescargarArchivoPage {
 
     //Toma lista para leer y crear archivo
     this.lista(this.aula).subscribe(dato => {
-      //console.log(dato.values().next().value.alumnos);
       //lista de alumnos en el aula
       this.listaAlumnosCsv = dato.values().next().value.alumnos;
     });
