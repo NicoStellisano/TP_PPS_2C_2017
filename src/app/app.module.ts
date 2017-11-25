@@ -15,7 +15,6 @@ import { AulaAlumnoPage } from '../pages/aula-alumno/aula-alumno';
 import { AulaAdministrativoPage } from '../pages/aula-administrativo/aula-administrativo';
 import { AulaProfesorPage } from '../pages/aula-profesor/aula-profesor';
 
-
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';

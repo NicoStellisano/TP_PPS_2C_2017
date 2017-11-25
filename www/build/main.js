@@ -105,7 +105,7 @@ var MateriaPage = (function () {
 }());
 MateriaPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-materia',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materia\materia.html"*/'<!--\n\n  Generated template for the MateriaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Materia: {{materia}}</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n\n\n\n\n\n\n\n\n  \n\n  <button ion-button round full large *ngIf="codigoScaneado==null"  (click)="scanCode()" class="animated flipInX miBoton miButton"> \n\n    <ion-icon name="arrow-round-back"></ion-icon> Escaner QR\n\n  </button>\n\n  \n\n  <ion-list *ngIf="codigoScaneado!=null" >\n\n    \n\n<ion-item class="animated flipInX miItem">\n\n<ion-label class="miLabel" floating>División</ion-label>\n\n<ion-input type="text" [(ngModel)]="aulaMateria.curso" disabled="true"></ion-input> \n\n</ion-item>\n\n          \n\n<ion-item class="animated flipInY miItem">\n\n<ion-label class="miLabel" floating>Materia</ion-label>\n\n<ion-input type="text" [(ngModel)]="aulaMateria.profesor" disabled="true"></ion-input>\n\n</ion-item>\n\n\n\n\n\n  <ion-item class="animated flipInY miItem">\n\n    <ion-label class="miLabel" floating>Primer Parcial</ion-label>\n\n    <ion-input type="text" [(ngModel)]="aulaMateria.primerParcial" disabled="true"></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Segundo Parcial</ion-label>\n\n      <ion-input type="text" [(ngModel)]="aulaMateria.segundoParcial" disabled="true"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item class="animated flipInY miItem">\n\n        <ion-label class="miLabel" floating>Final</ion-label>\n\n        <ion-input type="text" [(ngModel)]="aulaMateria.final" disabled="true"></ion-input>\n\n        </ion-item>\n\n\n\n</ion-list>\n\n\n\n</ion-content>\n\n\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materia\materia.html"*/,
+        selector: 'page-materia',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materia\materia.html"*/'<!--\n\n  Generated template for the MateriaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Materia: {{materia}}</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n\n\n\n\n\n\n\n\n  \n\n  <button ion-button round full large *ngIf="codigoScaneado==null"  (click)="scanCode()" class="animated flipInX miBoton miButton"> \n\n    <ion-icon name="arrow-round-back"></ion-icon> Escaner QR\n\n  </button>\n\n  \n\n  <ion-list *ngIf="codigoScaneado!=null" >\n\n  <!-- <div *ngIf="perfil==\'\'" > -->\n\n<ion-item class="animated flipInX miItem">\n\n<ion-label class="miLabel" floating>División</ion-label>\n\n<ion-input type="text" [(ngModel)]="aulaMateria.curso" disabled="true"></ion-input> \n\n</ion-item>\n\n          \n\n<ion-item class="animated flipInY miItem">\n\n<ion-label class="miLabel" floating>Materia</ion-label>\n\n<ion-input type="text" [(ngModel)]="aulaMateria.profesor" disabled="true"></ion-input>\n\n</ion-item>\n\n\n\n\n\n  <ion-item class="animated flipInY miItem">\n\n    <ion-label class="miLabel" floating>Primer Parcial</ion-label>\n\n    <ion-input type="text" [(ngModel)]="aulaMateria.primerParcial" disabled="true"></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Segundo Parcial</ion-label>\n\n      <ion-input type="text" [(ngModel)]="aulaMateria.segundoParcial" disabled="true"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item class="animated flipInY miItem">\n\n        <ion-label class="miLabel" floating>Final</ion-label>\n\n        <ion-input type="text" [(ngModel)]="aulaMateria.final" disabled="true"></ion-input>\n\n        </ion-item>\n\n\n\n      <!--</div>-->\n\n\n\n\n\n</ion-list>\n\n\n\n</ion-content>\n\n\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materia\materia.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], MateriaPage);
@@ -256,7 +256,7 @@ var CagarArchivoPage = (function () {
 }());
 CagarArchivoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-cagar-archivo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/'<!--\n\n  Generated template for the CagarArchivoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Cagar Archivo de {{aula}}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n\n\n  <ion-list>\n\n    <ion-item>\n\n      <!--<label>{{label}}</label>-->\n\n      <!--(change)="fileUpload($event)"-->\n\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->\n\n      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">\n\n      <ion-icon name="cloud-done">Sellecionar archivo .csv</ion-icon>\n\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>\n\n      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n  \n\n  <div>\n\n    <button center ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Subir\n\n    </button>\n\n    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Descargar\n\n    </button>\n\n  </div>\n\n  \n\n  \n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/,
+        selector: 'page-cagar-archivo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/'<!--\n\n  Generated template for the CagarArchivoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Cargar Archivo de {{aula}}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n\n\n  <ion-list>\n\n    <ion-item>\n\n      <!--<label>{{label}}</label>-->\n\n      <!--(change)="fileUpload($event)"-->\n\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->\n\n      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">\n\n      <ion-icon name="cloud-done">Selecionar archivo .csv</ion-icon>\n\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>\n\n      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n  \n\n  <div>\n\n    <button center ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Subir\n\n    </button>\n\n    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Descargar\n\n    </button>\n\n  </div>\n\n  \n\n  \n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], CagarArchivoPage);
@@ -322,7 +322,7 @@ var AulaProfesorPage = (function () {
 }());
 AulaProfesorPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-aula-profesor',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/'<!--\n\n  Generated template for the AulaProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Aula Profesor {{aula}}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n\n\n <!--gi <ion-list>\n\n              \n\n    <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n\n    </ion-item>\n\n                    \n\n    <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Materia</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n\n    </ion-item>\n\n                \n\n    <ion-item class="animated flipInX miItem" >\n\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n\n    </ion-item> \n\n  \n\n  </ion-list>-->\n\n\n\n  <div>\n\n    <button ion-button round full large (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n\n    </button>\n\n    <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Crear Notificacion\n\n    </button>\n\n    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n\n    </button>\n\n    <button ion-button round full large (click)="mostrarQr()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Escaner QR\n\n    </button>\n\n  </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/,
+        selector: 'page-aula-profesor',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/'<!--\n\n  Generated template for the AulaProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Aula Profesor {{aula}}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n\n\n <!--gi <ion-list>\n\n              \n\n    <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n\n    </ion-item>\n\n                    \n\n    <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Materia</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n\n    </ion-item>\n\n                \n\n    <ion-item class="animated flipInX miItem" >\n\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n\n    </ion-item> \n\n  \n\n  </ion-list>-->\n\n<ion-list  >\n\n    <div *ngFor="let lista of listaMaterias; let i = index"> \n\n        <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.aula)">{{ lista.materia }}</button> \n\n    </div>\n\n \n\n</ion-list>\n\n  <div>\n\n   \n\n    <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Crear Notificacion\n\n    </button>\n\n    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n\n    </button>\n\n    <button ion-button round full large  (click)="mostrarQr()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Escaner QR\n\n      </button>\n\n  </div>\n\n\n\n\n\n  \n\n  \n\n    \n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
 ], AulaProfesorPage);
@@ -540,164 +540,128 @@ var AlumnosPage = (function () {
         this.screenOrientation.unlock();
     };
     AlumnosPage.prototype.onDeleteConfirm = function (event) {
-        /*
-         if (window.confirm('¿Eliminar?')) {
-         
-           for (let i = 0; i < this.listadoAlumnos.length; i++) {
-             const element = this.listadoAlumnos[i];
-             if(element.aula=="4° A")
-             {
-               for (let j = 0; j < element.alumnos.length; j++) {
-                 const element2 = element.alumnos[j];
-                 if(element2.mail==event.data.mail)
-                 {
-                   const index: number = this.listaAux.indexOf(element2);
-                   if (index !== -1) {
-                       this.listaAux.splice(index, 1);
-                   }
-                   element.alumnos=this.listaAux;
-                   this.fireService.updateAlumno(this.listaAux,element['$key']);
-                   
-                   this.fireService.getAlumnos().subscribe(data=>
-                     {
-                       this.listadoAlumnos=data;
-                       
-                     });
-                     for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                       const element = this.listadoAlumnos[i];
-                       if(element.aula=="4° A")
-                       {
-                         for (let j = 0; j < element.alumnos.length; j++) {
-                           const element2 = element.alumnos[j];
-                           this.listaAux.push(element2);
-                         }
-                         
-                       }
-                     }
-                     this.source= new LocalDataSource(this.listaAux);
-                    
-                                     
-                   break;
-                 }
-               }
-               
-             }else  if(element.aula=="4° B")
-             {
-               for (let j = 0; j < element.alumnos.length; j++) {
-                 const element2 = element.alumnos[j];
-                 if(element2.mail==event.data.mail)
-                 {
-                   const index: number = this.listaAux.indexOf(element2);
-                   if (index !== -1) {
-                     this.listaAux=  this.listaAux.splice(index, 1);
-                   }
-                   element.alumnos=this.listaAux;
-                   this.fireService.updateAlumno(this.listaAux,element['$key']);
-                   event.confirm.resolve();
-                   
-                   this.fireService.getAlumnos().subscribe(data=>
-                     {
-                       this.listadoAlumnos=data;
-                       
-                     });
-                     for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                       const element = this.listadoAlumnos[i];
-                       if(element.aula=="4° B")
-                       {
-                         for (let j = 0; j < element.alumnos.length; j++) {
-                           const element2 = element.alumnos[j];
-                           this.listaAux.push(element2);
-                         }
-                         
-                       }
-                     }
-                     this.source2= new LocalDataSource(this.listaAux);
-                                     
-                   break;
-                 }
-               }
-           }
-          
-           }
-       
-           
-         } else {
-           event.confirm.reject();
-         }*/
+        var _this = this;
+        if (window.confirm('¿Eliminar?')) {
+            for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                var element = this.listadoAlumnos[i];
+                if (element.aula == "4° A") {
+                    for (var j = 0; j < element.alumnos.length; j++) {
+                        var element2 = element.alumnos[j];
+                        if (element2.mail == event.data.mail) {
+                            this.fireService.removeAlumno(element['$key'], j);
+                            event.confirm.reject();
+                            this.fireService.getAlumnos().subscribe(function (data) {
+                                _this.listadoAlumnos = data;
+                            });
+                            for (var i_1 = 0; i_1 < this.listadoAlumnos.length; i_1++) {
+                                var element_1 = this.listadoAlumnos[i_1];
+                                if (element_1.aula == "4° A") {
+                                    for (var j_1 = 0; j_1 < element_1.alumnos.length; j_1++) {
+                                        var element2_1 = element_1.alumnos[j_1];
+                                        this.listaAux.push(element2_1);
+                                    }
+                                }
+                            }
+                            this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+                            break;
+                        }
+                    }
+                }
+                else if (element.aula == "4° B") {
+                    for (var j = 0; j < element.alumnos.length; j++) {
+                        var element2 = element.alumnos[j];
+                        if (element2.mail == event.data.mail) {
+                            this.fireService.removeAlumno(element['$key'], element2['$key']);
+                            event.confirm.resolve();
+                            this.fireService.getAlumnos().subscribe(function (data) {
+                                _this.listadoAlumnos = data;
+                            });
+                            for (var i_2 = 0; i_2 < this.listadoAlumnos.length; i_2++) {
+                                var element_2 = this.listadoAlumnos[i_2];
+                                if (element_2.aula == "4° B") {
+                                    for (var j_2 = 0; j_2 < element_2.alumnos.length; j_2++) {
+                                        var element2_2 = element_2.alumnos[j_2];
+                                        this.listaAux.push(element2_2);
+                                    }
+                                }
+                            }
+                            this.source2 = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            event.confirm.reject();
+        }
     };
     AlumnosPage.prototype.onSaveConfirm = function (event) {
         var _this = this;
         if (window.confirm('¿Editar?')) {
+            console.log(event.newData);
             if (event.newData.legajo != null && event.newData.nombre != null && event.newData.mail != null && event.newData.turno != null
                 && event.newData.legajo != undefined && event.newData.nombre != undefined && event.newData.mail != undefined && event.newData.turno != undefined &&
                 event.newData.legajo != "" && event.newData.nombre != "" && event.newData.mail != "" && event.newData.turno != "") {
-                if (event.newData.mail.includes('@')) {
-                    if (this.seleccion == "a") {
-                        this.listaAux.push(event.newData);
-                        for (var indox = 0; indox < this.listadoAlumnos.length; indox++) {
-                            var element = this.listadoAlumnos[indox];
-                            if (element.aula == "4° A") {
-                                element.alumnos = this.listaAux;
-                                this.fireService.updateAlumno(this.listaAux, element['$key']);
-                                break;
-                            }
+                if (this.seleccion == "a") {
+                    this.listaAux.push(event.newData);
+                    for (var indox = 0; indox < this.listadoAlumnos.length; indox++) {
+                        var element = this.listadoAlumnos[indox];
+                        if (element.aula == "4° A") {
+                            element.alumnos = this.listaAux;
+                            this.fireService.updateAlumno(this.listadoAlumnos);
+                            break;
                         }
-                        event.confirm.resolve();
-                        this.fireService.getAlumnos().subscribe(function (data) {
-                            _this.listadoAlumnos = data;
-                        });
-                        for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                            var element = this.listadoAlumnos[i];
-                            if (element.aula == "4° A") {
-                                for (var j = 0; j < element.alumnos.length; j++) {
-                                    var element2 = element.alumnos[j];
-                                    this.listaAux.push(element2);
-                                }
-                            }
-                        }
-                        this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
                     }
-                    else if (this.seleccion == "b") {
-                        this.listaAux.push(event.newData);
-                        for (var index = 0; index < this.listadoAlumnos.length; index++) {
-                            var element = this.listadoAlumnos[index];
-                            if (element.aula == "4° B") {
-                                element.alumnos = this.listaAux;
-                                this.fireService.updateAlumno(this.listaAux, element['$key']);
-                                break;
+                    event.confirm.resolve();
+                    this.fireService.getAlumnos().subscribe(function (data) {
+                        _this.listadoAlumnos = data;
+                    });
+                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                        var element = this.listadoAlumnos[i];
+                        if (element.aula == "4° A") {
+                            for (var j = 0; j < element.alumnos.length; j++) {
+                                var element2 = element.alumnos[j];
+                                this.listaAux.push(element2);
                             }
                         }
-                        event.confirm.resolve();
-                        this.fireService.getAlumnos().subscribe(function (data) {
-                            _this.listadoAlumnos = data;
-                        });
-                        for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                            var element = this.listadoAlumnos[i];
-                            if (element.aula == "4° B") {
-                                for (var j = 0; j < element.alumnos.length; j++) {
-                                    var element2 = element.alumnos[j];
-                                    this.listaAux.push(element2);
-                                }
-                            }
-                        }
-                        this.source2 = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
-                        event.confirm.reject();
                     }
-                    else {
-                        alert("turno inválido");
-                        event.confirm.reject();
-                    }
+                    this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
                 }
-                else {
-                    alert("mail inválido");
+                else if (this.seleccion == "b") {
+                    this.listaAux.push(event.newData);
+                    for (var index = 0; index < this.listadoAlumnos.length; index++) {
+                        var element = this.listadoAlumnos[index];
+                        if (element.aula == "4° B") {
+                            element.alumnos = this.listaAux;
+                            this.fireService.updateAlumno(this.listadoAlumnos);
+                            break;
+                        }
+                    }
+                    event.confirm.resolve();
+                    this.fireService.getAlumnos().subscribe(function (data) {
+                        _this.listadoAlumnos = data;
+                    });
+                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                        var element = this.listadoAlumnos[i];
+                        if (element.aula == "4° B") {
+                            for (var j = 0; j < element.alumnos.length; j++) {
+                                var element2 = element.alumnos[j];
+                                this.listaAux.push(element2);
+                            }
+                        }
+                    }
+                    this.source2 = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
                     event.confirm.reject();
                 }
-            }
-            else {
-                alert("Completa los datos");
                 event.confirm.reject();
             }
-            // this.fireService.addUser(event.newData);
+            else {
+                alert("turno inválido");
+                event.confirm.reject();
+            }
+        }
+        else {
             event.confirm.reject();
         }
     };
@@ -748,9 +712,16 @@ var AlumnosPage = (function () {
                         for (var indox = 0; indox < this.listadoAlumnos.length; indox++) {
                             var element = this.listadoAlumnos[indox];
                             if (element.aula == "4° A") {
-                                element.alumnos = this.listaAux;
-                                this.fireService.updateAlumno(this.listaAux, element['$key']);
-                                break;
+                                try {
+                                    //this.fireService.addAlumno(event.newData,indox)
+                                    element.alumnos = this.listaAux;
+                                    this.fireService.updateAlumno(this.listadoAlumnos);
+                                    break;
+                                }
+                                catch (error) {
+                                    console.log(error);
+                                }
+                                //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
                             }
                         }
                         event.confirm.resolve();
@@ -774,8 +745,7 @@ var AlumnosPage = (function () {
                             var element = this.listadoAlumnos[index];
                             if (element.aula == "4° B") {
                                 element.alumnos = this.listaAux;
-                                this.fireService.updateAlumno(this.listaAux, element['$key']);
-                                break;
+                                this.fireService.updateAlumno(this.listadoAlumnos);
                             }
                         }
                         event.confirm.resolve();
@@ -792,7 +762,6 @@ var AlumnosPage = (function () {
                             }
                         }
                         this.source2 = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
-                        event.confirm.reject();
                     }
                     else {
                         alert("turno inválido");
@@ -809,8 +778,11 @@ var AlumnosPage = (function () {
                 event.confirm.reject();
             }
             // this.fireService.addUser(event.newData);
+        }
+        else {
             event.confirm.reject();
         }
+        event.confirm.reject();
     };
     return AlumnosPage;
 }());
@@ -819,10 +791,10 @@ AlumnosPage = __decorate([
         selector: 'page-alumnos',
         template: "\n\n  <ion-item style='float:right'>\n  <ion-label>Curso</ion-label>\n  <ion-select [(ngModel)]=\"seleccion\" (ionChange)=\"changeList($event)\">\n    <ion-option value=\"a\">4\u00BAA</ion-option>\n    <ion-option value=\"b\">4\u00BAB</ion-option>\n  </ion-select>\n</ion-item>\n<div style='width:100%;height:100%' *ngIf='seleccion==\"a\"'>\n  <ng2-smart-table style='width:100%;height:100%' [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n  <div style='width:100%;height:100%' *ngIf='seleccion==\"b\"'>\n  <ng2-smart-table style='width:100%;height:100%'  [settings]=\"settings\" [source]=\"source2\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n\n",
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], AlumnosPage);
 
-var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=alumnos.js.map
 
 /***/ }),
@@ -835,10 +807,6 @@ var _a, _b, _c, _d, _e, _f, _g;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__ = __webpack_require__(139);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -852,11 +820,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 //import { AulaAdministrativoItem } from '../../models/aula-administrativo-item/aula-administrativo.interface';
 
-
-
-// for databas
-
-
 /**
  * Generated class for the AulaAdministrativoPage page.
  *
@@ -865,386 +828,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var AulaAdministrativoPage = (function () {
     //miAulaAdministrativo = {} as AulaAdministrativoItem;
-    function AulaAdministrativoPage(navCtrl, navParams, fireService, loadingCtrl, screenOrientation, platform, afd) {
-        var _this = this;
+    function AulaAdministrativoPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.fireService = fireService;
-        this.loadingCtrl = loadingCtrl;
-        this.screenOrientation = screenOrientation;
-        this.platform = platform;
-        this.afd = afd;
-        this.listadoAlumnos = [];
-        this.listaAux = [];
-        this.settings = {
-            actions: {
-                columnTitle: '',
-                add: false,
-                edit: false,
-                delete: false
-            },
-            noDataMessage: "No se encuentran registros",
-            delete: {
-                confirmDelete: true,
-                deleteButtonContent: 'Borrar',
-            },
-            add: {
-                confirmCreate: true,
-                addButtonContent: "Agregar",
-                createButtonContent: 'Crear',
-                cancelButtonContent: 'Cancelar'
-            },
-            edit: {
-                confirmSave: true,
-                editButtonContent: 'Editar',
-                saveButtonContent: 'Guardar',
-                cancelButtonContent: 'Cancelar'
-            },
-            columns: {
-                legajo: {
-                    title: 'legajo',
-                    filter: false,
-                    editor: {
-                        type: 'number',
-                    },
-                },
-                mail: {
-                    title: 'mail',
-                    filter: false
-                },
-                nombre: {
-                    title: 'nombre',
-                    filter: false
-                },
-                turno: {
-                    title: 'Turno',
-                    filter: false
-                },
-            }
-        };
-        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
         /*this.miAulaAdministrativo = {
           profesor:"Juan Peralta",
           division:"2°B",
           materia:"Laboratorio IV",
-    
-    
           cantidadAlumno:25
         };*/
-        this.afd.list("/alumno-lista").subscribe(function (data) {
-            _this.listadoAlumnos = data;
-            if (!_this.flag) {
-                _this.flag = true;
-                _this.activar();
-            }
-        });
         this.aula = this.navParams.get('aulaa');
     }
-    AulaAdministrativoPage.prototype.activar = function () {
-        this.seleccion = "a";
-        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-        for (var i = 0; i < this.listadoAlumnos.length; i++) {
-            var element = this.listadoAlumnos[i];
-            if (element.aula == "4° A") {
-                for (var j = 0; j < element.alumnos.length; j++) {
-                    var element2 = element.alumnos[j];
-                    this.listaAux.push(element2);
-                }
-            }
-        }
-        this.source = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
-        this.seleccion = "a";
-        console.log(this.listaAux);
-        var loading = this.loadingCtrl.create({
-            spinner: 'hide',
-            content: "\n      <img src=\"assets/spinner.gif\">",
-            duration: 50000000,
-            showBackdrop: false
-        });
-        loading.present();
-        setTimeout(function () {
-            loading.dismiss();
-        }, 3000);
-    };
     AulaAdministrativoPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad AulaAdministrativoPage');
     };
-    AulaAdministrativoPage.prototype.ionViewWillLeave = function () {
-        this.screenOrientation.unlock();
+    AulaAdministrativoPage.prototype.mostrarQR = function () {
     };
     AulaAdministrativoPage.prototype.cargarLista = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__["a" /* CagarArchivoPage */], { aulaa: this.aula });
         alert("voy a cargar lista");
-    };
-    AulaAdministrativoPage.prototype.onDeleteConfirm = function (event) {
-        /*  if (window.confirm('¿Eliminar?')) {
-          
-            for (let i = 0; i < this.listadoAlumnos.length; i++) {
-              const element = this.listadoAlumnos[i];
-              if(element.aula=="4° A")
-              {
-                for (let j = 0; j < element.alumnos.length; j++) {
-                  const element2 = element.alumnos[j];
-                  if(element2.mail==event.data.mail)
-                  {
-                    const index: number = this.listaAux.indexOf(element2);
-                    if (index !== -1) {
-                        this.listaAux.splice(index, 1);
-                    }
-                    element.alumnos=this.listaAux;
-                    this.fireService.updateAlumno(this.listaAux,element['$key']);
-                    
-                    this.fireService.getAlumnos().subscribe(data=>
-                      {
-                        this.listadoAlumnos=data;
-                        
-                      });
-                      for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                        const element = this.listadoAlumnos[i];
-                        if(element.aula=="4° A")
-                        {
-                          for (let j = 0; j < element.alumnos.length; j++) {
-                            const element2 = element.alumnos[j];
-                            this.listaAux.push(element2);
-                          }
-                          
-                        }
-                      }
-                      this.source= new LocalDataSource(this.listaAux);
-                     
-                                      
-                    break;
-                  }
-                }
-                
-              }else  if(element.aula=="4° B")
-              {
-                for (let j = 0; j < element.alumnos.length; j++) {
-                  const element2 = element.alumnos[j];
-                  if(element2.mail==event.data.mail)
-                  {
-                    const index: number = this.listaAux.indexOf(element2);
-                    if (index !== -1) {
-                      this.listaAux=  this.listaAux.splice(index, 1);
-                    }
-                    element.alumnos=this.listaAux;
-                    this.fireService.updateAlumno(this.listaAux,element['$key']);
-                    event.confirm.resolve();
-                    
-                    this.fireService.getAlumnos().subscribe(data=>
-                      {
-                        this.listadoAlumnos=data;
-                        
-                      });
-                      for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                        const element = this.listadoAlumnos[i];
-                        if(element.aula=="4° B")
-                        {
-                          for (let j = 0; j < element.alumnos.length; j++) {
-                            const element2 = element.alumnos[j];
-                            this.listaAux.push(element2);
-                          }
-                          
-                        }
-                      }
-                      this.source2= new LocalDataSource(this.listaAux);
-                                      
-                    break;
-                  }
-                }
-            }
-           
-            }
-        
-            
-          } else {
-            event.confirm.reject();
-          }*/
-    };
-    AulaAdministrativoPage.prototype.onSaveConfirm = function (event) {
-        var _this = this;
-        if (window.confirm('¿Editar?')) {
-            console.log(event.newData);
-            if (event.newData.legajo != null && event.newData.nombre != null && event.newData.mail != null && event.newData.turno != null
-                && event.newData.legajo != undefined && event.newData.nombre != undefined && event.newData.mail != undefined && event.newData.turno != undefined &&
-                event.newData.legajo != "" && event.newData.nombre != "" && event.newData.mail != "" && event.newData.turno != "") {
-                if (this.seleccion == "a") {
-                    this.listaAux.push(event.newData);
-                    for (var indox = 0; indox < this.listadoAlumnos.length; indox++) {
-                        var element = this.listadoAlumnos[indox];
-                        if (element.aula == "4° A") {
-                            element.alumnos = this.listaAux;
-                            this.fireService.updateAlumno(this.listaAux, element['$key']);
-                            break;
-                        }
-                    }
-                    event.confirm.resolve();
-                    this.fireService.getAlumnos().subscribe(function (data) {
-                        _this.listadoAlumnos = data;
-                    });
-                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                        var element = this.listadoAlumnos[i];
-                        if (element.aula == "4° A") {
-                            for (var j = 0; j < element.alumnos.length; j++) {
-                                var element2 = element.alumnos[j];
-                                this.listaAux.push(element2);
-                            }
-                        }
-                    }
-                    this.source = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
-                }
-                else if (this.seleccion == "b") {
-                    this.listaAux.push(event.newData);
-                    for (var index = 0; index < this.listadoAlumnos.length; index++) {
-                        var element = this.listadoAlumnos[index];
-                        if (element.aula == "4° B") {
-                            element.alumnos = this.listaAux;
-                            this.fireService.updateAlumno(this.listaAux, element['$key']);
-                            break;
-                        }
-                    }
-                    event.confirm.resolve();
-                    this.fireService.getAlumnos().subscribe(function (data) {
-                        _this.listadoAlumnos = data;
-                    });
-                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                        var element = this.listadoAlumnos[i];
-                        if (element.aula == "4° B") {
-                            for (var j = 0; j < element.alumnos.length; j++) {
-                                var element2 = element.alumnos[j];
-                                this.listaAux.push(element2);
-                            }
-                        }
-                    }
-                    this.source2 = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
-                    event.confirm.reject();
-                }
-                event.confirm.reject();
-            }
-            else {
-                alert("turno inválido");
-                event.confirm.reject();
-            }
-        }
-        else {
-            event.confirm.reject();
-        }
-    };
-    AulaAdministrativoPage.prototype.changeList = function (event) {
-        var _this = this;
-        this.listaAux = [];
-        this.seleccion = event;
-        if (this.seleccion == 'a') {
-            this.fireService.getAlumnos().subscribe(function (data) {
-                _this.listadoAlumnos = data;
-            });
-            for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                var element = this.listadoAlumnos[i];
-                if (element.aula == "4° A") {
-                    for (var j = 0; j < element.alumnos.length; j++) {
-                        var element2 = element.alumnos[j];
-                        this.listaAux.push(element2);
-                    }
-                }
-            }
-            this.source = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
-        }
-        else if (this.seleccion == 'b') {
-            this.fireService.getAlumnos().subscribe(function (data) {
-                _this.listadoAlumnos = data;
-            });
-            for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                var element = this.listadoAlumnos[i];
-                if (element.aula == "4° B") {
-                    for (var j = 0; j < element.alumnos.length; j++) {
-                        var element2 = element.alumnos[j];
-                        this.listaAux.push(element2);
-                    }
-                }
-            }
-            this.source2 = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
-        }
-    };
-    AulaAdministrativoPage.prototype.onCreateConfirm = function (event) {
-        var _this = this;
-        if (window.confirm('¿Crear?')) {
-            if (event.newData.legajo != null && event.newData.nombre != null && event.newData.mail != null && event.newData.turno != null
-                && event.newData.legajo != undefined && event.newData.nombre != undefined && event.newData.mail != undefined && event.newData.turno != undefined &&
-                event.newData.legajo != "" && event.newData.nombre != "" && event.newData.mail != "" && event.newData.turno != "") {
-                if (event.newData.mail.includes('@')) {
-                    if (this.seleccion == "a") {
-                        this.listaAux.push(event.newData);
-                        this.listadoAlumnos.forEach(function (element) {
-                            if (element.aula == "4° A") {
-                                try {
-                                    //this.fireService.addAlumno(event.newData,indox)
-                                    element.alumnos = _this.listaAux;
-                                    _this.fireService.updateAlumno(_this.listaAux, element['$key']);
-                                }
-                                catch (error) {
-                                    console.log(error);
-                                }
-                            }
-                            //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-                        });
-                    }
-                    event.confirm.resolve();
-                    this.fireService.getAlumnos().subscribe(function (data) {
-                        _this.listadoAlumnos = data;
-                    });
-                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                        var element = this.listadoAlumnos[i];
-                        if (element.aula == "4° A") {
-                            for (var j = 0; j < element.alumnos.length; j++) {
-                                var element2 = element.alumnos[j];
-                                this.listaAux.push(element2);
-                            }
-                        }
-                    }
-                    this.source = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
-                }
-                else if (this.seleccion == "b") {
-                    this.listaAux.push(event.newData);
-                    this.listadoAlumnos.forEach(function (element) {
-                        if (element.aula == "4° B") {
-                            try {
-                                //this.fireService.addAlumno(event.newData,indox)
-                                element.alumnos = _this.listaAux;
-                                _this.fireService.updateAlumno(_this.listaAux, element['$key']);
-                            }
-                            catch (error) {
-                                console.log(error);
-                            }
-                        }
-                        //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-                    });
-                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                        var element = this.listadoAlumnos[i];
-                        if (element.aula == "4° B") {
-                            for (var j = 0; j < element.alumnos.length; j++) {
-                                var element2 = element.alumnos[j];
-                                this.listaAux.push(element2);
-                            }
-                        }
-                    }
-                    this.source2 = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
-                }
-                else {
-                    alert("turno inválido");
-                    event.confirm.reject();
-                }
-            }
-            else {
-                alert("mail inválido");
-                event.confirm.reject();
-            }
-        }
-        else {
-            alert("Completa los datos");
-            event.confirm.reject();
-        }
-        // this.fireService.addUser(event.newData);
-        event.confirm.reject();
     };
     return AulaAdministrativoPage;
 }());
@@ -1252,10 +854,9 @@ AulaAdministrativoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-aula-administrativo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-administrativo\aula-administrativo.html"*/'<!--\n\n  Generated template for the AulaAdministrativoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Aula Administrativo</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n\n\n <!-- <ion-list>\n\n        \n\n    <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Profesor</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.profesor" disabled="true"></ion-input> \n\n    </ion-item>\n\n              \n\n    <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.division" disabled="true"></ion-input>\n\n    </ion-item>\n\n          \n\n    <ion-item class="animated flipInX miItem" >\n\n      <ion-label class="miLabel" floating >Materia</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.materia" disabled="true"></ion-input>\n\n    </ion-item> \n\n\n\n    <ion-item class="animated flipInX miItem" >\n\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n      <ion-input type="number" [(ngModel)]="miAulaAdministrativo.cantidadAlumno" disabled="true"></ion-input>\n\n    </ion-item> \n\n\n\n  </ion-list>-->\n\n\n\n  \n\n  \n\n      <ion-item >\n\n        <ion-label>Curso</ion-label>\n\n        <ion-select [(ngModel)]="seleccion" (ionChange)="changeList($event)">\n\n          <ion-option value="a">4ºA</ion-option>\n\n          <ion-option value="b">4ºB</ion-option>\n\n        </ion-select>\n\n      </ion-item>\n\n      <ion-item >\n\n      <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="a"\'>\n\n        <ng2-smart-table style=\'width:100%;height:100%\' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"\n\n        (editConfirm)="onSaveConfirm($event)"\n\n        (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n\n      </ion-item>\n\n      <ion-item >\n\n        <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="b"\'>\n\n        <ng2-smart-table style=\'width:100%;height:100%\'  [settings]="settings" [source]="source2" (deleteConfirm)="onDeleteConfirm($event)"\n\n        (editConfirm)="onSaveConfirm($event)"\n\n        (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n\n   </ion-item> \n\n\n\n\n\n   \n\n  \n\n    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n\n    </button>\n\n  \n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-administrativo\aula-administrativo.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
 ], AulaAdministrativoPage);
 
-var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=aula-administrativo.js.map
 
 /***/ }),
@@ -3086,7 +2687,7 @@ var LoginPage = (function () {
 }());
 LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-login',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Inicio de Sesión</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n \n\n<div style="width:100%;height:100%">\n\n  <br>\n\n  \n\n<button ion-button icon-right color="danger" style="font-size:130%;margin:auto;text-align:center;display:block;width:40%;height:10%"  round (click)="loginGoogle()">\n\n<div style="width:100%"><span style="width:80%"> Iniciar Sesión con Google </span> <ion-icon style="width:20%;font-size:350%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon></div>\n\n</button>\n\n\n\n    <br><br><br>\n\n    <div *ngIf="!google">\n\n   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n      <ion-label  style="color:white" floating>Email</ion-label>\n\n<ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>\n\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n    <ion-label style="color:white" floating>Contraseña</ion-label>      \n\n<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>\n\n <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n  <ion-label style="color:white">Elige tu usuario</ion-label>\n\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">\n\n   <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>\n\n   <ion-option>nicostellisano@hotmail.com</ion-option>\n\n  </ion-select>\n\n</ion-item>-->\n\n<br>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>\n\n</div>\n\n</div>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>\n\n\n\n<br><br><br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\login\login.html"*/,
+        selector: 'page-login',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Inicio de Sesión</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n \n\n<div style="width:100%;height:100%">\n\n  <br>\n\n  \n\n<button ion-button icon-right color="danger" style="font-size:130%;margin:auto;text-align:center;display:block;width:40%;height:10%"  round (click)="loginGoogle()">\n\n<div style="width:100%"><ion-icon style="width:20%;font-size:350%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon></div>\n\n</button>\n\n\n\n    <br><br><br>\n\n    <div *ngIf="!google">\n\n   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n      <ion-label  style="color:white" floating>Email</ion-label>\n\n<ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>\n\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n    <ion-label style="color:white" floating>Contraseña</ion-label>      \n\n<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>\n\n <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n  <ion-label style="color:white">Elige tu usuario</ion-label>\n\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">\n\n   <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>\n\n   <ion-option>nicostellisano@hotmail.com</ion-option>\n\n  </ion-select>\n\n</ion-item>-->\n\n<br>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>\n\n</div>\n\n</div>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>\n\n\n\n<br><br><br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\login\login.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_google_plus__["a" /* GooglePlus */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_screen_orientation__["a" /* ScreenOrientation */]])
@@ -3312,7 +2913,7 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(345);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(344);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_alumnos_alumnos__ = __webpack_require__(186);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3330,7 +2931,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var MyApp = (function () {
     //rootPage:any = CagarArchivoPage; //test
     function MyApp(platform, statusBar, splashScreen) {
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_login_login__["a" /* LoginPage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_alumnos_alumnos__["a" /* AlumnosPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -3343,10 +2944,9 @@ var MyApp = (function () {
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\app\app.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);
 
-var _a, _b, _c;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -3491,8 +3091,8 @@ var FireBaseServiceProvider = (function () {
     FireBaseServiceProvider.prototype.addUser = function (item) {
         return this.afd.list('/personas').push(item);
     };
-    FireBaseServiceProvider.prototype.updateAlumno = function (data, key) {
-        return this.afd.object('/alumno-lista/' + key + '/alumnos').update(data);
+    FireBaseServiceProvider.prototype.updateAlumno = function (data) {
+        return this.afd.object('/alumno-lista').update(data);
     };
     FireBaseServiceProvider.prototype.updateProfesor = function (data) {
         return this.afd.list('/personas').update('profesores', data);
@@ -3501,7 +3101,7 @@ var FireBaseServiceProvider = (function () {
         return this.afd.list('/personas').update('administrativos', data);
     };
     FireBaseServiceProvider.prototype.removeAlumno = function (i, key) {
-        return this.afd.list('/alumno-lista/' + i + '/alumnos/' + key).remove();
+        return this.afd.list('/alumno-lista/' + i + '/alumnos/' + key).remove(key);
     };
     FireBaseServiceProvider.prototype.removeProfesor = function (key) {
         return this.afd.list('/personas/profesores').remove(key);
@@ -3522,10 +3122,9 @@ var FireBaseServiceProvider = (function () {
 }());
 FireBaseServiceProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_0_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], FireBaseServiceProvider);
 
-var _a, _b;
 //# sourceMappingURL=fire-base-service.js.map
 
 /***/ }),

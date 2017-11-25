@@ -47,6 +47,7 @@ mensaje;
       let alert = this.alertCtrl.create({
         title: "Exitosamente!",
         subTitle: "Se envío el mensaje de importancia",
+        cssClass:"miClaseAlert",
       buttons: ['OK']
     });
      alert.present();

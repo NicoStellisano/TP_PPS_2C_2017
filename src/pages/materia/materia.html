@@ -23,7 +23,7 @@
   </button>
   
   <ion-list *ngIf="codigoScaneado!=null" >
-    
+  <!-- <div *ngIf="perfil==''" > -->
 <ion-item class="animated flipInX miItem">
 <ion-label class="miLabel" floating>División</ion-label>
 <ion-input type="text" [(ngModel)]="aulaMateria.curso" disabled="true"></ion-input> 
@@ -49,6 +49,9 @@
         <ion-label class="miLabel" floating>Final</ion-label>
         <ion-input type="text" [(ngModel)]="aulaMateria.final" disabled="true"></ion-input>
         </ion-item>
+
+      <!--</div>-->
+
 
 </ion-list>
 
