@@ -114,8 +114,8 @@ loading.present();
       .then((res) => {
         const firecreds = firebase.auth.GoogleAuthProvider.credential(res.idToken);
         firebase.auth().signInWithCredential(firecreds).then((res) => {
-          for (var i = 0; i < this.listadoAdmins.length; i++) {
-            var element = this.listadoAdmins[i];
+          for (let i = 0; i < this.listadoAdmins.length; i++) {
+            let element = this.listadoAdmins[i];
             if(element.Email==firebase.auth().currentUser.email)
             {                
                element.password=null;
@@ -133,8 +133,8 @@ loading.present();
             }
             if(!flag)
             {
-              for (var i = 0; i < this.listadoAdministrativos.length; i++) {
-                var element = this.listadoAdministrativos[i];
+              for (let i = 0; i < this.listadoAdministrativos.length; i++) {
+                let element = this.listadoAdministrativos[i];
                 if(element.Email==firebase.auth().currentUser.email)
                 {            
                   element.password=null;  
@@ -154,11 +154,15 @@ loading.present();
             {
 
               for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                const element = this.listadoAlumnos[i];
+                if(flag)
+                {
+                  break;
+                }
+                let element = this.listadoAlumnos[i];
                 if(element.aula=="4° A")
                 {
                   for (let j = 0; j < element.alumnos.length; j++) {
-                    const element2 = element.alumnos[j];
+                    let element2 = element.alumnos[j];
                     if(element2.mail==firebase.auth().currentUser.email)
                     {
                       localStorage.setItem("nombre",element2.nombre);
@@ -179,7 +183,7 @@ loading.present();
                 }else if(element.aula=="4° B")
                 {
                   for (let j = 0; j < element.alumnos.length; j++) {
-                    const element2 = element.alumnos[j];
+                    let element2 = element.alumnos[j];
                     if(element2.mail==firebase.auth().currentUser.email)
                     {
                       localStorage.setItem("nombre",element2.nombre);
@@ -203,17 +207,17 @@ loading.present();
             }
             if(!flag)
             {
-              for (var k = 0; k < this.listadoProfesores.length; k++) {
-                var elementk = this.listadoProfesores[k];
-                if(element.Email==firebase.auth().currentUser.email)
+              for (let k = 0; k < this.listadoProfesores.length; k++) {
+                let elementk = this.listadoProfesores[k];
+                if(elementk.Email==firebase.auth().currentUser.email)
                 {      
                   elementk.password=null;               
-                  localStorage.setItem("Nombre",element.Nombre);
-                  localStorage.setItem("Email",element.Email);
-                  localStorage.setItem("Apellido",element.Apellido);                
-                  localStorage.setItem("DNI",element.DNI);
-                  localStorage.setItem("password",element.password);
-                  localStorage.setItem("Perfil",element.Perfil);   
+                  localStorage.setItem("Nombre",elementk.Nombre);
+                  localStorage.setItem("Email",elementk.Email);
+                  localStorage.setItem("Apellido",elementk.Apellido);                
+                  localStorage.setItem("DNI",elementk.DNI);
+                  localStorage.setItem("password",elementk.password);
+                  localStorage.setItem("Perfil",elementk.Perfil);   
                     this.navCtrl.setRoot(InicioProfesorPage);
                     flag=true;
                     break;
@@ -234,7 +238,7 @@ loading.present();
             
           
 
-if(element.Email!=firebase.auth().currentUser.email)
+if(!flag)
 {
   this.googlePlus.disconnect();          
   const toast = this.toast.create({
@@ -304,8 +308,8 @@ if(element.Email!=firebase.auth().currentUser.email)
     localStorage.clear();
     
     let flag:boolean;
-    for (var i = 0; i < this.listadoAdmins.length; i++) {
-      var element = this.listadoAdmins[i];
+    for (let i = 0; i < this.listadoAdmins.length; i++) {
+      let element = this.listadoAdmins[i];
       if(element.Email==this.email && element.password==this.password)
       {                
           this.navCtrl.setRoot(InicioAdminPage);
@@ -325,8 +329,8 @@ if(element.Email!=firebase.auth().currentUser.email)
       }
       if(!flag)
       {
-        for (var i = 0; i < this.listadoAdministrativos.length; i++) {
-          var element = this.listadoAdministrativos[i];
+        for (let i = 0; i < this.listadoAdministrativos.length; i++) {
+          let element = this.listadoAdministrativos[i];
           if(element.Email==this.email && element.password==this.password)
           {                
             localStorage.setItem("Nombre",element.Nombre);
@@ -350,11 +354,15 @@ if(element.Email!=firebase.auth().currentUser.email)
 
        
         for (let i = 0; i < this.listadoAlumnos.length; i++) {
-          const element = this.listadoAlumnos[i];
+          if(flag)
+          {
+            break;
+          }
+          let element = this.listadoAlumnos[i];
           if(element.aula=="4° A")
           {
             for (let j = 0; j < element.alumnos.length; j++) {
-              const element2 = element.alumnos[j];
+              let element2 = element.alumnos[j];
               if(element2.mail==this.email && element2.legajo == this.password)
               {
                 localStorage.setItem("nombre",element2.nombre);
@@ -365,6 +373,7 @@ if(element.Email!=firebase.auth().currentUser.email)
                 this.navCtrl.setRoot(MateriasPage);
                 flag=true;
                 break;
+               
               }else if(element2.mail==this.email && element2.legajo==this.password)
               {
                 alert("Inicia Sesión con Google porfavor");
@@ -375,7 +384,7 @@ if(element.Email!=firebase.auth().currentUser.email)
           }else if(element.aula=="4° B")
           {
             for (let j = 0; j < element.alumnos.length; j++) {
-              const element2 = element.alumnos[j];
+              let element2 = element.alumnos[j];
               if(element2.mail==this.email && element2.legajo == this.password)
               {
                 localStorage.setItem("nombre",element2.nombre);
@@ -413,8 +422,8 @@ if(element.Email!=firebase.auth().currentUser.email)
       
       if(!flag)
       {
-        for (var h = 0; h < this.listadoProfesores.length; h++) {
-          var elementh = this.listadoProfesores[h];
+        for (let h = 0; h < this.listadoProfesores.length; h++) {
+          let elementh = this.listadoProfesores[h];
           if(elementh.Email==this.email && elementh.password==this.password)
           {                
             localStorage.setItem("Nombre",elementh.Nombre);

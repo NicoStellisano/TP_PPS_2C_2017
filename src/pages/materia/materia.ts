@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
-
+import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
+import { DescargarArchivoPage } from '../descargar-archivo/descargar-archivo';
 /**
  * Generated class for the MateriaPage page.
  *
@@ -22,12 +23,22 @@ export class MateriaPage {
   public codigoScaneado = null;
   public datos;
   aulaMateria:any= {};
+aulaParaQrProfesor;
+perfil='';
+aula:string;
+
+listaAlumnos:AlumnoItem[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public barcodeScanner: BarcodeScanner,public db: AngularFireDatabase, public alertCtrl: AlertController) {
     this.materia = this.navParams.get('materiaa');
-    this.curso = this.navParams.get('aulaaa');
+    //this.curso = this.navParams.get('aulaaa');
+this.curso = localStorage.getItem("curso");
+this.aulaParaQrProfesor = this.navParams.get('aulaa');
+this.perfil=localStorage.getItem("Perfil");
 
-    console.log(this.materia);
+
+  //  console.log("aulaaaaa: "+this.aulaParaQrProfesor);
+    console.log("perfik: "+this.perfil);
     //CARGA DATOS EN FIREBASE
     /*
     this.db.list('/codigoQrMaterias').push({
@@ -52,6 +63,14 @@ export class MateriaPage {
     this.datos=data;
     });
 
+/*
+    this.lista(this.aula).subscribe(dato => {
+      //console.log(dato.values().next().value.alumnos);
+      //lista de alumnos en el aula
+      this.listaAlumnos = dato.values().next().value.alumnos;
+      console.log(this.listaAlumnos);
+    });
+*/
     
 
     
@@ -62,10 +81,20 @@ export class MateriaPage {
   }
 
   scanCode() {
+
     this.barcodeScanner.scan().then(barcodeData => {
       this.codigoScaneado=null;
       this.codigoScaneado = barcodeData.text;
+
+      if(this.perfil=="Profesor")
+        {  
+         
+      this.navCtrl.push(DescargarArchivoPage,{aulaa:this.codigoScaneado});
+       
+        }
     
+//if(this.perfil=='')
+  //{
       for(let i=0;i<this.datos.length;i++)
         {
         
@@ -100,13 +129,28 @@ export class MateriaPage {
 
         
         }
-  
+
+        
+    //  }//aca cerrar if de perfil alumnoi
+
+
+
 
     }, (err) => {
       console.log('Error: ', err);
   });
 
 
+}
+
+lista(aula){
+  
+  return this.db.list('/alumno-lista/' ,{
+          query: {
+            orderByChild :"aula",
+            equalTo:aula
+          }
+         });
 }
 
 }

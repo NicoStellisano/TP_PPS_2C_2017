@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
+import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
+import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 
 import { NotificacionPage } from '../notificacion/notificacion';
+import { MateriaPage } from '../materia/materia';
 
 /**
  * Generated class for the AulaProfesorPage page.
@@ -18,12 +21,51 @@ import { NotificacionPage } from '../notificacion/notificacion';
 })
 export class AulaProfesorPage {
 
-  
+  listaAlumnos:AlumnoItem[] = [];
   aula:string;
+  datosMaterias;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  listaAulass: any[] = [
+    
+      {
+        "aula": "4° A"
+      },
+      {
+        "aula": "4° B"
+      }
+     
+    ];
+
+    listaMaterias: any[] = [
+      
+        {
+          "materia": "Programacion 4"
+        },
+        {
+          "materia": "Practica profesional"
+        }
+       
+      ];
+  
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase) {
     this.aula = this.navParams.get('aulaa');
     //alert(this.aula);
+
+ 
+
+
+    this.db.list('/materias').
+    subscribe( data => {
+    this.datosMaterias=data;
+    console.log(this.datosMaterias);
+
+
+    });
+
+    
+
+
   }
 
   ionViewDidLoad() {
@@ -46,7 +88,13 @@ export class AulaProfesorPage {
   }
 
   mostrarQr(){
-    alert("voy a qr");
+    //alert("voy a qr");
+    this.navCtrl.push(MateriaPage,{aulaa:this.aula});
   }
+
+
+
+
+
 
 }

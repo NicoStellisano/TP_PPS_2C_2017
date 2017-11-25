@@ -88,27 +88,7 @@ export class AlumnosPage {
       
      
       }
-      
-     /* Accion: {
-        title: 'Acción',
-        filter: false,
-        type:'custom',
-        add: false,
-        edit: false,  
-        addable: false,
-        editable:false,
-        isEditable:false,
-        isAddable:false,
-        renderComponent: ButtonRenderComponent,
-        onComponentInitFunction(instance) {
-          instance.save.subscribe(row => {
-            alert(`${row.Legajo} `)
-          });
-        
-        
-        
-      
-    }}*/
+    
   
 };
   source:LocalDataSource;
@@ -119,18 +99,18 @@ export class AlumnosPage {
     public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ) {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
 
-     
+      this.fireService.getAlumnos().subscribe(data=>
+        {
+          this.listadoAlumnos=data;
+          
+        }); 
   }
   ionViewDidEnter()
   {
     
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
 
-    this.fireService.getAlumnos().subscribe(data=>
-      {
-        this.listadoAlumnos=data;
-        
-      }); 
+    
 
       for (let i = 0; i < this.listadoAlumnos.length; i++) {
         const element = this.listadoAlumnos[i];
