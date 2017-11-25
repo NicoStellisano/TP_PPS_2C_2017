@@ -147,6 +147,7 @@ export class CagarArchivoPage {
     let alert = this.alertCtrl.create({
       title: titulo,
       subTitle: subtitulo,
+      cssClass:"miClaseAlert",
       buttons: ['Aceptar']
     });
     alert.present();
