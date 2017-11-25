@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { IonicPage, NavController, NavParams,LoadingController, AlertController } from 'ionic-angular';
-=======
-import { IonicPage, NavController, NavParams,LoadingController,Platform } from 'ionic-angular';
->>>>>>> d68d65fc0cc5ab3d97f55d528ed5232233c616d8
+
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 import { ButtonRenderComponent } from '../../components/button-renderer/button-renderer';
 import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
@@ -46,6 +43,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 `,
 })
 export class AlumnosPage {
+  /*
   listadoAlumnos:any[] =[];
   listaAux:any[]=[];
   settings = {
@@ -100,12 +98,10 @@ export class AlumnosPage {
   source2:LocalDataSource;
   flag:boolean;
   seleccion:string;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
-<<<<<<< HEAD
-    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation, public alertCtrl:AlertController ) {
-=======
-    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ,public platform:Platform,public afd:AngularFireDatabase) {
->>>>>>> d68d65fc0cc5ab3d97f55d528ed5232233c616d8
+    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation, public alertCtrl:AlertController,public afd:AngularFireDatabase ) {
+
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
       
       
@@ -263,7 +259,7 @@ export class AlumnosPage {
         
       } else {
         event.confirm.reject();
-      }*/
+      }
     }
     
   
@@ -367,7 +363,6 @@ export class AlumnosPage {
             event.confirm.reject();
             
           }
-<<<<<<< HEAD
         
          event.confirm.reject();
         
@@ -383,13 +378,11 @@ export class AlumnosPage {
           buttons: ['OK']
         });
          alert.present();
-=======
           
            
            
              // this.fireService.addUser(event.newData);
            
->>>>>>> d68d65fc0cc5ab3d97f55d528ed5232233c616d8
          
          
            event.confirm.reject();
@@ -592,5 +585,6 @@ export class AlumnosPage {
     }
 
 }
+*/
 }
 

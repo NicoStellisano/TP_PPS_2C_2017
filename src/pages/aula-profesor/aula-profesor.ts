@@ -85,11 +85,8 @@ export class AulaProfesorPage {
 
   cargarLista(){
     this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula});
-<<<<<<< HEAD
   //  alert("voy a cargar lista");
-=======
     //alert("voy a cargar lista");
->>>>>>> d68d65fc0cc5ab3d97f55d528ed5232233c616d8
   }
 
   mostrarQr(){
