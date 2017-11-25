@@ -44,6 +44,9 @@ export class LoginPage {
   listadoAdministrativos:any[] =[];
   google:boolean;
   listaAux: any[]=[];
+
+  oct = {email:'octavio.villegas@gmail.com',password:'20145369'};
+  dal = {email:'dalesio@utn',password:'103923'};
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl:LoadingController,public fireService:FireBaseServiceProvider
     ,public toast:ToastController,public googlePlus:GooglePlus ,private screenOrientation: ScreenOrientation, public alertCtrl:AlertController ) {
@@ -77,6 +80,16 @@ export class LoginPage {
       setTimeout(() => {
         loading.dismiss();
       }, 6000);
+  }
+
+  octa(){
+    this.email = this.oct.email;
+    this.password = this.oct.password;
+  }
+
+  dale(){
+    this.email = this.dal.email;
+    this.password = this.dal.password;
   }
 
   ionViewDidLoad() {

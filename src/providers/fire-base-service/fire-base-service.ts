@@ -129,9 +129,9 @@ export class FireBaseServiceProvider {
         return this.afd.list('/personas/administrativos').push(item);
         
       }
-      addAlumno(item)
+      addAlumno(item,i)
       {
-        return this.afd.list('/personas/alumnos').push(item);
+        return this.afd.list('/alumno-lista/'+i+'/alumnos').push(item);
         
       }
       addUser(item)
@@ -139,9 +139,9 @@ export class FireBaseServiceProvider {
         return this.afd.list('/personas').push(item);
         
       }
-      updateAlumno(data)
+      updateAlumno(data,key)
       {
-        return this.afd.list('/personas').update('alumnos',data);
+        return this.afd.object('/alumno-lista/'+key+'/alumnos').update(data);
       }
       updateProfesor(data)
       {
@@ -152,9 +152,9 @@ export class FireBaseServiceProvider {
         return this.afd.list('/personas').update('administrativos',data);
       }
 
-      removeAlumno(key)
+      removeAlumno(i,key)
       {
-        return this.afd.list('/personas/alumnos').remove(key);
+        return this.afd.list('/alumno-lista/'+i+'/alumnos/'+key).remove();
       }
       removeProfesor(key)
       {
