@@ -2,8 +2,26 @@
 TP Final de la practica profesional supervisada
 
 Stellisano Nicolás 4ºA<br/>
+Login con red social<br/>
+ABM –Alumno<br/>
+Diseño de estilos<br/>
+ABM Profesor y Administrativo<br/>
+Navegacion de Administrativo<br/>
+Navegacion sobre aplicacion<br/>
+
 Freire Ezequiel 4ºB<br/>
+*Carga de archivos Excel/csv <br/>
+Diseño de estilos<br/>
+Descarga de archivos<br/>
+Navegacion sobre aplicacion<br/>
+
 Suppan Mauro 4ºB<br/>
+*Aviso de Importancia <br/>
+Administración de su propio perfil<br/>
+Diseño de estilos<br/>
+QR para Alumnos<br/>
+QR para Profesores<br/>
+Navegacion sobre aplicacion<br/>
 
 
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
