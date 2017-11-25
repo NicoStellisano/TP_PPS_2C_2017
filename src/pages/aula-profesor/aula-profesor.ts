@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
-<<<<<<< HEAD
 
-=======
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
 import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
->>>>>>> b83442820564b4ccf69aabe28ee91627f506a525
 
 import { NotificacionPage } from '../notificacion/notificacion';
 import { MateriaPage } from '../materia/materia';
@@ -88,7 +85,7 @@ export class AulaProfesorPage {
 
   cargarLista(){
     this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula});
-    alert("voy a cargar lista");
+    //alert("voy a cargar lista");
   }
 
   mostrarQr(){
