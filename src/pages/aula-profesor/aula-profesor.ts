@@ -74,7 +74,7 @@ export class AulaProfesorPage {
   }
 
   tomaLista(){
-    alert("voy a tomar lista");
+   // alert("voy a tomar lista");
   }
 
   crearNotificacion(){
@@ -85,6 +85,7 @@ export class AulaProfesorPage {
 
   cargarLista(){
     this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula});
+  //  alert("voy a cargar lista");
     //alert("voy a cargar lista");
   }
 

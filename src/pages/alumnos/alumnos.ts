@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController,Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController, AlertController } from 'ionic-angular';
+
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 import { ButtonRenderComponent } from '../../components/button-renderer/button-renderer';
 import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
@@ -42,6 +43,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 `,
 })
 export class AlumnosPage {
+  /*
   listadoAlumnos:any[] =[];
   listaAux:any[]=[];
   settings = {
@@ -96,8 +98,10 @@ export class AlumnosPage {
   source2:LocalDataSource;
   flag:boolean;
   seleccion:string;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
-    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ,public platform:Platform,public afd:AngularFireDatabase) {
+    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation, public alertCtrl:AlertController,public afd:AngularFireDatabase ) {
+
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
       
       
@@ -255,7 +259,7 @@ export class AlumnosPage {
         
       } else {
         event.confirm.reject();
-      }*/
+      }
     }
     
   
@@ -359,6 +363,21 @@ export class AlumnosPage {
             event.confirm.reject();
             
           }
+        
+         event.confirm.reject();
+        
+          }
+        
+         event.confirm.reject();
+        }else
+        {
+          let alert = this.alertCtrl.create({
+            title: "Error!",
+            subTitle: "Perfil inválido",
+            cssClass:"miClaseAlert",
+          buttons: ['OK']
+        });
+         alert.present();
           
            
            
@@ -488,6 +507,16 @@ export class AlumnosPage {
             
             this.fireService.getAlumnos().subscribe(data=>
              {
+<<<<<<< HEAD
+              let alert = this.alertCtrl.create({
+                title: "Error!",
+                subTitle: "Perfil inválido",
+                cssClass:"miClaseAlert",
+              buttons: ['OK']
+            });
+             alert.present();
+             
+=======
                this.listadoAlumnos=data;
                
              });      
@@ -509,6 +538,7 @@ export class AlumnosPage {
                 
              }else{
               alert("turno inválido");
+>>>>>>> d68d65fc0cc5ab3d97f55d528ed5232233c616d8
               
               event.confirm.reject();
              }
@@ -516,12 +546,28 @@ export class AlumnosPage {
              
           
          }else{
+<<<<<<< HEAD
+          let alert = this.alertCtrl.create({
+            title: "Error!",
+            subTitle: "Email inválido",
+            cssClass:"miClaseAlert",
+          buttons: ['OK']
+        });
+         alert.present();
+=======
            alert("mail inválido");
+>>>>>>> d68d65fc0cc5ab3d97f55d528ed5232233c616d8
            event.confirm.reject();
            
          }
        }else{
-         alert("Completa los datos");
+        let alert = this.alertCtrl.create({
+          title: "Error!",
+          subTitle: "Complete los datos",
+          cssClass:"miClaseAlert",
+        buttons: ['OK']
+      });
+       alert.present();
          event.confirm.reject();
          
        }
@@ -539,5 +585,6 @@ export class AlumnosPage {
     }
 
 }
+*/
 }
 

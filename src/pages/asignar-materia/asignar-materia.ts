@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , AlertController} from 'ionic-angular';
 import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
 import { AngularFireAuth } from 'angularfire2/auth';
 // for databas
@@ -25,7 +25,7 @@ profesor:string;
 curso:string;
 materia:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public viewCtrl: ViewController,public alertCtrl:AlertController) {
     this.profesor=this.navParams.get("profesor");
   }
 
@@ -37,10 +37,22 @@ materia:string;
   {
     try {
       this.fireService.addMateria({profesor:this.profesor,curso:this.curso,nombre:this.materia});
-      alert("Materia Asignada!");
+      let alert = this.alertCtrl.create({
+        title: "Exito!",
+        subTitle: "Materia asignada",
+        cssClass:"miClaseAlert",
+      buttons: ['OK']
+    });
+     alert.present();
       this.viewCtrl.dismiss();
     } catch (error) {
-      alert("No se pudo asignar la materia");
+      let alert = this.alertCtrl.create({
+        title: "Error!",
+        subTitle: "No se pudo cargar la materia",
+        cssClass:"miClaseAlert",
+      buttons: ['OK']
+    });
+     alert.present();
       console.log(error);
     }
       

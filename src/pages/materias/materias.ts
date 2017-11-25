@@ -18,6 +18,7 @@ import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database'
 export class MateriasPage {
 
   public aula:string;
+  curso;
   public datos;
   public datosfaltas;
 
@@ -26,8 +27,9 @@ export class MateriasPage {
 public variableGlobal: any;
     constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController, public db: AngularFireDatabase) {
       this.aula = this.navParams.get('aulaa');
+this.curso=localStorage.getItem("curso");
 
-
+console.log(this.curso);
       
 
 
@@ -82,17 +84,18 @@ public variableGlobal: any;
       this.datos=data;
       //console.log(this.datos);
 
-      if(this.aula== "4° A")
+      if(this.curso== "4° A")
         {
 
       for(let i=0;i<this.datos.length;i++){
 
-        if(this.aula==this.datos[i].curso)
+        if(this.curso==this.datos[i].curso)
           {
 
         let alert = this.alertCtrl.create({
           title: this.datos[i].titulo,
-          subTitle: 'Alumnos de '+this.aula+' :'+this.datos[i].mensaje,
+          subTitle: 'Alumnos de '+this.curso+' :'+this.datos[i].mensaje,
+          cssClass:"miClaseAlert",
         buttons: ['OK']
       });
        alert.present();
@@ -107,17 +110,18 @@ public variableGlobal: any;
   
 
 
-      if(this.aula== "4° B")
+      if(this.curso== "4° B")
         {
 
       for(let i=0;i<this.datos.length;i++){
 
-        if(this.aula==this.datos[i].curso)
+        if(this.curso==this.datos[i].curso)
           {
 
         let alert = this.alertCtrl.create({
           title: this.datos[i].titulo,
-          subTitle: 'Alumnos de '+this.aula+' :'+this.datos[i].mensaje,
+          subTitle: 'Alumnos de '+this.curso+' :'+this.datos[i].mensaje,
+          cssClass:"miClaseAlert",
         buttons: ['OK']
       });
        alert.present();
