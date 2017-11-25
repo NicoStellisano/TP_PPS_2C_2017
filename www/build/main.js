@@ -482,6 +482,10 @@ AsignarMateriaPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__ = __webpack_require__(101);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -495,6 +499,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 //import { AulaAdministrativoItem } from '../../models/aula-administrativo-item/aula-administrativo.interface';
 
+
+
+// for databas
+
+
 /**
  * Generated class for the AulaAdministrativoPage page.
  *
@@ -503,35 +512,397 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var AulaAdministrativoPage = (function () {
     //miAulaAdministrativo = {} as AulaAdministrativoItem;
-    function AulaAdministrativoPage(navCtrl, navParams) {
+    function AulaAdministrativoPage(navCtrl, navParams, fireService, loadingCtrl, screenOrientation, platform, afd) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.fireService = fireService;
+        this.loadingCtrl = loadingCtrl;
+        this.screenOrientation = screenOrientation;
+        this.platform = platform;
+        this.afd = afd;
+        this.listadoAlumnos = [];
+        this.listaAux = [];
+        this.settings = {
+            actions: {
+                columnTitle: '',
+                add: false,
+                edit: false,
+                delete: false
+            },
+            noDataMessage: "No se encuentran registros",
+            delete: {
+                confirmDelete: true,
+                deleteButtonContent: 'Borrar',
+            },
+            add: {
+                confirmCreate: true,
+                addButtonContent: "Agregar",
+                createButtonContent: 'Crear',
+                cancelButtonContent: 'Cancelar'
+            },
+            edit: {
+                confirmSave: true,
+                editButtonContent: 'Editar',
+                saveButtonContent: 'Guardar',
+                cancelButtonContent: 'Cancelar'
+            },
+            columns: {
+                legajo: {
+                    title: 'legajo',
+                    filter: false,
+                    editor: {
+                        type: 'number',
+                    },
+                },
+                mail: {
+                    title: 'mail',
+                    filter: false
+                },
+                nombre: {
+                    title: 'nombre',
+                    filter: false
+                },
+                turno: {
+                    title: 'Turno',
+                    filter: false
+                },
+            }
+        };
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
         /*this.miAulaAdministrativo = {
           profesor:"Juan Peralta",
           division:"2°B",
           materia:"Laboratorio IV",
+    
+    
           cantidadAlumno:25
         };*/
+        this.afd.list("/alumno-lista").subscribe(function (data) {
+            _this.listadoAlumnos = data;
+            if (!_this.flag) {
+                _this.flag = true;
+                _this.activar();
+            }
+        });
         this.aula = this.navParams.get('aulaa');
     }
+    AulaAdministrativoPage.prototype.activar = function () {
+        this.seleccion = "a";
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+        for (var i = 0; i < this.listadoAlumnos.length; i++) {
+            var element = this.listadoAlumnos[i];
+            if (element.aula == "4° A") {
+                for (var j = 0; j < element.alumnos.length; j++) {
+                    var element2 = element.alumnos[j];
+                    this.listaAux.push(element2);
+                }
+            }
+        }
+        this.source = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+        this.seleccion = "a";
+        console.log(this.listaAux);
+        var loading = this.loadingCtrl.create({
+            spinner: 'hide',
+            content: "\n      <img src=\"assets/spinner.gif\">",
+            duration: 50000000,
+            showBackdrop: false
+        });
+        loading.present();
+        setTimeout(function () {
+            loading.dismiss();
+        }, 3000);
+    };
     AulaAdministrativoPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad AulaAdministrativoPage');
     };
-    AulaAdministrativoPage.prototype.mostrarQR = function () {
+    AulaAdministrativoPage.prototype.ionViewWillLeave = function () {
+        this.screenOrientation.unlock();
     };
     AulaAdministrativoPage.prototype.cargarLista = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__["a" /* CagarArchivoPage */], { aulaa: this.aula });
         alert("voy a cargar lista");
     };
+    AulaAdministrativoPage.prototype.onDeleteConfirm = function (event) {
+        /*  if (window.confirm('¿Eliminar?')) {
+          
+            for (let i = 0; i < this.listadoAlumnos.length; i++) {
+              const element = this.listadoAlumnos[i];
+              if(element.aula=="4° A")
+              {
+                for (let j = 0; j < element.alumnos.length; j++) {
+                  const element2 = element.alumnos[j];
+                  if(element2.mail==event.data.mail)
+                  {
+                    const index: number = this.listaAux.indexOf(element2);
+                    if (index !== -1) {
+                        this.listaAux.splice(index, 1);
+                    }
+                    element.alumnos=this.listaAux;
+                    this.fireService.updateAlumno(this.listaAux,element['$key']);
+                    
+                    this.fireService.getAlumnos().subscribe(data=>
+                      {
+                        this.listadoAlumnos=data;
+                        
+                      });
+                      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                        const element = this.listadoAlumnos[i];
+                        if(element.aula=="4° A")
+                        {
+                          for (let j = 0; j < element.alumnos.length; j++) {
+                            const element2 = element.alumnos[j];
+                            this.listaAux.push(element2);
+                          }
+                          
+                        }
+                      }
+                      this.source= new LocalDataSource(this.listaAux);
+                     
+                                      
+                    break;
+                  }
+                }
+                
+              }else  if(element.aula=="4° B")
+              {
+                for (let j = 0; j < element.alumnos.length; j++) {
+                  const element2 = element.alumnos[j];
+                  if(element2.mail==event.data.mail)
+                  {
+                    const index: number = this.listaAux.indexOf(element2);
+                    if (index !== -1) {
+                      this.listaAux=  this.listaAux.splice(index, 1);
+                    }
+                    element.alumnos=this.listaAux;
+                    this.fireService.updateAlumno(this.listaAux,element['$key']);
+                    event.confirm.resolve();
+                    
+                    this.fireService.getAlumnos().subscribe(data=>
+                      {
+                        this.listadoAlumnos=data;
+                        
+                      });
+                      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                        const element = this.listadoAlumnos[i];
+                        if(element.aula=="4° B")
+                        {
+                          for (let j = 0; j < element.alumnos.length; j++) {
+                            const element2 = element.alumnos[j];
+                            this.listaAux.push(element2);
+                          }
+                          
+                        }
+                      }
+                      this.source2= new LocalDataSource(this.listaAux);
+                                      
+                    break;
+                  }
+                }
+            }
+           
+            }
+        
+            
+          } else {
+            event.confirm.reject();
+          }*/
+    };
+    AulaAdministrativoPage.prototype.onSaveConfirm = function (event) {
+        var _this = this;
+        if (window.confirm('¿Editar?')) {
+            console.log(event.newData);
+            if (event.newData.legajo != null && event.newData.nombre != null && event.newData.mail != null && event.newData.turno != null
+                && event.newData.legajo != undefined && event.newData.nombre != undefined && event.newData.mail != undefined && event.newData.turno != undefined &&
+                event.newData.legajo != "" && event.newData.nombre != "" && event.newData.mail != "" && event.newData.turno != "") {
+                if (this.seleccion == "a") {
+                    this.listaAux.push(event.newData);
+                    for (var indox = 0; indox < this.listadoAlumnos.length; indox++) {
+                        var element = this.listadoAlumnos[indox];
+                        if (element.aula == "4° A") {
+                            element.alumnos = this.listaAux;
+                            this.fireService.updateAlumno(this.listaAux, element['$key']);
+                            break;
+                        }
+                    }
+                    event.confirm.resolve();
+                    this.fireService.getAlumnos().subscribe(function (data) {
+                        _this.listadoAlumnos = data;
+                    });
+                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                        var element = this.listadoAlumnos[i];
+                        if (element.aula == "4° A") {
+                            for (var j = 0; j < element.alumnos.length; j++) {
+                                var element2 = element.alumnos[j];
+                                this.listaAux.push(element2);
+                            }
+                        }
+                    }
+                    this.source = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+                }
+                else if (this.seleccion == "b") {
+                    this.listaAux.push(event.newData);
+                    for (var index = 0; index < this.listadoAlumnos.length; index++) {
+                        var element = this.listadoAlumnos[index];
+                        if (element.aula == "4° B") {
+                            element.alumnos = this.listaAux;
+                            this.fireService.updateAlumno(this.listaAux, element['$key']);
+                            break;
+                        }
+                    }
+                    event.confirm.resolve();
+                    this.fireService.getAlumnos().subscribe(function (data) {
+                        _this.listadoAlumnos = data;
+                    });
+                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                        var element = this.listadoAlumnos[i];
+                        if (element.aula == "4° B") {
+                            for (var j = 0; j < element.alumnos.length; j++) {
+                                var element2 = element.alumnos[j];
+                                this.listaAux.push(element2);
+                            }
+                        }
+                    }
+                    this.source2 = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+                    event.confirm.reject();
+                }
+                event.confirm.reject();
+            }
+            else {
+                alert("turno inválido");
+                event.confirm.reject();
+            }
+        }
+        else {
+            event.confirm.reject();
+        }
+    };
+    AulaAdministrativoPage.prototype.changeList = function (event) {
+        var _this = this;
+        this.listaAux = [];
+        this.seleccion = event;
+        if (this.seleccion == 'a') {
+            this.fireService.getAlumnos().subscribe(function (data) {
+                _this.listadoAlumnos = data;
+            });
+            for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                var element = this.listadoAlumnos[i];
+                if (element.aula == "4° A") {
+                    for (var j = 0; j < element.alumnos.length; j++) {
+                        var element2 = element.alumnos[j];
+                        this.listaAux.push(element2);
+                    }
+                }
+            }
+            this.source = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+        }
+        else if (this.seleccion == 'b') {
+            this.fireService.getAlumnos().subscribe(function (data) {
+                _this.listadoAlumnos = data;
+            });
+            for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                var element = this.listadoAlumnos[i];
+                if (element.aula == "4° B") {
+                    for (var j = 0; j < element.alumnos.length; j++) {
+                        var element2 = element.alumnos[j];
+                        this.listaAux.push(element2);
+                    }
+                }
+            }
+            this.source2 = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+        }
+    };
+    AulaAdministrativoPage.prototype.onCreateConfirm = function (event) {
+        var _this = this;
+        if (window.confirm('¿Crear?')) {
+            if (event.newData.legajo != null && event.newData.nombre != null && event.newData.mail != null && event.newData.turno != null
+                && event.newData.legajo != undefined && event.newData.nombre != undefined && event.newData.mail != undefined && event.newData.turno != undefined &&
+                event.newData.legajo != "" && event.newData.nombre != "" && event.newData.mail != "" && event.newData.turno != "") {
+                if (event.newData.mail.includes('@')) {
+                    if (this.seleccion == "a") {
+                        this.listaAux.push(event.newData);
+                        this.listadoAlumnos.forEach(function (element) {
+                            if (element.aula == "4° A") {
+                                try {
+                                    //this.fireService.addAlumno(event.newData,indox)
+                                    element.alumnos = _this.listaAux;
+                                    _this.fireService.updateAlumno(_this.listaAux, element['$key']);
+                                }
+                                catch (error) {
+                                    console.log(error);
+                                }
+                            }
+                            //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+                        });
+                    }
+                    event.confirm.resolve();
+                    this.fireService.getAlumnos().subscribe(function (data) {
+                        _this.listadoAlumnos = data;
+                    });
+                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                        var element = this.listadoAlumnos[i];
+                        if (element.aula == "4° A") {
+                            for (var j = 0; j < element.alumnos.length; j++) {
+                                var element2 = element.alumnos[j];
+                                this.listaAux.push(element2);
+                            }
+                        }
+                    }
+                    this.source = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+                }
+                else if (this.seleccion == "b") {
+                    this.listaAux.push(event.newData);
+                    this.listadoAlumnos.forEach(function (element) {
+                        if (element.aula == "4° B") {
+                            try {
+                                //this.fireService.addAlumno(event.newData,indox)
+                                element.alumnos = _this.listaAux;
+                                _this.fireService.updateAlumno(_this.listaAux, element['$key']);
+                            }
+                            catch (error) {
+                                console.log(error);
+                            }
+                        }
+                        //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+                    });
+                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                        var element = this.listadoAlumnos[i];
+                        if (element.aula == "4° B") {
+                            for (var j = 0; j < element.alumnos.length; j++) {
+                                var element2 = element.alumnos[j];
+                                this.listaAux.push(element2);
+                            }
+                        }
+                    }
+                    this.source2 = new __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+                }
+                else {
+                    alert("turno inválido");
+                    event.confirm.reject();
+                }
+            }
+            else {
+                alert("mail inválido");
+                event.confirm.reject();
+            }
+        }
+        else {
+            alert("Completa los datos");
+            event.confirm.reject();
+        }
+        // this.fireService.addUser(event.newData);
+        event.confirm.reject();
+    };
     return AulaAdministrativoPage;
 }());
 AulaAdministrativoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-aula-administrativo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-administrativo/aula-administrativo.html"*/'<!--\n  Generated template for the AulaAdministrativoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Aula Administrativo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n <!-- <ion-list>\n        \n    <ion-item class="animated flipInX miItem">\n      <ion-label class="miLabel" floating>Profesor</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.profesor" disabled="true"></ion-input> \n    </ion-item>\n              \n    <ion-item class="animated flipInY miItem">\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.division" disabled="true"></ion-input>\n    </ion-item>\n          \n    <ion-item class="animated flipInX miItem" >\n      <ion-label class="miLabel" floating >Materia</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.materia" disabled="true"></ion-input>\n    </ion-item> \n\n    <ion-item class="animated flipInX miItem" >\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n      <ion-input type="number" [(ngModel)]="miAulaAdministrativo.cantidadAlumno" disabled="true"></ion-input>\n    </ion-item> \n\n  </ion-list>-->\n\n  <div>\n    <button ion-button round full large (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n    </button>\n    <button ion-button round full large (click)="mostrarQR()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Qr Aula\n    </button>\n    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n    </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-administrativo/aula-administrativo.html"*/,
+        selector: 'page-aula-administrativo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-administrativo/aula-administrativo.html"*/'<!--\n  Generated template for the AulaAdministrativoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Aula Administrativo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n <!-- <ion-list>\n        \n    <ion-item class="animated flipInX miItem">\n      <ion-label class="miLabel" floating>Profesor</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.profesor" disabled="true"></ion-input> \n    </ion-item>\n              \n    <ion-item class="animated flipInY miItem">\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.division" disabled="true"></ion-input>\n    </ion-item>\n          \n    <ion-item class="animated flipInX miItem" >\n      <ion-label class="miLabel" floating >Materia</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.materia" disabled="true"></ion-input>\n    </ion-item> \n\n    <ion-item class="animated flipInX miItem" >\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n      <ion-input type="number" [(ngModel)]="miAulaAdministrativo.cantidadAlumno" disabled="true"></ion-input>\n    </ion-item> \n\n  </ion-list>-->\n\n  \n  \n      <ion-item >\n        <ion-label>Curso</ion-label>\n        <ion-select [(ngModel)]="seleccion" (ionChange)="changeList($event)">\n          <ion-option value="a">4ºA</ion-option>\n          <ion-option value="b">4ºB</ion-option>\n        </ion-select>\n      </ion-item>\n      <ion-item >\n      <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="a"\'>\n        <ng2-smart-table style=\'width:100%;height:100%\' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"\n        (editConfirm)="onSaveConfirm($event)"\n        (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n      </ion-item>\n      <ion-item >\n        <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="b"\'>\n        <ng2-smart-table style=\'width:100%;height:100%\'  [settings]="settings" [source]="source2" (deleteConfirm)="onDeleteConfirm($event)"\n        (editConfirm)="onSaveConfirm($event)"\n        (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n   </ion-item> \n\n\n   \n  \n    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n    </button>\n  \n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-administrativo/aula-administrativo.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _g || Object])
 ], AulaAdministrativoPage);
 
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=aula-administrativo.js.map
 
 /***/ }),
@@ -907,44 +1278,58 @@ var InicioAdminPage = (function () {
         this.screenOrientation.unlock();
     };
     InicioAdminPage.prototype.onDeleteConfirm = function (event) {
-        var _this = this;
-        if (window.confirm('¿Eliminar?')) {
-            if (event.data.Perfil == "Profesor") {
-                for (var i = 0; i < this.listadoProfesores.length; i++) {
-                    var element = this.listadoProfesores[i];
-                    console.log(element);
-                    if (element.Email == event.data.Email) {
-                        this.fireService.removeProfesor(element['$key']);
-                        //event.confirm.reject();      
-                        event.confirm.resolve();
-                        this.fireService.getProfesores().subscribe(function (data) {
-                            _this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](data); // create the source
-                            _this.listadoProfesores = data;
-                        });
-                        break;
-                    }
-                }
+        /* if (window.confirm('¿Eliminar?')) {
+         if(event.data.Perfil=="Profesor")
+          {
+          for (let i = 0; i <  this.listadoProfesores.length; i++) {
+            const element =  this.listadoProfesores[i];
+            console.log(element);
+            
+            if(element.Email==event.data.Email)
+            {
+             
+             this.fireService.removeProfesor(element['$key']);
+             
+              //event.confirm.reject();
+              event.confirm.resolve();
+    
+              this.fireService.getProfesores().subscribe(data=>
+                {
+                  this.source = new LocalDataSource(data); // create the source
+                  this.listadoProfesores=data;
+                  
+                });
+                      
+              break;
             }
-            else if (event.data.Perfil == "Administrativo") {
-                for (var i = 0; i < this.listadoAdministrativos.length; i++) {
-                    var element = this.listadoAdministrativos[i];
-                    console.log(element);
-                    if (element.Email == event.data.Email) {
-                        this.fireService.removeAdministrativo(element['$key']);
-                        //event.confirm.reject();      
-                        event.confirm.resolve();
-                        this.fireService.getAdministrativos().subscribe(function (data) {
-                            _this.source2 = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](data); // create the source
-                            _this.listadoAdministrativos = data;
-                        });
-                        break;
-                    }
-                }
+          }
+        }else if(event.data.Perfil=="Administrativo")
+        {
+          for (let i = 0; i <  this.listadoAdministrativos.length; i++) {
+            const element =  this.listadoAdministrativos[i];
+            console.log(element);
+            
+            if(element.Email==event.data.Email)
+            {
+              this.fireService.removeAdministrativo(element['$key']);
+             
+              //event.confirm.reject();
+              event.confirm.resolve();
+    
+              this.fireService.getAdministrativos().subscribe(data=>
+                {
+                  this.source2 = new LocalDataSource(data); // create the source
+                  this.listadoAdministrativos=data;
+                  
+                });
+                      
+              break;
             }
-            else {
-                event.confirm.reject();
-            }
+          }
+        } else {
+          event.confirm.reject();
         }
+      }*/
     };
     InicioAdminPage.prototype.onSaveConfirm = function (event) {
         var _this = this;
@@ -1067,10 +1452,10 @@ InicioAdminPage = __decorate([
         template: "\n  <ion-item style='float:right'>\n  <ion-label>Personas</ion-label>\n  <ion-select [(ngModel)]=\"personas\" (ionChange)=\"changeList($event)\">\n    <ion-option value=\"p\">Profesores</ion-option>\n    <ion-option value=\"a\">Administrativos</ion-option>\n  </ion-select>\n</ion-item>\n<div style='width:100%;height:100%' *ngIf='profesor'>\n  <ng2-smart-table style='width:100%;height:100%' [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n  <div style='width:100%;height:100%' *ngIf='!profesor'>\n  <ng2-smart-table style='width:100%;height:100%'  [settings]=\"settings2\" [source]=\"source2\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n",
         selector: 'page-inicio-admin',
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */]) === "function" && _f || Object])
 ], InicioAdminPage);
 
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=inicio-admin.js.map
 
 /***/ }),
@@ -2119,7 +2504,8 @@ ButtonRenderComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__ = __webpack_require__(140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_screen_orientation__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__ = __webpack_require__(101);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2133,6 +2519,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+// for databas
+
 
 /**
  * Generated class for the AlumnosPage page.
@@ -2141,13 +2529,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var AlumnosPage = (function () {
-    function AlumnosPage(navCtrl, navParams, fireService, loadingCtrl, screenOrientation) {
+    function AlumnosPage(navCtrl, navParams, fireService, loadingCtrl, screenOrientation, platform, afd) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.fireService = fireService;
         this.loadingCtrl = loadingCtrl;
         this.screenOrientation = screenOrientation;
+        this.platform = platform;
+        this.afd = afd;
         this.listadoAlumnos = [];
         this.listaAux = [];
         this.settings = {
@@ -2173,32 +2563,37 @@ var AlumnosPage = (function () {
             },
             columns: {
                 legajo: {
-                    title: 'Legajo',
+                    title: 'legajo',
                     filter: false,
                     editor: {
                         type: 'number',
                     },
                 },
+                mail: {
+                    title: 'mail',
+                    filter: false
+                },
                 nombre: {
-                    title: 'Nombre',
+                    title: 'nombre',
                     filter: false
                 },
                 turno: {
                     title: 'Turno',
                     filter: false
                 },
-                mail: {
-                    title: 'Email',
-                    filter: false
-                }
             }
         };
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-        this.fireService.getAlumnos().subscribe(function (data) {
+        this.afd.list("/alumno-lista").subscribe(function (data) {
             _this.listadoAlumnos = data;
+            if (!_this.flag) {
+                _this.flag = true;
+                _this.activar();
+            }
         });
     }
-    AlumnosPage.prototype.ionViewDidEnter = function () {
+    AlumnosPage.prototype.activar = function () {
+        this.seleccion = "a";
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
         for (var i = 0; i < this.listadoAlumnos.length; i++) {
             var element = this.listadoAlumnos[i];
@@ -2214,7 +2609,7 @@ var AlumnosPage = (function () {
         console.log(this.listaAux);
         var loading = this.loadingCtrl.create({
             spinner: 'hide',
-            content: "\n       <img src=\"assets/spinner.gif\">",
+            content: "\n         <img src=\"assets/spinner.gif\">",
             duration: 50000000,
             showBackdrop: false
         });
@@ -2223,71 +2618,176 @@ var AlumnosPage = (function () {
             loading.dismiss();
         }, 3000);
     };
+    AlumnosPage.prototype.ionViewDidLoad = function () {
+    };
     AlumnosPage.prototype.ionViewWillLeave = function () {
         this.screenOrientation.unlock();
     };
     AlumnosPage.prototype.onDeleteConfirm = function (event) {
-        var _this = this;
-        if (window.confirm('¿Eliminar?')) {
-            for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                var element = this.listadoAlumnos[i];
-                console.log(element);
-                if (element.Email == event.data.Email) {
-                    this.fireService.removeAlumno(element['$key']);
-                    //event.confirm.reject();      
-                    event.confirm.resolve();
-                    this.fireService.getAlumnos().subscribe(function (data) {
-                        _this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](data); // create the source
-                        _this.listadoAlumnos = data;
-                    });
-                    break;
-                }
-            }
-        }
-        else {
-            event.confirm.reject();
-        }
+        /*
+         if (window.confirm('¿Eliminar?')) {
+         
+           for (let i = 0; i < this.listadoAlumnos.length; i++) {
+             const element = this.listadoAlumnos[i];
+             if(element.aula=="4° A")
+             {
+               for (let j = 0; j < element.alumnos.length; j++) {
+                 const element2 = element.alumnos[j];
+                 if(element2.mail==event.data.mail)
+                 {
+                   const index: number = this.listaAux.indexOf(element2);
+                   if (index !== -1) {
+                       this.listaAux.splice(index, 1);
+                   }
+                   element.alumnos=this.listaAux;
+                   this.fireService.updateAlumno(this.listaAux,element['$key']);
+                   
+                   this.fireService.getAlumnos().subscribe(data=>
+                     {
+                       this.listadoAlumnos=data;
+                       
+                     });
+                     for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                       const element = this.listadoAlumnos[i];
+                       if(element.aula=="4° A")
+                       {
+                         for (let j = 0; j < element.alumnos.length; j++) {
+                           const element2 = element.alumnos[j];
+                           this.listaAux.push(element2);
+                         }
+                         
+                       }
+                     }
+                     this.source= new LocalDataSource(this.listaAux);
+                    
+                                     
+                   break;
+                 }
+               }
+               
+             }else  if(element.aula=="4° B")
+             {
+               for (let j = 0; j < element.alumnos.length; j++) {
+                 const element2 = element.alumnos[j];
+                 if(element2.mail==event.data.mail)
+                 {
+                   const index: number = this.listaAux.indexOf(element2);
+                   if (index !== -1) {
+                     this.listaAux=  this.listaAux.splice(index, 1);
+                   }
+                   element.alumnos=this.listaAux;
+                   this.fireService.updateAlumno(this.listaAux,element['$key']);
+                   event.confirm.resolve();
+                   
+                   this.fireService.getAlumnos().subscribe(data=>
+                     {
+                       this.listadoAlumnos=data;
+                       
+                     });
+                     for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                       const element = this.listadoAlumnos[i];
+                       if(element.aula=="4° B")
+                       {
+                         for (let j = 0; j < element.alumnos.length; j++) {
+                           const element2 = element.alumnos[j];
+                           this.listaAux.push(element2);
+                         }
+                         
+                       }
+                     }
+                     this.source2= new LocalDataSource(this.listaAux);
+                                     
+                   break;
+                 }
+               }
+           }
+          
+           }
+       
+           
+         } else {
+           event.confirm.reject();
+         }*/
     };
     AlumnosPage.prototype.onSaveConfirm = function (event) {
         var _this = this;
         if (window.confirm('¿Editar?')) {
-            console.log(event.newData);
-            if (event.newData.Legajo != null && event.newData.Apellido != null && event.newData.Nombre != null && event.newData.Email != null && event.newData.Perfil != null
-                && event.newData.Legajo != undefined && event.newData.Apellido != undefined && event.newData.Nombre != undefined && event.newData.Email != undefined && event.newData.Perfil != undefined &&
-                event.newData.Legajo != "" && event.newData.Apellido != "" && event.newData.Nombre != "" && event.newData.Email != "" && event.newData.Perfil != "") {
-                if (event.newData.Perfil == "Alumno") {
-                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                        var element = this.listadoAlumnos[i];
-                        console.log(element);
-                        if (element.Email == event.newData.Email) {
-                            var listadoAux = this.listadoAlumnos;
-                            listadoAux[i] = event.newData;
-                            console.log(element);
-                            //const key = element['$key'];
-                            this.fireService.updateAlumno(listadoAux);
-                            //event.confirm.reject();
-                            this.fireService.getAlumnos().subscribe(function (data) {
-                                _this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](data); // create the source
-                                _this.listadoAlumnos = data;
-                            });
-                            break;
+            if (event.newData.legajo != null && event.newData.nombre != null && event.newData.mail != null && event.newData.turno != null
+                && event.newData.legajo != undefined && event.newData.nombre != undefined && event.newData.mail != undefined && event.newData.turno != undefined &&
+                event.newData.legajo != "" && event.newData.nombre != "" && event.newData.mail != "" && event.newData.turno != "") {
+                if (event.newData.mail.includes('@')) {
+                    if (this.seleccion == "a") {
+                        this.listaAux.push(event.newData);
+                        for (var indox = 0; indox < this.listadoAlumnos.length; indox++) {
+                            var element = this.listadoAlumnos[indox];
+                            if (element.aula == "4° A") {
+                                element.alumnos = this.listaAux;
+                                this.fireService.updateAlumno(this.listaAux, element['$key']);
+                                break;
+                            }
                         }
+                        event.confirm.resolve();
+                        this.fireService.getAlumnos().subscribe(function (data) {
+                            _this.listadoAlumnos = data;
+                        });
+                        for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                            var element = this.listadoAlumnos[i];
+                            if (element.aula == "4° A") {
+                                for (var j = 0; j < element.alumnos.length; j++) {
+                                    var element2 = element.alumnos[j];
+                                    this.listaAux.push(element2);
+                                }
+                            }
+                        }
+                        this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
                     }
+                    else if (this.seleccion == "b") {
+                        this.listaAux.push(event.newData);
+                        for (var index = 0; index < this.listadoAlumnos.length; index++) {
+                            var element = this.listadoAlumnos[index];
+                            if (element.aula == "4° B") {
+                                element.alumnos = this.listaAux;
+                                this.fireService.updateAlumno(this.listaAux, element['$key']);
+                                break;
+                            }
+                        }
+                        event.confirm.resolve();
+                        this.fireService.getAlumnos().subscribe(function (data) {
+                            _this.listadoAlumnos = data;
+                        });
+                        for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                            var element = this.listadoAlumnos[i];
+                            if (element.aula == "4° B") {
+                                for (var j = 0; j < element.alumnos.length; j++) {
+                                    var element2 = element.alumnos[j];
+                                    this.listaAux.push(element2);
+                                }
+                            }
+                        }
+                        this.source2 = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+                        event.confirm.reject();
+                    }
+                    else {
+                        alert("turno inválido");
+                        event.confirm.reject();
+                    }
+                }
+                else {
+                    alert("mail inválido");
                     event.confirm.reject();
                 }
-                event.confirm.reject();
             }
             else {
-                alert("Perfil inválido");
+                alert("Completa los datos");
                 event.confirm.reject();
             }
-        }
-        else {
+            // this.fireService.addUser(event.newData);
             event.confirm.reject();
         }
     };
     AlumnosPage.prototype.changeList = function (event) {
         var _this = this;
+        this.listaAux = [];
         this.seleccion = event;
         if (this.seleccion == 'a') {
             this.fireService.getAlumnos().subscribe(function (data) {
@@ -2323,28 +2823,68 @@ var AlumnosPage = (function () {
     AlumnosPage.prototype.onCreateConfirm = function (event) {
         var _this = this;
         if (window.confirm('¿Crear?')) {
-            if (event.newData.Legajo != null && event.newData.Apellido != null && event.newData.Nombre != null && event.newData.Email != null && event.newData.Perfil != null
-                && event.newData.Legajo != undefined && event.newData.Apellido != undefined && event.newData.Nombre != undefined && event.newData.Email != undefined && event.newData.Perfil != undefined &&
-                event.newData.Legajo != "" && event.newData.Apellido != "" && event.newData.Nombre != "" && event.newData.Email != "" && event.newData.Perfil != "") {
-                if (event.newData.Email.includes('@')) {
-                    event.newData.Accion = " ";
-                    if (event.newData.Perfil == "Alumno") {
-                        this.listadoAlumnos.push(event.newData);
-                        this.listadoAlumnos[this.listadoAlumnos.lastIndexOf(event.newData)].password = event.newData.Legajo;
-                        this.fireService.updateAlumno(this.listadoAlumnos);
+            if (event.newData.legajo != null && event.newData.nombre != null && event.newData.mail != null && event.newData.turno != null
+                && event.newData.legajo != undefined && event.newData.nombre != undefined && event.newData.mail != undefined && event.newData.turno != undefined &&
+                event.newData.legajo != "" && event.newData.nombre != "" && event.newData.mail != "" && event.newData.turno != "") {
+                if (event.newData.mail.includes('@')) {
+                    if (this.seleccion == "a") {
+                        this.listaAux.push(event.newData);
+                        for (var indox = 0; indox < this.listadoAlumnos.length; indox++) {
+                            var element = this.listadoAlumnos[indox];
+                            if (element.aula == "4° A") {
+                                element.alumnos = this.listaAux;
+                                this.fireService.updateAlumno(this.listaAux, element['$key']);
+                                break;
+                            }
+                        }
                         event.confirm.resolve();
                         this.fireService.getAlumnos().subscribe(function (data) {
-                            _this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](data); // create the source
                             _this.listadoAlumnos = data;
                         });
+                        for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                            var element = this.listadoAlumnos[i];
+                            if (element.aula == "4° A") {
+                                for (var j = 0; j < element.alumnos.length; j++) {
+                                    var element2 = element.alumnos[j];
+                                    this.listaAux.push(element2);
+                                }
+                            }
+                        }
+                        this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+                    }
+                    else if (this.seleccion == "b") {
+                        this.listaAux.push(event.newData);
+                        for (var index = 0; index < this.listadoAlumnos.length; index++) {
+                            var element = this.listadoAlumnos[index];
+                            if (element.aula == "4° B") {
+                                element.alumnos = this.listaAux;
+                                this.fireService.updateAlumno(this.listaAux, element['$key']);
+                                break;
+                            }
+                        }
+                        event.confirm.resolve();
+                        this.fireService.getAlumnos().subscribe(function (data) {
+                            _this.listadoAlumnos = data;
+                        });
+                        for (var i = 0; i < this.listadoAlumnos.length; i++) {
+                            var element = this.listadoAlumnos[i];
+                            if (element.aula == "4° B") {
+                                for (var j = 0; j < element.alumnos.length; j++) {
+                                    var element2 = element.alumnos[j];
+                                    this.listaAux.push(element2);
+                                }
+                            }
+                        }
+                        this.source2 = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+                        event.confirm.reject();
                     }
                     else {
-                        alert("Perfil inválido");
+                        alert("turno inválido");
                         event.confirm.reject();
                     }
                 }
                 else {
-                    alert("Email inválido");
+                    alert("mail inválido");
                     event.confirm.reject();
                 }
             }
@@ -2353,23 +2893,20 @@ var AlumnosPage = (function () {
                 event.confirm.reject();
             }
             // this.fireService.addUser(event.newData);
-        }
-        else {
             event.confirm.reject();
         }
-        event.confirm.reject();
     };
     return AlumnosPage;
 }());
 AlumnosPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-alumnos',
-        template: "\n\n  <ion-item style='float:right'>\n  <ion-label>seleccion</ion-label>\n  <ion-select [(ngModel)]=\"seleccion\" (ionChange)=\"changeList($event)\">\n    <ion-option value=\"p\">4\u00BA A</ion-option>\n    <ion-option value=\"a\">4\u00BA B</ion-option>\n  </ion-select>\n</ion-item>\n<div style='width:100%;height:100%' *ngIf='seleccion==\"a\"'>\n  <ng2-smart-table style='width:100%;height:100%' [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n  <div style='width:100%;height:100%' *ngIf='seleccion==\"b\"'>\n  <ng2-smart-table style='width:100%;height:100%'  [settings]=\"settings\" [source]=\"source2\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n\n",
+        template: "\n\n  <ion-item style='float:right'>\n  <ion-label>Curso</ion-label>\n  <ion-select [(ngModel)]=\"seleccion\" (ionChange)=\"changeList($event)\">\n    <ion-option value=\"a\">4\u00BAA</ion-option>\n    <ion-option value=\"b\">4\u00BAB</ion-option>\n  </ion-select>\n</ion-item>\n<div style='width:100%;height:100%' *ngIf='seleccion==\"a\"'>\n  <ng2-smart-table style='width:100%;height:100%' [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n  <div style='width:100%;height:100%' *ngIf='seleccion==\"b\"'>\n  <ng2-smart-table style='width:100%;height:100%'  [settings]=\"settings\" [source]=\"source2\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n\n",
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_screen_orientation__["a" /* ScreenOrientation */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _g || Object])
 ], AlumnosPage);
 
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=alumnos.js.map
 
 /***/ }),
@@ -2888,14 +3425,14 @@ var FireBaseServiceProvider = (function () {
     FireBaseServiceProvider.prototype.addAdministrativo = function (item) {
         return this.afd.list('/personas/administrativos').push(item);
     };
-    FireBaseServiceProvider.prototype.addAlumno = function (item) {
-        return this.afd.list('/personas/alumnos').push(item);
+    FireBaseServiceProvider.prototype.addAlumno = function (item, i) {
+        return this.afd.list('/alumno-lista/' + i + '/alumnos').push(item);
     };
     FireBaseServiceProvider.prototype.addUser = function (item) {
         return this.afd.list('/personas').push(item);
     };
-    FireBaseServiceProvider.prototype.updateAlumno = function (data) {
-        return this.afd.list('/personas').update('alumnos', data);
+    FireBaseServiceProvider.prototype.updateAlumno = function (data, key) {
+        return this.afd.object('/alumno-lista/' + key + '/alumnos').update(data);
     };
     FireBaseServiceProvider.prototype.updateProfesor = function (data) {
         return this.afd.list('/personas').update('profesores', data);
@@ -2903,8 +3440,8 @@ var FireBaseServiceProvider = (function () {
     FireBaseServiceProvider.prototype.updateAdministrativo = function (data) {
         return this.afd.list('/personas').update('administrativos', data);
     };
-    FireBaseServiceProvider.prototype.removeAlumno = function (key) {
-        return this.afd.list('/personas/alumnos').remove(key);
+    FireBaseServiceProvider.prototype.removeAlumno = function (i, key) {
+        return this.afd.list('/alumno-lista/' + i + '/alumnos/' + key).remove();
     };
     FireBaseServiceProvider.prototype.removeProfesor = function (key) {
         return this.afd.list('/personas/profesores').remove(key);
@@ -2925,9 +3462,10 @@ var FireBaseServiceProvider = (function () {
 }());
 FireBaseServiceProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_0_angularfire2_database__["a" /* AngularFireDatabase */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _b || Object])
 ], FireBaseServiceProvider);
 
+var _a, _b;
 //# sourceMappingURL=fire-base-service.js.map
 
 /***/ }),
