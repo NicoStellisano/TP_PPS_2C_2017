@@ -121,7 +121,14 @@ this.perfil=localStorage.getItem("Perfil");
         else
           {
             this.codigoScaneado=null;
-            alert("El codigo escaneado no pertenece al aula y/o materia");
+            let alert = this.alertCtrl.create({
+              title: "Error!",
+              subTitle: "El codigo escaneado no pertenece al aula y/o materia",
+              cssClass:"miClaseAlert",
+            buttons: ['OK']
+          });
+           alert.present();
+  
             return;
           }
         

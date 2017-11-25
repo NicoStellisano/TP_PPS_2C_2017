@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController, AlertController } from 'ionic-angular';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 import { ButtonRenderComponent } from '../../components/button-renderer/button-renderer';
 import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
@@ -96,7 +96,7 @@ export class AlumnosPage {
   
   seleccion:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
-    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ) {
+    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation, public alertCtrl:AlertController ) {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
 
       this.fireService.getAlumnos().subscribe(data=>
@@ -225,7 +225,13 @@ loading.present();
          event.confirm.reject();
         }else
         {
-         alert("Perfil inválido");
+          let alert = this.alertCtrl.create({
+            title: "Error!",
+            subTitle: "Perfil inválido",
+            cssClass:"miClaseAlert",
+          buttons: ['OK']
+        });
+         alert.present();
          
          event.confirm.reject();
         }
@@ -314,7 +320,14 @@ loading.present();
                 
              }else
              {
-              alert("Perfil inválido");
+              let alert = this.alertCtrl.create({
+                title: "Error!",
+                subTitle: "Perfil inválido",
+                cssClass:"miClaseAlert",
+              buttons: ['OK']
+            });
+             alert.present();
+             
               
               event.confirm.reject();
              }
@@ -322,12 +335,24 @@ loading.present();
              
           
          }else{
-           alert("Email inválido");
+          let alert = this.alertCtrl.create({
+            title: "Error!",
+            subTitle: "Email inválido",
+            cssClass:"miClaseAlert",
+          buttons: ['OK']
+        });
+         alert.present();
            event.confirm.reject();
            
          }
        }else{
-         alert("Completa los datos");
+        let alert = this.alertCtrl.create({
+          title: "Error!",
+          subTitle: "Complete los datos",
+          cssClass:"miClaseAlert",
+        buttons: ['OK']
+      });
+       alert.present();
          event.confirm.reject();
          
        }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage,ModalController, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { IonicPage,ModalController, NavController, NavParams,LoadingController, AlertController } from 'ionic-angular';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 import { ButtonRenderComponent } from '../../components/button-renderer/button-renderer';
 import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
@@ -108,7 +108,7 @@ settings2 = {
 }
 };
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
-    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation,public modalCtrl: ModalController ) {
+    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation,public modalCtrl: ModalController, public alertCtrl:AlertController ) {
       this.profesor=true;
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
       
@@ -386,7 +386,14 @@ loading.present();
        event.confirm.reject();
       }else
       {
-       alert("Perfil inválido");
+        let alert = this.alertCtrl.create({
+          title: "Error!",
+          subTitle: "Perfil inválido",
+          cssClass:"miClaseAlert",
+        buttons: ['OK']
+      });
+       alert.present();
+
        
        event.confirm.reject();
       }
@@ -444,24 +451,52 @@ loading.present();
               
            }else
            {
-            alert("Perfil inválido");
+            let alert = this.alertCtrl.create({
+              title: "Error!",
+              subTitle: "Perfil inválido",
+              cssClass:"miClaseAlert",
+            buttons: ['OK']
+          });
+           alert.present();
+
             
             event.confirm.reject();
            }
            
            
          }else{
-           alert("DNI inválido");
+          let alert = this.alertCtrl.create({
+            title: "Error!",
+            subTitle: "DNI inválido",
+            cssClass:"miClaseAlert",
+          buttons: ['OK']
+        });
+         alert.present();
+
            event.confirm.reject();
            
          }
        }else{
-         alert("Email inválido");
+        let alert = this.alertCtrl.create({
+          title: "Error!",
+          subTitle: "Email inválido",
+          cssClass:"miClaseAlert",
+        buttons: ['OK']
+      });
+       alert.present();
+
          event.confirm.reject();
          
        }
      }else{
-       alert("Completa los datos");
+      let alert = this.alertCtrl.create({
+        title: "Error!",
+        subTitle: "Complete los datos",
+        cssClass:"miClaseAlert",
+      buttons: ['OK']
+    });
+     alert.present();
+
        event.confirm.reject();
        
      }
@@ -482,7 +517,7 @@ loading.present();
 
   asignar(dni:number)
   {
-    alert(dni);
+    //alert(dni);
   }
 
   ionViewDidLoad() {

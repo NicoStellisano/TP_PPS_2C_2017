@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController, AlertController } from 'ionic-angular';
 import { InicioAdminPage} from '../inicio-admin/inicio-admin';
 import { InicioAdministrativoPage} from '../inicio-administrativo/inicio-administrativo';
 import { InicioProfesorPage} from '../inicio-profesor/inicio-profesor';
@@ -46,7 +46,7 @@ export class LoginPage {
   listaAux: any[]=[];
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl:LoadingController,public fireService:FireBaseServiceProvider
-    ,public toast:ToastController,public googlePlus:GooglePlus ,private screenOrientation: ScreenOrientation ) {
+    ,public toast:ToastController,public googlePlus:GooglePlus ,private screenOrientation: ScreenOrientation, public alertCtrl:AlertController ) {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
       this.google=false;
        this.fireService.getAdmins().subscribe(data=>
@@ -175,7 +175,14 @@ loading.present();
                       break;
                     }else if(element2.mail==this.email && element2.legajo==this.password)
                     {
-                      alert("Inicia Sesión con Google porfavor");
+                      let alert = this.alertCtrl.create({
+                        title: "Info",
+                        subTitle: "Inicia Sesión con Google porfavor",
+                        cssClass:"miClaseAlert",
+                      buttons: ['OK']
+                    });
+                     alert.present();
+                     
                       this.google=true;
                     } 
                   }
@@ -196,7 +203,14 @@ loading.present();
                       break;
                     }else if(element2.mail==this.email && element2.legajo==this.password)
                     {
-                      alert("Inicia Sesión con Google porfavor");
+                      
+                      let alert = this.alertCtrl.create({
+                        title: "Info!",
+                        subTitle: "Inicia Sesión con Google porfavor",
+                        cssClass:"miClaseAlert",
+                      buttons: ['OK']
+                    });
+                     alert.present();
                       this.google=true;
                     } 
                   } 
@@ -323,7 +337,13 @@ if(!flag)
           break;
         }else if(element.Email==this.email && element.password==null)
         {
-          alert("Inicia Sesión con Google porfavor");
+          let alert = this.alertCtrl.create({
+            title: "Info!",
+            subTitle: "Inicia Sesión con Google porfavor",
+            cssClass:"miClaseAlert",
+          buttons: ['OK']
+        });
+         alert.present();
           this.google=true;
         }
       }
@@ -344,7 +364,13 @@ if(!flag)
               break;
             }else if(element.Email==this.email && element.password==null)
             {
-              alert("Inicia Sesión con Google porfavor");
+              let alert = this.alertCtrl.create({
+                title: "Info!",
+                subTitle: "Inicia Sesión con Google porfavor",
+                cssClass:"miClaseAlert",
+              buttons: ['OK']
+            });
+             alert.present();
               this.google=true;
             }
           }
@@ -376,7 +402,13 @@ if(!flag)
                
               }else if(element2.mail==this.email && element2.legajo==this.password)
               {
-                alert("Inicia Sesión con Google porfavor");
+                let alert = this.alertCtrl.create({
+                  title: "Info!",
+                  subTitle: "Inicia Sesión con Google porfavor",
+                  cssClass:"miClaseAlert",
+                buttons: ['OK']
+              });
+               alert.present();
                 this.google=true;
               } 
             }
@@ -397,7 +429,13 @@ if(!flag)
                 break;
               }else if(element2.mail==this.email && element2.legajo==this.password)
               {
-                alert("Inicia Sesión con Google porfavor");
+                let alert = this.alertCtrl.create({
+                  title: "Info!",
+                  subTitle: "Inicia Sesión con Google porfavor",
+                  cssClass:"miClaseAlert",
+                buttons: ['OK']
+              });
+               alert.present();
                 this.google=true;
               } 
             }
@@ -438,7 +476,13 @@ if(!flag)
               break;
             }else if(elementh.Email==this.email && elementh.password==null)
             {
-              alert("Inicia Sesión con Google porfavor");
+              let alert = this.alertCtrl.create({
+                title: "Info!",
+                subTitle: "Inicia Sesión con Google porfavor",
+                cssClass:"miClaseAlert",
+              buttons: ['OK']
+            });
+             alert.present();
               this.google=true;
             }
           }

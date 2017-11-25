@@ -40,7 +40,7 @@ export class AulaAdministrativoPage {
 
   cargarLista(){
     this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula});
-    alert("voy a cargar lista");
+    //alert("voy a cargar lista");
   }
 
 }
