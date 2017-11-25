@@ -23,13 +23,61 @@ export class MateriasPage {
 
   //HAY QUE CAMBIARLO POR ALGO REAL
   public nombreUsuario="Mauro";
-
+public variableGlobal: any;
     constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController, public db: AngularFireDatabase) {
       this.aula = this.navParams.get('aulaa');
 
 
       
-      this.db.list('/notificacionesProfesor').
+
+
+
+      //PARA CARGAR EN FIREBASE FALTAS
+/*
+      this.db.list('/notificacionFalta').push({
+        nombre: this.nombreUsuario,
+        cantidadFaltas: 4,
+        curso: this.aula    
+      }).then( () => {
+  
+      })
+      .catch( () => {
+      });
+    
+*/
+
+      this.db.list('/notificacionFalta').
+      subscribe( data => {
+      this.datosfaltas=data;
+      //console.log(this.datos);
+
+
+      for(let i=0;i<this.datosfaltas.length;i++){
+
+        if(this.nombreUsuario==this.datosfaltas[i].nombre)
+          {
+
+        let alert = this.alertCtrl.create({
+          title: "Aviso de faltas",
+          subTitle: this.nombreUsuario+" tiene 4 faltas. A una de quedar LIBRE!" ,
+        buttons: ['OK']
+      });
+       alert.present();
+        }
+
+                              } 
+      });
+
+      
+    }
+    ionViewWillLeave() {
+      // alert("salio");
+ this.variableGlobal.unsubscribe();
+ 
+     }    
+  
+    ionViewDidLoad() {
+     this.variableGlobal= this.db.list('/notificacionesProfesor').
       subscribe( data => {
       this.datos=data;
       //console.log(this.datos);
@@ -82,49 +130,6 @@ export class MateriasPage {
       }
 
       });
-
-
-      //PARA CARGAR EN FIREBASE FALTAS
-/*
-      this.db.list('/notificacionFalta').push({
-        nombre: this.nombreUsuario,
-        cantidadFaltas: 4,
-        curso: this.aula    
-      }).then( () => {
-  
-      })
-      .catch( () => {
-      });
-    
-*/
-
-      this.db.list('/notificacionFalta').
-      subscribe( data => {
-      this.datosfaltas=data;
-      //console.log(this.datos);
-
-
-      for(let i=0;i<this.datosfaltas.length;i++){
-
-        if(this.nombreUsuario==this.datosfaltas[i].nombre)
-          {
-
-        let alert = this.alertCtrl.create({
-          title: "Aviso de faltas",
-          subTitle: this.nombreUsuario+" tiene 4 faltas. A una de quedar LIBRE!" ,
-        buttons: ['OK']
-      });
-       alert.present();
-        }
-
-                              } 
-      });
-
-      
-    }
-  
-    ionViewDidLoad() {
-     
       /*
       for(let i=0;i<this.datos.length;i++){
       let alert = this.alertCtrl.create({

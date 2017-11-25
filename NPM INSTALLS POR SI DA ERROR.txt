@@ -7,3 +7,5 @@ npm install --save @ionic-native/screen-orientation
 mauro:
 ionic cordova plugin add phonegap-plugin-barcodescanner
 npm install --save @ionic-native/barcode-scanner
+
+
