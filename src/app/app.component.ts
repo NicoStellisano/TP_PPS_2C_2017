@@ -17,8 +17,8 @@ import { CagarArchivoPage } from '../pages/cagar-archivo/cagar-archivo';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
-  //rootPage:any = CagarArchivoPage; //test
+  //rootPage:any = LoginPage;
+  rootPage:any = CagarArchivoPage; //test
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

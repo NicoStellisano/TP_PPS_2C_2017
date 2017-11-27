@@ -510,9 +510,6 @@ loading.present();
 
     
       event.confirm.reject();
-      
-    
-    
   }
 
   asignar(dni:number)

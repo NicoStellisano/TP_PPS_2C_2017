@@ -96,4 +96,5 @@
     <plugin name="cordova-plugin-file-opener2" spec="^2.0.19" />
     <plugin name="phonegap-plugin-barcodescanner" spec="^7.0.0" />
     <engine name="android" spec="~6.3.0" />
+    <allow-navigation href="http://192.168.43.43:8101" />
 </widget>

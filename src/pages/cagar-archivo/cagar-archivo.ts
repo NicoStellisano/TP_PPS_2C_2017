@@ -7,6 +7,8 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { GeneratedFile } from '@angular/compiler';
 import { AulaAlumnoItem } from '../../models/aula-alumno-item/aula-alumno.interface';
 import { DescargarArchivoPage } from '../descargar-archivo/descargar-archivo';
+import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
+
 
 import { AlertController } from 'ionic-angular';
 
@@ -26,25 +28,29 @@ export class CagarArchivoPage {
 
   //Atributos de descarga
   listaAlumnos:AlumnoItem[] = [];
+
+  listaA = {} as AlumnoListaItem;
   
   listaAlumnoItem:AlumnoListaItem[]=[];
   
   nombreArchivo:string;
   sizeArchivo:string;
-  aula:string;
+  aula:string = "";
 
   alumnoLista$: FirebaseListObservable<AlumnoItem[]>;
   alumnoListaItem$: FirebaseListObservable<AlumnoListaItem[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private database: AngularFireDatabase,private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController) {
     this.aula = this.navParams.get('aulaa');
     this.alumnoLista$ = this.database.list('alumno-lista');
+    
     this.alumnoListaItem$ = this.database.list('alumno-lista');
 
     this.alumnoListaItem$.subscribe(alumLista =>{
       this.listaAlumnoItem = alumLista;
     });
 
+    
 
   }
 
@@ -56,9 +62,10 @@ export class CagarArchivoPage {
   leeArchivos(numarchivo:number,file:any) {
 
     let alumno = {} as AlumnoItem;
-    let lista:AlumnoItem[] = [];
+    let lista:any[] = [];
     var fr = new FileReader();
     var arrayFilas:string[][];
+    var archivoNom:string[][];
 
     //--------------------- Lectura del archivo -------------------------//
     fr.onload = function(e) {
@@ -116,11 +123,49 @@ export class CagarArchivoPage {
 
   cargarLista(){
     //console.log("Carga lista a firebase");
+    var rows = this.nombreArchivo.split("-");
+    console.log(rows);
+    this.listaA.aula =rows[1];
+    this.listaA.alumnos=this.listaAlumnos;
+    this.listaA.materia=rows[0];
+    let cont:number;
+    cont = this.listaAlumnoItem.length;
+
+    this.firebaseService.agregarLista(this.listaA,cont);
+
     this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
-    this.alumnoLista$.push({
-      aula:this.aula,
+    /*this.alumnoLista$.push({
+      aula:this.listaA.aula,
+      materia:this.listaA.materia,
       alumnos:this.listaAlumnos
-    });
+    });*/
+   
+  /* 
+    let miAula = "";
+    let miLista:any;
+    
+
+    this.listaAlumnoItem.forEach(dato => {
+      console.log(dato);
+      if(dato.aula == this.aula){
+        miAula = dato.aula;
+      }
+    }); 
+  */
+   /* if(!miLista){
+      if(miAula == this.listaA.aula){
+        console.log("aulas iguales actualiza la lista");
+        this.database.list('/alumno-lista/').subscribe(dato => {
+          dato.values().next().value.alumnos.set(this.listaAlumnos);
+        })
+      }else{
+        console.log("aulas diferentes");
+        this.firebaseService.agregarLista(this.lista);
+      }
+    }
+
+    */
+    
   }
 
   descargarArchivo(){
@@ -138,7 +183,7 @@ export class CagarArchivoPage {
       this.navCtrl.push(DescargarArchivoPage,{aulaa:this.aula});
     }else{
       //alert("No hya nada que descargar");
-      this.presentAlert("Sin alumnos","No hya nada que descargar");
+      this.presentAlert("Sin alumnos","No hay nada que descargar");
     }
     
   }
@@ -151,6 +196,16 @@ export class CagarArchivoPage {
       buttons: ['Aceptar']
     });
     alert.present();
+  }
+
+  lista(aula){
+    
+    return this.database.list('/alumno-lista/' ,{
+            query: {
+              orderByChild :"aula",
+              equalTo:aula
+            }
+           });
   }
 
 
