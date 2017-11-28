@@ -89,7 +89,9 @@ export class CagarArchivoPage {
         alumno.nombre = elemento[1].trim();
         alumno.turno = elemento[2].trim();
         alumno.mail = elemento[3].trim();
-        //console.log(alumno);
+        alumno.password = elemento[0].trim();
+        alumno.contPresentes = 0;
+        
         lista.push(alumno);
 
         alumno = {} as AlumnoItem;
@@ -122,7 +124,7 @@ export class CagarArchivoPage {
   }
 
   cargarLista(){
-    //console.log("Carga lista a firebase");
+    
     var rows = this.nombreArchivo.split("-");
     console.log(rows);
     this.listaA.aula =rows[1];
@@ -134,37 +136,6 @@ export class CagarArchivoPage {
     this.firebaseService.agregarLista(this.listaA,cont);
 
     this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
-    /*this.alumnoLista$.push({
-      aula:this.listaA.aula,
-      materia:this.listaA.materia,
-      alumnos:this.listaAlumnos
-    });*/
-   
-  /* 
-    let miAula = "";
-    let miLista:any;
-    
-
-    this.listaAlumnoItem.forEach(dato => {
-      console.log(dato);
-      if(dato.aula == this.aula){
-        miAula = dato.aula;
-      }
-    }); 
-  */
-   /* if(!miLista){
-      if(miAula == this.listaA.aula){
-        console.log("aulas iguales actualiza la lista");
-        this.database.list('/alumno-lista/').subscribe(dato => {
-          dato.values().next().value.alumnos.set(this.listaAlumnos);
-        })
-      }else{
-        console.log("aulas diferentes");
-        this.firebaseService.agregarLista(this.lista);
-      }
-    }
-
-    */
     
   }
 
@@ -197,17 +168,6 @@ export class CagarArchivoPage {
     });
     alert.present();
   }
-
-  lista(aula){
-    
-    return this.database.list('/alumno-lista/' ,{
-            query: {
-              orderByChild :"aula",
-              equalTo:aula
-            }
-           });
-  }
-
 
 }
 

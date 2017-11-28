@@ -22,19 +22,21 @@ export class TomarListaPage {
 
   aula:string;
   alumnoPresente = {} as AlumnoListaPresente;
-  listaAlumnosCsv:AlumnoItem[] = [];
+  listaAlumnos:AlumnoItem[] = [];
   alumnoPresenteLista:AlumnoPresenteItem[]=[];
 
-  alumnoPresenteList:FirebaseListObservable<AlumnoListaPresente[]>;
+  alumnoPresenteList$:FirebaseListObservable<AlumnoListaItem[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private database: AngularFireDatabase) {
     this.aula = this.navParams.get('aulaa');
 
-    //Toma lista para leer y crear archivo
-    this.lista(this.aula).subscribe(dato => {
-      //lista de alumnos en el aula
-      this.listaAlumnosCsv = dato.values().next().value.alumnos;
+    this.alumnoPresenteList$ = this.database.list('alumno-lista');
+
+    this.alumnoPresenteList$.subscribe(dato => {
+      this.listaAlumnos = dato.values().next().value.alumnos;
     });
+
+    
   }
 
   ionViewDidLoad() {
@@ -42,18 +44,13 @@ export class TomarListaPage {
     
   }
 
-  tomarLista(){
+  presente(alumno:AlumnoItem){
 
   }
 
-  lista(aula){
-    
-    return this.database.list('/alumno-lista/' ,{
-            query: {
-              orderByChild :"aula",
-              equalTo:aula
-            }
-           });
+  ausente(alumno:AlumnoItem){
+
   }
+
 
 }

@@ -14,5 +14,16 @@
 
 
 <ion-content padding style="background-image:url('assets/descarga-archivo.png')" class="fondo">
+  <ion-list *ngFor="let alumno of listaAlumnos">
+      <ion-avatar item-end>
+        <img src="./assets/icon/bien.png" (click)="presente(alumno)">  
+      </ion-avatar>
+        
+      <ion-avatar item-end>
+        <img src="./assets/icon/mal.png" (click)="ausente(alumno)">  
+      </ion-avatar>
 
+      <h2>{alumno.legajo} - {alumno.nombre}</h2>
+
+  </ion-list>
 </ion-content>
