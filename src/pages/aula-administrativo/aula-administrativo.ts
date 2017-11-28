@@ -113,7 +113,7 @@ export class AulaAdministrativoPage {
        {
          for (let j = 0; j < element.alumnos.length; j++) {
            const element2 = element.alumnos[j];
-           if(element2!=undefined)
+            if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
            this.listaAux.push(element2);
          }
          
@@ -182,12 +182,9 @@ loading.present();
               const element2 = element.alumnos[j];
               if(element2.mail==event.data.mail)
               {
-                this.listaAux[j]=null;
+                this.listaAux[j].vigente=false;
                 this.fireService.updateAlumno(this.listaAux,element['$key']);
-              
-                // this.fireService.removeAlumno(element['$key'],element2['$key']);
-              
-                
+          
                 event.confirm.reject();
              
                 
@@ -217,7 +214,8 @@ loading.present();
            {
              for (let j = 0; j < element.alumnos.length; j++) {
                const element2 = element.alumnos[j];
-               if(element2!=undefined)               
+               if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
+               
                this.listaAux.push(element2);
              }
              
@@ -238,7 +236,7 @@ loading.present();
               const element2 = element.alumnos[j];
               if(element2.mail==event.data.mail)
               {
-                this.listaAux[j]=null;
+                this.listaAux[j].vigente=false;
                 this.fireService.updateAlumno(this.listaAux,element['$key']);
                 event.confirm.reject();
                 
@@ -263,7 +261,7 @@ loading.present();
            {
              for (let j = 0; j < element.alumnos.length; j++) {
                const element2 = element.alumnos[j];
-               if(element2!=undefined)               
+               if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
                this.listaAux.push(element2);
              }
              
@@ -287,7 +285,7 @@ loading.present();
      event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="" && event.newData.turno!="")
      {
        
-       if(event.newData.mail.includes('@'))
+       if(event.newData.mail.includes('@') && event.newData.mail.includes('.com'))
        {
          
            if(this.seleccion=="a")
@@ -335,7 +333,7 @@ loading.present();
                 {
                   for (let j = 0; j < element.alumnos.length; j++) {
                     const element2 = element.alumnos[j];
-                    if(element2!=undefined)                    
+                    if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
                     this.listaAux.push(element2);
                   }
                   
@@ -365,35 +363,40 @@ loading.present();
                      
                    }
                    }  // this.fireService.updateAlumno(this.listaAux,element['$key']); 
-                  
+                 
                } catch (error) {
                  console.log(error);
                }
-              
              }
                //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-           //ACA
-                //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-                  
-              for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                const element = this.listadoAlumnos[i];
-                if(element.aula=="4B")
-                {
-                  for (let j = 0; j < element.alumnos.length; j++) {
-                    const element2 = element.alumnos[j];
-                    if(element2!=undefined)                    
-                    this.listaAux.push(element2);
-                  }
-                  
-                }
-              }
-            }
-            this.source2= new LocalDataSource(this.listaAux);
+             } //ACA
+         
+           
             
-           }else{
-            alert("turno inválido");
+            this.fireService.getAlumnos().subscribe(data=>
+             {
+               this.listadoAlumnos=data;
+               
+             });
+             this.listaAux=[];
+             
+             for (let i = 0; i < this.listadoAlumnos.length; i++) {
+               const element = this.listadoAlumnos[i];
+               if(element.aula=="4B")
+               {
+                 for (let j = 0; j < element.alumnos.length; j++) {
+                   const element2 = element.alumnos[j];
+                   if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
+                   this.listaAux.push(element2);
+                 }
+                 
+               }
+             }
+             this.source2= new LocalDataSource(this.listaAux);
+             
             
-            event.confirm.reject();
+            
+          
            }
            
            
@@ -421,8 +424,8 @@ loading.present();
     
     
   }
-}
-  
+
+  }
   changeList(event)
   {
     this.listaAux=[];
@@ -442,7 +445,7 @@ loading.present();
           {
             for (let j = 0; j < element.alumnos.length; j++) {
               const element2 = element.alumnos[j];
-              if(element2!=undefined)              
+              if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
               this.listaAux.push(element2);
             }
             
@@ -464,7 +467,7 @@ loading.present();
           {
             for (let j = 0; j < element.alumnos.length; j++) {
               const element2 = element.alumnos[j];
-              if(element2!=undefined)              
+              if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
               this.listaAux.push(element2);
             }
             
@@ -483,8 +486,8 @@ loading.present();
      event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="" && event.newData.turno!="")
      {
        
-       if(event.newData.mail.includes('@'))
-       {
+      if(event.newData.mail.includes('@') && event.newData.mail.includes('.com'))
+      {
          
            if(this.seleccion=="a")
            {
@@ -532,7 +535,7 @@ loading.present();
                 {
                   for (let j = 0; j < element.alumnos.length; j++) {
                     const element2 = element.alumnos[j];
-                    if(element2!=undefined)                    
+                    if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
                     this.listaAux.push(element2);
                   }
                   
@@ -572,7 +575,7 @@ loading.present();
                 {
                   for (let j = 0; j < element.alumnos.length; j++) {
                     const element2 = element.alumnos[j];
-                    if(element2!=undefined)                    
+                    if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
                     this.listaAux.push(element2);
                   }
                   

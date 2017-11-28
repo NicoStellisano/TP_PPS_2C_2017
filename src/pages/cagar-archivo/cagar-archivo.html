@@ -32,7 +32,7 @@
   </ion-list>
   
   <div>
-    <button center ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
+    <button center ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
       <ion-icon name="cloud-done"></ion-icon> Subir
     </button>
     <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> 
