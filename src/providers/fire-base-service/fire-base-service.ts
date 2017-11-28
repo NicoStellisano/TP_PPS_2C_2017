@@ -157,10 +157,7 @@ export class FireBaseServiceProvider {
         return this.afd.list('/personas').update('administrativos',data);
       }
 
-      removeAlumno(i,key)
-      {
-        return this.afd.list('/alumno-lista/'+i+'/alumnos/'+key).remove();
-      }
+     
       removeProfesor(key)
       {
         return this.afd.list('/personas/profesores').remove(key);
@@ -168,6 +165,12 @@ export class FireBaseServiceProvider {
       removeAdministrativo(key)
       {
         return this.afd.list('/personas/administrativos').remove(key);
+      }
+
+      removeAlumno(i,key)
+      {
+        return this.afd.list('/alumo-lista/'+i+'/alumnos').remove(key);
+        
       }
 
       removeMessages()
