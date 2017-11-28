@@ -273,7 +273,7 @@ loading.present();
     this.screenOrientation.unlock();
   }
   onDeleteConfirm(event) {
-    /* if (window.confirm('¿Eliminar?')) {
+     if (window.confirm('¿Eliminar?')) {
      if(event.data.Perfil=="Profesor")
       {
       for (let i = 0; i <  this.listadoProfesores.length; i++) {
@@ -324,7 +324,7 @@ loading.present();
     } else {
       event.confirm.reject();
     }
-  }*/
+  }
 }
 
   onSaveConfirm(event) {

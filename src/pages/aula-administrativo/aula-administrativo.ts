@@ -30,9 +30,9 @@ export class AulaAdministrativoPage {
   settings = {
     actions:{
       columnTitle:'',
-      add:false,
+      /*add:false,
       edit:false,
-      delete:false
+      delete:false*/
     },
     noDataMessage:"No se encuentran registros",
     delete: {
@@ -97,18 +97,7 @@ export class AulaAdministrativoPage {
       cantidadAlumno:25
     };*/
 
-    this.afd.list("/alumno-lista").subscribe(data=>
-      {
-        this.listadoAlumnos=data;
-        if(!this.flag)
-        {
-          this.flag=true;
-          this.activar();
-        }
-       
-        
-      }); 
-    this.aula = this.navParams.get('aulaa');
+    
   }
 
   activar()
@@ -120,17 +109,17 @@ export class AulaAdministrativoPage {
 
      for (let i = 0; i < this.listadoAlumnos.length; i++) {
        const element = this.listadoAlumnos[i];
-       if(element.aula=="4° A")
+       if(element.aula=="4A")
        {
          for (let j = 0; j < element.alumnos.length; j++) {
            const element2 = element.alumnos[j];
+           if(element2!=undefined)
            this.listaAux.push(element2);
          }
          
        }
      }
      this.source= new LocalDataSource(this.listaAux);
-     this.seleccion="a";
      console.log(this.listaAux);
      
      
@@ -153,7 +142,18 @@ loading.present();
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AulaAdministrativoPage');
+    this.afd.list("/alumno-lista").subscribe(data=>
+      {
+        this.listadoAlumnos=data;
+        if(!this.flag)
+        {
+          this.flag=true;
+          this.activar();
+        }
+       
+        
+      }); 
+    this.aula = this.navParams.get('aulaa');
   }
   ionViewWillLeave()
   {
@@ -167,185 +167,262 @@ loading.present();
   }
 
   onDeleteConfirm(event) {
-  /*  if (window.confirm('¿Eliminar?')) {
+    if (window.confirm('¿Eliminar?')) {
     
-      for (let i = 0; i < this.listadoAlumnos.length; i++) {
-        const element = this.listadoAlumnos[i];
-        if(element.aula=="4° A")
-        {
-          for (let j = 0; j < element.alumnos.length; j++) {
-            const element2 = element.alumnos[j];
-            if(element2.mail==event.data.mail)
-            {
-              const index: number = this.listaAux.indexOf(element2);
-              if (index !== -1) {
-                  this.listaAux.splice(index, 1);
-              } 
-              element.alumnos=this.listaAux;
-              this.fireService.updateAlumno(this.listaAux,element['$key']); 
-              
-              this.fireService.getAlumnos().subscribe(data=>
-                {
-                  this.listadoAlumnos=data;
-                  
-                });      
-                for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                  const element = this.listadoAlumnos[i];
-                  if(element.aula=="4° A")
-                  {
-                    for (let j = 0; j < element.alumnos.length; j++) {
-                      const element2 = element.alumnos[j];
-                      this.listaAux.push(element2);
-                    }
-                    
-                  }
-                }
-                this.source= new LocalDataSource(this.listaAux);
-               
-                                
-              break;
-            }
-          }
+      if(this.seleccion=="a")
+      {
+       
+        for (let i = 0; i < this.listadoAlumnos.length; i++) {
+          const element = this.listadoAlumnos[i];
+         if(element.aula=="4A")
+         {
+           try {
           
-        }else  if(element.aula=="4° B")
-        {
-          for (let j = 0; j < element.alumnos.length; j++) {
-            const element2 = element.alumnos[j];
-            if(element2.mail==event.data.mail)
-            {
-              const index: number = this.listaAux.indexOf(element2);
-              if (index !== -1) {
-                this.listaAux=  this.listaAux.splice(index, 1);
-              } 
-              element.alumnos=this.listaAux;
-              this.fireService.updateAlumno(this.listaAux,element['$key']); 
-              event.confirm.resolve();
+            for (let j = 0; j < element.alumnos.length; j++) {
+              const element2 = element.alumnos[j];
+              if(element2.mail==event.data.mail)
+              {
+                this.listaAux[j]=null;
+                this.fireService.updateAlumno(this.listaAux,element['$key']);
               
-              this.fireService.getAlumnos().subscribe(data=>
-                {
-                  this.listadoAlumnos=data;
-                  
-                });      
-                for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                  const element = this.listadoAlumnos[i];
-                  if(element.aula=="4° B")
-                  {
-                    for (let j = 0; j < element.alumnos.length; j++) {
-                      const element2 = element.alumnos[j];
-                      this.listaAux.push(element2);
-                    }
-                    
-                  }
-                }
-                this.source2= new LocalDataSource(this.listaAux);
-                                
-              break;
+                // this.fireService.removeAlumno(element['$key'],element2['$key']);
+              
+                
+                event.confirm.reject();
+             
+                
+                break;
+                
+              }
             }
-          }
-      }
-     
-      }
+           } catch (error) {
+             console.log(error);
+           }
+        
+           //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+         } //ACA
+       }
+       
+        
+        this.fireService.getAlumnos().subscribe(data=>
+         {
+           this.listadoAlumnos=data;
+           
+         });
+         this.listaAux=[];
+         
+         for (let i = 0; i < this.listadoAlumnos.length; i++) {
+           const element = this.listadoAlumnos[i];
+           if(element.aula=="4A")
+           {
+             for (let j = 0; j < element.alumnos.length; j++) {
+               const element2 = element.alumnos[j];
+               if(element2!=undefined)               
+               this.listaAux.push(element2);
+             }
+             
+           }
+         }
+         this.source= new LocalDataSource(this.listaAux);
+         
+       
+      }else if(this.seleccion=="b")
+      {
+       
+        for (let i = 0; i < this.listadoAlumnos.length; i++) {
+          const element = this.listadoAlumnos[i];
+         if(element.aula=="4B")
+         {
+           try {
+            for (let j = 0; j < element.alumnos.length; j++) {
+              const element2 = element.alumnos[j];
+              if(element2.mail==event.data.mail)
+              {
+                this.listaAux[j]=null;
+                this.fireService.updateAlumno(this.listaAux,element['$key']);
+                event.confirm.reject();
+                
+               // this.fireService.removeAlumno(element['$key'],j);
+                break;
+                
+              }
+            }
+               
+               break;
+           } catch (error) {
+             console.log(error);
+           }
+         }
+           //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+         }   
+         this.listaAux=[];
+         
+         for (let i = 0; i < this.listadoAlumnos.length; i++) {
+           const element = this.listadoAlumnos[i];
+           if(element.aula=="4B")
+           {
+             for (let j = 0; j < element.alumnos.length; j++) {
+               const element2 = element.alumnos[j];
+               if(element2!=undefined)               
+               this.listaAux.push(element2);
+             }
+             
+           }
+         }
+         this.source2= new LocalDataSource(this.listaAux);
   
       
     } else {
       event.confirm.reject();
-    }*/
+    }
+  }
   }
   
 
 
   onSaveConfirm(event) {
     if (window.confirm('¿Editar?')) {
-      console.log(event.newData);  
-      if(event.newData.legajo!=null && event.newData.nombre!=null && event.newData.mail!=null && event.newData.turno!=null
-        && event.newData.legajo!=undefined  && event.newData.nombre!=undefined && event.newData.mail!=undefined && event.newData.turno!=undefined &&
-         event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="" && event.newData.turno!=""){
-          if(this.seleccion=="a")
-          {
-           this.listaAux.push(event.newData);
-           for (var indox = 0;indox < this.listadoAlumnos.length; indox++) {
-             let element = this.listadoAlumnos[indox];
-             if(element.aula=="4° A")
+     if(event.newData.legajo!=null && event.newData.nombre!=null && event.newData.mail!=null && event.newData.turno!=null
+    && event.newData.legajo!=undefined  && event.newData.nombre!=undefined && event.newData.mail!=undefined && event.newData.turno!=undefined &&
+     event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="" && event.newData.turno!="")
+     {
+       
+       if(event.newData.mail.includes('@'))
+       {
+         
+           if(this.seleccion=="a")
+           {
+            
+             for (let i = 0; i < this.listadoAlumnos.length; i++) {
+               const element = this.listadoAlumnos[i];
+              if(element.aula=="4A")
+              {
+                try {
+                  for (let j = 0; j < element.alumnos.length; j++) {
+                    const element2 = element.alumnos[j];
+                    if(element2.mail==event.newData.mail)
+                    {
+                      this.listaAux[j]=event.newData;
+
+                      element.alumnos=this.listaAux;
+                      this.fireService.updateAlumno(this.listaAux,element['$key']);
+                      event.confirm.reject();
+                      
+                      break;
+                      
+                    }
+                    }  // this.fireService.updateAlumno(this.listaAux,element['$key']); 
+                  
+                } catch (error) {
+                  console.log(error);
+                }
+              }
+                //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+              } //ACA
+          
+            
+             
+             this.fireService.getAlumnos().subscribe(data=>
+              {
+                this.listadoAlumnos=data;
+                
+              });
+              this.listaAux=[];
+              
+              for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                const element = this.listadoAlumnos[i];
+                if(element.aula=="4A")
+                {
+                  for (let j = 0; j < element.alumnos.length; j++) {
+                    const element2 = element.alumnos[j];
+                    if(element2!=undefined)                    
+                    this.listaAux.push(element2);
+                  }
+                  
+                }
+              }
+              this.source= new LocalDataSource(this.listaAux);
+            
+              
+           }else if(this.seleccion=="b")
+           {
+            for (let i = 0; i < this.listadoAlumnos.length; i++) {
+              const element = this.listadoAlumnos[i];
+             if(element.aula=="4B")
              {
-              element.alumnos=this.listaAux;
-              this.fireService.updateAlumno(this.listaAux,element['$key']);  
-               break;     
+               try {
+                 for (let j = 0; j < element.alumnos.length; j++) {
+                   const element2 = element.alumnos[j];
+                   if(element2.mail==event.newData.mail)
+                   {
+                     this.listaAux[j]=event.newData;
+
+                     element.alumnos=this.listaAux;
+                     this.fireService.updateAlumno(this.listaAux,element['$key']);
+                     event.confirm.reject();
+                     
+                     break;
+                     
+                   }
+                   }  // this.fireService.updateAlumno(this.listaAux,element['$key']); 
+                  
+               } catch (error) {
+                 console.log(error);
+               }
+              
              }
+               //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+           //ACA
+                //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+                  
+              for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                const element = this.listadoAlumnos[i];
+                if(element.aula=="4B")
+                {
+                  for (let j = 0; j < element.alumnos.length; j++) {
+                    const element2 = element.alumnos[j];
+                    if(element2!=undefined)                    
+                    this.listaAux.push(element2);
+                  }
+                  
+                }
+              }
+            }
+            this.source2= new LocalDataSource(this.listaAux);
+            
+           }else{
+            alert("turno inválido");
+            
+            event.confirm.reject();
            }
            
-            event.confirm.resolve();
-            
-            this.fireService.getAlumnos().subscribe(data=>
-             {
-               this.listadoAlumnos=data;
-               
-             });
-             
-             for (let i = 0; i < this.listadoAlumnos.length; i++) {
-               const element = this.listadoAlumnos[i];
-               if(element.aula=="4° A")
-               {
-                 for (let j = 0; j < element.alumnos.length; j++) {
-                   const element2 = element.alumnos[j];
-                   this.listaAux.push(element2);
-                 }
-                 
-               }
-             }
-             this.source= new LocalDataSource(this.listaAux);
-             
-             
-          }else if(this.seleccion=="b")
-          {
-           this.listaAux.push(event.newData);
-           for (var index = 0; index < this.listadoAlumnos.length; index++) {
-             let element = this.listadoAlumnos[index];
-             if(element.aula=="4° B")
-             {
-              element.alumnos=this.listaAux;
-              this.fireService.updateAlumno(this.listaAux,element['$key']);  
-               break;     
-               
-               
-             }
-           }
-                  event.confirm.resolve();
-            
-            this.fireService.getAlumnos().subscribe(data=>
-             {
-               this.listadoAlumnos=data;
-               
-             });      
-             for (let i = 0; i < this.listadoAlumnos.length; i++) {
-               const element = this.listadoAlumnos[i];
-               if(element.aula=="4° B")
-               {
-                 for (let j = 0; j < element.alumnos.length; j++) {
-                   const element2 = element.alumnos[j];
-                   this.listaAux.push(element2);
-                 }
-                 
-               }
-             }
-             this.source2= new LocalDataSource(this.listaAux);
+           
+        
+       }else{
+         alert("mail inválido");
+         event.confirm.reject();
+         
+       }
       
+     }else{
+       alert("Completa los datos");
        event.confirm.reject();
-      
-        }
-      
-       event.confirm.reject();
-      }else
-      {
-       alert("turno inválido");
        
-       event.confirm.reject();
-      }
+     }
+     
       
-    } else {
+      
+        // this.fireService.addUser(event.newData);
+      
+    
+    
       event.confirm.reject();
-    }
+      
+    
+    
   }
-
+}
+  
   changeList(event)
   {
     this.listaAux=[];
@@ -361,10 +438,11 @@ loading.present();
   
         for (let i = 0; i < this.listadoAlumnos.length; i++) {
           const element = this.listadoAlumnos[i];
-          if(element.aula=="4° A")
+          if(element.aula=="4A")
           {
             for (let j = 0; j < element.alumnos.length; j++) {
               const element2 = element.alumnos[j];
+              if(element2!=undefined)              
               this.listaAux.push(element2);
             }
             
@@ -382,10 +460,11 @@ loading.present();
   
         for (let i = 0; i < this.listadoAlumnos.length; i++) {
           const element = this.listadoAlumnos[i];
-          if(element.aula=="4° B")
+          if(element.aula=="4B")
           {
             for (let j = 0; j < element.alumnos.length; j++) {
               const element2 = element.alumnos[j];
+              if(element2!=undefined)              
               this.listaAux.push(element2);
             }
             
@@ -411,39 +490,49 @@ loading.present();
            {
             this.listaAux.push(event.newData);
             
-              this.listadoAlumnos.forEach(element => {
-                
-            
-              if(element.aula=="4° A")
+             for (let i = 0; i < this.listadoAlumnos.length; i++) {
+               const element = this.listadoAlumnos[i];
+              if(element.aula=="4A")
               {
                 try {
-               
+                  element.alumnos=this.listaAux;
+                  event.confirm.resolve();
+                  this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.legajo;
+                  this.listaAux[this.listaAux.lastIndexOf(event.newData)].contPresentes=0;
+                  
+                  
+               //    this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.DNI;
+                    this.fireService.updateAlumno(this.listaAux,element['$key']);
+                    
+                    break;
+                    
                   //this.fireService.addAlumno(event.newData,indox)
-                 element.alumnos=this.listaAux;
-                  this.fireService.updateAlumno(this.listaAux,element['$key']); 
+                // element.alumnos=this.listaAux;
+                 // this.fireService.updateAlumno(this.listaAux,element['$key']); 
                   
                 } catch (error) {
                   console.log(error);
                 }
-              }
+             
                 //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-              });
+              } //ACA
             }
             
-             event.confirm.resolve();
              
              this.fireService.getAlumnos().subscribe(data=>
               {
                 this.listadoAlumnos=data;
                 
               });
+              this.listaAux=[];
               
               for (let i = 0; i < this.listadoAlumnos.length; i++) {
                 const element = this.listadoAlumnos[i];
-                if(element.aula=="4° A")
+                if(element.aula=="4A")
                 {
                   for (let j = 0; j < element.alumnos.length; j++) {
                     const element2 = element.alumnos[j];
+                    if(element2!=undefined)                    
                     this.listaAux.push(element2);
                   }
                   
@@ -451,34 +540,39 @@ loading.present();
               }
               this.source= new LocalDataSource(this.listaAux);
               
-              
+            
            }else if(this.seleccion=="b")
            {
             this.listaAux.push(event.newData);
             
-              this.listadoAlumnos.forEach(element => {
-                
-            
-              if(element.aula=="4° B")
+             for (let i = 0; i < this.listadoAlumnos.length; i++) {
+               const element = this.listadoAlumnos[i];
+              if(element.aula=="4B")
               {
                 try {
-               
-                  //this.fireService.addAlumno(event.newData,indox)
-                 element.alumnos=this.listaAux;
-                  this.fireService.updateAlumno(this.listaAux,element['$key']); 
-                  
+                  element.alumnos=this.listaAux;
+                  event.confirm.resolve();
+                  this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.legajo;
+                  this.listaAux[this.listaAux.lastIndexOf(event.newData)].contPresentes=0;
+               //    this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.DNI;
+                    this.fireService.updateAlumno(this.listaAux,element['$key']);
+                    
+                    break;
                 } catch (error) {
                   console.log(error);
                 }
               }
                 //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-              });     
+              }   
+              this.listaAux=[];
+              
               for (let i = 0; i < this.listadoAlumnos.length; i++) {
                 const element = this.listadoAlumnos[i];
-                if(element.aula=="4° B")
+                if(element.aula=="4B")
                 {
                   for (let j = 0; j < element.alumnos.length; j++) {
                     const element2 = element.alumnos[j];
+                    if(element2!=undefined)                    
                     this.listaAux.push(element2);
                   }
                   
@@ -517,4 +611,5 @@ loading.present();
     
   }
 
+}
 }
