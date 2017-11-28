@@ -37,6 +37,7 @@ import { DescargarArchivoPage } from '../pages/descargar-archivo/descargar-archi
 import { NotificacionPage } from '../pages/notificacion/notificacion';
 import { RealInicioAdministrativoPage } from '../pages/real-inicio-administrativo/real-inicio-administrativo';
 import { AsignarMateriaPage } from '../pages/asignar-materia/asignar-materia';
+import { TomarListaPage } from '../pages/tomar-lista/tomar-lista';
 
 var config = {
   apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
@@ -70,7 +71,8 @@ var config = {
     DescargarArchivoPage,
     NotificacionPage,
     RealInicioAdministrativoPage,
-    AsignarMateriaPage
+    AsignarMateriaPage,
+    TomarListaPage
   ],
   imports: [
     BrowserModule,
@@ -103,7 +105,8 @@ var config = {
     DescargarArchivoPage,
     NotificacionPage,
     RealInicioAdministrativoPage,
-    AsignarMateriaPage
+    AsignarMateriaPage,
+    TomarListaPage
   ],
   providers: [
     StatusBar,

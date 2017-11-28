@@ -84,7 +84,7 @@ export class CagarArchivoPage {
       //Tomo cada elemento del arrayFilas y lo transformo en un alumnno para guardalos en listaAlumno
       for (let index = 0; index < arrayFilas.length; index++) {
         const elemento = arrayFilas[index];
-        //console.log(element0);
+        console.log(elemento);
         alumno.legajo = elemento[0].trim();
         alumno.nombre = elemento[1].trim();
         alumno.turno = elemento[2].trim();

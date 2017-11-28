@@ -7,7 +7,7 @@ import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 
 import { NotificacionPage } from '../notificacion/notificacion';
 import { MateriaPage } from '../materia/materia';
-
+import { TomarListaPage } from '../tomar-lista/tomar-lista';
 /**
  * Generated class for the AulaProfesorPage page.
  *
@@ -29,10 +29,10 @@ export class AulaProfesorPage {
   listaAulass: any[] = [
     
       {
-        "aula": "4° A"
+        "aula": "4A"
       },
       {
-        "aula": "4° B"
+        "aula": "4B"
       }
      
     ];
@@ -75,6 +75,7 @@ export class AulaProfesorPage {
 
   tomaLista(){
    // alert("voy a tomar lista");
+   this.navCtrl.push(TomarListaPage,{aulaa:this.aula});
   }
 
   crearNotificacion(){
