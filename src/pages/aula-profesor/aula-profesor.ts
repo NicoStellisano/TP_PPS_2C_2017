@@ -7,6 +7,7 @@ import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 
 import { NotificacionPage } from '../notificacion/notificacion';
 import { MateriaPage } from '../materia/materia';
+import { EncuestasPage } from '../encuestas/encuestas';
 
 /**
  * Generated class for the AulaProfesorPage page.
@@ -94,7 +95,10 @@ export class AulaProfesorPage {
     this.navCtrl.push(MateriaPage,{aulaa:this.aula});
   }
 
-
+  Encuestas()
+  {
+    this.navCtrl.push(EncuestasPage,{aulaa:this.aula}); 
+  }
 
 
 

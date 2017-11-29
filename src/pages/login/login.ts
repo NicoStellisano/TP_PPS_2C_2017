@@ -17,7 +17,8 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { AulaAlumnoPage} from '../aula-alumno/aula-alumno';
 import { RealInicioAdministrativoPage } from '../real-inicio-administrativo/real-inicio-administrativo';
 import { MateriasPage } from '../materias/materias';
-
+import { EncuestasAltaPage } from '../encuestas-alta/encuestas-alta';
+import { EncuestasPage } from '../encuestas/encuestas';
 
 
 /**
@@ -413,7 +414,7 @@ if(!flag)
                 flag=true;
                 break;
                
-              }else if(element2.mail==this.email && element2.legajo==this.password)
+              }else if(element2.mail==this.email)
               {
                 let alert = this.alertCtrl.create({
                   title: "Info!",
@@ -440,7 +441,7 @@ if(!flag)
                 this.navCtrl.setRoot(MateriasPage);
                 flag=true;
                 break;
-              }else if(element2.mail==this.email && element2.legajo==this.password)
+              }else if(element2.mail==this.email)
               {
                 let alert = this.alertCtrl.create({
                   title: "Info!",
@@ -484,8 +485,9 @@ if(!flag)
             localStorage.setItem("password",elementh.password);
             localStorage.setItem("Perfil",elementh.Perfil);
             flag=true;
+            
               this.navCtrl.setRoot(InicioProfesorPage);
-           
+        
               break;
             }else if(elementh.Email==this.email && elementh.password==null)
             {

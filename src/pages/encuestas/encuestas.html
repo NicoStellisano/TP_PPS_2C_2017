@@ -1,0 +1,128 @@
+<!--
+  Generated template for the EncuestasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Encuestas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding style="background-image:url('assets/hallowenCuestionarios.jpg')" class="fondo">
+          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> 
+         <br>
+          
+          <div *ngFor="let e of encuestas; let i = index">
+     
+          <ion-list >
+              <div>
+          <ion-item class="animated flipInX miItem">
+              <ion-label class="miLabel" floating>Nombre:</ion-label>
+              <ion-input type="text" [(ngModel)]="e.nombre" disabled="true"></ion-input> 
+              <button style="color: yellow" ion-button clear item-end icon-only (click)="modificarEncuesta(e)" >
+                  <ion-icon style="width:50px" name="md-create"></ion-icon>
+                </button>
+                <button style="color: red" ion-button clear item-end icon-only (click)="eliminarEncuesta(e)">
+                  <ion-icon style="width:50px" name="trash"></ion-icon>
+                </button>
+              </ion-item>
+            </div>
+                 
+              <ion-item class="animated flipInY miItem">
+              <ion-label class="miLabel" floating>Pregunta:</ion-label>
+              <ion-input type="text" [(ngModel)]="e.pregunta" disabled="true"></ion-input>
+              </ion-item>
+              
+              
+                <ion-item class="animated flipInY miItem">
+                  <ion-label class="miLabel" floating>Duracion:</ion-label>
+                  <ion-input type="text" [(ngModel)]="e.duracion" disabled="true"></ion-input>
+                  </ion-item>
+
+
+
+                  <ion-item class="animated flipInX miItem">
+                      <ion-label class="miLabel" floating>Fecha y hora de inicio (opcional)</ion-label>
+                      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaInicio" disabled="true"></ion-datetime>
+                    </ion-item>
+              
+                    <ion-item class="animated flipInX miItem">
+                        <ion-label class="miLabel" floating>Fecha y hora de finalización (opcional)</ion-label>
+                        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaFinalizacion" disabled="true"></ion-datetime>
+                      </ion-item>
+
+
+
+                  <ion-item *ngIf='e.formato == "Botones"' class="animated flipInY miItem">
+                    <ion-list  >
+                        <button  class="botones" style="color: rgb(85, 158, 218)" ion-button clear item-end >
+                            Presione para votar: {{e.respuesta1}}
+                           </button>
+                           <br>
+                           <button class="botones" style="color: rgb(85, 158, 218)" ion-button clear item-end >
+                              Presione para votar: {{e.respuesta2}}
+                             </button>
+
+
+                      
+                        </ion-list>    
+                      </ion-item>
+         
+                   
+                   <!-- 
+                      <ion-list radio-group [(ngModel)]="respuesta" *ngIf='e.formato == "Radio button"'>
+                          
+                            <ion-label style="color : white">{{e.respuesta1}}</ion-label>
+                            <ion-radio style="color : rgb(233, 67, 67)" value="e.respuesta1" ></ion-radio>
+
+                            <ion-label style="color : white">{{e.respuesta2}}</ion-label>
+                            <ion-radio style="color : rgb(233, 67, 67)" value="e.respuesta2" ></ion-radio>
+                          
+                          </ion-list>
+                        -->
+
+                  
+
+                                <ion-list  *ngIf='e.formato == "Radio button"' radio-group [(ngModel)]="respuesta">
+                                    <ion-item class="animated flipInY miItem">
+                                      <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>
+                                      <ion-radio  value="e.respuesta1" ></ion-radio>
+                                    </ion-item>
+                                    <ion-item class="animated flipInY miItem">
+                                        <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>
+                                        <ion-radio  value="e.respuesta2" ></ion-radio>
+                                      </ion-item>
+                                     
+
+                                  </ion-list>
+
+                                  <ion-list  *ngIf='e.formato == "Checkbox"' radio-group [(ngModel)]="respuesta">
+                                      <ion-item class="animated flipInY miItem">
+                                          <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>
+                                          <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>
+                                      </ion-item>
+                                      <ion-item class="animated flipInY miItem">
+                                          <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>
+                                          <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta2" ></ion-checkbox>
+                                        </ion-item>
+                                       
+  
+                                    </ion-list>
+
+
+                                  
+
+                            
+                        
+                      
+              
+                </ion-list> 
+
+          </div>
+
+
+
+        </ion-content>

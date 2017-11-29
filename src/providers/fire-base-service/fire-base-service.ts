@@ -188,5 +188,31 @@ export class FireBaseServiceProvider {
       {
         return this.afd.list('/personas/profesores').update(dni)
       }*/
+
+
+      //MAURO
+      agregarEncuesta(encuesta)
+      {
+        return this.afd.list('/encuestas').push(encuesta);
+        
+      }
+
+      traerEncuestas()
+      {
+        return this.afd.list('/encuestas');
+        
+      }
+
+      eliminarEncuesta(encuesta)
+      {
+        //return this.afd.database.ref('Encuestas/'+encuesta.$key).remove();
+        console.log(encuesta.$key);
+        return this.afd.list('/encuestas/'+encuesta.$key).remove();
+      }
+
+      editarEncuest(encuesta)
+      {
+        return this.afd.object('/encuestas/'+encuesta.$key).update(encuesta);
+      }
     }
     

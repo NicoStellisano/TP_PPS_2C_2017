@@ -31294,6 +31294,45 @@ page-editar-perfil .botonGuardar {
   margin-top: 0.25cm;
 }
 
+page-encuestas .fondo {
+  background-repeat: no-repeat;
+  background: 50%;
+}
+
+page-encuestas button {
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+}
+
+page-encuestas .botones {
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+}
+
+page-encuestas-alta .fondo {
+  background-repeat: no-repeat;
+  background: 50%;
+}
+
+page-encuestas-alta button {
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+}
+
+page-encuestas-editar .fondo {
+  background-repeat: no-repeat;
+  background: 50%;
+}
+
+page-encuestas-editar button {
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+}
+
 page-inicio-administrativo .fondo {
   background-repeat: no-repeat;
   background: 50%;

@@ -37,6 +37,9 @@ import { DescargarArchivoPage } from '../pages/descargar-archivo/descargar-archi
 import { NotificacionPage } from '../pages/notificacion/notificacion';
 import { RealInicioAdministrativoPage } from '../pages/real-inicio-administrativo/real-inicio-administrativo';
 import { AsignarMateriaPage } from '../pages/asignar-materia/asignar-materia';
+import { EncuestasPage } from '../pages/encuestas/encuestas';
+import { EncuestasAltaPage } from '../pages/encuestas-alta/encuestas-alta';
+import { EncuestasEditarPage } from '../pages/encuestas-editar/encuestas-editar';
 
 var config = {
   apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
@@ -70,7 +73,10 @@ var config = {
     DescargarArchivoPage,
     NotificacionPage,
     RealInicioAdministrativoPage,
-    AsignarMateriaPage
+    AsignarMateriaPage,
+    EncuestasPage,
+    EncuestasAltaPage,
+    EncuestasEditarPage
   ],
   imports: [
     BrowserModule,
@@ -103,7 +109,10 @@ var config = {
     DescargarArchivoPage,
     NotificacionPage,
     RealInicioAdministrativoPage,
-    AsignarMateriaPage
+    AsignarMateriaPage,
+    EncuestasPage,
+    EncuestasAltaPage,
+    EncuestasEditarPage
   ],
   providers: [
     StatusBar,
