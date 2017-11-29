@@ -148,7 +148,14 @@ export class CagarArchivoPage {
       })
     }
 
-    this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
+//    this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
+    let alert = this.alertCtrl.create({
+      title: "Guardar Lista",
+      subTitle: "La lista se guardó correctamente",
+      cssClass:"miClaseAlert",
+    buttons: ['Aceptar']
+  });
+   alert.present();
     
   }
 
@@ -167,7 +174,14 @@ export class CagarArchivoPage {
       this.navCtrl.push(DescargarArchivoPage,{aulaa:this.aula});
     }else{
       //alert("No hya nada que descargar");
-      this.presentAlert("Sin alumnos","No hay nada que descargar");
+     // this.presentAlert("Sin alumnos","No hay nada que descargar");
+      let alert = this.alertCtrl.create({
+        title: "Sin Alumnos",
+        subTitle: "No hay nada que descargar",
+        cssClass:"miClaseDanger",
+      buttons: ['Aceptar']
+    });
+     alert.present();
     }
     
   }

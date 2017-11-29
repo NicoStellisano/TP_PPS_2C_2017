@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController,Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController,Platform,AlertController } from 'ionic-angular';
 //import { AulaAdministrativoItem } from '../../models/aula-administrativo-item/aula-administrativo.interface';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
@@ -86,7 +86,8 @@ export class AulaAdministrativoPage {
   //miAulaAdministrativo = {} as AulaAdministrativoItem;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
-    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ,public platform:Platform,public afd:AngularFireDatabase) {
+    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ,public platform:Platform,public afd:AngularFireDatabase
+    ,public alertCtrl:AlertController) {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     /*this.miAulaAdministrativo = {
       profesor:"Juan Peralta",
@@ -167,263 +168,319 @@ loading.present();
   }
 
   onDeleteConfirm(event) {
-    if (window.confirm('¿Eliminar?')) {
+    let alert = this.alertCtrl.create({
+      title: '¿Eliminar?',
+      cssClass:'miClaseAlert',
+      message: '¿Seguro quieres eliminar?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            event.confirm.reject();
+            
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            if(this.seleccion=="a")
+            {
+             
+              for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                const element = this.listadoAlumnos[i];
+               if(element.aula=="4A")
+               {
+                 try {
+                
+                  for (let j = 0; j < element.alumnos.length; j++) {
+                    const element2 = element.alumnos[j];
+                    if(element2.mail==event.data.mail)
+                    {
+                      this.listaAux[j].vigente=false;
+                      this.fireService.updateAlumno(this.listaAux,element['$key']);
+                
+                      event.confirm.reject();
+                   
+                      
+                      break;
+                      
+                    }
+                  }
+                 } catch (error) {
+                   console.log(error);
+                 }
+              
+                 //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+               } //ACA
+             }
+             
+              
+              this.fireService.getAlumnos().subscribe(data=>
+               {
+                 this.listadoAlumnos=data;
+                 
+               });
+               this.listaAux=[];
+               
+               for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                 const element = this.listadoAlumnos[i];
+                 if(element.aula=="4A")
+                 {
+                   for (let j = 0; j < element.alumnos.length; j++) {
+                     const element2 = element.alumnos[j];
+                     if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
+                     
+                     this.listaAux.push(element2);
+                   }
+                   
+                 }
+               }
+               this.source= new LocalDataSource(this.listaAux);
+               
+             
+            }else if(this.seleccion=="b")
+            {
+             
+              for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                const element = this.listadoAlumnos[i];
+               if(element.aula=="4B")
+               {
+                 try {
+                  for (let j = 0; j < element.alumnos.length; j++) {
+                    const element2 = element.alumnos[j];
+                    if(element2.mail==event.data.mail)
+                    {
+                      this.listaAux[j].vigente=false;
+                      this.fireService.updateAlumno(this.listaAux,element['$key']);
+                      event.confirm.reject();
+                      
+                     // this.fireService.removeAlumno(element['$key'],j);
+                      break;
+                      
+                    }
+                  }
+                     
+                     break;
+                 } catch (error) {
+                   console.log(error);
+                 }
+               }
+                 //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+               }   
+               this.listaAux=[];
+               
+               for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                 const element = this.listadoAlumnos[i];
+                 if(element.aula=="4B")
+                 {
+                   for (let j = 0; j < element.alumnos.length; j++) {
+                     const element2 = element.alumnos[j];
+                     if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
+                     this.listaAux.push(element2);
+                   }
+                   
+                 }
+               }
+               this.source2= new LocalDataSource(this.listaAux);
+        
+            
+         
+        }
+        }
+      }
+      ]
+   
     
-      if(this.seleccion=="a")
-      {
-       
-        for (let i = 0; i < this.listadoAlumnos.length; i++) {
-          const element = this.listadoAlumnos[i];
-         if(element.aula=="4A")
-         {
-           try {
-          
-            for (let j = 0; j < element.alumnos.length; j++) {
-              const element2 = element.alumnos[j];
-              if(element2.mail==event.data.mail)
-              {
-                this.listaAux[j].vigente=false;
-                this.fireService.updateAlumno(this.listaAux,element['$key']);
-          
-                event.confirm.reject();
-             
-                
-                break;
-                
-              }
-            }
-           } catch (error) {
-             console.log(error);
-           }
-        
-           //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-         } //ACA
-       }
-       
-        
-        this.fireService.getAlumnos().subscribe(data=>
-         {
-           this.listadoAlumnos=data;
-           
-         });
-         this.listaAux=[];
-         
-         for (let i = 0; i < this.listadoAlumnos.length; i++) {
-           const element = this.listadoAlumnos[i];
-           if(element.aula=="4A")
-           {
-             for (let j = 0; j < element.alumnos.length; j++) {
-               const element2 = element.alumnos[j];
-               if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
-               
-               this.listaAux.push(element2);
-             }
-             
-           }
-         }
-         this.source= new LocalDataSource(this.listaAux);
-         
-       
-      }else if(this.seleccion=="b")
-      {
-       
-        for (let i = 0; i < this.listadoAlumnos.length; i++) {
-          const element = this.listadoAlumnos[i];
-         if(element.aula=="4B")
-         {
-           try {
-            for (let j = 0; j < element.alumnos.length; j++) {
-              const element2 = element.alumnos[j];
-              if(element2.mail==event.data.mail)
-              {
-                this.listaAux[j].vigente=false;
-                this.fireService.updateAlumno(this.listaAux,element['$key']);
-                event.confirm.reject();
-                
-               // this.fireService.removeAlumno(element['$key'],j);
-                break;
-                
-              }
-            }
-               
-               break;
-           } catch (error) {
-             console.log(error);
-           }
-         }
-           //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-         }   
-         this.listaAux=[];
-         
-         for (let i = 0; i < this.listadoAlumnos.length; i++) {
-           const element = this.listadoAlumnos[i];
-           if(element.aula=="4B")
-           {
-             for (let j = 0; j < element.alumnos.length; j++) {
-               const element2 = element.alumnos[j];
-               if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
-               this.listaAux.push(element2);
-             }
-             
-           }
-         }
-         this.source2= new LocalDataSource(this.listaAux);
-  
-      
-    } else {
-      event.confirm.reject();
-    }
-  }
+  });
+  alert.present();
+
+
+
+
+
+
+    
+    
   }
   
 
 
   onSaveConfirm(event) {
-    if (window.confirm('¿Editar?')) {
-     if(event.newData.legajo!=null && event.newData.nombre!=null && event.newData.mail!=null && event.newData.turno!=null
-    && event.newData.legajo!=undefined  && event.newData.nombre!=undefined && event.newData.mail!=undefined && event.newData.turno!=undefined &&
-     event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="" && event.newData.turno!="")
-     {
-       
-       if(event.newData.mail.includes('@') && event.newData.mail.includes('.com'))
-       {
-         
-           if(this.seleccion=="a")
-           {
+    
+    let alert = this.alertCtrl.create({
+      title: '¿Editar?',
+      cssClass:'miClaseAlert',
+      message: '¿Seguro quieres editar?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            event.confirm.reject();
             
-             for (let i = 0; i < this.listadoAlumnos.length; i++) {
-               const element = this.listadoAlumnos[i];
-              if(element.aula=="4A")
-              {
-                try {
-                  for (let j = 0; j < element.alumnos.length; j++) {
-                    const element2 = element.alumnos[j];
-                    if(element2.mail==event.newData.mail)
-                    {
-                      this.listaAux[j]=event.newData;
-
-                      element.alumnos=this.listaAux;
-                      this.fireService.updateAlumno(this.listaAux,element['$key']);
-                      event.confirm.reject();
-                      
-                      break;
-                      
-                    }
-                    }  // this.fireService.updateAlumno(this.listaAux,element['$key']); 
-                  
-                } catch (error) {
-                  console.log(error);
-                }
-              }
-                //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-              } //ACA
-          
-            
-             
-             this.fireService.getAlumnos().subscribe(data=>
-              {
-                this.listadoAlumnos=data;
-                
-              });
-              this.listaAux=[];
-              
-              for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                const element = this.listadoAlumnos[i];
-                if(element.aula=="4A")
-                {
-                  for (let j = 0; j < element.alumnos.length; j++) {
-                    const element2 = element.alumnos[j];
-                    if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
-                    this.listaAux.push(element2);
-                  }
-                  
-                }
-              }
-              this.source= new LocalDataSource(this.listaAux);
-            
-              
-           }else if(this.seleccion=="b")
-           {
-            for (let i = 0; i < this.listadoAlumnos.length; i++) {
-              const element = this.listadoAlumnos[i];
-             if(element.aula=="4B")
-             {
-               try {
-                 for (let j = 0; j < element.alumnos.length; j++) {
-                   const element2 = element.alumnos[j];
-                   if(element2.mail==event.newData.mail)
-                   {
-                     this.listaAux[j]=event.newData;
-
-                     element.alumnos=this.listaAux;
-                     this.fireService.updateAlumno(this.listaAux,element['$key']);
-                     event.confirm.reject();
-                     
-                     break;
-                     
-                   }
-                   }  // this.fireService.updateAlumno(this.listaAux,element['$key']); 
-                 
-               } catch (error) {
-                 console.log(error);
-               }
-             }
-               //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-             } //ACA
-         
-           
-            
-            this.fireService.getAlumnos().subscribe(data=>
-             {
-               this.listadoAlumnos=data;
-               
-             });
-             this.listaAux=[];
-             
-             for (let i = 0; i < this.listadoAlumnos.length; i++) {
-               const element = this.listadoAlumnos[i];
-               if(element.aula=="4B")
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            if(event.newData.legajo!=null && event.newData.nombre!=null && event.newData.mail!=null && event.newData.turno!=null
+              && event.newData.legajo!=undefined  && event.newData.nombre!=undefined && event.newData.mail!=undefined && event.newData.turno!=undefined &&
+               event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="" && event.newData.turno!="")
                {
-                 for (let j = 0; j < element.alumnos.length; j++) {
-                   const element2 = element.alumnos[j];
-                   if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
-                   this.listaAux.push(element2);
-                 }
                  
-               }
-             }
-             this.source2= new LocalDataSource(this.listaAux);
-             
-            
-            
+                 if(event.newData.mail.includes('@'))
+                 {
+                   
+                     if(this.seleccion=="a")
+                     {
+                      
+                       for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                         const element = this.listadoAlumnos[i];
+                        if(element.aula=="4A")
+                        {
+                          try {
+                            for (let j = 0; j < element.alumnos.length; j++) {
+                              const element2 = element.alumnos[j];
+                              if(element2.mail==event.newData.mail)
+                              {
+                                this.listaAux[j]=event.newData;
           
-           }
-           
-           
-        
-       }else{
-         alert("mail inválido");
-         event.confirm.reject();
-         
-       }
-      
-     }else{
-       alert("Completa los datos");
-       event.confirm.reject();
-       
-     }
-     
-      
-      
-        // this.fireService.addUser(event.newData);
-      
+                                element.alumnos=this.listaAux;
+                                this.fireService.updateAlumno(this.listaAux,element['$key']);
+                                event.confirm.reject();
+                                
+                                break;
+                                
+                              }
+                              }  // this.fireService.updateAlumno(this.listaAux,element['$key']); 
+                            
+                          } catch (error) {
+                            console.log(error);
+                          }
+                        }
+                          //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+                        } //ACA
+                    
+                      
+                       
+                       this.fireService.getAlumnos().subscribe(data=>
+                        {
+                          this.listadoAlumnos=data;
+                          
+                        });
+                        this.listaAux=[];
+                        
+                        for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                          const element = this.listadoAlumnos[i];
+                          if(element.aula=="4A")
+                          {
+                            for (let j = 0; j < element.alumnos.length; j++) {
+                              const element2 = element.alumnos[j];
+                              if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
+                              this.listaAux.push(element2);
+                            }
+                            
+                          }
+                        }
+                        this.source= new LocalDataSource(this.listaAux);
+                      
+                        
+                     }else if(this.seleccion=="b")
+                     {
+                      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                        const element = this.listadoAlumnos[i];
+                       if(element.aula=="4B")
+                       {
+                         try {
+                           for (let j = 0; j < element.alumnos.length; j++) {
+                             const element2 = element.alumnos[j];
+                             if(element2.mail==event.newData.mail)
+                             {
+                               this.listaAux[j]=event.newData;
+          
+                               element.alumnos=this.listaAux;
+                               this.fireService.updateAlumno(this.listaAux,element['$key']);
+                               event.confirm.reject();
+                               
+                               break;
+                               
+                             }
+                             }  // this.fireService.updateAlumno(this.listaAux,element['$key']); 
+                           
+                         } catch (error) {
+                           console.log(error);
+                         }
+                       }
+                         //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+                       } //ACA
+                   
+                     
+                      
+                      this.fireService.getAlumnos().subscribe(data=>
+                       {
+                         this.listadoAlumnos=data;
+                         
+                       });
+                       this.listaAux=[];
+                       
+                       for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                         const element = this.listadoAlumnos[i];
+                         if(element.aula=="4B")
+                         {
+                           for (let j = 0; j < element.alumnos.length; j++) {
+                             const element2 = element.alumnos[j];
+                             if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
+                             this.listaAux.push(element2);
+                           }
+                           
+                         }
+                       }
+                       this.source2= new LocalDataSource(this.listaAux);
+                       
+                      
+                      
+                    
+                     }
+                     
+                     
+                  
+                 }else{
+                  let alert = this.alertCtrl.create({
+                    title: "Info",
+                    subTitle: "Correo inválido",
+                    cssClass:"miClaseDanger",
+                  buttons: ['Aceptar']
+                });
+                 alert.present();
+                   event.confirm.reject();
+                   
+                 }
+                
+               }else{
+                let alert = this.alertCtrl.create({
+                  title: "Info",
+                  subTitle: "Completa Los Datos",
+                  cssClass:"miClaseDanger",
+                buttons: ['Aceptar']
+              });
+               alert.present();
+                 event.confirm.reject();
+                 
+               }         
+                event.confirm.reject();
+                
+              
+        }
+      }
+      ]
+   
     
-    
-      event.confirm.reject();
-      
-    
-    
-  }
+  });
+  alert.present();
+
+
+  
 
   }
   changeList(event)
@@ -480,139 +537,167 @@ loading.present();
   }
 
   onCreateConfirm(event) {
-    if (window.confirm('¿Crear?')) {
-     if(event.newData.legajo!=null && event.newData.nombre!=null && event.newData.mail!=null && event.newData.turno!=null
-    && event.newData.legajo!=undefined  && event.newData.nombre!=undefined && event.newData.mail!=undefined && event.newData.turno!=undefined &&
-     event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="" && event.newData.turno!="")
-     {
-       
-      if(event.newData.mail.includes('@') && event.newData.mail.includes('.com'))
-      {
+    let alert = this.alertCtrl.create({
+      title: '¿Crear?',
+      cssClass:'miClaseAlert',
+      message: '¿Seguro quieres crear?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            event.confirm.reject();
+            
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+     
+    if(event.newData.legajo!=null && event.newData.nombre!=null && event.newData.mail!=null && event.newData.turno!=null
+      && event.newData.legajo!=undefined  && event.newData.nombre!=undefined && event.newData.mail!=undefined && event.newData.turno!=undefined &&
+       event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="" && event.newData.turno!="")
+       {
          
-           if(this.seleccion=="a")
-           {
-            this.listaAux.push(event.newData);
-            
-             for (let i = 0; i < this.listadoAlumnos.length; i++) {
-               const element = this.listadoAlumnos[i];
-              if(element.aula=="4A")
-              {
-                try {
-                  element.alumnos=this.listaAux;
-                  event.confirm.resolve();
-                  this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.legajo;
-                  this.listaAux[this.listaAux.lastIndexOf(event.newData)].contPresentes=0;
-                  
-                  
-               //    this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.DNI;
-                    this.fireService.updateAlumno(this.listaAux,element['$key']);
-                    
-                    break;
-                    
-                  //this.fireService.addAlumno(event.newData,indox)
-                // element.alumnos=this.listaAux;
-                 // this.fireService.updateAlumno(this.listaAux,element['$key']); 
-                  
-                } catch (error) {
-                  console.log(error);
-                }
-             
-                //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-              } //ACA
-            }
-            
-             
-             this.fireService.getAlumnos().subscribe(data=>
-              {
-                this.listadoAlumnos=data;
-                
-              });
-              this.listaAux=[];
+        if(event.newData.mail.includes('@') && event.newData.mail.includes('.com'))
+        {
+           
+             if(this.seleccion=="a")
+             {
+              this.listaAux.push(event.newData);
               
-              for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                const element = this.listadoAlumnos[i];
+               for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                 const element = this.listadoAlumnos[i];
                 if(element.aula=="4A")
                 {
-                  for (let j = 0; j < element.alumnos.length; j++) {
-                    const element2 = element.alumnos[j];
-                    if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
-                    this.listaAux.push(element2);
-                  }
-                  
-                }
-              }
-              this.source= new LocalDataSource(this.listaAux);
-              
-            
-           }else if(this.seleccion=="b")
-           {
-            this.listaAux.push(event.newData);
-            
-             for (let i = 0; i < this.listadoAlumnos.length; i++) {
-               const element = this.listadoAlumnos[i];
-              if(element.aula=="4B")
-              {
-                try {
-                  element.alumnos=this.listaAux;
-                  event.confirm.resolve();
-                  this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.legajo;
-                  this.listaAux[this.listaAux.lastIndexOf(event.newData)].contPresentes=0;
-               //    this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.DNI;
-                    this.fireService.updateAlumno(this.listaAux,element['$key']);
+                  try {
+                    element.alumnos=this.listaAux;
+                    event.confirm.resolve();
+                    this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.legajo;
+                    this.listaAux[this.listaAux.lastIndexOf(event.newData)].contPresentes=0;
                     
-                    break;
-                } catch (error) {
-                  console.log(error);
-                }
+                    
+                 //    this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.DNI;
+                      this.fireService.updateAlumno(this.listaAux,element['$key']);
+                      
+                      break;
+                      
+                    //this.fireService.addAlumno(event.newData,indox)
+                  // element.alumnos=this.listaAux;
+                   // this.fireService.updateAlumno(this.listaAux,element['$key']); 
+                    
+                  } catch (error) {
+                    console.log(error);
+                  }
+               
+                  //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+                } //ACA
               }
-                //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
-              }   
-              this.listaAux=[];
               
-              for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                const element = this.listadoAlumnos[i];
+               
+               this.fireService.getAlumnos().subscribe(data=>
+                {
+                  this.listadoAlumnos=data;
+                  
+                });
+                this.listaAux=[];
+                
+                for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                  const element = this.listadoAlumnos[i];
+                  if(element.aula=="4A")
+                  {
+                    for (let j = 0; j < element.alumnos.length; j++) {
+                      const element2 = element.alumnos[j];
+                      if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
+                      this.listaAux.push(element2);
+                    }
+                    
+                  }
+                }
+                this.source= new LocalDataSource(this.listaAux);
+                
+              
+             }else if(this.seleccion=="b")
+             {
+              this.listaAux.push(event.newData);
+              
+               for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                 const element = this.listadoAlumnos[i];
                 if(element.aula=="4B")
                 {
-                  for (let j = 0; j < element.alumnos.length; j++) {
-                    const element2 = element.alumnos[j];
-                    if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
-                    this.listaAux.push(element2);
+                  try {
+                    element.alumnos=this.listaAux;
+                    event.confirm.resolve();
+                    this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.legajo;
+                    this.listaAux[this.listaAux.lastIndexOf(event.newData)].contPresentes=0;
+                 //    this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.DNI;
+                      this.fireService.updateAlumno(this.listaAux,element['$key']);
+                      
+                      break;
+                  } catch (error) {
+                    console.log(error);
                   }
-                  
                 }
-              }
-              this.source2= new LocalDataSource(this.listaAux);
+                  //this.afd.list('/alumno-lista/'+indox+'/alumnos').push(event.newData).ref.child().set 
+                }   
+                this.listaAux=[];
+                
+                for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                  const element = this.listadoAlumnos[i];
+                  if(element.aula=="4B")
+                  {
+                    for (let j = 0; j < element.alumnos.length; j++) {
+                      const element2 = element.alumnos[j];
+                      if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
+                      this.listaAux.push(element2);
+                    }
+                    
+                  }
+                }
+                this.source2= new LocalDataSource(this.listaAux);
+                
+             }else{
               
-           }else{
-            alert("turno inválido");
-            
-            event.confirm.reject();
-           }
+              
+              event.confirm.reject();
+             }
+             
+             
+          
+         }else{
+          let alert = this.alertCtrl.create({
+            title: "Info",
+            subTitle: "Correo Inválido",
+            cssClass:"miClaseDanger",
+          buttons: ['Aceptar']
+        });
+         alert.present();
+           event.confirm.reject();
            
-           
-        
+         }
        }else{
-         alert("mail inválido");
+        let alert = this.alertCtrl.create({
+          title: "Info",
+          subTitle: "Completa Los Datos",
+          cssClass:"miClaseDanger",
+        buttons: ['Aceptar']
+      });
+       alert.present();
+         
          event.confirm.reject();
          
        }
-     }else{
-       alert("Completa los datos");
-       event.confirm.reject();
        
-     }
-     
+        event.confirm.reject();
+ 
       
-      
-        // this.fireService.addUser(event.newData);
-      
+        }
+      }
+      ]
+   
     
-    
-      event.confirm.reject();
-      
-    
-    
-  }
+  });
+  alert.present();
 
 }
 }
