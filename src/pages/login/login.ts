@@ -418,11 +418,7 @@ if(!flag)
                 flag=true;
                 break;
                
-<<<<<<< HEAD
-              }else if(element2.mail==this.email)
-=======
               }else if(element2.mail==this.email && element2.legajo!=this.password)
->>>>>>> f522e499e2d013edb728fe241f114dc32360a46f
               {
                 let alert = this.alertCtrl.create({
                   title: "Info!",
@@ -449,11 +445,7 @@ if(!flag)
                 this.navCtrl.setRoot(MateriasPage);
                 flag=true;
                 break;
-<<<<<<< HEAD
-              }else if(element2.mail==this.email)
-=======
               }else if(element2.mail==this.email && element2.legajo!=this.password)
->>>>>>> f522e499e2d013edb728fe241f114dc32360a46f
               {
                 let alert = this.alertCtrl.create({
                   title: "Info!",

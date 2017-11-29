@@ -7,12 +7,9 @@ import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 
 import { NotificacionPage } from '../notificacion/notificacion';
 import { MateriaPage } from '../materia/materia';
-<<<<<<< HEAD
 import { EncuestasPage } from '../encuestas/encuestas';
 
-=======
 import { TomarListaPage } from '../tomar-lista/tomar-lista';
->>>>>>> f522e499e2d013edb728fe241f114dc32360a46f
 /**
  * Generated class for the AulaProfesorPage page.
  *
