@@ -13,12 +13,13 @@ import { AlumnosPage } from '../pages/alumnos/alumnos';
 import { CagarArchivoPage } from '../pages/cagar-archivo/cagar-archivo';
 
 
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
-  //rootPage:any = CagarArchivoPage; //test
+  //rootPage:any = LoginPage;
+  rootPage:any = LoginPage; //test
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

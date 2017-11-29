@@ -108,7 +108,7 @@ listaAux: any[] = [];
         this.listaAux=[];
         for (let i = 0; i < this.listadoAlumnos.length; i++) {
           const element = this.listadoAlumnos[i];
-          if(element.aula=="4° A")
+          if(element.aula=="4A")
           {
             for (let j = 0; j < element.alumnos.length; j++) {
               const element2 = element.alumnos[j];
@@ -122,7 +122,7 @@ listaAux: any[] = [];
         this.listaAux=[];        
         for (let i = 0; i < this.listadoAlumnos.length; i++) {
           const element = this.listadoAlumnos[i];
-          if(element.aula=="4° B")
+          if(element.aula=="4B")
           {
             for (let j = 0; j < element.alumnos.length; j++) {
               const element2 = element.alumnos[j];

@@ -2,25 +2,25 @@
 TP Final de la practica profesional supervisada
 
 Stellisano Nicolás 4ºA<br/>
-Login con red social<br/>
-ABM –Alumno<br/>
-Diseño de estilos<br/>
-ABM Profesor y Administrativo<br/>
+Login con red social<br/> F
+ABM –Alumno<br/> G-
+Diseño de estilos<br/> I
+ABM Profesor y Administrativo<br/> J
 Navegacion de Administrativo<br/>
 Navegacion sobre aplicacion<br/>
 
 Freire Ezequiel 4ºB<br/>
-*Carga de archivos Excel/csv <br/>
-Diseño de estilos<br/>
+*Carga de archivos Excel/csv <br/> C
+Diseño de estilos<br/> I
 Descarga de archivos<br/>
 Navegacion sobre aplicacion<br/>
+QR para Profesores<br/> N
 
 Suppan Mauro 4ºB<br/>
-*Aviso de Importancia <br/>
+*Aviso de Importancia <br/> E
 Administración de su propio perfil<br/>
-Diseño de estilos<br/>
-QR para Alumnos<br/>
-QR para Profesores<br/>
+Diseño de estilos<br/> I
+QR para Alumnos<br/> M
 Navegacion sobre aplicacion<br/>
 
 

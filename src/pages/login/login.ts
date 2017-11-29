@@ -69,19 +69,7 @@ export class LoginPage {
               {
                 this.listadoAlumnos=data;
               });
-            let loading = this.loadingCtrl.create({
-        spinner: 'hide',
-        content: `
-         <img src="assets/spinner.gif">`,
-        duration: 50000000,
-        showBackdrop:false
-        
-      });
-  loading.present();
-      setTimeout(() => {
-        loading.dismiss();
-      }, 6000);
-  }
+            }
 
   octa(){
     this.email = this.oct.email;
@@ -126,7 +114,7 @@ loading.present();
     })
     
       .then((res) => {
-        const firecreds = firebase.auth.GoogleAuthProvider.credential(res.idToken);
+        const firecreds = firebase.auth.GoogleAuthProvider.credential(res.idTAceptaren);
         firebase.auth().signInWithCredential(firecreds).then((res) => {
           for (let i = 0; i < this.listadoAdmins.length; i++) {
             let element = this.listadoAdmins[i];
@@ -173,7 +161,7 @@ loading.present();
                   break;
                 }
                 let element = this.listadoAlumnos[i];
-                if(element.aula=="4° A")
+                if(element.aula=="4A")
                 {
                   for (let j = 0; j < element.alumnos.length; j++) {
                     let element2 = element.alumnos[j];
@@ -191,17 +179,17 @@ loading.present();
                     {
                       let alert = this.alertCtrl.create({
                         title: "Info",
-                        subTitle: "Inicia Sesión con Google porfavor",
-                        cssClass:"miClaseAlert",
-                      buttons: ['OK']
+                        subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
+                        cssClass:"miClaseDanger",
+                      buttons: ['Aceptar']
                     });
                      alert.present();
                      
-                      this.google=true;
+              //        this.google=true;
                     } 
                   }
                   
-                }else if(element.aula=="4° B")
+                }else if(element.aula=="4B")
                 {
                   for (let j = 0; j < element.alumnos.length; j++) {
                     let element2 = element.alumnos[j];
@@ -220,12 +208,12 @@ loading.present();
                       
                       let alert = this.alertCtrl.create({
                         title: "Info!",
-                        subTitle: "Inicia Sesión con Google porfavor",
-                        cssClass:"miClaseAlert",
-                      buttons: ['OK']
+                        subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
+                        cssClass:"miClaseDanger",
+                      buttons: ['Aceptar']
                     });
                      alert.present();
-                      this.google=true;
+              //        this.google=true;
                     } 
                   } 
                   }
@@ -268,29 +256,45 @@ loading.present();
 
 if(!flag)
 {
-  this.googlePlus.disconnect();          
-  const toast = this.toast.create({
-    message: 'Usuario no registrado',
-    duration: 3000,
-    position: 'bottom'
-  });
 
 
-  toast.present();
+  this.googlePlus.disconnect();   
+  
+  let alert = this.alertCtrl.create({
+    title: "Info!",
+    subTitle: "Usuario no registrado",
+    cssClass:"miClaseDanger",
+  buttons: ['Aceptar']
+});
+ alert.present();
+ 
 }
           
         }).catch((err) => {
-          alert('Autentificación fallida' + err);
+          let alert = this.alertCtrl.create({
+            title: "Info!",
+            subTitle: "Autentificacion fallida",
+            cssClass:"miClaseDanger",
+          buttons: ['Aceptar']
+        });
+         alert.present();
         })
         
       }).catch((err) => {
-        alert('Error' + err);
+        
+        let alert = this.alertCtrl.create({
+          title: "Info!",
+          subTitle: "Error Desconocido",
+          cssClass:"miClaseDanger",
+        buttons: ['Aceptar']
+      });
+       alert.present();
     });
     /*
     this.googlePlus.login({'webClientId':'822117994633-eau5gidg0q2f1sqltdbnq68mscsrpfui.apps.googleusercontent.com','offline':true})
     .then(res=>
     {
-      firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.accessToken))
+      firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.accessTAceptaren))
       .then(suc=>
       {
         alert("Logeado");
@@ -353,12 +357,12 @@ if(!flag)
         {
           let alert = this.alertCtrl.create({
             title: "Info!",
-            subTitle: "Inicia Sesión con Google porfavor",
-            cssClass:"miClaseAlert",
-          buttons: ['OK']
+            subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
+            cssClass:"miClaseDanger",
+          buttons: ['Aceptar']
         });
          alert.present();
-          this.google=true;
+         // this.google=true;
         }
       }
       if(!flag)
@@ -380,12 +384,12 @@ if(!flag)
             {
               let alert = this.alertCtrl.create({
                 title: "Info!",
-                subTitle: "Inicia Sesión con Google porfavor",
+                subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
                 cssClass:"miClaseAlert",
-              buttons: ['OK']
+              buttons: ['Aceptar']
             });
              alert.present();
-              this.google=true;
+              //this.google=true;
             }
           }
       }
@@ -399,7 +403,7 @@ if(!flag)
             break;
           }
           let element = this.listadoAlumnos[i];
-          if(element.aula=="4° A")
+          if(element.aula=="4A")
           {
             for (let j = 0; j < element.alumnos.length; j++) {
               let element2 = element.alumnos[j];
@@ -407,27 +411,31 @@ if(!flag)
               {
                 localStorage.setItem("nombre",element2.nombre);
                 localStorage.setItem("mail",element2.mail);
-                localStorage.setItem("curso","4° A");                
+                localStorage.setItem("curso","4A");                
                 localStorage.setItem("legajo",element2.legajo);
                 localStorage.setItem("turno",element2.turno);
                 this.navCtrl.setRoot(MateriasPage);
                 flag=true;
                 break;
                
+<<<<<<< HEAD
               }else if(element2.mail==this.email)
+=======
+              }else if(element2.mail==this.email && element2.legajo!=this.password)
+>>>>>>> f522e499e2d013edb728fe241f114dc32360a46f
               {
                 let alert = this.alertCtrl.create({
                   title: "Info!",
-                  subTitle: "Inicia Sesión con Google porfavor",
-                  cssClass:"miClaseAlert",
-                buttons: ['OK']
+                  subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
+                  cssClass:"miClaseDanger",
+                buttons: ['Aceptar']
               });
                alert.present();
-                this.google=true;
+              //  this.google=true;
               } 
             }
             
-          }else if(element.aula=="4° B")
+          }else if(element.aula=="4B")
           {
             for (let j = 0; j < element.alumnos.length; j++) {
               let element2 = element.alumnos[j];
@@ -435,22 +443,26 @@ if(!flag)
               {
                 localStorage.setItem("nombre",element2.nombre);
                 localStorage.setItem("mail",element2.mail);
-                localStorage.setItem("curso","4° B");                
+                localStorage.setItem("curso","4B");                
                 localStorage.setItem("legajo",element2.legajo);
                 localStorage.setItem("turno",element2.turno);
                 this.navCtrl.setRoot(MateriasPage);
                 flag=true;
                 break;
+<<<<<<< HEAD
               }else if(element2.mail==this.email)
+=======
+              }else if(element2.mail==this.email && element2.legajo!=this.password)
+>>>>>>> f522e499e2d013edb728fe241f114dc32360a46f
               {
                 let alert = this.alertCtrl.create({
                   title: "Info!",
-                  subTitle: "Inicia Sesión con Google porfavor",
-                  cssClass:"miClaseAlert",
-                buttons: ['OK']
+                  subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
+                  cssClass:"miClaseDanger",
+                buttons: ['Aceptar']
               });
                alert.present();
-                this.google=true;
+              //  this.google=true;
               } 
             }
           }
@@ -467,8 +479,8 @@ if(!flag)
               break;
             }else if(element.Email==this.email && element.password==null)
             {
-              alert("Inicia Sesión con Google porfavor");
-              this.google=true;
+              alert("Contraseña incorrecta,prueba iniciar Sesión con Google porfavor");
+              //this.google=true;
             }
           }*/
       
@@ -493,12 +505,12 @@ if(!flag)
             {
               let alert = this.alertCtrl.create({
                 title: "Info!",
-                subTitle: "Inicia Sesión con Google porfavor",
-                cssClass:"miClaseAlert",
-              buttons: ['OK']
+                subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
+                cssClass:"miClaseDanger",
+              buttons: ['Aceptar']
             });
              alert.present();
-              this.google=true;
+              //this.google=true;
             }
           }
       }
@@ -517,15 +529,16 @@ if(!flag)
     
     if(!flag)
 {
-this.googlePlus.disconnect();          
-const toast = this.toast.create({
-message: 'Usuario no registrado o contraseña incorrecta',
-duration: 3000,
-position: 'bottom'
+this.googlePlus.disconnect();       
+
+let alert = this.alertCtrl.create({
+  title: "Info!",
+  subTitle: "Usuario no registrado o contraseña incorrecta",
+  cssClass:"miClaseDanger",
+buttons: ['Aceptar']
 });
+alert.present();
 
-
-toast.present();
 }
   }
 

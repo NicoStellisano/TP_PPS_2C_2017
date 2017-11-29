@@ -15,21 +15,33 @@ import { AsignarMateriaPage } from '../asignar-materia/asignar-materia';
 @IonicPage()
 @Component({
   template: `
+  <ion-content padding style="background-image:url('assets/aula-administrativo.jpeg')" class="fondo">
+  
   <ion-item style='float:right'>
   <ion-label>Personas</ion-label>
-  <ion-select [(ngModel)]="personas" (ionChange)="changeList($event)">
-    <ion-option value="p">Profesores</ion-option>
-    <ion-option value="a">Administrativos</ion-option>
+  <ion-select interface='action-sheet' [(ngModel)]="personas">
+    <ion-option (ionSelect)="changeList('p')" value="p">Profesores</ion-option>
+    <ion-option (ionSelect)="changeList('a')" value="a">Administrativos</ion-option>
   </ion-select>
 </ion-item>
+<ion-item>
 <div style='width:100%;height:100%' *ngIf='profesor'>
   <ng2-smart-table style='width:100%;height:100%' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"
   (editConfirm)="onSaveConfirm($event)"
-  (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>
+  (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div></ion-item>
+  <ion-item>
   <div style='width:100%;height:100%' *ngIf='!profesor'>
   <ng2-smart-table style='width:100%;height:100%'  [settings]="settings2" [source]="source2" (deleteConfirm)="onDeleteConfirm($event)"
   (editConfirm)="onSaveConfirm($event)"
-  (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>
+  (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div></ion-item>
+
+  <button ion-button round full *ngIf='profesor' large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
+  <ion-icon name="arrow-round-back"></ion-icon> Cargar Profesores
+</button>
+<button ion-button round full *ngIf='!profesor' large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
+<ion-icon name="arrow-round-back"></ion-icon> Cargar Administrativos
+</button>
+</ion-content>
 `,
   selector: 'page-inicio-admin',
 })
@@ -171,7 +183,7 @@ settings2 = {
              
             }
           }
-          ,
+          ,/*
           Accion: {
             title: 'Acción',
             filter: false,
@@ -187,7 +199,7 @@ settings2 = {
              
             }
             
-            
+            */
           
         }
       }
@@ -262,7 +274,7 @@ ionViewDidEnter()
 loading.present();
     setTimeout(() => {
       loading.dismiss();
-    }, 6000);
+    }, 2000);
 
     
 
@@ -273,247 +285,309 @@ loading.present();
     this.screenOrientation.unlock();
   }
   onDeleteConfirm(event) {
-    /* if (window.confirm('¿Eliminar?')) {
-     if(event.data.Perfil=="Profesor")
-      {
-      for (let i = 0; i <  this.listadoProfesores.length; i++) {
-        const element =  this.listadoProfesores[i];
-        console.log(element);          
-        
-        if(element.Email==event.data.Email)
+    let alert = this.alertCtrl.create({
+      title: '¿Eliminar?',
+      cssClass:'miClaseAlert',
+      message: '¿Seguro quieres eliminar?',
+      buttons: [
         {
-         
-         this.fireService.removeProfesor(element['$key']);
-         
-          //event.confirm.reject();      
-          event.confirm.resolve();
-
-          this.fireService.getProfesores().subscribe(data=>
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            event.confirm.reject();
+            
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            if(event.data.Perfil=="Profesor")
             {
-              this.source = new LocalDataSource(data); // create the source
-              this.listadoProfesores=data;
+            for (let i = 0; i <  this.listadoProfesores.length; i++) {
+              const element =  this.listadoProfesores[i];
+              console.log(element);          
               
-            }); 
-                  
-          break;
+              if(element.Email==event.data.Email)
+              {
+               
+               this.fireService.removeProfesor(element['$key']);
+               
+                //event.confirm.reject();      
+                event.confirm.resolve();
+      
+                this.fireService.getProfesores().subscribe(data=>
+                  {
+                    this.source = new LocalDataSource(data); // create the source
+                    this.listadoProfesores=data;
+                    
+                  }); 
+                        
+                break;
+              }
+            }
+          }else if(event.data.Perfil=="Administrativo")
+          {
+            for (let i = 0; i <  this.listadoAdministrativos.length; i++) {
+              const element =  this.listadoAdministrativos[i];
+              console.log(element);          
+              
+              if(element.Email==event.data.Email)
+              {
+                this.fireService.removeAdministrativo(element['$key']);
+               
+                //event.confirm.reject();      
+                event.confirm.resolve();
+      
+                this.fireService.getAdministrativos().subscribe(data=>
+                  {
+                    this.source2 = new LocalDataSource(data); // create the source
+                    this.listadoAdministrativos=data;
+                    
+                  }); 
+                        
+                break;
+              }
+            }
+          }
         }
       }
-    }else if(event.data.Perfil=="Administrativo")
-    {
-      for (let i = 0; i <  this.listadoAdministrativos.length; i++) {
-        const element =  this.listadoAdministrativos[i];
-        console.log(element);          
-        
-        if(element.Email==event.data.Email)
-        {
-          this.fireService.removeAdministrativo(element['$key']);
-         
-          //event.confirm.reject();      
-          event.confirm.resolve();
-
-          this.fireService.getAdministrativos().subscribe(data=>
-            {
-              this.source2 = new LocalDataSource(data); // create the source
-              this.listadoAdministrativos=data;
-              
-            }); 
-                  
-          break;
-        }
-      }
-    } else {
-      event.confirm.reject();
-    }
-  }*/
+      ]
+   
+    
+     
+    
+  });
+  alert.present();
 }
 
   onSaveConfirm(event) {
-    if (window.confirm('¿Editar?')) {
-      console.log(event.newData);  
-      if(event.newData.DNI!=null && event.newData.Apellido!=null && event.newData.Nombre!=null && event.newData.Email!=null && event.newData.Perfil!=null
-        && event.newData.DNI!=undefined && event.newData.Apellido!=undefined && event.newData.Nombre!=undefined && event.newData.Email!=undefined && event.newData.Perfil!=undefined &&
-         event.newData.DNI!="" && event.newData.Apellido!="" && event.newData.Nombre!="" && event.newData.Email!="" && event.newData.Perfil!="")
-         {
-      if(event.newData.Perfil=="Profesor")
-      {
-        for (let i = 0; i <  this.listadoProfesores.length; i++) {
-          const element =  this.listadoProfesores[i];
-          console.log(element);          
-          
-          if(element.Email==event.newData.Email)
-          {
-            let listadoAux=this.listadoProfesores;
-            listadoAux[i]=event.newData;
-            console.log(element);
-            //const key = element['$key'];
-            this.fireService.updateProfesor(listadoAux);
-           
-            //event.confirm.reject();
-            this.fireService.getProfesores().subscribe(data=>
-              {
-                this.source = new LocalDataSource(data); // create the source
-                this.listadoProfesores=data;
-                
-              }); 
-                    
-            break;
-          }
-        }
-      
-       event.confirm.reject();
-      }else if(event.newData.Perfil=="Administrativo")
-      {
-        for (let i = 0; i <  this.listadoAdministrativos.length; i++) {
-          const element =  this.listadoAdministrativos[i];
-          if(element.Email==event.newData.Email)
-          {
-
-           
-            this.listadoAdministrativos[i]=event.newData;
-            console.log(element);
-            this.fireService.updateAdministrativo(this.listadoAdministrativos);
+    
+    let alert = this.alertCtrl.create({
+      title: '¿Editar?',
+      cssClass:'miClaseAlert',
+      message: '¿Seguro quieres editar?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            event.confirm.reject();
             
-            this.fireService.getAdministrativos().subscribe(data=>
-              {
-                this.source2 = new LocalDataSource(data); // create the source
-                this.listadoAdministrativos=data;
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log(event.newData);  
+            if(event.newData.DNI!=null && event.newData.Apellido!=null && event.newData.Nombre!=null && event.newData.Email!=null && event.newData.Perfil!=null
+              && event.newData.DNI!=undefined && event.newData.Apellido!=undefined && event.newData.Nombre!=undefined && event.newData.Email!=undefined && event.newData.Perfil!=undefined &&
+               event.newData.DNI!="" && event.newData.Apellido!="" && event.newData.Nombre!="" && event.newData.Email!="" && event.newData.Perfil!="")
+               {
+            if(event.newData.Perfil=="Profesor")
+            {
+              for (let i = 0; i <  this.listadoProfesores.length; i++) {
+                const element =  this.listadoProfesores[i];
+                console.log(element);          
                 
-              }); 
-            break;
+                if(element.Email==event.newData.Email)
+                {
+                  let listadoAux=this.listadoProfesores;
+                  listadoAux[i]=event.newData;
+                  console.log(element);
+                  //const key = element['$key'];
+                  this.fireService.updateProfesor(listadoAux);
+                 
+                  //event.confirm.reject();
+                  this.fireService.getProfesores().subscribe(data=>
+                    {
+                      this.source = new LocalDataSource(data); // create the source
+                      this.listadoProfesores=data;
+                      
+                    }); 
+                          
+                  break;
+                }
+              }
+            
+             event.confirm.reject();
+            }else if(event.newData.Perfil=="Administrativo")
+            {
+              for (let i = 0; i <  this.listadoAdministrativos.length; i++) {
+                const element =  this.listadoAdministrativos[i];
+                console.log(element);          
+                
+                if(element.Email==event.newData.Email)
+                {
+                  let listadoAux=this.listadoAdministrativos;
+                  listadoAux[i]=event.newData;
+                  console.log(element);
+                  //const key = element['$key'];
+                  this.fireService.updateAdministrativo(listadoAux);
+                 
+                  //event.confirm.reject();
+                  this.fireService.getAdministrativos().subscribe(data=>
+                    {
+                      this.source2 = new LocalDataSource(data); // create the source
+                      this.listadoAdministrativos=data;
+                      
+                    }); 
+                          
+                  break;
+                }
+              }
+            
+             event.confirm.reject();
+            }else
+            {
+              let alert = this.alertCtrl.create({
+                title: "Error!",
+                subTitle: "Perfil inválido",
+                cssClass:"miClaseDanger",
+              buttons: ['Aceptar']
+            });
+             alert.present();
+      
+             
+             event.confirm.reject();
+            }
+            
+          
           }
         }
-      
-       event.confirm.reject();
-      }else
-      {
-        let alert = this.alertCtrl.create({
-          title: "Error!",
-          subTitle: "Perfil inválido",
-          cssClass:"miClaseAlert",
-        buttons: ['OK']
-      });
-       alert.present();
-
-       
-       event.confirm.reject();
       }
+      ]
+   
+    
+  });
+  alert.present();
+
       
-    } else {
-      event.confirm.reject();
-    }
-  }
   }
    
 
   onCreateConfirm(event) {
-    if (window.confirm('¿Crear?')) {
+ 
+    let alert = this.alertCtrl.create({
+      title: '¿Crear?',
+      cssClass:'miClaseAlert',
+      message: '¿Seguro quieres crear?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            event.confirm.reject();
+            
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+           
      if(event.newData.DNI!=null && event.newData.Apellido!=null && event.newData.Nombre!=null && event.newData.Email!=null && event.newData.Perfil!=null
-    && event.newData.DNI!=undefined && event.newData.Apellido!=undefined && event.newData.Nombre!=undefined && event.newData.Email!=undefined && event.newData.Perfil!=undefined &&
-     event.newData.DNI!="" && event.newData.Apellido!="" && event.newData.Nombre!="" && event.newData.Email!="" && event.newData.Perfil!="")
-     {
-       
-       if(event.newData.Email.includes('@'))
+      && event.newData.DNI!=undefined && event.newData.Apellido!=undefined && event.newData.Nombre!=undefined && event.newData.Email!=undefined && event.newData.Perfil!=undefined &&
+       event.newData.DNI!="" && event.newData.Apellido!="" && event.newData.Nombre!="" && event.newData.Email!="" && event.newData.Perfil!="")
        {
-         if(event.newData.DNI.length==8)
+         
+         if(event.newData.Email.includes('@'))
          {
-           event.newData.Accion=" ";
-           if(event.newData.Perfil=="Profesor")
+           if(event.newData.DNI.length==8)
            {
-            this.listadoProfesores.push(event.newData);
-           event.confirm.resolve();
-            this.listadoProfesores[this.listadoProfesores.lastIndexOf(event.newData)].password=event.newData.DNI;
-             this.fireService.updateProfesor(this.listadoProfesores);
+             event.newData.Accion=" ";
+             if(event.newData.Perfil=="Profesor")
+             {
+              this.listadoProfesores.push(event.newData);
+             event.confirm.resolve();
+              this.listadoProfesores[this.listadoProfesores.lastIndexOf(event.newData)].password=event.newData.DNI;
+               this.fireService.updateProfesor(this.listadoProfesores);
+               
+               
+               this.fireService.getProfesores().subscribe(data=>
+                {
+                  this.source = new LocalDataSource(data); // create the source
+                  this.listadoProfesores=data;
+                  
+                });        
+                
+                
+             }else if(event.newData.Perfil=="Administrativo")
+             {
+              this.listadoAdministrativos.push(event.newData);
+              event.confirm.resolve();
+              
+              this.listadoAdministrativos[this.listadoAdministrativos.lastIndexOf(event.newData)].password=event.newData.DNI;
+              
+               this.fireService.updateAdministrativo(this.listadoAdministrativos);
+               this.fireService.getAdministrativos().subscribe(data=>
+                {
+                  this.source2 = new LocalDataSource(data); // create the source
+                  this.listadoAdministrativos=data;
+                  
+                }); 
+  
+                
+             }else
+             {
+              let alert = this.alertCtrl.create({
+                title: "Error!",
+                subTitle: "Perfil inválido",
+                cssClass:"miClaseDanger",
+              buttons: ['Aceptar']
+            });
+             alert.present();
+  
+              
+              event.confirm.reject();
+             }
              
              
-             this.fireService.getProfesores().subscribe(data=>
-              {
-                this.source = new LocalDataSource(data); // create the source
-                this.listadoProfesores=data;
-                
-              });        
-              
-              
-           }else if(event.newData.Perfil=="Administrativo")
-           {
-            this.listadoAdministrativos.push(event.newData);
-            event.confirm.resolve();
-            
-            this.listadoAdministrativos[this.listadoAdministrativos.lastIndexOf(event.newData)].password=event.newData.DNI;
-            
-             this.fireService.updateAdministrativo(this.listadoAdministrativos);
-             this.fireService.getAdministrativos().subscribe(data=>
-              {
-                this.source2 = new LocalDataSource(data); // create the source
-                this.listadoAdministrativos=data;
-                
-              }); 
-
-              
-           }else
-           {
+           }else{
             let alert = this.alertCtrl.create({
               title: "Error!",
-              subTitle: "Perfil inválido",
-              cssClass:"miClaseAlert",
-            buttons: ['OK']
+              subTitle: "DNI inválido",
+              cssClass:"miClaseDanger",
+            buttons: ['Aceptar']
           });
            alert.present();
-
-            
-            event.confirm.reject();
+  
+             event.confirm.reject();
+             
            }
-           
-           
          }else{
           let alert = this.alertCtrl.create({
             title: "Error!",
-            subTitle: "DNI inválido",
-            cssClass:"miClaseAlert",
-          buttons: ['OK']
+            subTitle: "Email inválido",
+            cssClass:"miClaseDanger",
+            buttons: ['Aceptar']
         });
          alert.present();
-
+  
            event.confirm.reject();
            
          }
        }else{
         let alert = this.alertCtrl.create({
           title: "Error!",
-          subTitle: "Email inválido",
-          cssClass:"miClaseAlert",
-        buttons: ['OK']
+          subTitle: "Complete los datos",
+          cssClass:"miClaseDanger",
+          buttons: ['Aceptar']
       });
        alert.present();
-
+  
          event.confirm.reject();
          
        }
-     }else{
-      let alert = this.alertCtrl.create({
-        title: "Error!",
-        subTitle: "Complete los datos",
-        cssClass:"miClaseAlert",
-      buttons: ['OK']
-    });
-     alert.present();
+        }
+      }
+      ]
+   
+    
+  });
+  alert.present();
 
-       event.confirm.reject();
-       
-     }
-     
-      
-     // this.fireService.addUser(event.newData);
-      
-    } else {
-      event.confirm.reject();
-    }
-
-    
-      event.confirm.reject();
-      
-    
-    
-  }
+   
+  
+}
 
   asignar(dni:number)
   {

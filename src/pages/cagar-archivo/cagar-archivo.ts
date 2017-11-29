@@ -7,6 +7,8 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { GeneratedFile } from '@angular/compiler';
 import { AulaAlumnoItem } from '../../models/aula-alumno-item/aula-alumno.interface';
 import { DescargarArchivoPage } from '../descargar-archivo/descargar-archivo';
+import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
+
 
 import { AlertController } from 'ionic-angular';
 
@@ -26,25 +28,29 @@ export class CagarArchivoPage {
 
   //Atributos de descarga
   listaAlumnos:AlumnoItem[] = [];
+
+  listaA = {} as AlumnoListaItem;
   
   listaAlumnoItem:AlumnoListaItem[]=[];
   
   nombreArchivo:string;
   sizeArchivo:string;
-  aula:string;
+  aula:string = "";
 
   alumnoLista$: FirebaseListObservable<AlumnoItem[]>;
   alumnoListaItem$: FirebaseListObservable<AlumnoListaItem[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private database: AngularFireDatabase,private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController) {
     this.aula = this.navParams.get('aulaa');
     this.alumnoLista$ = this.database.list('alumno-lista');
+    
     this.alumnoListaItem$ = this.database.list('alumno-lista');
 
     this.alumnoListaItem$.subscribe(alumLista =>{
       this.listaAlumnoItem = alumLista;
     });
 
+    
 
   }
 
@@ -56,9 +62,10 @@ export class CagarArchivoPage {
   leeArchivos(numarchivo:number,file:any) {
 
     let alumno = {} as AlumnoItem;
-    let lista:AlumnoItem[] = [];
+    let lista:any[] = [];
     var fr = new FileReader();
     var arrayFilas:string[][];
+    var archivoNom:string[][];
 
     //--------------------- Lectura del archivo -------------------------//
     fr.onload = function(e) {
@@ -77,12 +84,14 @@ export class CagarArchivoPage {
       //Tomo cada elemento del arrayFilas y lo transformo en un alumnno para guardalos en listaAlumno
       for (let index = 0; index < arrayFilas.length; index++) {
         const elemento = arrayFilas[index];
-        //console.log(element0);
+        console.log(elemento);
         alumno.legajo = elemento[0].trim();
         alumno.nombre = elemento[1].trim();
         alumno.turno = elemento[2].trim();
         alumno.mail = elemento[3].trim();
-        //console.log(alumno);
+        alumno.password = elemento[0].trim();
+        alumno.contPresentes = 0;
+        
         lista.push(alumno);
 
         alumno = {} as AlumnoItem;
@@ -115,12 +124,39 @@ export class CagarArchivoPage {
   }
 
   cargarLista(){
-    //console.log("Carga lista a firebase");
-    this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
-    this.alumnoLista$.push({
-      aula:this.aula,
-      alumnos:this.listaAlumnos
-    });
+    
+    var rows = this.nombreArchivo.split("-");
+    console.log(rows);
+    this.listaA.aula =rows[1];
+    this.listaA.alumnos=this.listaAlumnos;
+    this.listaA.materia=rows[0];
+    let cont:number;
+    cont = this.listaAlumnoItem.length;
+
+    this.firebaseService.agregarLista(this.listaA,cont);
+    
+    console.log(this.aula);
+    if(this.aula == "4A"){
+      console.log("entro a A");
+      this.listaAlumnos.forEach(alumno => {
+        this.firebaseService.agregarListaA(alumno);
+      });
+    }else{
+      console.log("entro a B");
+      this.listaAlumnos.forEach(alumno => {
+        this.firebaseService.agregarListaB(alumno);
+      })
+    }
+
+//    this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
+    let alert = this.alertCtrl.create({
+      title: "Guardar Lista",
+      subTitle: "La lista se guardó correctamente",
+      cssClass:"miClaseAlert",
+    buttons: ['Aceptar']
+  });
+   alert.present();
+    
   }
 
   descargarArchivo(){
@@ -138,7 +174,14 @@ export class CagarArchivoPage {
       this.navCtrl.push(DescargarArchivoPage,{aulaa:this.aula});
     }else{
       //alert("No hya nada que descargar");
-      this.presentAlert("Sin alumnos","No hya nada que descargar");
+     // this.presentAlert("Sin alumnos","No hay nada que descargar");
+      let alert = this.alertCtrl.create({
+        title: "Sin Alumnos",
+        subTitle: "No hay nada que descargar",
+        cssClass:"miClaseDanger",
+      buttons: ['Aceptar']
+    });
+     alert.present();
     }
     
   }
@@ -152,7 +195,6 @@ export class CagarArchivoPage {
     });
     alert.present();
   }
-
 
 }
 

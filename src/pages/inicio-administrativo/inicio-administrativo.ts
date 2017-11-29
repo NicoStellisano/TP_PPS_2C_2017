@@ -27,10 +27,10 @@ export class InicioAdministrativoPage {
   //harcodeado para mostrar, despues se debe eliminar y tomarar las aulas de firebase
   listaAulas: any[] = [
     {
-      "nombre": "4° A"
+      "nombre": "4A"
     },
     {
-      "nombre": "4° B"
+      "nombre": "4B"
     }
   ];
 

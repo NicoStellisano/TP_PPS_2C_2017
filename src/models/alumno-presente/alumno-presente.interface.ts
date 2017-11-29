@@ -1,5 +1,6 @@
 
 export interface AlumnoPresenteItem{
     legajo:string;
-    cont:number;
+    date:Date;
+    presente:string;
 }

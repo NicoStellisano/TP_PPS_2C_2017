@@ -61,8 +61,9 @@ console.log(this.curso);
 
         let alert = this.alertCtrl.create({
           title: "Aviso de faltas",
+          cssClass:'miClaseDanger',
           subTitle: this.nombreUsuario+" tiene 4 faltas. A una de quedar LIBRE!" ,
-        buttons: ['OK']
+        buttons: ['Aceptar']
       });
        alert.present();
         }
@@ -84,7 +85,7 @@ console.log(this.curso);
       this.datos=data;
       //console.log(this.datos);
 
-      if(this.curso== "4° A")
+      if(this.curso== "4A")
         {
 
       for(let i=0;i<this.datos.length;i++){
@@ -96,7 +97,7 @@ console.log(this.curso);
           title: this.datos[i].titulo,
           subTitle: 'Alumnos de '+this.curso+' :'+this.datos[i].mensaje,
           cssClass:"miClaseAlert",
-        buttons: ['OK']
+        buttons: ['Aceptar']
       });
        alert.present();
         }
@@ -110,7 +111,7 @@ console.log(this.curso);
   
 
 
-      if(this.curso== "4° B")
+      if(this.curso== "4B")
         {
 
       for(let i=0;i<this.datos.length;i++){
@@ -122,7 +123,7 @@ console.log(this.curso);
           title: this.datos[i].titulo,
           subTitle: 'Alumnos de '+this.curso+' :'+this.datos[i].mensaje,
           cssClass:"miClaseAlert",
-        buttons: ['OK']
+        buttons: ['Aceptar']
       });
        alert.present();
         }

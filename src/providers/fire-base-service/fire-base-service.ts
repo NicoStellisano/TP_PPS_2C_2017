@@ -119,6 +119,34 @@ export class FireBaseServiceProvider {
         
       }
 
+      agregarLista(alumnoLista,key){
+        return this.afd.object('/alumno-lista/'+key).update(alumnoLista);
+      }
+
+      agregarListaA(alumno){
+        return this.afd.list('/tomarA').push(alumno);
+      }
+
+      agregarListaB(alumno){
+        return this.afd.list('/tomarB').push(alumno);
+      }
+
+      getListaA(){
+        return this.afd.list('/tomarA');
+      }
+      
+      getListaB(){
+        return this.afd.list('/tomarB');
+      }
+
+      updateA(contPre){
+        return this.afd.list('/tomarA').update('contPresentes',contPre);
+      }
+
+      updateB(contPre){
+        return this.afd.list('/tomarB').update('contPresentes',contPre);
+      }
+
       addProfesor(item)
       {
         return this.afd.list('/personas/profesores').push(item);
@@ -152,10 +180,7 @@ export class FireBaseServiceProvider {
         return this.afd.list('/personas').update('administrativos',data);
       }
 
-      removeAlumno(i,key)
-      {
-        return this.afd.list('/alumno-lista/'+i+'/alumnos/'+key).remove();
-      }
+     
       removeProfesor(key)
       {
         return this.afd.list('/personas/profesores').remove(key);
@@ -163,6 +188,12 @@ export class FireBaseServiceProvider {
       removeAdministrativo(key)
       {
         return this.afd.list('/personas/administrativos').remove(key);
+      }
+
+      removeAlumno(i,key)
+      {
+        return this.afd.list('/alumo-lista/'+i+'/alumnos').remove(key);
+        
       }
 
       removeMessages()

@@ -28162,9 +28162,77 @@ ion-header, ion-content {
   background-color: rgba(250, 103, 18, 0.979);
 }
 
+.miClaseDanger {
+  background-color: rgba(252, 29, 0, 0.575);
+}
+
+.miClaseDanger button {
+  margin: auto;
+  text-align: center;
+  display: block;
+  color: white !important;
+  background-color: #f53d3d !important;
+}
+
+.miClaseDanger .alert-title {
+  color: #ff0d0d;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.miClaseDanger .alert-head {
+  color: white;
+  background-color: rgba(46, 7, 1, 0.932);
+}
+
+.miClaseDanger .alert-message {
+  color: white;
+  background-color: rgba(46, 7, 1, 0.932);
+}
+
+.miClaseDanger .alert-wrapper {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border: dotted 7px;
+  background-color: rgba(15, 2, 2, 0.747);
+}
+
+.miClaseDanger .alert-button-group {
+  text-align: center;
+  background-color: rgba(15, 2, 2, 0.747);
+}
+
 .miClaseAlert {
-  background-color: rgba(252, 122, 0, 0.938);
-  color: #40d41b;
+  background-color: rgba(248, 150, 59, 0.699);
+}
+
+.miClaseAlert button {
+  color: white !important;
+  background-color: #32db64 !important;
+}
+
+.miClaseAlert .alert-title {
+  color: #29ff0d;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.miClaseAlert .alert-head {
+  color: #beff0d;
+  background-color: rgba(47, 224, 255, 0.795);
+}
+
+.miClaseAlert .alert-message {
+  color: #fffb0d;
+  background-color: rgba(47, 224, 255, 0.795);
+}
+
+.miClaseAlert .alert-wrapper {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border: dotted 7px;
+  color: #fffb0d;
+  background-color: #222;
+}
+
+.miClaseAlert .alert-button-group {
+  background-color: #488aff;
 }
 
 /*!

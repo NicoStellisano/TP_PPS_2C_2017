@@ -42,9 +42,9 @@
   
       <ion-item >
         <ion-label>Curso</ion-label>
-        <ion-select [(ngModel)]="seleccion" (ionChange)="changeList($event)">
-          <ion-option value="a">4ºA</ion-option>
-          <ion-option value="b">4ºB</ion-option>
+        <ion-select interface='action-sheet' [(ngModel)]="seleccion" (ionChange)="changeList($event)">
+          <ion-option (ionSelect)="changeList('a')" value="a">4ºA</ion-option>
+          <ion-option (ionSelect)="changeList('b')" value="b">4ºB</ion-option>
         </ion-select>
       </ion-item>
       <ion-item >

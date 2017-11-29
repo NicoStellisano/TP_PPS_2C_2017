@@ -53,11 +53,13 @@ export class EditarPerfilPage {
   Guardar()
   {
     let alert = this.alertCtrl.create({
-      title: "Exitosamente!",
-      subTitle: "Su contraseña a sido modificada" ,
-    buttons: ['OK']
+      title: "Exitoso!",
+      subTitle: "Su contraseña ha sido modificada",
+      cssClass:"miClaseLaert",
+    buttons: ['Aceptar']
   });
    alert.present();
+    
    this.navCtrl.push(InicioAlumnoPage);
   }
 

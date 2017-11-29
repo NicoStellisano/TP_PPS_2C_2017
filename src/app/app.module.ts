@@ -37,9 +37,13 @@ import { DescargarArchivoPage } from '../pages/descargar-archivo/descargar-archi
 import { NotificacionPage } from '../pages/notificacion/notificacion';
 import { RealInicioAdministrativoPage } from '../pages/real-inicio-administrativo/real-inicio-administrativo';
 import { AsignarMateriaPage } from '../pages/asignar-materia/asignar-materia';
+<<<<<<< HEAD
 import { EncuestasPage } from '../pages/encuestas/encuestas';
 import { EncuestasAltaPage } from '../pages/encuestas-alta/encuestas-alta';
 import { EncuestasEditarPage } from '../pages/encuestas-editar/encuestas-editar';
+=======
+import { TomarListaPage } from '../pages/tomar-lista/tomar-lista';
+>>>>>>> f522e499e2d013edb728fe241f114dc32360a46f
 
 var config = {
   apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
@@ -74,9 +78,13 @@ var config = {
     NotificacionPage,
     RealInicioAdministrativoPage,
     AsignarMateriaPage,
+<<<<<<< HEAD
     EncuestasPage,
     EncuestasAltaPage,
     EncuestasEditarPage
+=======
+    TomarListaPage
+>>>>>>> f522e499e2d013edb728fe241f114dc32360a46f
   ],
   imports: [
     BrowserModule,
@@ -110,9 +118,13 @@ var config = {
     NotificacionPage,
     RealInicioAdministrativoPage,
     AsignarMateriaPage,
+<<<<<<< HEAD
     EncuestasPage,
     EncuestasAltaPage,
     EncuestasEditarPage
+=======
+    TomarListaPage
+>>>>>>> f522e499e2d013edb728fe241f114dc32360a46f
   ],
   providers: [
     StatusBar,
