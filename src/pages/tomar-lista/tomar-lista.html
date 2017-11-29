@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar class="dark">
+  <ion-navbar color="dark">
     <ion-title>Tomar Lista</ion-title>
   </ion-navbar>
 
@@ -15,7 +15,7 @@
 
 <ion-content padding style="background-image:url('assets/descarga-archivo.png')" class="fondo">
   <ion-list>
-    <ion-item *ngFor="let alumno of listaAlumnos">
+    <ion-item *ngFor="let alumno of tomarAlumnos$ | async" class="miItem">
       <ion-avatar item-end>
         <img src="./assets/icon/bien.png" (click)="presente(alumno)">  
       </ion-avatar>

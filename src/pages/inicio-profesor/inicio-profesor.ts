@@ -27,10 +27,10 @@ export class InicioProfesorPage {
     //harcodeado para mostrar, despues se debe eliminar y tomarar las aulas del profesor de firebase
     listaAulasProfesor: any[] = [
       {
-        "aula": "4° A"
+        "aula": "4A"
       },
       {
-        "aula": "4° B"
+        "aula": "4B"
       }
      
     ];
@@ -48,11 +48,11 @@ export class InicioProfesorPage {
        //redirecciono y paso el aula
         this.navCtrl.push(MateriasProfesorPage,{aulaa:aula});
         break;
-        case "4° A":
+        case "4A":
         //alert("Se redireccionara al aula: 4° A ");
         this.navCtrl.push(AulaProfesorPage,{aulaa:aula});
         break;
-        case "4° B":
+        case "4B":
        // alert("Se redireccionara al aula: 4° B ");
         this.navCtrl.push(AulaProfesorPage,{aulaa:aula});
         break;

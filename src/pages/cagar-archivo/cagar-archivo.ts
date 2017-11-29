@@ -134,6 +134,19 @@ export class CagarArchivoPage {
     cont = this.listaAlumnoItem.length;
 
     this.firebaseService.agregarLista(this.listaA,cont);
+    
+    console.log(this.aula);
+    if(this.aula == "4A"){
+      console.log("entro a A");
+      this.listaAlumnos.forEach(alumno => {
+        this.firebaseService.agregarListaA(alumno);
+      });
+    }else{
+      console.log("entro a B");
+      this.listaAlumnos.forEach(alumno => {
+        this.firebaseService.agregarListaB(alumno);
+      })
+    }
 
     this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
     

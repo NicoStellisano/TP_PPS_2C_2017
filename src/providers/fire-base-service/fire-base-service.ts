@@ -122,7 +122,30 @@ export class FireBaseServiceProvider {
       agregarLista(alumnoLista,key){
         return this.afd.object('/alumno-lista/'+key).update(alumnoLista);
       }
+
+      agregarListaA(alumno){
+        return this.afd.list('/tomarA').push(alumno);
+      }
+
+      agregarListaB(alumno){
+        return this.afd.list('/tomarB').push(alumno);
+      }
+
+      getListaA(){
+        return this.afd.list('/tomarA');
+      }
       
+      getListaB(){
+        return this.afd.list('/tomarB');
+      }
+
+      updateA(contPre){
+        return this.afd.list('/tomarA').update('contPresentes',contPre);
+      }
+
+      updateB(contPre){
+        return this.afd.list('/tomarB').update('contPresentes',contPre);
+      }
 
       addProfesor(item)
       {
