@@ -37,12 +37,19 @@ export class CagarArchivoPage {
   nombreArchivo:string;
   sizeArchivo:string;
   aula:string = "";
-
+  persona:string;
+listaProfesores:any[]=[];
+listaAdministrativos:any[]=[];;
   alumnoLista$: FirebaseListObservable<AlumnoItem[]>;
   alumnoListaItem$: FirebaseListObservable<AlumnoListaItem[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
+    this.persona = this.navParams.get('persona');
+    if(this.persona=="alumno")
+    {
+
+    
     this.alumnoLista$ = this.database.list('alumno-lista');
     
     this.alumnoListaItem$ = this.database.list('alumno-lista');
@@ -50,7 +57,20 @@ export class CagarArchivoPage {
     this.alumnoListaItem$.subscribe(alumLista =>{
       this.listaAlumnoItem = alumLista;
     });
-
+  }else if(this.persona=="profesor")
+  {
+    this.database.list('personas/profesores').subscribe(data=>
+      {
+        this.listaProfesores=data;
+      });
+   
+  }else if(this.persona=="administrativo")
+  {
+    this.database.list('personas/administrativos').subscribe(data=>
+      {
+        this.listaAdministrativos=data;
+      });
+  }
     this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
     this.nativeAudio.play('1');
 
@@ -63,6 +83,10 @@ export class CagarArchivoPage {
   
   leeArchivos(numarchivo:number,file:any) {
 
+    if(this.persona=="alumno")
+    {
+
+  
     let alumno = {} as AlumnoItem;
     let lista:any[] = [];
     var fr = new FileReader();
@@ -115,7 +139,14 @@ export class CagarArchivoPage {
     this.nombreArchivo = file.name;
     this.sizeArchivo = file.size/1000 + " Kb";
 
+  }else if(this.persona=="profesor")
+  {
+
+  }else if(this.persona=="administrativo")
+  {
+
   }
+}
 
   onFileSelect(input: HTMLInputElement) {
     var files = input.files;
@@ -127,6 +158,10 @@ export class CagarArchivoPage {
 
   cargarLista(){
     
+if(this.persona=="alumno")
+{
+
+
     var rows = this.nombreArchivo.split("-");
     console.log(rows);
     this.listaA.aula =rows[1];
@@ -159,7 +194,14 @@ export class CagarArchivoPage {
   });
    alert.present();
     
+  }else if(this.persona=="profesor")
+  {
+
+  }else if(this.persona=="administrativo")
+  {
+    
   }
+}
 
   descargarArchivo(){
     let miAula:string;
