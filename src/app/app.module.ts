@@ -41,6 +41,9 @@ import { EncuestasPage } from '../pages/encuestas/encuestas';
 import { EncuestasAltaPage } from '../pages/encuestas-alta/encuestas-alta';
 import { EncuestasEditarPage } from '../pages/encuestas-editar/encuestas-editar';
 import { TomarListaPage } from '../pages/tomar-lista/tomar-lista';
+import { NativeAudio } from '@ionic-native/native-audio';
+
+
 
 var config = {
   apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
@@ -124,7 +127,8 @@ var config = {
     ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FireBaseServiceProvider,
-    BarcodeScanner
+    BarcodeScanner,
+    NativeAudio
   ]
 })
 export class AppModule {}

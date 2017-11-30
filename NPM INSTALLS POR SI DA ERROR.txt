@@ -8,4 +8,9 @@ mauro:
 ionic cordova plugin add phonegap-plugin-barcodescanner
 npm install --save @ionic-native/barcode-scanner
 
+mauro: 29/11
+
+ionic cordova plugin add cordova-plugin-nativeaudio
+npm install --save @ionic-native/native-audio
+
 

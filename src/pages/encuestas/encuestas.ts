@@ -7,6 +7,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import  firebase  from 'firebase';
 import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { EncuestasEditarPage } from '../encuestas-editar/encuestas-editar';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 /**
  * Generated class for the EncuestasPage page.
@@ -24,13 +25,16 @@ export class EncuestasPage {
 
   encuestas: any=[];
 respuesta;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController,private nativeAudio: NativeAudio) {
 
     this.db.list('/encuestas').
     subscribe( data => {
     this.encuestas=data;
 
    // console.log(this.encuestas);
+
+   this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
+   this.nativeAudio.play('1');
 
   });
 

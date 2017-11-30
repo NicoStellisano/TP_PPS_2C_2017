@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import  firebase  from 'firebase';
 import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { EncuestasPage } from '../encuestas/encuestas';
+import { NativeAudio } from '@ionic-native/native-audio';
 /**
  * Generated class for the EncuestasAltaPage page.
  *
@@ -29,8 +30,10 @@ export class EncuestasAltaPage {
   fechaFinalizacion= "";
   creadorEncuesta;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,private alertCtrl:AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,private alertCtrl:AlertController,private nativeAudio: NativeAudio) {
     this.creadorEncuesta=localStorage.getItem("Email");
+    this.nativeAudio.preloadComplex('2', 'assets/sonidos/2.mp3', 1, 1, 0);
+    this.nativeAudio.play('2');
   }
 
   ionViewDidLoad() {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrativo';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 /**
  * Generated class for the InicioAdministrativoPage page.
@@ -16,7 +17,9 @@ import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrati
 })
 export class InicioAdministrativoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private nativeAudio: NativeAudio) {
+    this.nativeAudio.preloadComplex('bievenidoAdministrativo', 'assets/sonidos/bievenidoAdministrativo.mp3', 1, 1, 0);
+    this.nativeAudio.play('bievenidoAdministrativo');
   }
 
   ionViewDidLoad() {

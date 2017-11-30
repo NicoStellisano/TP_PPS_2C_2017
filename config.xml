@@ -97,4 +97,5 @@
     <plugin name="phonegap-plugin-barcodescanner" spec="^7.0.0" />
     <engine name="android" spec="~6.3.0" />
     <allow-navigation href="http://192.168.43.43:8101" />
+    <plugin name="cordova-plugin-nativeaudio" spec="^3.0.9" />
 </widget>

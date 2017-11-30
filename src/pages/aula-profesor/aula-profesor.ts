@@ -10,6 +10,7 @@ import { MateriaPage } from '../materia/materia';
 import { EncuestasPage } from '../encuestas/encuestas';
 
 import { TomarListaPage } from '../tomar-lista/tomar-lista';
+import { NativeAudio } from '@ionic-native/native-audio';
 /**
  * Generated class for the AulaProfesorPage page.
  *
@@ -51,7 +52,7 @@ export class AulaProfesorPage {
       ];
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
     //alert(this.aula);
 
@@ -67,12 +68,16 @@ export class AulaProfesorPage {
     });
 
     
-
-
+    this.nativeAudio.preloadComplex('bienvenidoProfesor', 'assets/sonidos/bienvenidoProfesor.mp3', 1, 1, 0);
+    this.nativeAudio.play('bienvenidoProfesor');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AulaProfesorPage');
+    //mofificar por la ruta y el archivo de bienvenida
+   // this.nativeAudio.preloadComplex('bienvenido', 'assets/piano/1.mp3', 1, 1, 0);
+  //  this.nativeAudio.play('bienvenido');
+
   }
 
   tomaLista(){

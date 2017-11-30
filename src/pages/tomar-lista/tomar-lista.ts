@@ -10,6 +10,7 @@ import { AlumnoPresenteItem } from '../../models/alumno-presente/alumno-presente
 import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
 
 import { AlertController } from 'ionic-angular';
+import { NativeAudio } from '@ionic-native/native-audio';
 /**
  * Generated class for the TomarListaPage page.
  *
@@ -36,7 +37,7 @@ export class TomarListaPage {
   tomarPresente$:FirebaseObjectObservable<AlumnoItem>;
 
   constructor(public navCtrl: NavController,private fbService:FireBaseServiceProvider ,
-    public navParams: NavParams,private database: AngularFireDatabase,private alertCtrl: AlertController) {
+    public navParams: NavParams,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
     
     
@@ -48,7 +49,8 @@ export class TomarListaPage {
       this.miAula = "tomarB";
     }
 
-    
+    this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
+    this.nativeAudio.play('1');
   }
 
   ionViewDidLoad() {

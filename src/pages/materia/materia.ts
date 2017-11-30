@@ -4,6 +4,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
 import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 import { DescargarArchivoPage } from '../descargar-archivo/descargar-archivo';
+import { NativeAudio } from '@ionic-native/native-audio';
 /**
  * Generated class for the MateriaPage page.
  *
@@ -29,7 +30,7 @@ aula:string;
 
 listaAlumnos:AlumnoItem[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public barcodeScanner: BarcodeScanner,public db: AngularFireDatabase, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public barcodeScanner: BarcodeScanner,public db: AngularFireDatabase, public alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.materia = this.navParams.get('materiaa');
     //this.curso = this.navParams.get('aulaaa');
 this.curso = localStorage.getItem("curso");
@@ -72,7 +73,8 @@ this.perfil=localStorage.getItem("Perfil");
     });
 */
     
-
+this.nativeAudio.preloadComplex('2', 'assets/sonidos/2.mp3', 1, 1, 0);
+this.nativeAudio.play('2');
     
   }
 

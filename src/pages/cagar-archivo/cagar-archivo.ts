@@ -8,6 +8,7 @@ import { GeneratedFile } from '@angular/compiler';
 import { AulaAlumnoItem } from '../../models/aula-alumno-item/aula-alumno.interface';
 import { DescargarArchivoPage } from '../descargar-archivo/descargar-archivo';
 import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 
 import { AlertController } from 'ionic-angular';
@@ -40,7 +41,7 @@ export class CagarArchivoPage {
   alumnoLista$: FirebaseListObservable<AlumnoItem[]>;
   alumnoListaItem$: FirebaseListObservable<AlumnoListaItem[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
     this.alumnoLista$ = this.database.list('alumno-lista');
     
@@ -50,7 +51,8 @@ export class CagarArchivoPage {
       this.listaAlumnoItem = alumLista;
     });
 
-    
+    this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
+    this.nativeAudio.play('1');
 
   }
 
