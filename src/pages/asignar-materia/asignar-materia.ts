@@ -21,36 +21,72 @@ import { ViewController } from 'ionic-angular';
   templateUrl: 'asignar-materia.html',
 })
 export class AsignarMateriaPage {
-profesor:string;
+materiaD:string;
 curso:string;
-materia:string;
+listaAlumnos:any[]=[];
+aula:string;
+listaAux:any[]=[];
+listaProfesores:any[]=[];
+
+profesor:any;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public viewCtrl: ViewController,public alertCtrl:AlertController) {
-    this.profesor=this.navParams.get("profesor");
+    this.materiaD=this.navParams.get("materia");
+    this.aula=this.navParams.get("aula");
+
+    
+    
+   
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AsignarMateriaPage');
+    this.fireService.getAlumnos().subscribe(data=>
+      {
+        this.listaAlumnos=data;
+      });
+
+      this.fireService.getProfesores().subscribe(data=>
+        {
+          this.listaProfesores=data;
+        });
   }
 
   asignar()
   {
     try {
-      this.fireService.addMateria({profesor:this.profesor,curso:this.curso,nombre:this.materia});
+    //  this.fireService.addMateria({materiaD:this.materiaD,curso:this.curso,nombre:this.materia});
+    for (let i = 0; i < this.listaAlumnos.length; i++) {
+      const element = this.listaAlumnos[i];
+      if(element.aula==this.aula && element.materia==this.materiaD)
+      {
+        this.listaAux=this.listaAlumnos;
+        this.listaAux[i].profesor=this.profesor.Apellido;
+        
+      //this.listaAux[i]=
+        this.fireService.updateAlumnoLista(this.listaAux,element['$key']);
+        this.fireService.getAlumnos().subscribe(data=>
+          {
+            this.listaAlumnos=data;
+          });
+        
+        
+      }
+    }
       let alert = this.alertCtrl.create({
         title: "Exito!",
-        subTitle: "Materia asignada",
+        subTitle: "Profesor asignado",
         cssClass:"miClaseAlert",
-      buttons: ['OK']
+      buttons: ['Aceptar']
     });
      alert.present();
       this.viewCtrl.dismiss();
     } catch (error) {
       let alert = this.alertCtrl.create({
         title: "Error!",
-        subTitle: "No se pudo cargar la materia",
-        cssClass:"miClaseAlert",
-      buttons: ['OK']
+        subTitle: "No se pudo asignar el profesor",
+        cssClass:"miClaseDanger",
+      buttons: ['Aceptar']
     });
      alert.present();
       console.log(error);

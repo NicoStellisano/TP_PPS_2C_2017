@@ -14,12 +14,13 @@
 
 
 <ion-content style="background-image:url('assets/hallowenAdministrativo.jpg')" class="fondo">
-  
+  <div *ngIf="seleccion==''">
           <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion('aulas')">Aulas</button> 
           <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion('profesores')">Profesores</button>           
           <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion('alumnos')">Alumnos</button> 
           <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion('materias')">Materias</button> 
-         
+        </div>
+        <button *ngIf="seleccion!=''" ion-button icon-only round color="primary" (click)="aparecer()" style="margin:auto;text-align:center;display:block;"><ion-icon md="md-arrow-back"></ion-icon></button>
 
         <div *ngIf="seleccion=='alumnos'" > 
           <span *ngFor="let alumno of listaAlumnos">  <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.Legajo)">{{alumno.nombre}}</button>  </span>

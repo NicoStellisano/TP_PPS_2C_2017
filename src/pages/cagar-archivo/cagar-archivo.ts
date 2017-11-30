@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 import { AlumnoListaItem } from '../../models/alumno-lista/alumno-lista.interface';
@@ -12,6 +12,7 @@ import { NativeAudio } from '@ionic-native/native-audio';
 
 
 import { AlertController } from 'ionic-angular';
+import { AsignarMateriaPage } from '../asignar-materia/asignar-materia';
 
 export class GeochemComponent implements OnInit {
   
@@ -43,7 +44,7 @@ listaAdministrativos:any[]=[];;
   alumnoLista$: FirebaseListObservable<AlumnoItem[]>;
   alumnoListaItem$: FirebaseListObservable<AlumnoListaItem[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController, public modalCtrl:ModalController,public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
     this.persona = this.navParams.get('persona');
     if(this.persona=="alumno")
@@ -190,9 +191,20 @@ if(this.persona=="alumno")
       title: "Guardar Lista",
       subTitle: "La lista se guardó correctamente",
       cssClass:"miClaseAlert",
-    buttons: ['Aceptar']
+    buttons: [{text:'Aceptar',
+    handler: () => {
+      let profileModal = this.modalCtrl.create(AsignarMateriaPage, {materia:this.listaA.materia,aula:this.listaA.aula});
+      profileModal.present();
+      
+    }
+    }
+   ]
   });
    alert.present();
+
+ 
+   
+   
     
   }else if(this.persona=="profesor")
   {

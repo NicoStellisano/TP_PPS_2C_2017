@@ -171,6 +171,10 @@ export class FireBaseServiceProvider {
       {
         return this.afd.object('/alumno-lista/'+key+'/alumnos').update(data);
       }
+      updateAlumnoLista(data,key)
+      {
+        return this.afd.object('/alumno-lista/').update(data);
+      }
       updateProfesor(data)
       {
         return this.afd.list('/personas').update('profesores',data);
