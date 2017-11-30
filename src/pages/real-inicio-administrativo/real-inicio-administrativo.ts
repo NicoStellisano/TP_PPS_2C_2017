@@ -79,6 +79,14 @@ listaAux: any[] = [];
       break;
 
       case "materias":
+      this.listaAux=[];
+      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+        const element = this.listadoAlumnos[i];
+       
+        
+          this.listaAux.push({aula:element.aula,profesor:element.profesor,nombre:element.materia});
+        
+      }
       this.seleccion="materias";
       break;
     }
@@ -98,11 +106,11 @@ listaAux: any[] = [];
      
       case "profesores":
      this.listaAux=[];
-      for (let i = 0; i < this.listaMaterias.length; i++) {
-        const element = this.listaMaterias[i];
-        if(element.profesor.startsWith(data))
+      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+        const element = this.listadoAlumnos[i];
+        if(element.profesor==data)
         {
-          this.listaAux.push(element);
+          this.listaAux.push({aula:element.aula,profesor:element.profesor,materia:element.materia});
         }
       }
       this.seleccion="materiasProfesor";
@@ -145,24 +153,25 @@ listaAux: any[] = [];
 
       case "a":
       this.listaAux=[];
-      for (let i = 0; i < this.listaMaterias.length; i++) {
-        const element = this.listaMaterias[i];
-        if(element.curso=='4º A')
+      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+        const element = this.listadoAlumnos[i];
+        if(element.aula=="4A")
         {
-          this.listaAux.push(element);
+          this.listaAux.push({aula:element.aula,profesor:element.profesor,materia:element.materia});
         }
       }
+      
       this.seleccion="materiasProfesor";
       
       break;
 
       case "b":
       this.listaAux=[];
-      for (let i = 0; i < this.listaMaterias.length; i++) {
-        const element = this.listaMaterias[i];
-        if(element.curso=='4º B')
+      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+        const element = this.listadoAlumnos[i];
+        if(element.aula=="4B")
         {
-          this.listaAux.push(element);
+          this.listaAux.push({aula:element.aula,profesor:element.profesor,materia:element.materia});
         }
       }
       this.seleccion="materiasProfesor";
@@ -170,15 +179,17 @@ listaAux: any[] = [];
       break;
 
       case "materias":
-      this.seleccion="";
+   
       
-      this.navCtrl.push(MateriaPage,{materiaa:data.nombre,aulaaa:data.curso});
+      this.navCtrl.push(MateriaPage,{materiaa:data.nombre,aulaaa:data.aula});
+      this.seleccion="";
       break;
 
       case "materiasProfesor":
-      this.seleccion="";
+     
       
-     this.navCtrl.push(MateriaPage,{materiaa:data.nombre,aulaaa:data.curso});
+     this.navCtrl.push(MateriaPage,{materiaa:data.materia,aulaaa:data.aula});
+     this.seleccion="";
       break;
     }
   }
