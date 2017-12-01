@@ -1,0 +1,76 @@
+<!--
+  Generated template for the AulaProfesorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  
+    <ion-navbar color="dark">
+      <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding style="background-image:url('assets/aula-profesor.jpg')" class="fondo">
+  
+   <!--gi <ion-list>
+                
+      <ion-item class="animated flipInX miItem">
+        <ion-label class="miLabel" floating>Divicion</ion-label>
+        <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> 
+      </ion-item>
+                      
+      <ion-item class="animated flipInY miItem">
+        <ion-label class="miLabel" floating>Materia</ion-label>
+        <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>
+      </ion-item>
+                  
+      <ion-item class="animated flipInX miItem" >
+        <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>
+        <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>
+      </ion-item> 
+    
+    </ion-list>-->
+  
+    <div style="height:40%;width:100%">
+     
+     
+      <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
+        <ion-icon name="arrow-round-back"></ion-icon> Actualizar Alumnos
+      </button>
+    
+      
+  
+      <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> 
+        <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista
+      </button>
+    </div>
+  <div style="height:10%"></div>
+  <div style="height:50%;width:100%">
+    <ion-grid style="background-color:white;">
+      <h4>Faltas</h4>
+       <ion-row >
+         <ion-col >
+           <ngx-charts-bar-horizontal 
+             [view]="view"
+             [results]="informacion"
+             xAxis="true"
+             yAxis="true"
+           >
+           </ngx-charts-bar-horizontal>
+         </ion-col>
+       </ion-row>
+     </ion-grid>
+    </div>
+    <!--  [legend]="showLegend"
+             legendTitle="Votos"
+             [showXAxisLabel]="showXAxisLabel"
+             [showYAxisLabel]="showYAxisLabel"
+             xAxisLabel="votos"
+             yAxisLabel="resultado" -->
+    
+      
+  
+  </ion-content>
+  

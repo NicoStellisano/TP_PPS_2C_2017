@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 import { AlumnoListaItem } from '../../models/alumno-lista/alumno-lista.interface';
@@ -12,6 +12,7 @@ import { NativeAudio } from '@ionic-native/native-audio';
 
 
 import { AlertController } from 'ionic-angular';
+import { AsignarMateriaPage } from '../asignar-materia/asignar-materia';
 
 export class GeochemComponent implements OnInit {
   
@@ -37,12 +38,21 @@ export class CagarArchivoPage {
   nombreArchivo:string;
   sizeArchivo:string;
   aula:string = "";
-
+  persona:string;
+listaProfesores:any[]=[];
+listaAdministrativos:any[]=[];;
   alumnoLista$: FirebaseListObservable<AlumnoItem[]>;
   alumnoListaItem$: FirebaseListObservable<AlumnoListaItem[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
-    this.aula = this.navParams.get('aulaa');
+  banderita:boolean;
+
+  constructor(public navCtrl: NavController, public modalCtrl:ModalController,public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
+    //this.aula = this.navParams.get('aulaa');
+    this.persona = this.navParams.get('persona');
+    if(this.persona=="alumno")
+    {
+
+    
     this.alumnoLista$ = this.database.list('alumno-lista');
     
     this.alumnoListaItem$ = this.database.list('alumno-lista');
@@ -50,7 +60,20 @@ export class CagarArchivoPage {
     this.alumnoListaItem$.subscribe(alumLista =>{
       this.listaAlumnoItem = alumLista;
     });
-
+  }else if(this.persona=="profesor")
+  {
+    this.database.list('personas/profesores').subscribe(data=>
+      {
+        this.listaProfesores=data;
+      });
+   
+  }else if(this.persona=="administrativo")
+  {
+    this.database.list('personas/administrativos').subscribe(data=>
+      {
+        this.listaAdministrativos=data;
+      });
+  }
     this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
     this.nativeAudio.play('1');
 
@@ -63,6 +86,10 @@ export class CagarArchivoPage {
   
   leeArchivos(numarchivo:number,file:any) {
 
+    if(this.persona=="alumno")
+    {
+
+  
     let alumno = {} as AlumnoItem;
     let lista:any[] = [];
     var fr = new FileReader();
@@ -115,7 +142,14 @@ export class CagarArchivoPage {
     this.nombreArchivo = file.name;
     this.sizeArchivo = file.size/1000 + " Kb";
 
+  }else if(this.persona=="profesor")
+  {
+
+  }else if(this.persona=="administrativo")
+  {
+
   }
+}
 
   onFileSelect(input: HTMLInputElement) {
     var files = input.files;
@@ -126,16 +160,41 @@ export class CagarArchivoPage {
   }
 
   cargarLista(){
-    
+    this.banderita=false;
+if(this.persona=="alumno")
+{
+
+
     var rows = this.nombreArchivo.split("-");
     console.log(rows);
     this.listaA.aula =rows[1];
+    this.aula=rows[1];
     this.listaA.alumnos=this.listaAlumnos;
     this.listaA.materia=rows[0];
+    
     let cont:number;
     cont = this.listaAlumnoItem.length;
 
-    this.firebaseService.agregarLista(this.listaA,cont);
+    for (let o = 0; o < this.listaAlumnoItem.length; o++) {
+      let element = this.listaAlumnoItem[o];
+      if(element.materia==this.listaA.materia)
+      {
+        let listaAux:any[]=[];
+        listaAux=this.listaAlumnoItem;
+        listaAux[o].alumnos=this.listaA.alumnos;
+      
+        this.firebaseService.agregarLista(listaAux);
+        this.banderita=true;
+  break;        
+
+      }
+      
+    }
+    if(this.banderita==false)
+    { 
+      this.firebaseService.agregarListaDENAZI(this.listaA,cont);
+      
+    }
     
     console.log(this.aula);
     if(this.aula == "4A"){
@@ -155,11 +214,29 @@ export class CagarArchivoPage {
       title: "Guardar Lista",
       subTitle: "La lista se guardó correctamente",
       cssClass:"miClaseAlert",
-    buttons: ['Aceptar']
+    buttons: [{text:'Aceptar',
+    handler: () => {
+      let profileModal = this.modalCtrl.create(AsignarMateriaPage, {materia:this.listaA.materia,aula:this.listaA.aula});
+      profileModal.present();
+      
+    }
+    }
+   ]
   });
    alert.present();
+
+ 
+   
+   
+    
+  }else if(this.persona=="profesor")
+  {
+
+  }else if(this.persona=="administrativo")
+  {
     
   }
+}
 
   descargarArchivo(){
     let miAula:string;

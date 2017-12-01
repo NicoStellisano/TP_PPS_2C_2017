@@ -163,7 +163,7 @@ loading.present();
   
 
   cargarLista(){
-    this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula});
+    this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula,persona:"alumno"});
     //alert("voy a cargar lista");
   }
 

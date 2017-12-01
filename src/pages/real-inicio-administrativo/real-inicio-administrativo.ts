@@ -10,6 +10,10 @@ import  firebase  from 'firebase';
 import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { MateriaPage } from '../materia/materia';
+import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrativo';
+import { MateriasAdministrativoPage } from '../materias-administrativo/materias-administrativo';
+import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
+
 /**
  * Generated class for the RealInicioAdministrativoPage page.
  *
@@ -65,7 +69,7 @@ listaAux: any[] = [];
     {
       case "aulas":
           this.seleccion="";
-      this.navCtrl.push(InicioAdministrativoPage);
+      this.navCtrl.push(AulaAdministrativoPage);
       break;
 
       case "profesores":
@@ -78,11 +82,29 @@ listaAux: any[] = [];
       break;
 
       case "materias":
+      this.listaAux=[];
+      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+        const element = this.listadoAlumnos[i];
+       
+        
+          this.listaAux.push({aula:element.aula,profesor:element.profesor,nombre:element.materia});
+        
+      }
       this.seleccion="materias";
       break;
     }
   }
 
+  cargarLista(){
+    this.navCtrl.push(CagarArchivoPage,{persona:"alumno"});
+    //  alert("voy a cargar lista");
+    //alert("voy a cargar lista");
+  }
+
+  aparecer()
+  {
+    this.seleccion="";
+  }
   Seleccion(data)
   {
     console.log(this.listadoAlumnos);
@@ -92,11 +114,11 @@ listaAux: any[] = [];
      
       case "profesores":
      this.listaAux=[];
-      for (let i = 0; i < this.listaMaterias.length; i++) {
-        const element = this.listaMaterias[i];
-        if(element.profesor.startsWith(data))
+      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+        const element = this.listadoAlumnos[i];
+        if(element.profesor==data)
         {
-          this.listaAux.push(element);
+          this.listaAux.push({aula:element.aula,profesor:element.profesor,materia:element.materia});
         }
       }
       this.seleccion="materiasProfesor";
@@ -139,24 +161,25 @@ listaAux: any[] = [];
 
       case "a":
       this.listaAux=[];
-      for (let i = 0; i < this.listaMaterias.length; i++) {
-        const element = this.listaMaterias[i];
-        if(element.curso=='4º A')
+      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+        const element = this.listadoAlumnos[i];
+        if(element.aula=="4A")
         {
-          this.listaAux.push(element);
+          this.listaAux.push({aula:element.aula,profesor:element.profesor,materia:element.materia});
         }
       }
+      
       this.seleccion="materiasProfesor";
       
       break;
 
       case "b":
       this.listaAux=[];
-      for (let i = 0; i < this.listaMaterias.length; i++) {
-        const element = this.listaMaterias[i];
-        if(element.curso=='4º B')
+      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+        const element = this.listadoAlumnos[i];
+        if(element.aula=="4B")
         {
-          this.listaAux.push(element);
+          this.listaAux.push({aula:element.aula,profesor:element.profesor,materia:element.materia});
         }
       }
       this.seleccion="materiasProfesor";
@@ -164,15 +187,17 @@ listaAux: any[] = [];
       break;
 
       case "materias":
-      this.seleccion="";
+   
       
-      this.navCtrl.push(MateriaPage,{materiaa:data.nombre,aulaaa:data.curso});
+      this.navCtrl.push(MateriasAdministrativoPage,{materia:data.nombre,aula:data.aula});
+      this.seleccion="";
       break;
 
       case "materiasProfesor":
-      this.seleccion="";
+     
       
-     this.navCtrl.push(MateriaPage,{materiaa:data.nombre,aulaaa:data.curso});
+     this.navCtrl.push(MateriasAdministrativoPage,{materia:data.materia,aula:data.aula});
+     this.seleccion="";
       break;
     }
   }

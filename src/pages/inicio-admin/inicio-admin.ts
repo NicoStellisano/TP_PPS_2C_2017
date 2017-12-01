@@ -11,6 +11,7 @@ import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/da
 import { GooglePlus } from '@ionic-native/google-plus';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { AsignarMateriaPage } from '../asignar-materia/asignar-materia';
+import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 
 @IonicPage()
 @Component({
@@ -596,6 +597,19 @@ loading.present();
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InicioAdminPage');
+  }
+
+  cargarLista(){
+    if(this.personas=='a')
+    {
+      this.navCtrl.push(CagarArchivoPage,{aulaa:" ",persona:"administrativo"});
+      
+    }else if(this.personas=='p')
+    {
+      this.navCtrl.push(CagarArchivoPage,{aulaa:" ",persona:"profesor"});
+      
+    }
+    //alert("voy a cargar lista");
   }
 
 

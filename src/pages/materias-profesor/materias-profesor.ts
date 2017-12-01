@@ -2,7 +2,15 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {InicioProfesorPage} from '../inicio-profesor/inicio-profesor';
 import {AulaProfesorPage} from '../aula-profesor/aula-profesor';
-
+import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
+import { AngularFireAuth } from 'angularfire2/auth';
+// for databas
+import { AngularFireDatabase } from 'angularfire2/database';
+import  firebase  from 'firebase';
+import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { MateriaPage } from '../materia/materia';
+import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrativo';
 /**
  * Generated class for the MateriasProfesorPage page.
  *
@@ -19,12 +27,15 @@ export class MateriasProfesorPage {
 
   aula: string;
   listaMateriasProfesor: any[];
+  listaAlumnos: any[];
+  apellido:string;
+  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider) {
     this.aula= this.navParams.get('aulaa');
    // alert(this.aula);
 
-   switch (this.aula)
+   /*switch (this.aula)
    {
     case "2° B":
 
@@ -48,20 +59,35 @@ export class MateriasProfesorPage {
     ];
 
      break;
-   }
+   }*/
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MateriasProfesorPage');
-  }
+    this.fireService.getAlumnos().subscribe(data=>
+    {
+      this.listaAlumnos=data;
+    });
+    this.apellido=localStorage.getItem("Apellido");                
+    
+    this.listaMateriasProfesor=[];
+    for (let i = 0; i < this.listaAlumnos.length; i++) {
+      const element = this.listaAlumnos[i];
+     if(this.apellido==element.profesor)
+      
+        this.listaMateriasProfesor.push({aula:element.aula,profesor:element.profesor,nombre:element.materia});
+      
+    }
+
+    
+    }
 
   RedireccionMaterias()
   {
 
   }
-  RedireccionMateria(materia:string)
+  RedireccionMateria(elemento:any)
   {
-    this.navCtrl.push(AulaProfesorPage);
+    this.navCtrl.push(MateriaPage,{aula:elemento.aula,materia:elemento.materia,profesor:elemento.profesor});
     /*
       switch(materia)
       {
