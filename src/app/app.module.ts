@@ -42,7 +42,7 @@ import { EncuestasAltaPage } from '../pages/encuestas-alta/encuestas-alta';
 import { EncuestasEditarPage } from '../pages/encuestas-editar/encuestas-editar';
 import { TomarListaPage } from '../pages/tomar-lista/tomar-lista';
 import { NativeAudio } from '@ionic-native/native-audio';
-
+import { RespuestaEncuestaPage } from '../pages/respuesta-encuesta/respuesta-encuesta';
 
 
 var config = {
@@ -81,7 +81,8 @@ var config = {
     EncuestasPage,
     EncuestasAltaPage,
     EncuestasEditarPage,
-    TomarListaPage
+    TomarListaPage,
+    RespuestaEncuestaPage
   ],
   imports: [
     BrowserModule,
@@ -118,7 +119,8 @@ var config = {
     EncuestasPage,
     EncuestasAltaPage,
     EncuestasEditarPage,
-    TomarListaPage
+    TomarListaPage,
+    RespuestaEncuestaPage
   ],
   providers: [
     StatusBar,

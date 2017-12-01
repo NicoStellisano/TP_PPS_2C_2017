@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { MateriaPage } from '../materia/materia';
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
 
@@ -23,9 +23,9 @@ export class MateriasPage {
   public datosfaltas;
 
   //HAY QUE CAMBIARLO POR ALGO REAL
-  public nombreUsuario="Mauro";
+  
 public variableGlobal: any;
-    constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController, public db: AngularFireDatabase) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController, public db: AngularFireDatabase,private toastCtrl:ToastController ) {
       this.aula = this.navParams.get('aulaa');
 this.curso=localStorage.getItem("curso");
 
@@ -34,38 +34,28 @@ console.log(this.curso);
 
 
 
-      //PARA CARGAR EN FIREBASE FALTAS
-/*
-      this.db.list('/notificacionFalta').push({
-        nombre: this.nombreUsuario,
-        cantidadFaltas: 4,
-        curso: this.aula    
-      }).then( () => {
-  
-      })
-      .catch( () => {
-      });
-    
-*/
-
       this.db.list('/notificacionFalta').
       subscribe( data => {
       this.datosfaltas=data;
-      //console.log(this.datos);
-
+      console.log(this.datosfaltas);
 
       for(let i=0;i<this.datosfaltas.length;i++){
 
-        if(this.nombreUsuario==this.datosfaltas[i].nombre)
+        if(localStorage.getItem("mail")==this.datosfaltas[i].mail)
           {
 
-        let alert = this.alertCtrl.create({
-          title: "Aviso de faltas",
-          cssClass:'miClaseDanger',
-          subTitle: this.nombreUsuario+" tiene 4 faltas. A una de quedar LIBRE!" ,
-        buttons: ['Aceptar']
-      });
-       alert.present();
+            let toast = this.toastCtrl.create({
+              message: 'El alumno'+' '+this.datosfaltas[i].alumno+' '+'tiene'+ ' '+this.datosfaltas[i].cantidadFaltas+' '+ 'faltas!!!'    ,
+              duration: 4000,
+              position: 'top'
+            });
+          
+            toast.onDidDismiss(() => {
+              console.log('Dismissed toast');
+             
+            });
+          
+            toast.present();
         }
 
                               } 
@@ -80,6 +70,10 @@ console.log(this.curso);
      }    
   
     ionViewDidLoad() {
+
+
+
+      
      this.variableGlobal= this.db.list('/notificacionesProfesor').
       subscribe( data => {
       this.datos=data;
@@ -135,17 +129,7 @@ console.log(this.curso);
       }
 
       });
-      /*
-      for(let i=0;i<this.datos.length;i++){
-      let alert = this.alertCtrl.create({
-        title: this.datos[i].titulo,
-        subTitle: 'Alumnos de '+this.aula+' :'+this.datos[i].mensaje,
-      buttons: ['OK']
-    });
-     alert.present();
-  }
 
-*/
 
 
     }

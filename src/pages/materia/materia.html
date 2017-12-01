@@ -21,6 +21,11 @@
   <button ion-button round full large *ngIf="codigoScaneado==null"  (click)="scanCode()" class="animated flipInX miBoton miButton"> 
     <ion-icon name="arrow-round-back"></ion-icon> Escaner QR
   </button>
+
+    
+  <button ion-button round full large *ngIf="codigoScaneado==null"  (click)="encuestas()" class="animated flipInX miBoton miButton"> 
+    <ion-icon name="arrow-round-back"></ion-icon> Encuestas
+  </button>
   
   <ion-list *ngIf="codigoScaneado!=null" >
   <!-- <div *ngIf="perfil==''" > -->

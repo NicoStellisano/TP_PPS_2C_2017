@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
@@ -28,6 +28,7 @@ export class AulaProfesorPage {
   listaAlumnos:AlumnoItem[] = [];
   aula:string;
   datosMaterias;
+  datosfaltas;
 
   listaAulass: any[] = [
     
@@ -52,7 +53,7 @@ export class AulaProfesorPage {
       ];
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio,private toastCtrl:ToastController ) {
     this.aula = this.navParams.get('aulaa');
     //alert(this.aula);
 
@@ -70,6 +71,34 @@ export class AulaProfesorPage {
     
     this.nativeAudio.preloadComplex('bienvenidoProfesor', 'assets/sonidos/bienvenidoProfesor.mp3', 1, 1, 0);
     this.nativeAudio.play('bienvenidoProfesor');
+
+    this.db.list('/notificacionFalta').
+    subscribe( data => {
+    this.datosfaltas=data;
+    console.log(this.datosfaltas);
+
+
+    for(let i=0;i<this.datosfaltas.length;i++){
+
+      //if(localStorage.getItem("mail")==this.datosfaltas[i].mail){
+        
+
+          let toast = this.toastCtrl.create({
+            message: 'El alumno'+' '+this.datosfaltas[i].alumno+' '+'tiene'+ ' '+this.datosfaltas[i].cantidadFaltas+' '+ 'faltas!!!'    ,
+            duration: 4000,
+            position: 'top'
+          });
+        
+          toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+           
+          });
+        
+          toast.present();
+     //CIERRE IF }
+
+                            } 
+    });
   }
 
   ionViewDidLoad() {
