@@ -11,6 +11,9 @@ import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/da
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { MateriaPage } from '../materia/materia';
 import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrativo';
+import { MateriasAdministrativoPage } from '../materias-administrativo/materias-administrativo';
+import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
+
 /**
  * Generated class for the RealInicioAdministrativoPage page.
  *
@@ -92,6 +95,11 @@ listaAux: any[] = [];
     }
   }
 
+  cargarLista(){
+    this.navCtrl.push(CagarArchivoPage,{persona:"alumno"});
+    //  alert("voy a cargar lista");
+    //alert("voy a cargar lista");
+  }
 
   aparecer()
   {
@@ -181,14 +189,14 @@ listaAux: any[] = [];
       case "materias":
    
       
-      this.navCtrl.push(MateriaPage,{materiaa:data.nombre,aulaaa:data.aula});
+      this.navCtrl.push(MateriasAdministrativoPage,{materia:data.nombre,aula:data.aula});
       this.seleccion="";
       break;
 
       case "materiasProfesor":
      
       
-     this.navCtrl.push(MateriaPage,{materiaa:data.materia,aulaaa:data.aula});
+     this.navCtrl.push(MateriasAdministrativoPage,{materia:data.materia,aula:data.aula});
      this.seleccion="";
       break;
     }

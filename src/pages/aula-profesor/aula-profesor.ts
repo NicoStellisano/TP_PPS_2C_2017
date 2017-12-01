@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { IonicPage,Content, NavController, NavParams } from 'ionic-angular';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
@@ -8,6 +8,7 @@ import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 import { NotificacionPage } from '../notificacion/notificacion';
 import { MateriaPage } from '../materia/materia';
 import { EncuestasPage } from '../encuestas/encuestas';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { TomarListaPage } from '../tomar-lista/tomar-lista';
 import { NativeAudio } from '@ionic-native/native-audio';
@@ -30,28 +31,20 @@ export class AulaProfesorPage {
   datosMaterias;
   materia:string;
 
-  listaAulass: any[] = [
-    
-      {
-        "aula": "4A"
-      },
-      {
-        "aula": "4B"
-      }
-     
-    ];
 
-    listaMaterias: any[] = [
-      
-        {
-          "materia": "Programacion 4"
-        },
-        {
-          "materia": "Practica profesional"
-        }
-       
-      ];
+  @ViewChild(Content) content: Content;  
+  view: number[] = [700, 150];
+  view2: number[] = [700, 150];
+  showXAxisLabel: boolean;
+  showYAxisLabel: boolean;
+  showLegend: boolean;
+  interval: number;
   
+  listadoFaltas:Array<any>=[];
+  
+
+  informacion: any[] = [];
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aula');
@@ -59,21 +52,37 @@ this.materia= this.navParams.get('materia');
  
 
 
-    this.db.list('/materias').
-    subscribe( data => {
-    this.datosMaterias=data;
-    console.log(this.datosMaterias);
-
-
-    });
+  
 
     
     this.nativeAudio.preloadComplex('bienvenidoProfesor', 'assets/sonidos/bienvenidoProfesor.mp3', 1, 1, 0);
     this.nativeAudio.play('bienvenidoProfesor');
   }
 
+  applyDimensions() {
+    const width = this.content.getContentDimensions().contentWidth - 50;
+    const state = width >= 320;
+    this.showXAxisLabel = state;
+    this.showYAxisLabel = state;
+    this.showLegend = state;
+    this.view = [width, 150];
+  }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AulaProfesorPage');
+    this.applyDimensions();
+    window.addEventListener('resize', () => {
+      this.applyDimensions();
+    }, false);
+    this.informacion=[
+      {
+        'name':'Si',
+        'value':4
+      },
+      {
+        'name':'No',
+        'value':5
+      }
+      ];
+     
     //mofificar por la ruta y el archivo de bienvenida
    // this.nativeAudio.preloadComplex('bienvenido', 'assets/piano/1.mp3', 1, 1, 0);
   //  this.nativeAudio.play('bienvenido');
@@ -92,7 +101,7 @@ this.materia= this.navParams.get('materia');
   }
 
   cargarLista(){
-    this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula,materia:this.materia});
+    this.navCtrl.push(CagarArchivoPage,{persona:"alumno"});
   //  alert("voy a cargar lista");
     //alert("voy a cargar lista");
   }

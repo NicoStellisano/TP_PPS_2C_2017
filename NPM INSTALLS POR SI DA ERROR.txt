@@ -13,4 +13,6 @@ mauro: 29/11
 ionic cordova plugin add cordova-plugin-nativeaudio
 npm install --save @ionic-native/native-audio
 
+nico 1/12:
+npm install @angular/animations@latest
 

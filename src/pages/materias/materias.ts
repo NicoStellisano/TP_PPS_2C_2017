@@ -151,15 +151,9 @@ console.log(this.curso);
     }
   
     //harcodeado para mostrar, despues se debe eliminar y tomarar las aulamateriass de firebase
-    listaMateriasAlumno: any[] = [
+    listaMateriasAlumno: any[] = [ 
       {
-        "materia": "Laboratorio 4"
-      },
-
-
-      
-      {
-        "materia": "Practica profesional"
+        "materia": "PPS"
       }
     
     ];
@@ -171,26 +165,11 @@ console.log(this.curso);
       switch(materia)
       {
        
-      
-        case "Programacion 3":
-        alert("Se redireccionara a la materia: Programacion 3 ");
-        this.navCtrl.push(MateriaPage,{aulaaa:this.aula});
-        break;
-        case "Laboratorio 3":
-        
-        this.navCtrl.push(MateriaPage,{materiaa:materia,aulaaa:this.aula});
-        break;
-        case "Base de datos 1":
-        
-        this.navCtrl.push(MateriaPage,{materiaa:materia,aulaaa:this.aula});
-        break;
-        case "Practica profesional":
+        case "PPS":
        
-        this.navCtrl.push(MateriaPage,{materiaa:materia,aulaaa:this.aula});
+        this.navCtrl.push(MateriaPage,{materiaa:materia,aulaa:this.aula});
         break;
-        case "Laboratorio 4":
-        this.navCtrl.push(MateriaPage,{materiaa:materia,aulaaa:this.aula});
-        break;
+       
        
   
       }

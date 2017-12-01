@@ -31,10 +31,10 @@ aula:string;
 listaAlumnos:AlumnoItem[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public barcodeScanner: BarcodeScanner,public db: AngularFireDatabase, public alertCtrl: AlertController,private nativeAudio: NativeAudio) {
-    this.materia = this.navParams.get('materia');
+    this.materia = this.navParams.get('materiaa');
     //this.curso = this.navParams.get('aulaaa');
 this.curso = localStorage.getItem("curso");
-this.aulaParaQrProfesor = this.navParams.get('aula');
+this.aulaParaQrProfesor = this.navParams.get('aulaa');
 this.perfil=localStorage.getItem("Perfil");
 
 

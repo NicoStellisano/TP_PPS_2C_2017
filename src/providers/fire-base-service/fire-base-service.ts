@@ -119,9 +119,17 @@ export class FireBaseServiceProvider {
         
       }
 
-      agregarLista(alumnoLista,key){
-        return this.afd.object('/alumno-lista/'+key).update(alumnoLista);
+      agregarLista(alumnoLista){
+       // return this.afd.object('/alumno-lista/'+key).update(alumnoLista);
+        return this.afd.object('/alumno-lista/').update(alumnoLista);
+        
       }
+
+      agregarListaDENAZI(alumnoLista,key){
+        // return this.afd.object('/alumno-lista/'+key).update(alumnoLista);
+         return this.afd.object('/alumno-lista/'+key).update(alumnoLista);
+         
+       }
 
       agregarListaA(alumno){
         return this.afd.list('/tomarA').push(alumno);

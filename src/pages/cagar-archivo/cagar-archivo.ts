@@ -44,8 +44,10 @@ listaAdministrativos:any[]=[];;
   alumnoLista$: FirebaseListObservable<AlumnoItem[]>;
   alumnoListaItem$: FirebaseListObservable<AlumnoListaItem[]>;
 
+  banderita:boolean;
+
   constructor(public navCtrl: NavController, public modalCtrl:ModalController,public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
-    this.aula = this.navParams.get('aulaa');
+    //this.aula = this.navParams.get('aulaa');
     this.persona = this.navParams.get('persona');
     if(this.persona=="alumno")
     {
@@ -158,7 +160,7 @@ listaAdministrativos:any[]=[];;
   }
 
   cargarLista(){
-    
+    this.banderita=false;
 if(this.persona=="alumno")
 {
 
@@ -166,12 +168,33 @@ if(this.persona=="alumno")
     var rows = this.nombreArchivo.split("-");
     console.log(rows);
     this.listaA.aula =rows[1];
+    this.aula=rows[1];
     this.listaA.alumnos=this.listaAlumnos;
     this.listaA.materia=rows[0];
+    
     let cont:number;
     cont = this.listaAlumnoItem.length;
 
-    this.firebaseService.agregarLista(this.listaA,cont);
+    for (let o = 0; o < this.listaAlumnoItem.length; o++) {
+      let element = this.listaAlumnoItem[o];
+      if(element.materia==this.listaA.materia)
+      {
+        let listaAux:any[]=[];
+        listaAux=this.listaAlumnoItem;
+        listaAux[o].alumnos=this.listaA.alumnos;
+      
+        this.firebaseService.agregarLista(listaAux);
+        this.banderita=true;
+  break;        
+
+      }
+      
+    }
+    if(this.banderita==false)
+    { 
+      this.firebaseService.agregarListaDENAZI(this.listaA,cont);
+      
+    }
     
     console.log(this.aula);
     if(this.aula == "4A"){
