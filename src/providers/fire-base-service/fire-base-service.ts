@@ -119,9 +119,17 @@ export class FireBaseServiceProvider {
         
       }
 
-      agregarLista(alumnoLista,key){
-        return this.afd.object('/alumno-lista/'+key).update(alumnoLista);
+      agregarLista(alumnoLista){
+       // return this.afd.object('/alumno-lista/'+key).update(alumnoLista);
+        return this.afd.object('/alumno-lista/').update(alumnoLista);
+        
       }
+
+      agregarListaDENAZI(alumnoLista,key){
+        // return this.afd.object('/alumno-lista/'+key).update(alumnoLista);
+         return this.afd.object('/alumno-lista/'+key).update(alumnoLista);
+         
+       }
 
       agregarListaA(alumno){
         return this.afd.list('/tomarA').push(alumno);
@@ -234,6 +242,7 @@ export class FireBaseServiceProvider {
 
       traerEncuestas()
       {
+        //no lo uso
         return this.afd.list('/encuestas');
         
       }
@@ -249,5 +258,14 @@ export class FireBaseServiceProvider {
       {
         return this.afd.object('/encuestas/'+encuesta.$key).update(encuesta);
       }
+
+
+
+      agregarRespEncuesta(respuesta)
+      {
+        return this.afd.list('/encuestaRespuestas').push(respuesta);
+        
+      }
+
     }
     

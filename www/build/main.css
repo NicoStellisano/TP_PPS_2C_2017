@@ -31485,3 +31485,20 @@ page-notificacion .botonGuardar {
   margin-left: 5.5cm;
   margin-top: 0.25cm;
 }
+
+page-respuesta-encuesta .fondo {
+  background-repeat: no-repeat;
+  background: 50%;
+}
+
+page-respuesta-encuesta button {
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+}
+
+page-respuesta-encuesta .botones {
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+}

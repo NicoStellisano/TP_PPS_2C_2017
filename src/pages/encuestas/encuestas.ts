@@ -33,11 +33,11 @@ respuesta;
 
    // console.log(this.encuestas);
 
-   this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
-   this.nativeAudio.play('1');
+   
 
   });
-
+  this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
+  this.nativeAudio.play('1');
   //console.log(this.encuestas);
   }
 

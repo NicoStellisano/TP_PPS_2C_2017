@@ -29,11 +29,14 @@ export class EncuestasAltaPage {
   fechaInicio ="";
   fechaFinalizacion= "";
   creadorEncuesta;
+  horaActual;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,private alertCtrl:AlertController,private nativeAudio: NativeAudio) {
     this.creadorEncuesta=localStorage.getItem("Email");
     this.nativeAudio.preloadComplex('2', 'assets/sonidos/2.mp3', 1, 1, 0);
     this.nativeAudio.play('2');
+
+    this.horaActual= new Date();
   }
 
   ionViewDidLoad() {
@@ -42,6 +45,71 @@ export class EncuestasAltaPage {
 
   Guardar()
   {
+
+    if(this.respuesta1 || this.respuesta2 )
+      {
+        
+        switch(this.duracion)
+        {
+          case '5 minutos':
+          this.horaActual.setMinutes(this.horaActual.getMinutes()+5);
+          break;
+          case '30 minutos':
+          this.horaActual.setMinutes(this.horaActual.getMinutes()+30);
+          break;
+          case '55 minutos':
+          this.horaActual.setMinutes(this.horaActual.getMinutes()+55);
+          break;
+
+        }
+        switch(this.formato)
+        {
+          case 'Radio botones':
+          this.formato="Radio botones";
+          break;
+          case 'Botones':
+          this.formato="Botones";
+          break;
+          case 'Selección de opciones':
+          this.formato="Selección de opciones";
+          break;
+
+        }
+        
+        this.fireService.agregarEncuesta({
+          nombre:this.nombre,
+          pregunta:this.pregunta,
+          respuesta1:this.respuesta1,
+          respuesta2:this.respuesta2,
+          formato:this.formato,
+          duracion:this.duracion,
+          horaFinalizacion: this.horaActual.getHours()+ ":" +  this.horaActual.getMinutes(),
+          creadorEncuesta:this.creadorEncuesta});
+
+          let alert = this.alertCtrl.create({
+            title: 'Exito!',
+            subTitle: 'Encuesta cargada exitosamente',
+            cssClass:"miClaseAlert",
+          buttons: ['Listo']
+        });
+         alert.present();
+      
+          this.navCtrl.push(EncuestasPage);
+          
+ 
+    }
+      else
+        {
+          let alert = this.alertCtrl.create({
+            title: "Info",
+            subTitle: "Faltan datos",
+            cssClass:"miClaseDanger",
+          buttons: ['Aceptar']
+        });
+         alert.present();
+        }
+
+    /*
     this.fireService.agregarEncuesta({nombre:this.nombre,pregunta:this.pregunta,respuesta1:this.respuesta1,
     respuesta2:this.respuesta2,formato:this.formato,duracion:this.duracion,fechaInicio:this.fechaInicio,fechaFinalizacion:this.fechaFinalizacion,creadorEncuesta:this.creadorEncuesta});
 
@@ -54,5 +122,7 @@ export class EncuestasAltaPage {
    alert.present();
 
     this.navCtrl.push(EncuestasPage);
+    */
   }
+
 }

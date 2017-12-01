@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="dark">
-    <ion-title>Aula Profesor {{aula}}</ion-title>
+    <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -32,20 +32,15 @@
     </ion-item> 
   
   </ion-list>-->
-<ion-list  >
-    <div *ngFor="let lista of listaMaterias; let i = index"> 
-        <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.aula)">{{ lista.materia }}</button> 
-    </div>
- 
-</ion-list>
-  <div>
+
+  <div style="height:40%;width:100%">
    
     <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> 
       <ion-icon name="arrow-round-back"></ion-icon> Crear Notificacion
     </button>
-    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
+    <!--<button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
       <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos
-    </button>
+    </button>-->
     <button ion-button round full large  (click)="mostrarQr()" class="animated flipInX miBoton miButton"> 
         <ion-icon name="arrow-round-back"></ion-icon> Escaner QR
       </button>
@@ -57,9 +52,29 @@
       <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista
     </button>
   </div>
-
-
-  
+<div style="height:10%"></div>
+<div style="height:50%;width:100%">
+  <ion-grid style="background-color:white;">
+    <h4>Faltas</h4>
+     <ion-row >
+       <ion-col >
+         <ngx-charts-bar-horizontal 
+           [view]="view"
+           [results]="informacion"
+           xAxis="true"
+           yAxis="true"
+         >
+         </ngx-charts-bar-horizontal>
+       </ion-col>
+     </ion-row>
+   </ion-grid>
+  </div>
+  <!--  [legend]="showLegend"
+           legendTitle="Votos"
+           [showXAxisLabel]="showXAxisLabel"
+           [showYAxisLabel]="showYAxisLabel"
+           xAxisLabel="votos"
+           yAxisLabel="resultado" -->
   
     
 

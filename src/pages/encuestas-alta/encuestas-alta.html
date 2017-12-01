@@ -41,22 +41,24 @@
             <ion-label class="miLabel" floating>Formato</ion-label>
           <ion-select [(ngModel)]="formato">
          
-            <ion-option>Radio button</ion-option> 
-            <ion-option>Checkbox</ion-option> 
+            <ion-option>Radio botones</ion-option> 
+           <!-- <ion-option>Checkbox</ion-option> -->
             <ion-option>Botones</ion-option> 
+            <ion-option>Selección de opciones</ion-option> 
           </ion-select>
         </ion-item>
 
       <ion-item class="animated flipInX miItem">
         <ion-label class="miLabel" floating>Duración</ion-label>
       <ion-select [(ngModel)]="duracion">
-      <!--  <ion-option *ngFor="let d of duracion; let i = index" type="number" value="d.valor" [value]="d.valor">{{d.valor}}</ion-option>-->
-        <ion-option>1 hora</ion-option> 
-        <ion-option>6 horas</ion-option> 
-        <ion-option>24 horas</ion-option> 
+      
+        <ion-option>5 minutos</ion-option> 
+        <ion-option>30 minutos</ion-option> 
+        <ion-option>55 minutos</ion-option> 
       </ion-select>
     </ion-item>
 
+    <!--
     <ion-item class="animated flipInX miItem">
         <ion-label class="miLabel" floating>Fecha y hora de inicio (opcional)</ion-label>
         <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="fechaInicio"></ion-datetime>
@@ -66,7 +68,7 @@
           <ion-label class="miLabel" floating>Fecha y hora de finalización (opcional)</ion-label>
           <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="fechaFinalizacion"></ion-datetime>
         </ion-item>
-
+      -->
 
 
     <button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>

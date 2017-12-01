@@ -51,6 +51,8 @@ export class TomarListaPage {
 
     this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
     this.nativeAudio.play('1');
+
+  // this.notificacionFalta("pepe","ortiz@utn",3);
   }
 
   ionViewDidLoad() {
@@ -103,6 +105,24 @@ export class TomarListaPage {
     });
     alert.present();
   }
+
+  notificacionFalta(nombre,mail,contAusentes)
+  {
+   
+   this.database.list('/notificacionFalta').push({
+    alumno: nombre,
+    mail: mail,
+    cantidadFaltas: contAusentes
+    
+  }).then( () => {
+    
+  })
+  .catch( () => {
+  });
+
+  }
+
+
 
 
 }

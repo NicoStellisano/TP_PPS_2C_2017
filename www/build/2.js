@@ -29,7 +29,7 @@ RealInicioAdministrativoPageModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__real_inicio_administrativo__["a" /* RealInicioAdministrativoPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__real_inicio_administrativo__["a" /* RealInicioAdministrativoPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__real_inicio_administrativo__["a" /* RealInicioAdministrativoPage */]),
         ],
     })
 ], RealInicioAdministrativoPageModule);

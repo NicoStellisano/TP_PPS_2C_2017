@@ -46,7 +46,7 @@ export class LoginPage {
   google:boolean;
   listaAux: any[]=[];
 
-  oct = {email:'octavio.villegas@gmail.com',password:'20145369'};
+  oct = {email:'octaviovillegas@gmail.com',password:'20123456'};
   dal = {email:'ortiz@utn',password:'104300'};
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl:LoadingController,public fireService:FireBaseServiceProvider

@@ -2,7 +2,15 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MateriasProfesorPage} from '../materias-profesor/materias-profesor';
 import { AulaProfesorPage } from '../aula-profesor/aula-profesor';
-
+import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
+import { AngularFireAuth } from 'angularfire2/auth';
+// for databas
+import { AngularFireDatabase } from 'angularfire2/database';
+import  firebase  from 'firebase';
+import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { MateriaPage } from '../materia/materia';
+import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrativo';
 /**
  * Generated class for the InicioProfesorPage page.
  *
@@ -16,26 +24,63 @@ import { AulaProfesorPage } from '../aula-profesor/aula-profesor';
   templateUrl: 'inicio-profesor.html',
 })
 export class InicioProfesorPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InicioProfesorPage');
-  }
-
-    //harcodeado para mostrar, despues se debe eliminar y tomarar las aulas del profesor de firebase
-    listaAulasProfesor: any[] = [
+  aula: string;
+  listaMateriasProfesor: any[]=[];
+  listaAlumnos: any[]=[];
+  apellido:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider) {
+    this.fireService.getAlumnos().subscribe(data=>
       {
-        "aula": "4A"
-      },
-      {
-        "aula": "4B"
+        this.listaAlumnos=data;
+      });
+      this.apellido=localStorage.getItem("Apellido");                
+      
+      this.listaMateriasProfesor=[];
+      for (let i = 0; i < this.listaAlumnos.length; i++) {
+        const element = this.listaAlumnos[i];
+       if(this.apellido==element.profesor)
+        
+          this.listaMateriasProfesor.push({aula:element.aula,profesor:element.profesor,materia:element.materia});
+        
       }
-     
-    ];
+  }
 
-    RedireccionAula(aula: string)
+  ionViewDidEnter() {
+  
+      }
+
+    
+
+    RedireccionMateria(elemento:any)
+    {
+      this.navCtrl.push(AulaProfesorPage,{aula:elemento.aula,materia:elemento.materia,profesor:elemento.profesor});
+      /*
+        switch(materia)
+        {
+        
+          case "Programacion 3":
+          alert("Se redireccionara a la materia: Programacion 3");
+         //this.navCtrl.push();
+          break;
+          case "Laboratorio 3":
+          alert("Se redireccionara a la materia: Laboratorio 3");
+         // this.navCtrl.push();
+          break;
+          case "Practica Profesional":
+          alert("Se redireccionara a la materia: Practica Profesional");
+          // this.navCtrl.push();
+          break;
+          case "Laboratorio 4":
+          alert("Se redireccionara a la materia: Laboratorio 4");
+          // this.navCtrl.push();
+          break;
+    
+        }
+    */  
+    }
+    
+
+    /*RedireccionAula(aula: string)
     {
       switch(aula)
       {
@@ -58,6 +103,6 @@ export class InicioProfesorPage {
         break;
   
       }
-    }
+    }*/
 
 }

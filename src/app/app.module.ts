@@ -42,6 +42,13 @@ import { EncuestasAltaPage } from '../pages/encuestas-alta/encuestas-alta';
 import { EncuestasEditarPage } from '../pages/encuestas-editar/encuestas-editar';
 import { TomarListaPage } from '../pages/tomar-lista/tomar-lista';
 import { NativeAudio } from '@ionic-native/native-audio';
+import { RespuestaEncuestaPage } from '../pages/respuesta-encuesta/respuesta-encuesta';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import{ BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import{ NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { MateriasAdministrativoPage } from '../pages/materias-administrativo/materias-administrativo';
+
+
 
 
 
@@ -81,14 +88,19 @@ var config = {
     EncuestasPage,
     EncuestasAltaPage,
     EncuestasEditarPage,
-    TomarListaPage
+    TomarListaPage,
+    RespuestaEncuestaPage,
+    MateriasAdministrativoPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     Ng2SmartTableModule,
     IonicModule.forRoot(MyApp),
-    AngularFireDatabaseModule,    
+    AngularFireDatabaseModule,  
+    NgxChartsModule,    
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     AngularFireModule.initializeApp(config)
   ],
   bootstrap: [IonicApp],
@@ -118,7 +130,9 @@ var config = {
     EncuestasPage,
     EncuestasAltaPage,
     EncuestasEditarPage,
-    TomarListaPage
+    TomarListaPage,
+    RespuestaEncuestaPage,
+    MateriasAdministrativoPage
   ],
   providers: [
     StatusBar,

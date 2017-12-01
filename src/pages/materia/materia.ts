@@ -5,6 +5,7 @@ import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database'
 import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 import { DescargarArchivoPage } from '../descargar-archivo/descargar-archivo';
 import { NativeAudio } from '@ionic-native/native-audio';
+import { RespuestaEncuestaPage } from '../respuesta-encuesta/respuesta-encuesta';
 /**
  * Generated class for the MateriaPage page.
  *
@@ -160,6 +161,11 @@ lista(aula){
             equalTo:aula
           }
          });
+}
+
+encuestas()
+{
+  this.navCtrl.push(RespuestaEncuestaPage);
 }
 
 }
