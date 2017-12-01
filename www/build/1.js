@@ -1,10 +1,6 @@
 webpackJsonp([1],{
 
-<<<<<<< HEAD
-/***/ 592:
-=======
-/***/ 936:
->>>>>>> 159f14dd736e5910bae060b83d1063c6f78774cd
+/***/ 942:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12,11 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TomarListaPageModule", function() { return TomarListaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tomar_lista__ = __webpack_require__(195);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tomar_lista__ = __webpack_require__(258);
->>>>>>> 159f14dd736e5910bae060b83d1063c6f78774cd
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tomar_lista__ = __webpack_require__(266);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

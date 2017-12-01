@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
-=======
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage,Content, NavController, NavParams } from 'ionic-angular';
->>>>>>> 159f14dd736e5910bae060b83d1063c6f78774cd
+import { IonicPage, NavController, NavParams,ToastController,Content } from 'ionic-angular';
+
+
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
@@ -34,18 +31,11 @@ export class AulaProfesorPage {
   listaAlumnos:AlumnoItem[] = [];
   aula:string;
   datosMaterias;
-<<<<<<< HEAD
   datosfaltas;
-=======
   materia:string;
->>>>>>> 159f14dd736e5910bae060b83d1063c6f78774cd
 
 
-<<<<<<< HEAD
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio,private toastCtrl:ToastController ) {
-    this.aula = this.navParams.get('aulaa');
-    //alert(this.aula);
-=======
+  
   @ViewChild(Content) content: Content;  
   view: number[] = [700, 150];
   view2: number[] = [700, 150];
@@ -56,12 +46,11 @@ export class AulaProfesorPage {
   
   listadoFaltas:Array<any>=[];
   
->>>>>>> 159f14dd736e5910bae060b83d1063c6f78774cd
 
   informacion: any[] = [];
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio, private toastCtrl:ToastController ) {
     this.aula = this.navParams.get('aula');
 this.materia= this.navParams.get('materia');
  

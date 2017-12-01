@@ -42,9 +42,7 @@ import { EncuestasAltaPage } from '../pages/encuestas-alta/encuestas-alta';
 import { EncuestasEditarPage } from '../pages/encuestas-editar/encuestas-editar';
 import { TomarListaPage } from '../pages/tomar-lista/tomar-lista';
 import { NativeAudio } from '@ionic-native/native-audio';
-<<<<<<< HEAD
 import { RespuestaEncuestaPage } from '../pages/respuesta-encuesta/respuesta-encuesta';
-=======
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import{ BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import{ NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -52,7 +50,6 @@ import { MateriasAdministrativoPage } from '../pages/materias-administrativo/mat
 
 
 
->>>>>>> 159f14dd736e5910bae060b83d1063c6f78774cd
 
 
 var config = {
@@ -92,11 +89,8 @@ var config = {
     EncuestasAltaPage,
     EncuestasEditarPage,
     TomarListaPage,
-<<<<<<< HEAD
-    RespuestaEncuestaPage
-=======
+    RespuestaEncuestaPage,
     MateriasAdministrativoPage
->>>>>>> 159f14dd736e5910bae060b83d1063c6f78774cd
   ],
   imports: [
     BrowserModule,
@@ -137,11 +131,8 @@ var config = {
     EncuestasAltaPage,
     EncuestasEditarPage,
     TomarListaPage,
-<<<<<<< HEAD
-    RespuestaEncuestaPage
-=======
+    RespuestaEncuestaPage,
     MateriasAdministrativoPage
->>>>>>> 159f14dd736e5910bae060b83d1063c6f78774cd
   ],
   providers: [
     StatusBar,
