@@ -28,6 +28,7 @@ export class AulaProfesorPage {
   listaAlumnos:AlumnoItem[] = [];
   aula:string;
   datosMaterias;
+  materia:string;
 
   listaAulass: any[] = [
     
@@ -53,9 +54,8 @@ export class AulaProfesorPage {
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio) {
-    this.aula = this.navParams.get('aulaa');
-    //alert(this.aula);
-
+    this.aula = this.navParams.get('aula');
+this.materia= this.navParams.get('materia');
  
 
 
@@ -82,29 +82,29 @@ export class AulaProfesorPage {
 
   tomaLista(){
    // alert("voy a tomar lista");
-   this.navCtrl.push(TomarListaPage,{aulaa:this.aula});
+   this.navCtrl.push(TomarListaPage,{aulaa:this.aula,materia:this.materia});
   }
 
   crearNotificacion(){
     console.log(this.aula);
-    this.navCtrl.push(NotificacionPage,{aulaa:this.aula});
+    this.navCtrl.push(NotificacionPage,{aulaa:this.aula,materia:this.materia});
     
   }
 
   cargarLista(){
-    this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula});
+    this.navCtrl.push(CagarArchivoPage,{aulaa:this.aula,materia:this.materia});
   //  alert("voy a cargar lista");
     //alert("voy a cargar lista");
   }
 
   mostrarQr(){
     //alert("voy a qr");
-    this.navCtrl.push(MateriaPage,{aulaa:this.aula});
+    this.navCtrl.push(MateriaPage,{aulaa:this.aula,materia:this.materia});
   }
 
   Encuestas()
   {
-    this.navCtrl.push(EncuestasPage,{aulaa:this.aula}); 
+    this.navCtrl.push(EncuestasPage,{aulaa:this.aula,materia:this.materia}); 
   }
 
 

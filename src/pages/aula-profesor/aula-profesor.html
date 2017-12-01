@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="dark">
-    <ion-title>Aula Profesor {{aula}}</ion-title>
+    <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -32,12 +32,7 @@
     </ion-item> 
   
   </ion-list>-->
-<ion-list  >
-    <div *ngFor="let lista of listaMaterias; let i = index"> 
-        <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.aula)">{{ lista.materia }}</button> 
-    </div>
- 
-</ion-list>
+
   <div>
    
     <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> 
