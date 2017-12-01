@@ -1200,6 +1200,8 @@ var TomarListaPage = (function () {
         //this.tomarListaSubscription.unsubscribe();
     };
     TomarListaPage.prototype.presente = function (alumno) {
+        var fecha = new Date();
+        console.log("Fecha: " + fecha.getDate);
         console.log("-------------- ingreso a presente --------------");
         console.log(alumno);
         this.presentAlert("Asistencia", alumno.nombre + " :Presente");
