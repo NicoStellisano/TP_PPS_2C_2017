@@ -173,7 +173,8 @@ listaAdministrativos:any[]=[];;
         admin.Apellido = elemento[1].trim();
         admin.Nombre = elemento[2].trim();
         admin.Email = elemento[3].trim();
-      
+        admin.password = elemento[0].trim();
+        admin.Perfil= "Profesor"
         
         lista.push(admin);
 
@@ -229,6 +230,8 @@ listaAdministrativos:any[]=[];;
         admin.Apellido = elemento[1].trim();
         admin.Nombre = elemento[2].trim();
         admin.Email = elemento[3].trim();
+        admin.password = elemento[0].trim();
+        admin.Perfil= "Administrativo";
       
         
         lista.push(admin);
@@ -270,17 +273,18 @@ if(this.persona=="alumno")
 
     var rows = this.nombreArchivo.split("-");
     console.log(rows);
+    this.listaA.materia=rows[0];
     this.listaA.aula =rows[1];
     this.aula=rows[1];
     this.listaA.alumnos=this.listaAlumnos;
-    this.listaA.materia=rows[0];
+    
     
     let cont:number;
     cont = this.listaAlumnoItem.length;
 
     for (let o = 0; o < this.listaAlumnoItem.length; o++) {
       let element = this.listaAlumnoItem[o];
-      if(element.materia==this.listaA.materia)
+      if(element.aula==this.listaA.aula)
       {
         let listaAux:any[]=[];
         listaAux=this.listaAlumnoItem;
@@ -305,11 +309,11 @@ if(this.persona=="alumno")
       this.listaAlumnos.forEach(alumno => {
         this.firebaseService.agregarListaA(alumno);
       });
-    }else{
+    }else if(this.aula=="4B"){
       console.log("entro a B");
       this.listaAlumnos.forEach(alumno => {
         this.firebaseService.agregarListaB(alumno);
-      })
+      });
     }
 
 //    this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
@@ -337,10 +341,23 @@ if(this.persona=="alumno")
     console.log('---------- ingreso a profesores carga ---------');
     this.firebaseService.updateProfesor(this.listaGen);
     //this.database.list('/profesores/').push(this.listaGen);
+    let alert = this.alertCtrl.create({
+      title: "Guardar Lista",
+      subTitle: "La lista se guardó correctamente",
+      cssClass:"miClaseAlert",
+    buttons: [{text:'Aceptar'}]});
+    alert.present();
+    
   }else if(this.persona=="administrativo")
   {
     console.log('---------- ingreso a administrativos carga ---------');
     this.firebaseService.updateAdministrativo(this.listaGen);
+    let alert = this.alertCtrl.create({
+      title: "Guardar Lista",
+      subTitle: "La lista se guardó correctamente",
+      cssClass:"miClaseAlert",
+    buttons: [{text:'Aceptar'}]});
+    alert.present();
     //this.database.list('/administrativos/').push(this.listaGen);
   }
 }

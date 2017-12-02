@@ -106,6 +106,8 @@ export class MateriasAdministrativoPage {
   showLegend: boolean;
   interval: number;
   listFaltantes:any[] =[];
+  listFaltantesB:any[] =[];
+  
   
   listadoFaltas:Array<any>=[];
   
@@ -120,6 +122,11 @@ export class MateriasAdministrativoPage {
         {
           this.listFaltantes=data;
         });
+
+        this.db.list("/tomarB").subscribe(data=>
+          {
+            this.listFaltantesB=data;
+          });
     this.aula = this.navParams.get('aula');
 this.materia= this.navParams.get('materia');
  
@@ -129,7 +136,7 @@ this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
   
 
     
-    this.nativeAudio.preloadComplex('bienvenidoProfesor', 'assets/sonidos/bienvenidoProfesor.mp3', 1, 1, 0);
+    this.nativeAudio.preloadComplex('bienvenidoProfesor', 'assets/sonidos/1.mp3', 1, 1, 0);
     this.nativeAudio.play('bienvenidoProfesor');
   }
 
@@ -185,28 +192,57 @@ loading.present();
       {
         this.listFaltantes=data;
       });
+
+      this.db.list("/tomarB").subscribe(data=>
+        {
+          this.listFaltantesB=data;
+        });
     this.applyDimensions();
     window.addEventListener('resize', () => {
       this.applyDimensions();
     }, false);
-    let contador=0;
-    for (let i = 0; i < this.listFaltantes.length; i++) {
-      const element = this.listFaltantes[i];
-      if(element.contPresentes!=0)
+    if(this.aula=="4A")
       {
-        contador++;
+        let contador=0;
+        for (let i = 0; i < this.listFaltantes.length; i++) {
+          const element = this.listFaltantes[i];
+          if(element.contPresentes!=0)
+          {
+            contador++;
+          }
+        }
+        this.informacion=[
+          {
+            'name':'Con al menos una falta',
+            'value':contador
+          },
+          {
+            'name':'Sin faltas',
+            'value':this.listFaltantes.length-contador
+          }
+          ];
+      }else if(this.aula=="4B")
+      {
+        let contador=0;
+        for (let i = 0; i < this.listFaltantesB.length; i++) {
+          const element = this.listFaltantesB[i];
+          if(element.contPresentes!=0)
+          {
+            contador++;
+          }
+        }
+        this.informacion=[
+          {
+            'name':'Con al menos una falta',
+            'value':contador
+          },
+          {
+            'name':'Sin faltas',
+            'value':this.listFaltantesB.length-contador
+          }
+          ];
       }
-    }
-    this.informacion=[
-      {
-        'name':'Con al menos una falta',
-        'value':contador
-      },
-      {
-        'name':'Sin faltas',
-        'value':this.listFaltantes.length-contador
-      }
-      ];
+    
      
     //mofificar por la ruta y el archivo de bienvenida
    // this.nativeAudio.preloadComplex('bienvenido', 'assets/piano/1.mp3', 1, 1, 0);
@@ -223,7 +259,7 @@ loading.present();
      
       
     }); 
-  this.aula = this.navParams.get('aulaa');
+  
 }
 ionViewWillLeave()
 {

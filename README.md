@@ -2,26 +2,25 @@
 TP Final de la practica profesional supervisada
 
 Stellisano Nicolás 4ºA<br/>
-Login con red social<br/> F
-ABM –Alumno<br/> G-
-Diseño de estilos<br/> I
-ABM Profesor y Administrativo<br/> J
-Navegacion de Administrativo<br/>
-Navegacion sobre aplicacion<br/>
+F - Login con red social<br/>  
+G - ABM –Alumno<br/> 
+J - ABM Profesor y Administrativo<br/> 
+L - Graficos estadisticos <br/> 
 
 Freire Ezequiel 4ºB<br/>
-*Carga de archivos Excel/csv <br/> C
-Diseño de estilos<br/> I
-Descarga de archivos<br/>
-Navegacion sobre aplicacion<br/>
-QR para Profesores<br/> N
+A - Toma lista <br/> 
+C - Carga de archivos Excel/csv <br/> 
+K - Descarga de archivos<br/>
+N - QR para Profesores<br/> 
+H - Administración de su propio perfil<br/>
 
 Suppan Mauro 4ºB<br/>
-*Aviso de Importancia <br/> E
-Administración de su propio perfil<br/>
-Diseño de estilos<br/> I
-QR para Alumnos<br/> M
-Navegacion sobre aplicacion<br/>
+B - Carga de cuestionarios/ encuestas dinámicas.<br/>
+D - Aviso de faltas: <br/>
+E - Aviso de Importancia <br/> 
+I - Diseño de estilos<br/> I
+M - QR para Alumnos<br/> 
+
 
 
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.

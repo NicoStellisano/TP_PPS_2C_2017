@@ -16,6 +16,10 @@
   <div *ngFor="let e of encuestas">
     
          <ion-list >
+            <ion-item class="animated flipInY miItem">
+                <ion-label class="miLabel" style="color: orange"  floating>Nombre:</ion-label>
+                <ion-input type="text" [(ngModel)]="e.nombre" disabled="true"></ion-input>
+                </ion-item>
                 
              <ion-item class="animated flipInY miItem">
              <ion-label class="miLabel" style="color: orange"  floating>Pregunta:</ion-label>

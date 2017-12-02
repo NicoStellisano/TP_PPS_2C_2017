@@ -48,6 +48,11 @@ import{ BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import{ NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { MateriasAdministrativoPage } from '../pages/materias-administrativo/materias-administrativo';
 import { QrencuestaPage } from '../pages/qrencuesta/qrencuesta';
+<<<<<<< HEAD
+=======
+//import { DateValueAccessorModule } from 'angular-date-value-accessor';
+
+>>>>>>> d3575c934fc7f99e9dabbbda4b66e17d835b258e
 
 
 
@@ -102,7 +107,7 @@ var config = {
     NgxChartsModule,    
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    DateValueAccessorModule,
+    
     AngularFireModule.initializeApp(config)
   ],
   bootstrap: [IonicApp],
