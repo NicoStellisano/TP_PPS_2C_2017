@@ -40,7 +40,8 @@ export class TomarListaPage {
   constructor(public navCtrl: NavController,private fbService:FireBaseServiceProvider ,
     public navParams: NavParams,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
-    this.persona = this.navParams.get('persona');
+    console.log(this.aula);
+  //  this.persona = this.navParams.get('persona');
     
     if(this.aula == "4A"){
       this.tomarAlumnos$ = this.database.list('tomarA');

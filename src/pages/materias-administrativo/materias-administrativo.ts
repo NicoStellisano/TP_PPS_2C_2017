@@ -223,7 +223,7 @@ loading.present();
      
       
     }); 
-  this.aula = this.navParams.get('aulaa');
+  
 }
 ionViewWillLeave()
 {
