@@ -80,6 +80,7 @@ export class TomarListaPage {
       console.log("entro al menora 3");
       if(alumno.contPresentes == 3){
         alert("push notification");
+       //this.notificacionFalta(alumno.nombre,alumno.mail,alumno.contPresentes)
         return;
       }else{
         console.log("entro al contador ++");
@@ -108,6 +109,7 @@ export class TomarListaPage {
 
   notificacionFalta(nombre,mail,contAusentes)
   {
+    console.log(nombre,contAusentes);
    
    this.database.list('/notificacionFalta').push({
     alumno: nombre,
