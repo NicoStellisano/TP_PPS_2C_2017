@@ -17,7 +17,7 @@
   <ion-list>
     <ion-item *ngFor="let alumno of tomarAlumnos$ | async" class="miItem animated flipInX">
       <ion-avatar item-end>
-        <img src="./assets/icon/bien.png" (click)="presente(alumno.$key)">  
+        <img src="./assets/icon/bien.png" (click)="presente(alumno)">  
       </ion-avatar>
         
       <ion-avatar item-end>
