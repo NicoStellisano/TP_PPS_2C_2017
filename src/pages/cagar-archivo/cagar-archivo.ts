@@ -340,10 +340,23 @@ if(this.persona=="alumno")
     console.log('---------- ingreso a profesores carga ---------');
     this.firebaseService.updateProfesor(this.listaGen);
     //this.database.list('/profesores/').push(this.listaGen);
+    let alert = this.alertCtrl.create({
+      title: "Guardar Lista",
+      subTitle: "La lista se guardó correctamente",
+      cssClass:"miClaseAlert",
+    buttons: [{text:'Aceptar'}]});
+    alert.present();
+    
   }else if(this.persona=="administrativo")
   {
     console.log('---------- ingreso a administrativos carga ---------');
     this.firebaseService.updateAdministrativo(this.listaGen);
+    let alert = this.alertCtrl.create({
+      title: "Guardar Lista",
+      subTitle: "La lista se guardó correctamente",
+      cssClass:"miClaseAlert",
+    buttons: [{text:'Aceptar'}]});
+    alert.present();
     //this.database.list('/administrativos/').push(this.listaGen);
   }
 }
