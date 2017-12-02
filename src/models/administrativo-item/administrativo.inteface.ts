@@ -3,4 +3,6 @@ export interface AdministrativoItem{
     Apellido:string;
     Nombre:string;
     Email:string;
+    password:string;
+    Perfil:string;
 }

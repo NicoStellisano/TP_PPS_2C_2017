@@ -173,7 +173,8 @@ listaAdministrativos:any[]=[];;
         admin.Apellido = elemento[1].trim();
         admin.Nombre = elemento[2].trim();
         admin.Email = elemento[3].trim();
-      
+        admin.password = elemento[0].trim();
+        admin.Perfil= "Profesor"
         
         lista.push(admin);
 
@@ -229,6 +230,8 @@ listaAdministrativos:any[]=[];;
         admin.Apellido = elemento[1].trim();
         admin.Nombre = elemento[2].trim();
         admin.Email = elemento[3].trim();
+        admin.password = elemento[0].trim();
+        admin.Perfil= "Administrativo";
       
         
         lista.push(admin);

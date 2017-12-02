@@ -47,7 +47,8 @@ export class LoginPage {
   listaAux: any[]=[];
 
   oct = {email:'octavio.villegas@gmail.com',password:'28123654'};
-  dal = {email:'ortiz@utn',password:'104300'};
+  dal = {email:'adiliberti@utn',password:'103295'};
+  mauroo= {email:'mauro.suppan@gmail.com',password:'28123654'};
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl:LoadingController,public fireService:FireBaseServiceProvider
     ,public toast:ToastController,public googlePlus:GooglePlus ,private screenOrientation: ScreenOrientation, public alertCtrl:AlertController ) {
@@ -79,6 +80,12 @@ export class LoginPage {
   dale(){
     this.email = this.dal.email;
     this.password = this.dal.password;
+  }
+
+  mauro()
+  {
+    this.email = this.mauroo.email;
+    this.password = this.mauroo.password;
   }
 
   ionViewDidLoad() {

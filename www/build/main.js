@@ -1790,6 +1790,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//import { DateValueAccessorModule } from 'angular-date-value-accessor';
 /**
  * Generated class for the EncuestasAltaPage page.
  *
@@ -2662,7 +2663,8 @@ var LoginPage = (function () {
         this.listadoAdministrativos = [];
         this.listaAux = [];
         this.oct = { email: 'octavio.villegas@gmail.com', password: '28123654' };
-        this.dal = { email: 'ortiz@utn', password: '104300' };
+        this.dal = { email: 'adiliberti@utn', password: '103295' };
+        this.mauroo = { email: 'mauro.suppan@gmail.com', password: '28123654' };
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.google = false;
         this.fireService.getAdmins().subscribe(function (data) {
@@ -2685,6 +2687,10 @@ var LoginPage = (function () {
     LoginPage.prototype.dale = function () {
         this.email = this.dal.email;
         this.password = this.dal.password;
+    };
+    LoginPage.prototype.mauro = function () {
+        this.email = this.mauroo.email;
+        this.password = this.mauroo.password;
     };
     LoginPage.prototype.ionViewDidLoad = function () {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
@@ -2765,13 +2771,13 @@ var LoginPage = (function () {
                                     break;
                                 }
                                 else if (element2.mail == _this.email && element2.legajo == _this.password) {
-                                    var alert = _this.alertCtrl.create({
+                                    var alert_1 = _this.alertCtrl.create({
                                         title: "Info",
                                         subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
                                         cssClass: "miClaseDanger",
                                         buttons: ['Aceptar']
                                     });
-                                    alert.present();
+                                    alert_1.present();
                                     //        this.google=true;
                                 }
                             }
@@ -2790,13 +2796,13 @@ var LoginPage = (function () {
                                     break;
                                 }
                                 else if (element2.mail == _this.email && element2.legajo == _this.password) {
-                                    var alert = _this.alertCtrl.create({
+                                    var alert_2 = _this.alertCtrl.create({
                                         title: "Info!",
                                         subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
                                         cssClass: "miClaseDanger",
                                         buttons: ['Aceptar']
                                     });
-                                    alert.present();
+                                    alert_2.present();
                                     //        this.google=true;
                                 }
                             }
@@ -2833,13 +2839,13 @@ var LoginPage = (function () {
           */
                 if (!flag) {
                     _this.googlePlus.disconnect();
-                    var alert = _this.alertCtrl.create({
+                    var alert_3 = _this.alertCtrl.create({
                         title: "Info!",
                         subTitle: "Usuario no registrado",
                         cssClass: "miClaseDanger",
                         buttons: ['Aceptar']
                     });
-                    alert.present();
+                    alert_3.present();
                 }
             }).catch(function (err) {
                 var alert = _this.alertCtrl.create({
@@ -2912,13 +2918,13 @@ var LoginPage = (function () {
                 break;
             }
             else if (element.Email == this.email && element.password == null) {
-                var alert = this.alertCtrl.create({
+                var alert_4 = this.alertCtrl.create({
                     title: "Info!",
                     subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
                     cssClass: "miClaseDanger",
                     buttons: ['Aceptar']
                 });
-                alert.present();
+                alert_4.present();
                 // this.google=true;
             }
         }
@@ -2937,13 +2943,13 @@ var LoginPage = (function () {
                     break;
                 }
                 else if (element.Email == this.email && element.password == null) {
-                    var alert = this.alertCtrl.create({
+                    var alert_5 = this.alertCtrl.create({
                         title: "Info!",
                         subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
                         cssClass: "miClaseAlert",
                         buttons: ['Aceptar']
                     });
-                    alert.present();
+                    alert_5.present();
                     //this.google=true;
                 }
             }
@@ -2968,13 +2974,13 @@ var LoginPage = (function () {
                             break;
                         }
                         else if (element2.mail == this.email && element2.legajo != this.password) {
-                            var alert = this.alertCtrl.create({
+                            var alert_6 = this.alertCtrl.create({
                                 title: "Info!",
                                 subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
                                 cssClass: "miClaseDanger",
                                 buttons: ['Aceptar']
                             });
-                            alert.present();
+                            alert_6.present();
                             //  this.google=true;
                         }
                     }
@@ -2993,13 +2999,13 @@ var LoginPage = (function () {
                             break;
                         }
                         else if (element2.mail == this.email && element2.legajo != this.password) {
-                            var alert = this.alertCtrl.create({
+                            var alert_7 = this.alertCtrl.create({
                                 title: "Info!",
                                 subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
                                 cssClass: "miClaseDanger",
                                 buttons: ['Aceptar']
                             });
-                            alert.present();
+                            alert_7.present();
                             //  this.google=true;
                         }
                     }
@@ -3034,13 +3040,13 @@ var LoginPage = (function () {
                     break;
                 }
                 else if (elementh.Email == this.email && elementh.password == null) {
-                    var alert = this.alertCtrl.create({
+                    var alert_8 = this.alertCtrl.create({
                         title: "Info!",
                         subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
                         cssClass: "miClaseDanger",
                         buttons: ['Aceptar']
                     });
-                    alert.present();
+                    alert_8.present();
                     //this.google=true;
                 }
             }
@@ -3058,25 +3064,25 @@ var LoginPage = (function () {
   */
         if (!flag) {
             this.googlePlus.disconnect();
-            var alert = this.alertCtrl.create({
+            var alert_9 = this.alertCtrl.create({
                 title: "Info!",
                 subTitle: "Usuario no registrado o contraseña incorrecta",
                 cssClass: "miClaseDanger",
                 buttons: ['Aceptar']
             });
-            alert.present();
+            alert_9.present();
         }
     };
     return LoginPage;
 }());
 LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-login',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Inicio de Sesión</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n \n\n<div style="width:100%;height:100%">\n\n  <br>\n\n  <div style="width:50%;height:10%;margin:auto;text-align:center;display:block;">\n\n<button ion-button icon-right color="danger" style="font-size:11pt;margin:auto;text-align:center;display:block;" round (click)="loginGoogle()">\n\nIniciar sesión con Google<ion-icon style="font-size:250%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>\n\n</button>\n\n</div>\n\n    <br><br><br>\n\n    <div *ngIf="!google">\n\n   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n      <ion-label  style="color:white" floating>Email</ion-label>\n\n<ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>\n\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n    <ion-label style="color:white" floating>Contraseña</ion-label>      \n\n<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>\n\n <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n  <ion-label style="color:white">Elige tu usuario</ion-label>\n\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">\n\n   <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>\n\n   <ion-option>nicostellisano@hotmail.com</ion-option>\n\n  </ion-select>\n\n</ion-item>-->\n\n<br>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>\n\n</div>\n\n</div>\n\n<!--<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>\n\n-->\n\n<br><br><br><br>\n\n<button ion-button full (click)="octa()">Octavio</button>\n\n<button ion-button full (click)="dale()">Ortiz 4A </button>\n\n<br><br><br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\login\login.html"*/,
+        selector: 'page-login',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Inicio de Sesión</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n \n\n<div style="width:100%;height:100%">\n\n  <br>\n\n  <div style="width:50%;height:10%;margin:auto;text-align:center;display:block;">\n\n<button ion-button icon-right color="danger" style="font-size:11pt;margin:auto;text-align:center;display:block;" round (click)="loginGoogle()">\n\nIniciar sesión con Google<ion-icon style="font-size:250%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>\n\n</button>\n\n</div>\n\n    <br><br><br>\n\n    <div *ngIf="!google">\n\n   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n      <ion-label  style="color:white" floating>Email</ion-label>\n\n<ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>\n\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n    <ion-label style="color:white" floating>Contraseña</ion-label>      \n\n<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>\n\n <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n  <ion-label style="color:white">Elige tu usuario</ion-label>\n\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">\n\n   <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>\n\n   <ion-option>nicostellisano@hotmail.com</ion-option>\n\n  </ion-select>\n\n</ion-item>-->\n\n<br>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>\n\n</div>\n\n</div>\n\n<!--<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>\n\n-->\n\n<br><br><br><br>\n\n<button ion-button full (click)="octa()">Octavio</button>\n\n<button ion-button full (click)="dale()">ADELIBERTI 4A </button>\n\n<button ion-button full (click)="mauro()">Administrativo Mauro </button>\n\n<br><br><br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\login\login.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_google_plus__["a" /* GooglePlus */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_google_plus__["a" /* GooglePlus */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _h || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_google_plus__["a" /* GooglePlus */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_screen_orientation__["a" /* ScreenOrientation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], LoginPage);
 
-var _a, _b, _c, _d, _e, _f, _g, _h;
 //# sourceMappingURL=login.js.map
 
 /***/ }),
@@ -3960,11 +3966,11 @@ var map = {
 		15
 	],
 	"../pages/inicio-admin/inicio-admin.module": [
-		930,
+		931,
 		14
 	],
 	"../pages/inicio-administrativo/inicio-administrativo.module": [
-		931,
+		930,
 		13
 	],
 	"../pages/inicio-alumno/inicio-alumno.module": [
@@ -3984,19 +3990,19 @@ var map = {
 		9
 	],
 	"../pages/materias-administrativo/materias-administrativo.module": [
-		936,
+		937,
 		8
 	],
 	"../pages/materias-profesor/materias-profesor.module": [
-		937,
+		936,
 		7
 	],
 	"../pages/materias/materias.module": [
-		938,
+		939,
 		6
 	],
 	"../pages/notificacion/notificacion.module": [
-		939,
+		938,
 		5
 	],
 	"../pages/perfil/perfil.module": [
@@ -4642,16 +4648,16 @@ AppModule = __decorate([
                     { loadChildren: '../pages/encuestas-alta/encuestas-alta.module#EncuestasAltaPageModule', name: 'EncuestasAltaPage', segment: 'encuestas-alta', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/encuestas-editar/encuestas-editar.module#EncuestasEditarPageModule', name: 'EncuestasEditarPage', segment: 'encuestas-editar', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/encuestas/encuestas.module#EncuestasPageModule', name: 'EncuestasPage', segment: 'encuestas', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/inicio-admin/inicio-admin.module#InicioAdminPageModule', name: 'InicioAdminPage', segment: 'inicio-admin', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/inicio-administrativo/inicio-administrativo.module#InicioAdministrativoPageModule', name: 'InicioAdministrativoPage', segment: 'inicio-administrativo', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/inicio-admin/inicio-admin.module#InicioAdminPageModule', name: 'InicioAdminPage', segment: 'inicio-admin', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/inicio-alumno/inicio-alumno.module#InicioAlumnoPageModule', name: 'InicioAlumnoPage', segment: 'inicio-alumno', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/inicio-profesor/inicio-profesor.module#InicioProfesorPageModule', name: 'InicioProfesorPage', segment: 'inicio-profesor', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/materia/materia.module#MateriaPageModule', name: 'MateriaPage', segment: 'materia', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/materias-administrativo/materias-administrativo.module#MateriasAdministrativoPageModule', name: 'MateriasAdministrativoPage', segment: 'materias-administrativo', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/materias-profesor/materias-profesor.module#MateriasProfesorPageModule', name: 'MateriasProfesorPage', segment: 'materias-profesor', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/materias/materias.module#MateriasPageModule', name: 'MateriasPage', segment: 'materias', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/materias-administrativo/materias-administrativo.module#MateriasAdministrativoPageModule', name: 'MateriasAdministrativoPage', segment: 'materias-administrativo', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notificacion/notificacion.module#NotificacionPageModule', name: 'NotificacionPage', segment: 'notificacion', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/materias/materias.module#MateriasPageModule', name: 'MateriasPage', segment: 'materias', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/perfil/perfil.module#PerfilPageModule', name: 'PerfilPage', segment: 'perfil', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/qrencuesta/qrencuesta.module#QrencuestaPageModule', name: 'QrencuestaPage', segment: 'qrencuesta', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/real-inicio-administrativo/real-inicio-administrativo.module#RealInicioAdministrativoPageModule', name: 'RealInicioAdministrativoPage', segment: 'real-inicio-administrativo', priority: 'low', defaultHistory: [] },
@@ -4870,6 +4876,8 @@ var CagarArchivoPage = (function () {
                     admin_1.Apellido = elemento[1].trim();
                     admin_1.Nombre = elemento[2].trim();
                     admin_1.Email = elemento[3].trim();
+                    admin_1.password = elemento[0].trim();
+                    admin_1.Perfil = "Profesor";
                     lista_2.push(admin_1);
                     admin_1 = {};
                 }
@@ -4917,6 +4925,8 @@ var CagarArchivoPage = (function () {
                     admin_2.Apellido = elemento[1].trim();
                     admin_2.Nombre = elemento[2].trim();
                     admin_2.Email = elemento[3].trim();
+                    admin_2.password = elemento[0].trim();
+                    admin_2.Perfil = "Administrativo";
                     lista_3.push(admin_2);
                     admin_2 = {};
                 }

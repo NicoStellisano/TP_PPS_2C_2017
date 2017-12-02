@@ -6,7 +6,7 @@ import  firebase  from 'firebase';
 import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { EncuestasPage } from '../encuestas/encuestas';
 import { NativeAudio } from '@ionic-native/native-audio';
-import { DateValueAccessorModule } from 'angular-date-value-accessor';
+//import { DateValueAccessorModule } from 'angular-date-value-accessor';
 
 /**
  * Generated class for the EncuestasAltaPage page.
