@@ -38,7 +38,10 @@ export class DescargarArchivoPage {
 
   generaPDF(){
     
+    
   }
+  
+  
 
   generaCSV(){
   
