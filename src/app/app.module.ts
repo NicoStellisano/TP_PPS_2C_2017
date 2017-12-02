@@ -47,8 +47,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import{ BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import{ NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { MateriasAdministrativoPage } from '../pages/materias-administrativo/materias-administrativo';
+<<<<<<< HEAD
+import { QrencuestaPage } from '../pages/qrencuesta/qrencuesta';
+=======
 import { DateValueAccessorModule } from 'angular-date-value-accessor';
 
+>>>>>>> 918b6c5770a16d91f06ff1791abc5d1f9d08b87e
 
 
 
@@ -91,7 +95,8 @@ var config = {
     EncuestasEditarPage,
     TomarListaPage,
     RespuestaEncuestaPage,
-    MateriasAdministrativoPage
+    MateriasAdministrativoPage,
+    QrencuestaPage
   ],
   imports: [
     BrowserModule,
@@ -134,7 +139,8 @@ var config = {
     EncuestasEditarPage,
     TomarListaPage,
     RespuestaEncuestaPage,
-    MateriasAdministrativoPage
+    MateriasAdministrativoPage,
+    QrencuestaPage
   ],
   providers: [
     StatusBar,

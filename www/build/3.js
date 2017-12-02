@@ -1,13 +1,21 @@
 webpackJsonp([3],{
 
+<<<<<<< HEAD
 /***/ 943:
+=======
+<<<<<<< HEAD
+/***/ 942:
+=======
+/***/ 944:
+>>>>>>> 918b6c5770a16d91f06ff1791abc5d1f9d08b87e
+>>>>>>> af5d0394dbb15264388ced11d5323357205d26d8
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RealInicioAdministrativoPageModule", function() { return RealInicioAdministrativoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__real_inicio_administrativo__ = __webpack_require__(265);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
