@@ -1,14 +1,27 @@
 webpackJsonp([4],{
 
+<<<<<<< HEAD
 /***/ 941:
+=======
+<<<<<<< HEAD
+/***/ 941:
+=======
+/***/ 939:
+>>>>>>> 918b6c5770a16d91f06ff1791abc5d1f9d08b87e
+>>>>>>> af5d0394dbb15264388ced11d5323357205d26d8
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificacionPageModule", function() { return NotificacionPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QrencuestaPageModule", function() { return QrencuestaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notificacion__ = __webpack_require__(149);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__qrencuesta__ = __webpack_require__(481);
+>>>>>>> af5d0394dbb15264388ced11d5323357205d26d8
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +31,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var NotificacionPageModule = (function () {
-    function NotificacionPageModule() {
+var QrencuestaPageModule = (function () {
+    function QrencuestaPageModule() {
     }
-    return NotificacionPageModule;
+    return QrencuestaPageModule;
 }());
-NotificacionPageModule = __decorate([
+QrencuestaPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__notificacion__["a" /* NotificacionPage */],
+            __WEBPACK_IMPORTED_MODULE_2__qrencuesta__["a" /* QrencuestaPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__notificacion__["a" /* NotificacionPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__qrencuesta__["a" /* QrencuestaPage */]),
         ],
     })
-], NotificacionPageModule);
+], QrencuestaPageModule);
 
-//# sourceMappingURL=notificacion.module.js.map
+//# sourceMappingURL=qrencuesta.module.js.map
 
 /***/ })
 

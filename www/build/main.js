@@ -3242,7 +3242,7 @@ var RealInicioAdministrativoPage = (function () {
 }());
 RealInicioAdministrativoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-real-inicio-administrativo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/real-inicio-administrativo/real-inicio-administrativo.html"*/'<!--\n  Generated template for the RealInicioAdministrativoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Buscar Por:</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n  <div *ngIf="seleccion==\'\'">\n      <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n          <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n        </button>\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'aulas\')">Aulas</button> \n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'profesores\')">Profesores</button>           \n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'alumnos\')">Alumnos</button> \n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'materias\')">Materias</button> \n        </div>\n        <button *ngIf="seleccion!=\'\'" ion-button icon-only round color="primary" (click)="aparecer()" style="margin:auto;text-align:center;display:block;"><ion-icon md="md-arrow-back"></ion-icon></button>\n\n        <div *ngIf="seleccion==\'alumnos\'" > \n          <span *ngFor="let alumno of listaAlumnos">  <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.legajo)">{{alumno.nombre}}</button>  </span>\n      </div>\n\n      <div *ngIf="seleccion==\'materias\'"> \n        <span *ngFor="let materia of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(materia)">Materia:{{materia.nombre}},Aula:{{materia.aula}}</button> </span> \n    </div>\n\n      \n    <div *ngIf="seleccion==\'profesores\'" > \n        <span *ngFor="let profesor of listadoProfesores"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(profesor.Apellido)">{{profesor.Nombre}},{{profesor.Apellido}}</button> </span> \n     </div>\n\n    <div *ngIf="seleccion==\'materiasProfesor\'" > \n     <span *ngFor="let mp of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(mp)">Materia:{{mp.materia}},Aula:{{mp.aula}} </button>  </span>\n  </div>\n    \n  <div *ngIf="seleccion==\'aulasAlumnos\'" > \n      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(\'a\')">4º A </button>  </span>\n      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(\'b\')">4º B </button>  </span>\n      \n    </div>\n\n    <div *ngIf="seleccion==\'a\'" > \n        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}}</button>  </span>\n     </div>\n\n     <div *ngIf="seleccion==\'b\'" > \n        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}} </button>  </span>\n     </div>\n          \n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/real-inicio-administrativo/real-inicio-administrativo.html"*/,
+        selector: 'page-real-inicio-administrativo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/real-inicio-administrativo/real-inicio-administrativo.html"*/'<!--\n  Generated template for the RealInicioAdministrativoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Buscar Por:</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n  <div *ngIf="seleccion==\'\'">\n      <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n          <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n        </button>\n\n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'profesores\')">Profesores</button>           \n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'alumnos\')">Alumnos</button> \n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'materias\')">Materias</button> \n        </div>\n        <button *ngIf="seleccion!=\'\'" ion-button icon-only round color="primary" (click)="aparecer()" style="margin:auto;text-align:center;display:block;"><ion-icon md="md-arrow-back"></ion-icon></button>\n\n        <div *ngIf="seleccion==\'alumnos\'" > \n          <span *ngFor="let alumno of listaAlumnos">  <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.legajo)">{{alumno.nombre}}</button>  </span>\n      </div>\n\n      <div *ngIf="seleccion==\'materias\'"> \n        <span *ngFor="let materia of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(materia)">Materia:{{materia.nombre}},Aula:{{materia.aula}}</button> </span> \n    </div>\n\n      \n    <div *ngIf="seleccion==\'profesores\'" > \n        <span *ngFor="let profesor of listadoProfesores"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(profesor.Apellido)">{{profesor.Nombre}},{{profesor.Apellido}}</button> </span> \n     </div>\n\n    <div *ngIf="seleccion==\'materiasProfesor\'" > \n     <span *ngFor="let mp of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(mp)">Materia:{{mp.materia}},Aula:{{mp.aula}} </button>  </span>\n  </div>\n    \n  <div *ngIf="seleccion==\'aulasAlumnos\'" > \n      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(\'a\')">4º A </button>  </span>\n      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(\'b\')">4º B </button>  </span>\n      \n    </div>\n\n    <div *ngIf="seleccion==\'a\'" > \n        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}}</button>  </span>\n     </div>\n\n     <div *ngIf="seleccion==\'b\'" > \n        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}} </button>  </span>\n     </div>\n          \n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/real-inicio-administrativo/real-inicio-administrativo.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]])
 ], RealInicioAdministrativoPage);
@@ -3890,107 +3890,111 @@ webpackEmptyAsyncContext.id = 271;
 var map = {
 	"../pages/alumnos/alumnos.module": [
 		920,
-		25
+		54
 	],
 	"../pages/asignar-materia/asignar-materia.module": [
 		921,
-		24
+		53
 	],
 	"../pages/aula-administrativo/aula-administrativo.module": [
 		922,
-		23
+		52
 	],
 	"../pages/aula-alumno/aula-alumno.module": [
 		923,
-		22
+		51
 	],
 	"../pages/aula-profesor/aula-profesor.module": [
 		924,
-		21
+		50
 	],
 	"../pages/cagar-archivo/cagar-archivo.module": [
 		925,
-		20
+		49
 	],
 	"../pages/cuestionarios/cuestionarios.module": [
 		926,
-		19
+		48
 	],
 	"../pages/descargar-archivo/descargar-archivo.module": [
 		927,
-		18
+		47
 	],
 	"../pages/editar-perfil/editar-perfil.module": [
 		928,
-		17
+		46
 	],
 	"../pages/encuestas-alta/encuestas-alta.module": [
 		929,
-		16
+		45
 	],
 	"../pages/encuestas-editar/encuestas-editar.module": [
 		930,
-		15
+		44
 	],
 	"../pages/encuestas/encuestas.module": [
 		931,
-		14
+		43
 	],
 	"../pages/inicio-admin/inicio-admin.module": [
 		932,
-		13
+		42
 	],
 	"../pages/inicio-administrativo/inicio-administrativo.module": [
 		933,
-		12
+		41
 	],
 	"../pages/inicio-alumno/inicio-alumno.module": [
 		934,
-		11
+		40
 	],
 	"../pages/inicio-profesor/inicio-profesor.module": [
 		935,
-		10
+		39
 	],
 	"../pages/login/login.module": [
 		936,
-		9
+		38
 	],
 	"../pages/materia/materia.module": [
 		937,
-		8
+		37
 	],
 	"../pages/materias-administrativo/materias-administrativo.module": [
 		938,
-		7
+		36
 	],
 	"../pages/materias-profesor/materias-profesor.module": [
 		939,
-		6
+		35
 	],
 	"../pages/materias/materias.module": [
 		940,
-		5
+		34
 	],
 	"../pages/notificacion/notificacion.module": [
 		941,
-		4
+		33
 	],
 	"../pages/perfil/perfil.module": [
 		942,
-		0
+		29
+	],
+	"../pages/qrencuesta/qrencuesta.module": [
+		947,
+		28
 	],
 	"../pages/real-inicio-administrativo/real-inicio-administrativo.module": [
 		943,
-		3
+		32
 	],
 	"../pages/respuesta-encuesta/respuesta-encuesta.module": [
-		945,
-		2
+		944,
+		31
 	],
 	"../pages/tomar-lista/tomar-lista.module": [
-		944,
-		1
+		945,
+		30
 	]
 };
 function webpackAsyncContext(req) {
@@ -4581,8 +4585,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/notificacion/notificacion.module#NotificacionPageModule', name: 'NotificacionPage', segment: 'notificacion', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/perfil/perfil.module#PerfilPageModule', name: 'PerfilPage', segment: 'perfil', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/real-inicio-administrativo/real-inicio-administrativo.module#RealInicioAdministrativoPageModule', name: 'RealInicioAdministrativoPage', segment: 'real-inicio-administrativo', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/tomar-lista/tomar-lista.module#TomarListaPageModule', name: 'TomarListaPage', segment: 'tomar-lista', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/respuesta-encuesta/respuesta-encuesta.module#RespuestaEncuestaPageModule', name: 'RespuestaEncuestaPage', segment: 'respuesta-encuesta', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/respuesta-encuesta/respuesta-encuesta.module#RespuestaEncuestaPageModule', name: 'RespuestaEncuestaPage', segment: 'respuesta-encuesta', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/tomar-lista/tomar-lista.module#TomarListaPageModule', name: 'TomarListaPage', segment: 'tomar-lista', priority: 'low', defaultHistory: [] }
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_15_angularfire2_database__["b" /* AngularFireDatabaseModule */],

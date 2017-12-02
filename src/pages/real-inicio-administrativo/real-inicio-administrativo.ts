@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { MateriasPage} from '../materias/materias';
 import { InicioAdministrativoPage} from '../inicio-administrativo/inicio-administrativo';
 import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
@@ -33,9 +33,9 @@ listadoAlumnos:any[] =[];
 seleccion:string;
 listaMaterias: any[] = [];
 listaAux: any[] = [];
-
+datosfaltas;
  
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
+  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public db: AngularFireDatabase,private toastCtrl:ToastController
   ) {
       this.fireService.getAlumnos().subscribe(data=>
         {
@@ -54,6 +54,38 @@ listaAux: any[] = [];
             this.listadoProfesores=data;
             
           }); 
+
+
+          this.db.list('/notificacionFalta').
+          subscribe( data => {
+          this.datosfaltas=data;
+          console.log(this.datosfaltas);
+      
+          let bandera=false;
+          for(let i=0;i<this.datosfaltas.length;i++){
+      
+            //if(localStorage.getItem("mail")==this.datosfaltas[i].mail){
+            
+        
+                
+      let toast = this.toastCtrl.create({
+        message: 'El alumno'+' '+this.datosfaltas[i].alumno+' '+'tiene'+ ' '+this.datosfaltas[i].cantidadFaltas+' '+ 'faltas!!!'    ,
+        duration: 4000,
+        position: 'top'
+      });
+      
+      toast.onDidDismiss(() => {
+      
+      });
+      
+      toast.present();
+      
+                                  } 
+          });
+
+          
+ 
+
       }
 
   ionViewDidLoad() {

@@ -91,6 +91,8 @@ toast.present();
 
                             } 
     });
+
+    
   }
 
   applyDimensions() {
