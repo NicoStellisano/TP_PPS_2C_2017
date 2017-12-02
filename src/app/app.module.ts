@@ -47,7 +47,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import{ BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import{ NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { MateriasAdministrativoPage } from '../pages/materias-administrativo/materias-administrativo';
-
+import { QrencuestaPage } from '../pages/qrencuesta/qrencuesta';
 
 
 
@@ -90,7 +90,8 @@ var config = {
     EncuestasEditarPage,
     TomarListaPage,
     RespuestaEncuestaPage,
-    MateriasAdministrativoPage
+    MateriasAdministrativoPage,
+    QrencuestaPage
   ],
   imports: [
     BrowserModule,
@@ -132,7 +133,8 @@ var config = {
     EncuestasEditarPage,
     TomarListaPage,
     RespuestaEncuestaPage,
-    MateriasAdministrativoPage
+    MateriasAdministrativoPage,
+    QrencuestaPage
   ],
   providers: [
     StatusBar,

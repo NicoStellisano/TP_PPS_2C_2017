@@ -88,6 +88,8 @@ toast.present();
 
                             } 
     });
+
+    
   }
 
   applyDimensions() {

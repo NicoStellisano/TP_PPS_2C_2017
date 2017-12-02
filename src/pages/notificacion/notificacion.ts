@@ -22,6 +22,7 @@ titulo;
 mensaje;
   constructor(public navCtrl: NavController, public navParams: NavParams,public db: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
+    console.log("dsadada"+this.aula);
 
     this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
     this.nativeAudio.play('1');
