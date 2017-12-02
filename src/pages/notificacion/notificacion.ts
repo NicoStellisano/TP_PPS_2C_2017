@@ -36,7 +36,7 @@ mensaje;
   {
 
 
-    this.db.list('/notificacionesProfesor').push({
+    this.db.list('/notificacionesProfesor/').push({
       titulo: this.titulo,
       mensaje: this.mensaje,
       curso: this.aula    

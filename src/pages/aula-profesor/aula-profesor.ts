@@ -67,25 +67,24 @@ this.materia= this.navParams.get('materia');
     this.datosfaltas=data;
     console.log(this.datosfaltas);
 
-
+    let bandera=false;
     for(let i=0;i<this.datosfaltas.length;i++){
 
       //if(localStorage.getItem("mail")==this.datosfaltas[i].mail){
-        
+      
+  
+          
+let toast = this.toastCtrl.create({
+  message: 'El alumno'+' '+this.datosfaltas[i].alumno+' '+'tiene'+ ' '+this.datosfaltas[i].cantidadFaltas+' '+ 'faltas!!!'    ,
+  duration: 4000,
+  position: 'top'
+});
 
-          let toast = this.toastCtrl.create({
-            message: 'El alumno'+' '+this.datosfaltas[i].alumno+' '+'tiene'+ ' '+this.datosfaltas[i].cantidadFaltas+' '+ 'faltas!!!'    ,
-            duration: 4000,
-            position: 'top'
-          });
-        
-          toast.onDidDismiss(() => {
-            console.log('Dismissed toast');
-           
-          });
-        
-          toast.present();
-     //CIERRE IF }
+toast.onDidDismiss(() => {
+
+});
+
+toast.present();
 
                             } 
     });

@@ -9,7 +9,7 @@ import { AulaAlumnoItem } from '../../models/aula-alumno-item/aula-alumno.interf
 import { DescargarArchivoPage } from '../descargar-archivo/descargar-archivo';
 import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
 import { NativeAudio } from '@ionic-native/native-audio';
-
+import { AdministrativoItem } from '../../models/administrativo-item/administrativo.inteface';
 
 import { AlertController } from 'ionic-angular';
 import { AsignarMateriaPage } from '../asignar-materia/asignar-materia';
@@ -144,10 +144,111 @@ listaAdministrativos:any[]=[];;
 
   }else if(this.persona=="profesor")
   {
+    let admin = {} as AdministrativoItem;
+    let lista:any[] = [];
+    var fr = new FileReader();
+    var arrayFilas:string[][];
+    var archivoNom:string[][];
+
+    //--------------------- Lectura del archivo -------------------------//
+    fr.onload = function(e) {
+      var text = fr.result;
+      var rows = text.split("\n");
+      arrayFilas=[];
+      
+      //guardo todas las filas en un array separando cada atributo que tenga ;
+      for (var t=0;t<rows.length-1;t++) {
+        if (rows[t].length!=0) {
+          //console.log(rows[t].split(";"));
+          arrayFilas.push(rows[t].split(";"));
+        }
+      }
+
+      //Tomo cada elemento del arrayFilas y lo transformo en un alumnno para guardalos en listaAlumno
+      for (let index = 0; index < arrayFilas.length; index++) {
+        const elemento = arrayFilas[index];
+        console.log(elemento);
+        admin.dni = elemento[0].trim();
+        admin.apellido = elemento[1].trim();
+        admin.nombre = elemento[2].trim();
+        admin.email = elemento[3].trim();
+      
+        
+        lista.push(admin);
+
+        admin = {} as AdministrativoItem;
+      }
+
+      if(numarchivo==0) {
+        GeochemComponent.muestras=arrayFilas.slice();
+      } else if (numarchivo==1) {
+        GeochemComponent.muestras2=arrayFilas.slice();
+      }
+    };
+
+    fr.readAsText(file,'ISO-8859-4');
+    
+    this.listaAlumnos = lista;
+    //console.log(this.listaAlumnos);
+    //console.log(file.name);
+    //console.log(file.size);
+    this.nombreArchivo = file.name;
+    this.sizeArchivo = file.size/1000 + " Kb";
+    this.firebaseService.updateProfesor(lista);
 
   }else if(this.persona=="administrativo")
   {
+    let admin = {} as AdministrativoItem;
+    let lista:any[] = [];
+    var fr = new FileReader();
+    var arrayFilas:string[][];
+    var archivoNom:string[][];
 
+    //--------------------- Lectura del archivo -------------------------//
+    fr.onload = function(e) {
+      var text = fr.result;
+      var rows = text.split("\n");
+      arrayFilas=[];
+      
+      //guardo todas las filas en un array separando cada atributo que tenga ;
+      for (var t=0;t<rows.length-1;t++) {
+        if (rows[t].length!=0) {
+          //console.log(rows[t].split(";"));
+          arrayFilas.push(rows[t].split(";"));
+        }
+      }
+
+      //Tomo cada elemento del arrayFilas y lo transformo en un alumnno para guardalos en listaAlumno
+      for (let index = 0; index < arrayFilas.length; index++) {
+        const elemento = arrayFilas[index];
+        console.log(elemento);
+        admin.dni = elemento[0].trim();
+        admin.apellido = elemento[1].trim();
+        admin.nombre = elemento[2].trim();
+        admin.email = elemento[3].trim();
+      
+        
+        lista.push(admin);
+
+        admin = {} as AdministrativoItem;
+      }
+
+      if(numarchivo==0) {
+        GeochemComponent.muestras=arrayFilas.slice();
+      } else if (numarchivo==1) {
+        GeochemComponent.muestras2=arrayFilas.slice();
+      }
+    };
+
+    fr.readAsText(file,'ISO-8859-4');
+    
+    this.listaAlumnos = lista;
+    //console.log(this.listaAlumnos);
+    //console.log(file.name);
+    //console.log(file.size);
+    this.nombreArchivo = file.name;
+    this.sizeArchivo = file.size/1000 + " Kb";
+    this.firebaseService.updateAdministrativo(lista);
   }
 }
 
@@ -163,7 +264,6 @@ listaAdministrativos:any[]=[];;
     this.banderita=false;
 if(this.persona=="alumno")
 {
-
 
     var rows = this.nombreArchivo.split("-");
     console.log(rows);
