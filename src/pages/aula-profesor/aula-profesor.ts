@@ -48,7 +48,7 @@ export class AulaProfesorPage {
   
 
   informacion: any[] = [];
-
+listFaltantes:any[]=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio, private toastCtrl:ToastController ) {
     this.aula = this.navParams.get('aula');
@@ -57,7 +57,10 @@ this.materia= this.navParams.get('materia');
 
 
   
-
+this.db.list("/tomarA").subscribe(data=>
+{
+  this.listFaltantes=data;
+});
     
     this.nativeAudio.preloadComplex('bienvenidoProfesor', 'assets/sonidos/bienvenidoProfesor.mp3', 1, 1, 0);
     this.nativeAudio.play('bienvenidoProfesor');
@@ -98,26 +101,34 @@ toast.present();
     this.showLegend = state;
     this.view = [width, 150];
   }
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    this.db.list("/tomarA").subscribe(data=>
+      {
+        this.listFaltantes=data;
+      });
     this.applyDimensions();
     window.addEventListener('resize', () => {
       this.applyDimensions();
     }, false);
+    let contador=0;
+    for (let i = 0; i < this.listFaltantes.length; i++) {
+      const element = this.listFaltantes[i];
+      if(element.contPresentes!=0)
+      {
+        contador++;
+      }
+    }
     this.informacion=[
       {
-        'name':'Si',
-        'value':4
+        'name':'Con al menos una falta',
+        'value':contador
       },
       {
-        'name':'No',
-        'value':5
+        'name':'Sin faltas',
+        'value':this.listFaltantes.length-contador
       }
       ];
      
-    //mofificar por la ruta y el archivo de bienvenida
-   // this.nativeAudio.preloadComplex('bienvenido', 'assets/piano/1.mp3', 1, 1, 0);
-  //  this.nativeAudio.play('bienvenido');
-
   }
 
   tomaLista(){

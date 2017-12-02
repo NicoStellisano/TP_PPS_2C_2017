@@ -480,7 +480,7 @@ if(!flag)
       {
         for (let h = 0; h < this.listadoProfesores.length; h++) {
           let elementh = this.listadoProfesores[h];
-          if(elementh.Email==this.email && elementh.password==this.password)
+          if((elementh.Email==this.email && elementh.password==this.password) || (elementh.email==this.email && elementh.dni==this.password))
           {                
             localStorage.setItem("Nombre",elementh.Nombre);
             localStorage.setItem("Email",elementh.Email);
