@@ -4033,8 +4033,94 @@ var CagarArchivoPage = (function () {
             this.sizeArchivo = file.size / 1000 + " Kb";
         }
         else if (this.persona == "profesor") {
+            var admin_1 = {};
+            var lista_2 = [];
+            var fr = new FileReader();
+            var arrayFilas;
+            var archivoNom;
+            //--------------------- Lectura del archivo -------------------------//
+            fr.onload = function (e) {
+                var text = fr.result;
+                var rows = text.split("\n");
+                arrayFilas = [];
+                //guardo todas las filas en un array separando cada atributo que tenga ;
+                for (var t = 0; t < rows.length - 1; t++) {
+                    if (rows[t].length != 0) {
+                        //console.log(rows[t].split(";"));
+                        arrayFilas.push(rows[t].split(";"));
+                    }
+                }
+                //Tomo cada elemento del arrayFilas y lo transformo en un alumnno para guardalos en listaAlumno
+                for (var index = 0; index < arrayFilas.length; index++) {
+                    var elemento = arrayFilas[index];
+                    console.log(elemento);
+                    admin_1.dni = elemento[0].trim();
+                    admin_1.apellido = elemento[1].trim();
+                    admin_1.nombre = elemento[2].trim();
+                    admin_1.email = elemento[3].trim();
+                    lista_2.push(admin_1);
+                    admin_1 = {};
+                }
+                if (numarchivo == 0) {
+                    GeochemComponent.muestras = arrayFilas.slice();
+                }
+                else if (numarchivo == 1) {
+                    GeochemComponent.muestras2 = arrayFilas.slice();
+                }
+            };
+            fr.readAsText(file, 'ISO-8859-4');
+            this.listaAlumnos = lista_2;
+            //console.log(this.listaAlumnos);
+            //console.log(file.name);
+            //console.log(file.size);
+            this.nombreArchivo = file.name;
+            this.sizeArchivo = file.size / 1000 + " Kb";
+            this.firebaseService.updateProfesor(lista_2);
         }
         else if (this.persona == "administrativo") {
+            var admin_2 = {};
+            var lista_3 = [];
+            var fr = new FileReader();
+            var arrayFilas;
+            var archivoNom;
+            //--------------------- Lectura del archivo -------------------------//
+            fr.onload = function (e) {
+                var text = fr.result;
+                var rows = text.split("\n");
+                arrayFilas = [];
+                //guardo todas las filas en un array separando cada atributo que tenga ;
+                for (var t = 0; t < rows.length - 1; t++) {
+                    if (rows[t].length != 0) {
+                        //console.log(rows[t].split(";"));
+                        arrayFilas.push(rows[t].split(";"));
+                    }
+                }
+                //Tomo cada elemento del arrayFilas y lo transformo en un alumnno para guardalos en listaAlumno
+                for (var index = 0; index < arrayFilas.length; index++) {
+                    var elemento = arrayFilas[index];
+                    console.log(elemento);
+                    admin_2.dni = elemento[0].trim();
+                    admin_2.apellido = elemento[1].trim();
+                    admin_2.nombre = elemento[2].trim();
+                    admin_2.email = elemento[3].trim();
+                    lista_3.push(admin_2);
+                    admin_2 = {};
+                }
+                if (numarchivo == 0) {
+                    GeochemComponent.muestras = arrayFilas.slice();
+                }
+                else if (numarchivo == 1) {
+                    GeochemComponent.muestras2 = arrayFilas.slice();
+                }
+            };
+            fr.readAsText(file, 'ISO-8859-4');
+            this.listaAlumnos = lista_3;
+            //console.log(this.listaAlumnos);
+            //console.log(file.name);
+            //console.log(file.size);
+            this.nombreArchivo = file.name;
+            this.sizeArchivo = file.size / 1000 + " Kb";
+            this.firebaseService.updateAdministrativo(lista_3);
         }
     };
     CagarArchivoPage.prototype.onFileSelect = function (input) {
