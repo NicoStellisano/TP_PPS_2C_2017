@@ -62,8 +62,9 @@ export class TomarListaPage {
 
   presente(alumno:AlumnoItem){
     let fecha = new Date();
-    console.log("Fecha: "+fecha.getDate);
-
+    console.log("Fecha: "+fecha.getDate()+"/"+fecha.getMonth()+"/"+fecha.getFullYear());
+    let mifecha:string = fecha.getDate()+"/"+fecha.getMonth()+"/"+fecha.getFullYear();
+    this.database.list('/alumnosPresentes/').push({fecha:mifecha,nombre:alumno.nombre});
     console.log("-------------- ingreso a presente --------------");
 
     console.log(alumno);
@@ -72,19 +73,24 @@ export class TomarListaPage {
   }
 
   ausente(key:any,alumno:AlumnoItem){
+    let fecha = new Date();
+    console.log("Fecha: "+fecha.getDate()+"/"+fecha.getMonth()+"/"+fecha.getFullYear());
+    let mifecha:string = fecha.getDate()+"/"+fecha.getMonth()+"/"+fecha.getFullYear();
+    this.database.list('/alumnosAusentes/').push({fecha:mifecha,nombre:alumno.nombre});
     console.log("-------------- ingreso a ausente ---------------");
     console.log(key);
     let cont = 0;
     
     if(alumno.contPresentes <= 3){
-      console.log("entro al menora 3");
+      //console.log("entro al menora 3");
       if(alumno.contPresentes == 3){
         alert("push notification");
+        this.notificacionFalta(alumno.nombre,alumno.mail,alumno.contPresentes);
         return;
       }else{
         console.log("entro al contador ++");
-        cont++;
-        alumno.contPresentes = cont;
+        //cont++;
+        alumno.contPresentes += 1;
       }
     }
 
@@ -109,7 +115,7 @@ export class TomarListaPage {
   notificacionFalta(nombre,mail,contAusentes)
   {
    
-   this.database.list('/notificacionFalta').push({
+   this.database.list('/notificacionFalta/').push({
     alumno: nombre,
     mail: mail,
     cantidadFaltas: contAusentes

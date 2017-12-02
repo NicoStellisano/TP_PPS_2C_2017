@@ -9,7 +9,7 @@ import { AulaAlumnoItem } from '../../models/aula-alumno-item/aula-alumno.interf
 import { DescargarArchivoPage } from '../descargar-archivo/descargar-archivo';
 import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-base-service';
 import { NativeAudio } from '@ionic-native/native-audio';
-
+import {  } from '';
 
 import { AlertController } from 'ionic-angular';
 import { AsignarMateriaPage } from '../asignar-materia/asignar-materia';
@@ -163,7 +163,6 @@ listaAdministrativos:any[]=[];;
     this.banderita=false;
 if(this.persona=="alumno")
 {
-
 
     var rows = this.nombreArchivo.split("-");
     console.log(rows);
