@@ -169,7 +169,7 @@ listaAdministrativos:any[]=[];;
       for (let index = 0; index < arrayFilas.length; index++) {
         const elemento = arrayFilas[index];
         console.log(elemento);
-        admin.Dni = elemento[0].trim();
+        admin.DNI = elemento[0].trim();
         admin.Apellido = elemento[1].trim();
         admin.Nombre = elemento[2].trim();
         admin.Email = elemento[3].trim();
@@ -225,7 +225,7 @@ listaAdministrativos:any[]=[];;
       for (let index = 0; index < arrayFilas.length; index++) {
         const elemento = arrayFilas[index];
         console.log(elemento);
-        admin.Dni = elemento[0].trim();
+        admin.DNI = elemento[0].trim();
         admin.Apellido = elemento[1].trim();
         admin.Nombre = elemento[2].trim();
         admin.Email = elemento[3].trim();

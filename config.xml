@@ -98,5 +98,5 @@
     <allow-navigation href="http://192.168.43.43:8101" />
     <plugin name="phonegap-plugin-barcodescanner" spec="^7.0.0" />
     <plugin name="cordova-plugin-nativeaudio" spec="^3.0.9" />
-    <plugin name="cordova-pdf-generator" spec="^1.9.3" />
+    <plugin name="cordova-pdf-generator" spec="node_modules/cordova-pdf-generator" />
 </widget>

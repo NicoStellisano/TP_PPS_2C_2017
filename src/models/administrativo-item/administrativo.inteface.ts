@@ -1,5 +1,5 @@
 export interface AdministrativoItem{
-    Dni:string;
+    DNI:string;
     Apellido:string;
     Nombre:string;
     Email:string;
