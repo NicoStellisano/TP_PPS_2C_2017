@@ -84,12 +84,9 @@ export class TomarListaPage {
     if(alumno.contPresentes <= 3){
       //console.log("entro al menora 3");
       if(alumno.contPresentes == 3){
-        alert("push notification");
-<<<<<<< HEAD
+      //  alert("push notification");
        //this.notificacionFalta(alumno.nombre,alumno.mail,alumno.contPresentes)
-=======
         this.notificacionFalta(alumno.nombre,alumno.mail,alumno.contPresentes);
->>>>>>> ccb444f9526df2bfa0446704144a8995b5fcda73
         return;
       }else{
         console.log("entro al contador ++");

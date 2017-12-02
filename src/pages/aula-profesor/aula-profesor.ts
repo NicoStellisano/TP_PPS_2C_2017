@@ -81,13 +81,7 @@ let toast = this.toastCtrl.create({
 });
 
 toast.onDidDismiss(() => {
-  console.log('Dismissed toast');
-  let toast = this.toastCtrl.create({
-    message: 'El alumno'+' '+this.datosfaltas[i+1].alumno+' '+'tiene'+ ' '+this.datosfaltas[i].cantidadFaltas+' '+ 'faltas!!!'    ,
-    duration: 4000,
-    position: 'top'
-  });
-  toast.present();
+
 });
 
 toast.present();
