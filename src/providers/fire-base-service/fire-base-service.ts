@@ -185,11 +185,11 @@ export class FireBaseServiceProvider {
       }
       updateProfesor(data)
       {
-        return this.afd.list('/personas').update('profesores',data);
+        return this.afd.list('/personas/').update('profesores',data);
       }
       updateAdministrativo(data)
       {
-        return this.afd.list('/personas').update('administrativos',data);
+        return this.afd.list('/personas/').update('administrativos',data);
       }
 
      

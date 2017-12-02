@@ -31,6 +31,7 @@
         "@ionic/storage": "2.0.1",
         "angularfire2": "^4.0.0-rc0",
         "cordova-android": "^6.3.0",
+        "cordova-pdf-generator": "^1.9.3",
         "cordova-plugin-device": "^1.1.7",
         "cordova-plugin-file-opener2": "^2.0.19",
         "cordova-plugin-googleplus": "^5.1.1",
@@ -72,7 +73,8 @@
             "cordova-plugin-screen-orientation": {},
             "cordova-plugin-file-opener2": {},
             "phonegap-plugin-barcodescanner": {},
-            "cordova-plugin-nativeaudio": {}
+            "cordova-plugin-nativeaudio": {},
+            "cordova-pdf-generator": {}
         },
         "platforms": [
             "android"

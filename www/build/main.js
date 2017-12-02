@@ -223,91 +223,6 @@ AsignarMateriaPage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DescargarArchivoPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(21);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the DescargarArchivoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var DescargarArchivoPage = (function () {
-    function DescargarArchivoPage(navCtrl, navParams, database) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.database = database;
-        this.listaAlumnosCsv = [];
-        this.aula = this.navParams.get('aulaa');
-        //Toma lista para leer y crear archivo
-        this.lista(this.aula).subscribe(function (dato) {
-            //lista de alumnos en el aula
-            _this.listaAlumnosCsv = dato.values().next().value.alumnos;
-        });
-    }
-    DescargarArchivoPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad DescargarArchivoPage');
-    };
-    DescargarArchivoPage.prototype.generaCSV = function () {
-        var _this = this;
-        var csvContent = "data:text/csv;charset=utf-8,";
-        this.listaAlumnosCsv.forEach(function (alumno) {
-            //alumno
-            console.log(alumno);
-            csvContent += _this.generarLinea(alumno);
-        });
-        var encodedUri = encodeURI(csvContent);
-        var link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "alumnos.csv");
-        document.body.appendChild(link); // Required for FF
-        link.click();
-    };
-    DescargarArchivoPage.prototype.generarLinea = function (alumno) {
-        var texto;
-        texto = alumno.legajo + ";" + alumno.mail + ";" + alumno.nombre + ";" + alumno.turno + ";\r\n";
-        console.log("genera linea: " + texto);
-        return texto;
-    };
-    DescargarArchivoPage.prototype.lista = function (aula) {
-        return this.database.list('/alumno-lista/', {
-            query: {
-                orderByChild: "aula",
-                equalTo: aula
-            }
-        });
-    };
-    return DescargarArchivoPage;
-}());
-DescargarArchivoPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-descargar-archivo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/'<!--\n  Generated template for the DescargarArchivoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Descargar Archivo {{aula}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="generaCSV()">\n        <ion-icon name="logo-dropbox"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/descarga-archivo.png\')" class="fondo">\n  <ion-list>\n    <ion-item *ngFor="let alumno of listaAlumnosCsv " class="animated flipInX miItem">\n      <h3>Legajo: {{alumno.legajo}}</h3>\n      <h2>Mail: {{alumno.mail}}</h2>\n      <h2>Nombre: {{alumno.nombre}}</h2>\n      <h2>Tuno: {{alumno.turno}}</h2>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
-], DescargarArchivoPage);
-
-//# sourceMappingURL=descargar-archivo.js.map
-
-/***/ }),
-
-/***/ 147:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AulaAdministrativoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
@@ -849,6 +764,91 @@ AulaAdministrativoPage = __decorate([
 
 /***/ }),
 
+/***/ 147:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DescargarArchivoPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(21);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the DescargarArchivoPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var DescargarArchivoPage = (function () {
+    function DescargarArchivoPage(navCtrl, navParams, database) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.database = database;
+        this.listaAlumnosCsv = [];
+        this.aula = this.navParams.get('aulaa');
+        //Toma lista para leer y crear archivo
+        this.lista(this.aula).subscribe(function (dato) {
+            //lista de alumnos en el aula
+            _this.listaAlumnosCsv = dato.values().next().value.alumnos;
+        });
+    }
+    DescargarArchivoPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad DescargarArchivoPage');
+    };
+    DescargarArchivoPage.prototype.generaCSV = function () {
+        var _this = this;
+        var csvContent = "data:text/csv;charset=utf-8,";
+        this.listaAlumnosCsv.forEach(function (alumno) {
+            //alumno
+            console.log(alumno);
+            csvContent += _this.generarLinea(alumno);
+        });
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "alumnos.csv");
+        document.body.appendChild(link); // Required for FF
+        link.click();
+    };
+    DescargarArchivoPage.prototype.generarLinea = function (alumno) {
+        var texto;
+        texto = alumno.legajo + ";" + alumno.mail + ";" + alumno.nombre + ";" + alumno.turno + ";\r\n";
+        console.log("genera linea: " + texto);
+        return texto;
+    };
+    DescargarArchivoPage.prototype.lista = function (aula) {
+        return this.database.list('/alumno-lista/', {
+            query: {
+                orderByChild: "aula",
+                equalTo: aula
+            }
+        });
+    };
+    return DescargarArchivoPage;
+}());
+DescargarArchivoPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-descargar-archivo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/'<!--\n  Generated template for the DescargarArchivoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Descargar Archivo {{aula}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="generaPDF()">\n        <ion-icon name="logo-dropbox"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="generaCSV()">\n        <ion-icon name="logo-dropbox"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/descarga-archivo.png\')" class="fondo">\n  <ion-list>\n    <ion-item *ngFor="let alumno of listaAlumnosCsv " class="animated flipInX miItem">\n      <h3>Legajo: {{alumno.legajo}}</h3>\n      <h2>Mail: {{alumno.mail}}</h2>\n      <h2>Nombre: {{alumno.nombre}}</h2>\n      <h2>Tuno: {{alumno.turno}}</h2>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
+], DescargarArchivoPage);
+
+//# sourceMappingURL=descargar-archivo.js.map
+
+/***/ }),
+
 /***/ 148:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -969,6 +969,7 @@ var TomarListaPage = (function () {
         this.listaAlumnos = [];
         this.alumnoPresenteLista = [];
         this.aula = this.navParams.get('aulaa');
+        this.persona = this.navParams.get('persona');
         if (this.aula == "4A") {
             this.tomarAlumnos$ = this.database.list('tomarA');
             this.miAula = "tomarA";
@@ -1045,7 +1046,7 @@ var TomarListaPage = (function () {
 }());
 TomarListaPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-tomar-lista',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/tomar-lista/tomar-lista.html"*/'<!--\n  Generated template for the TomarListaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Tomar Lista</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/descarga-archivo.png\')" class="fondo">\n  <ion-list>\n    <ion-item *ngFor="let alumno of tomarAlumnos$ | async" class="miItem animated flipInX">\n      <ion-avatar item-end>\n        <img src="./assets/icon/bien.png" (click)="presente(alumno)">  \n      </ion-avatar>\n        \n      <ion-avatar item-end>\n        <img src="./assets/icon/mal.png" (click)="ausente(alumno.$key,alumno)">  \n      </ion-avatar>\n\n      <h2>{{alumno.legajo}} - {{alumno.nombre}}</h2>\n    </ion-item>  \n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/tomar-lista/tomar-lista.html"*/,
+        selector: 'page-tomar-lista',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/tomar-lista/tomar-lista.html"*/'<!--\n  Generated template for the TomarListaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Tomar Lista</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/descarga-archivo.png\')" class="fondo">\n  <ion-list *ngIf="persona.persil == profesor">\n    <ion-item>\n      <h2></h2>\n      <h2></h2>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-item *ngFor="let alumno of tomarAlumnos$ | async" class="miItem animated flipInX">\n      <ion-avatar item-end>\n        <img src="./assets/icon/bien.png" (click)="presente(alumno)">  \n      </ion-avatar>\n        \n      <ion-avatar item-end>\n        <img src="./assets/icon/mal.png" (click)="ausente(alumno.$key,alumno)">  \n      </ion-avatar>\n\n      <h2>{{alumno.legajo}} - {{alumno.nombre}}</h2>\n    </ion-item>  \n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/tomar-lista/tomar-lista.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */]])
@@ -1273,10 +1274,10 @@ var FireBaseServiceProvider = (function () {
         return this.afd.object('/alumno-lista/').update(data);
     };
     FireBaseServiceProvider.prototype.updateProfesor = function (data) {
-        return this.afd.list('/personas').update('profesores', data);
+        return this.afd.list('/personas/').update('profesores', data);
     };
     FireBaseServiceProvider.prototype.updateAdministrativo = function (data) {
-        return this.afd.list('/personas').update('administrativos', data);
+        return this.afd.list('/personas/').update('administrativos', data);
     };
     FireBaseServiceProvider.prototype.removeProfesor = function (key) {
         return this.afd.list('/personas/profesores').remove(key);
@@ -2852,7 +2853,7 @@ LoginPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aula_administrativo_aula_administrativo__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aula_administrativo_aula_administrativo__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__materias_administrativo_materias_administrativo__ = __webpack_require__(266);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__cagar_archivo_cagar_archivo__ = __webpack_require__(69);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3156,19 +3157,19 @@ webpackEmptyAsyncContext.id = 271;
 
 var map = {
 	"../pages/alumnos/alumnos.module": [
-		918,
+		917,
 		25
 	],
 	"../pages/asignar-materia/asignar-materia.module": [
-		917,
+		918,
 		24
 	],
 	"../pages/aula-administrativo/aula-administrativo.module": [
-		920,
+		919,
 		23
 	],
 	"../pages/aula-alumno/aula-alumno.module": [
-		919,
+		920,
 		22
 	],
 	"../pages/aula-profesor/aula-profesor.module": [
@@ -3444,7 +3445,7 @@ CuestionariosPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InicioAdministrativoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aula_administrativo_aula_administrativo__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aula_administrativo_aula_administrativo__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_audio__ = __webpack_require__(34);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3687,7 +3688,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_inicio_profesor_inicio_profesor__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_inicio_alumno_inicio_alumno__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_aula_alumno_aula_alumno__ = __webpack_require__(477);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_aula_administrativo_aula_administrativo__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_aula_administrativo_aula_administrativo__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_aula_profesor_aula_profesor__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angularfire2_database__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_angularfire2__ = __webpack_require__(692);
@@ -3702,10 +3703,10 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_cuestionarios_cuestionarios__ = __webpack_require__(478);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_cagar_archivo_cagar_archivo__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_alumnos_alumnos__ = __webpack_require__(476);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__ionic_native_barcode_scanner__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__ionic_native_barcode_scanner__ = __webpack_require__(363);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_materia_materia__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_editar_perfil_editar_perfil__ = __webpack_require__(261);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_descargar_archivo_descargar_archivo__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_descargar_archivo_descargar_archivo__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_notificacion_notificacion__ = __webpack_require__(148);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_real_inicio_administrativo_real_inicio_administrativo__ = __webpack_require__(265);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_asignar_materia_asignar_materia__ = __webpack_require__(145);
@@ -3821,10 +3822,10 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_19_ng2_smart_table__["b" /* Ng2SmartTableModule */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */], {}, {
                 links: [
-                    { loadChildren: '../pages/asignar-materia/asignar-materia.module#AsignarMateriaPageModule', name: 'AsignarMateriaPage', segment: 'asignar-materia', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/alumnos/alumnos.module#AlumnosPageModule', name: 'AlumnosPage', segment: 'alumnos', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/aula-alumno/aula-alumno.module#AulaAlumnoPageModule', name: 'AulaAlumnoPage', segment: 'aula-alumno', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/asignar-materia/asignar-materia.module#AsignarMateriaPageModule', name: 'AsignarMateriaPage', segment: 'asignar-materia', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/aula-administrativo/aula-administrativo.module#AulaAdministrativoPageModule', name: 'AulaAdministrativoPage', segment: 'aula-administrativo', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/aula-alumno/aula-alumno.module#AulaAlumnoPageModule', name: 'AulaAlumnoPage', segment: 'aula-alumno', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/aula-profesor/aula-profesor.module#AulaProfesorPageModule', name: 'AulaProfesorPage', segment: 'aula-profesor', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/cagar-archivo/cagar-archivo.module#CagarArchivoPageModule', name: 'CagarArchivoPage', segment: 'cagar-archivo', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/cuestionarios/cuestionarios.module#CuestionariosPageModule', name: 'CuestionariosPage', segment: 'cuestionarios', priority: 'low', defaultHistory: [] },
@@ -3912,7 +3913,7 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__descargar_archivo_descargar_archivo__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__descargar_archivo_descargar_archivo__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__asignar_materia_asignar_materia__ = __webpack_require__(145);
@@ -3954,6 +3955,7 @@ var CagarArchivoPage = (function () {
         this.nativeAudio = nativeAudio;
         //Atributos de descarga
         this.listaAlumnos = [];
+        this.listaGen = [];
         this.listaA = {};
         this.listaAlumnoItem = [];
         this.aula = "";
@@ -4054,10 +4056,10 @@ var CagarArchivoPage = (function () {
                 for (var index = 0; index < arrayFilas.length; index++) {
                     var elemento = arrayFilas[index];
                     console.log(elemento);
-                    admin_1.dni = elemento[0].trim();
-                    admin_1.apellido = elemento[1].trim();
-                    admin_1.nombre = elemento[2].trim();
-                    admin_1.email = elemento[3].trim();
+                    admin_1.Dni = elemento[0].trim();
+                    admin_1.Apellido = elemento[1].trim();
+                    admin_1.Nombre = elemento[2].trim();
+                    admin_1.Email = elemento[3].trim();
                     lista_2.push(admin_1);
                     admin_1 = {};
                 }
@@ -4069,13 +4071,15 @@ var CagarArchivoPage = (function () {
                 }
             };
             fr.readAsText(file, 'ISO-8859-4');
-            this.listaAlumnos = lista_2;
+            this.listaGen = lista_2;
             //console.log(this.listaAlumnos);
             //console.log(file.name);
             //console.log(file.size);
             this.nombreArchivo = file.name;
             this.sizeArchivo = file.size / 1000 + " Kb";
-            this.firebaseService.updateProfesor(lista_2);
+            //this.firebaseService.updateProfesor(lista);
+            //console.log(lista);
+            //this.database.list('/SiFunca/').push(lista);
         }
         else if (this.persona == "administrativo") {
             var admin_2 = {};
@@ -4099,10 +4103,10 @@ var CagarArchivoPage = (function () {
                 for (var index = 0; index < arrayFilas.length; index++) {
                     var elemento = arrayFilas[index];
                     console.log(elemento);
-                    admin_2.dni = elemento[0].trim();
-                    admin_2.apellido = elemento[1].trim();
-                    admin_2.nombre = elemento[2].trim();
-                    admin_2.email = elemento[3].trim();
+                    admin_2.Dni = elemento[0].trim();
+                    admin_2.Apellido = elemento[1].trim();
+                    admin_2.Nombre = elemento[2].trim();
+                    admin_2.Email = elemento[3].trim();
                     lista_3.push(admin_2);
                     admin_2 = {};
                 }
@@ -4114,13 +4118,13 @@ var CagarArchivoPage = (function () {
                 }
             };
             fr.readAsText(file, 'ISO-8859-4');
-            this.listaAlumnos = lista_3;
+            this.listaGen = lista_3;
             //console.log(this.listaAlumnos);
             //console.log(file.name);
             //console.log(file.size);
             this.nombreArchivo = file.name;
             this.sizeArchivo = file.size / 1000 + " Kb";
-            this.firebaseService.updateAdministrativo(lista_3);
+            //
         }
     };
     CagarArchivoPage.prototype.onFileSelect = function (input) {
@@ -4170,7 +4174,7 @@ var CagarArchivoPage = (function () {
                 });
             }
             //    this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
-            var alert = this.alertCtrl.create({
+            var alert_1 = this.alertCtrl.create({
                 title: "Guardar Lista",
                 subTitle: "La lista se guardó correctamente",
                 cssClass: "miClaseAlert",
@@ -4182,11 +4186,17 @@ var CagarArchivoPage = (function () {
                     }
                 ]
             });
-            alert.present();
+            alert_1.present();
         }
         else if (this.persona == "profesor") {
+            console.log('---------- ingreso a profesores carga ---------');
+            this.firebaseService.updateProfesor(this.listaGen);
+            //this.database.list('/profesores/').push(this.listaGen);
         }
         else if (this.persona == "administrativo") {
+            console.log('---------- ingreso a administrativos carga ---------');
+            this.firebaseService.updateAdministrativo(this.listaGen);
+            //this.database.list('/administrativos/').push(this.listaGen);
         }
     };
     CagarArchivoPage.prototype.descargarArchivo = function () {
@@ -4205,13 +4215,13 @@ var CagarArchivoPage = (function () {
         else {
             //alert("No hya nada que descargar");
             // this.presentAlert("Sin alumnos","No hay nada que descargar");
-            var alert = this.alertCtrl.create({
+            var alert_2 = this.alertCtrl.create({
                 title: "Sin Alumnos",
                 subTitle: "No hay nada que descargar",
                 cssClass: "miClaseDanger",
                 buttons: ['Aceptar']
             });
-            alert.present();
+            alert_2.present();
         }
     };
     CagarArchivoPage.prototype.presentAlert = function (titulo, subtitulo) {
@@ -4229,10 +4239,9 @@ CagarArchivoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'page-cagar-archivo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cagar-archivo/cagar-archivo.html"*/'<!--\n  Generated template for the CagarArchivoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Cargar Archivo de {{aula}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n  <ion-list>\n    <ion-item>\n      <!--<label>{{label}}</label>-->\n      <!--(change)="fileUpload($event)"-->\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->\n      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">\n      <ion-icon name="cloud-done">Selecionar archivo .csv</ion-icon>\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n    </ion-item>\n\n    <ion-item>\n      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>\n      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>\n    </ion-item>\n  </ion-list>\n  \n  <div>\n    <button center ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="cloud-done"></ion-icon> Subir\n    </button>\n    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="cloud-done"></ion-icon> Descargar\n    </button>\n  </div>\n  \n  \n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cagar-archivo/cagar-archivo.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */]])
 ], CagarArchivoPage);
 
-var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=cagar-archivo.js.map
 
 /***/ }),
@@ -4376,9 +4385,9 @@ ButtonRenderComponent = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MateriaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__ = __webpack_require__(363);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__descargar_archivo_descargar_archivo__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__descargar_archivo_descargar_archivo__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__respuesta_encuesta_respuesta_encuesta__ = __webpack_require__(257);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -4467,8 +4476,6 @@ var MateriaPage = (function () {
             if (_this.perfil == "Profesor") {
                 _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__descargar_archivo_descargar_archivo__["a" /* DescargarArchivoPage */], { aulaa: _this.codigoScaneado });
             }
-            //if(this.perfil=='')
-            //{
             for (var i = 0; i < _this.datos.length; i++) {
                 if (_this.datos[i].codigoQr == _this.codigoScaneado) {
                     if (_this.materia == _this.datos[i].materia && _this.curso == _this.datos[i].curso) {
