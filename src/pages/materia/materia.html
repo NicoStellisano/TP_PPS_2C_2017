@@ -35,8 +35,13 @@
 </ion-item>
           
 <ion-item class="animated flipInY miItem">
+  <ion-label class="miLabel" floating>Profesor</ion-label>
+  <ion-input type="text" [(ngModel)]="aulaMateria.profesor" disabled="true"></ion-input>
+  </ion-item>
+
+<ion-item class="animated flipInY miItem">
 <ion-label class="miLabel" floating>Materia</ion-label>
-<ion-input type="text" [(ngModel)]="aulaMateria.profesor" disabled="true"></ion-input>
+<ion-input type="text" [(ngModel)]="aulaMateria.materia" disabled="true"></ion-input>
 </ion-item>
 
 

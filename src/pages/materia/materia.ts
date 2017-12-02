@@ -41,6 +41,7 @@ this.perfil=localStorage.getItem("Perfil");
 
   //  console.log("aulaaaaa: "+this.aulaParaQrProfesor);
     console.log("perfik: "+this.perfil);
+    
     //CARGA DATOS EN FIREBASE
     /*
     this.db.list('/codigoQrMaterias').push({
@@ -102,7 +103,8 @@ this.nativeAudio.play('2');
         
       if(this.datos[i].codigoQr==this.codigoScaneado)
         {
-          if(this.materia==this.datos[i].materia && this.curso==this.datos[i].curso )
+          //if(this.materia==this.datos[i].materia && this.curso==this.datos[i].curso )
+          if(this.curso==this.datos[i].curso )
             {
           this.aulaMateria.curso=this.datos[i].curso;
           this.aulaMateria.profesor=this.datos[i].profesor;

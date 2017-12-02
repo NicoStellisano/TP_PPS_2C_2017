@@ -36,9 +36,6 @@
     <div style="height:40%;width:100%">
      
      
-      <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
-        <ion-icon name="arrow-round-back"></ion-icon> Actualizar Alumnos
-      </button>
     
       
   
@@ -69,7 +66,26 @@
              [showYAxisLabel]="showYAxisLabel"
              xAxisLabel="votos"
              yAxisLabel="resultado" -->
-    
+             <ion-item >
+              <ion-label>Curso</ion-label>
+              <ion-select interface='action-sheet' [(ngModel)]="seleccion" (ionChange)="changeList($event)">
+                <ion-option (ionSelect)="changeList('a')" value="a">4ºA</ion-option>
+                <ion-option (ionSelect)="changeList('b')" value="b">4ºB</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item >
+            <div style='width:100%;height:100%' *ngIf='seleccion=="a"'>
+              <ng2-smart-table style='width:100%;height:100%' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"
+              (editConfirm)="onSaveConfirm($event)"
+              (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>
+            </ion-item>
+            <ion-item >
+              <div style='width:100%;height:100%' *ngIf='seleccion=="b"'>
+              <ng2-smart-table style='width:100%;height:100%'  [settings]="settings" [source]="source2" (deleteConfirm)="onDeleteConfirm($event)"
+              (editConfirm)="onSaveConfirm($event)"
+              (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>
+         </ion-item> 
+     
       
   
   </ion-content>

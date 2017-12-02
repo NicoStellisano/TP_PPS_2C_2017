@@ -6,6 +6,8 @@ import  firebase  from 'firebase';
 import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { EncuestasPage } from '../encuestas/encuestas';
 import { NativeAudio } from '@ionic-native/native-audio';
+import { DateValueAccessorModule } from 'angular-date-value-accessor';
+
 /**
  * Generated class for the EncuestasAltaPage page.
  *
@@ -29,26 +31,32 @@ export class EncuestasAltaPage {
   fechaInicio ="";
   fechaFinalizacion= "";
   creadorEncuesta;
-  horaActual;
+  horaActual:any;
+  horaAux:any;
+  horaAux2:Date;
+  
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,private alertCtrl:AlertController,private nativeAudio: NativeAudio) {
     this.creadorEncuesta=localStorage.getItem("Email");
     this.nativeAudio.preloadComplex('2', 'assets/sonidos/2.mp3', 1, 1, 0);
     this.nativeAudio.play('2');
 
-    this.horaActual= new Date();
+    
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EncuestasAltaPage');
-  }
+    this.horaActual= new Date();
+    this.horaAux=new Date();
+    
+    
+  
+    }
 
   Guardar()
   {
-
     if(this.respuesta1 || this.respuesta2 )
       {
-        
         switch(this.duracion)
         {
           case '5 minutos':
@@ -57,8 +65,8 @@ export class EncuestasAltaPage {
           case '30 minutos':
           this.horaActual.setMinutes(this.horaActual.getMinutes()+30);
           break;
-          case '55 minutos':
-          this.horaActual.setMinutes(this.horaActual.getMinutes()+55);
+          case '60 minutos':
+          this.horaActual.setMinutes(this.horaActual.getMinutes()+60);
           break;
 
         }
@@ -83,7 +91,9 @@ export class EncuestasAltaPage {
           respuesta2:this.respuesta2,
           formato:this.formato,
           duracion:this.duracion,
-          horaFinalizacion: this.horaActual.getHours()+ ":" +  this.horaActual.getMinutes(),
+          horaFReal:this.horaActual.toLocaleString(),
+          horaInicio:this.horaAux.toLocaleString(),
+          horaFinalizacion: this.horaActual.toString(),
           creadorEncuesta:this.creadorEncuesta});
 
           let alert = this.alertCtrl.create({
