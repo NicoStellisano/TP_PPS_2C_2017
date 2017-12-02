@@ -20,31 +20,154 @@ import { MateriaPage } from '../materia/materia';
   templateUrl: 'respuesta-encuesta.html',
 })
 export class RespuestaEncuestaPage {
-encuestas;
-encuestasRespuestas;
-banderaVoto=0;
+encuestas:any[]=[];
+hora;
+encuestasRespuestas:any[]=[];
+banderaVoto:boolean;
+respuestaR:any;
+respuestaS:any;
+horaActual:Date;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController) {
+    
+
+    this.horaActual = new Date();
+    
+
+  }
+  ionViewDidEnter() {
+    
     this.db.list('/encuestas').
     subscribe( data => {
+      if(data)
     this.encuestas=data;
 });
-
-this.db.list('/encuestaRespuestas').
-subscribe( data => {
-this.encuestasRespuestas=data;
-});
+this.banderaVoto=false;
+setTimeout(() => {
+  this.db.list('/encuestaRespuestas').
+  subscribe( data => {
+    if(data)
+  this.encuestasRespuestas=data;
+  });
+}, 1000);
 
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RespuestaEncuestaPage');
+  responder(e)
+  {    console.log(e);
+    
+      let bandera:boolean=false;
+      let date = new Date(e.horaFinalizacion);
+      if(date>this.horaActual)
+      {
+    for (let i = 0; i < this.encuestasRespuestas.length; i++) {
+      const element = this.encuestasRespuestas[i];
+   console.log(e);
+   console.log(element);
+      if(element.mailUsuario==localStorage.getItem("mail") && element.nombreEncuesta==e.nombre)
+    {
+     
+        
+       
+      
+      bandera=true;
+      let alert = this.alertCtrl.create({
+        title: 'Info!',
+        subTitle: 'Usted ya voto en esta encuesta!',
+        cssClass:"miClaseDanger",
+      buttons: ['Listo']
+      });
+      alert.present();
+return;
+    }
+    }
+    if(bandera==false)
+    {
+      if(e.formato=="Radio botones")
+      {
+        this.fireService.agregarRespEncuesta({nombreEncuesta:e.nombre,mailUsuario:localStorage.getItem("mail"),respuesta:this.respuestaR});
+        
+      }else if(e.formato=="Selección de opciones")
+      {
+        this.fireService.agregarRespEncuesta({nombreEncuesta:e.nombre,mailUsuario:localStorage.getItem("mail"),respuesta:this.respuestaS});
+        
+      }
+      let alert = this.alertCtrl.create({
+        title: 'Exito!',
+        subTitle: 'Voto con exito!',
+        cssClass:"miClaseAlert",
+      buttons: ['Listo']
+      });
+      alert.present();
+      bandera=true;
+    }
+  }else{
+    bandera=true;
+    let alert = this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: 'La encuesta ya expiro!!',
+      cssClass:"miClaseDanger",
+    buttons: ['Listo']
+    });
+    alert.present();
+  }
+    
   }
 
-  /*
+  
   respuesta1(e)
   {
+    let bandera:boolean=false;
+    let date = new Date(e.horaFinalizacion);
+    if(date>this.horaActual)
+    {
+    for (let i = 0; i < this.encuestasRespuestas.length; i++) {
+      const element = this.encuestasRespuestas[i];
+      
+      if(element.mailUsuario==localStorage.getItem("mail") && element.nombreEncuesta==e.nombre)
+    {
+      
+      bandera=true;
+      let alert = this.alertCtrl.create({
+        title: 'Info!',
+        subTitle: 'Usted ya voto en esta encuesta!',
+        cssClass:"miClaseDanger",
+      buttons: ['Listo']
+      });
+      alert.present();
+      break;
+    }
+    }
     
-    for(let i=0;i<this.encuestasRespuestas.length;i++)
+    if(bandera==false)
+    {
+      
+      this.fireService.agregarRespEncuesta({nombreEncuesta:e.nombre,mailUsuario:localStorage.getItem("mail"),respuesta:e.respuesta1});
+      let alert = this.alertCtrl.create({
+        title: 'Exito!',
+        subTitle: 'Voto con exito!',
+        cssClass:"miClaseAlert",
+      buttons: ['Listo']
+      });
+      alert.present();
+      bandera=true;
+      
+    }
+  }else{
+    bandera=true;
+    let alert = this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: 'La encuesta ya expiro!!',
+      cssClass:"miClaseDanger",
+    buttons: ['Listo']
+    });
+    alert.present();
+  }
+  
+    
+
+
+
+    /*for(let i=0;i<this.encuestasRespuestas.length;i++)
       {
        
        
@@ -84,48 +207,103 @@ this.encuestasRespuestas=data;
       }
 
  
-
+*/
 
 
   }
 
   respuesta2(e)
-  {
-    for(let i=0;i<this.encuestasRespuestas.length;i++)
-      {
-        console.log(this.encuestasRespuestas[i].mailUsuario);
-        console.log(localStorage.getItem("mail"));
-
-        if(this.encuestasRespuestas[i].mailUsuario==localStorage.getItem("mail") && this.encuestasRespuestas[i].nombreEncuesta == e.nombre )
-          {
-            this.banderaVoto=1;
-            let alert = this.alertCtrl.create({
-              title: 'Info!',
-              subTitle: 'Usted ya voto en esta encuesta!',
-              cssClass:"miClaseAlert",
-            buttons: ['Listo']
-            });
-            alert.present();
-            return;
-          }
-         
-        }
-
-        if(this.banderaVoto==0)
-          {
-            this.fireService.agregarRespEncuesta({nombreEncuesta:e.nombre,mailUsuario:localStorage.getItem("mail"),voto:e.respuesta1});
-            
-            let alert = this.alertCtrl.create({
-              title: 'Exito!',
-              subTitle: 'Voto con exito!',
-              cssClass:"miClaseAlert",
-            buttons: ['Listo']
-            });
-            alert.present();
-            
-          }
-
+  { let bandera:boolean=false;
+    let date = new Date(e.horaFinalizacion);
+    if(date>this.horaActual)
+    {
+    for (let i = 0; i < this.encuestasRespuestas.length; i++) {
+      const element = this.encuestasRespuestas[i];
+      
+      if(element.mailUsuario==localStorage.getItem("mail") && element.nombreEncuesta==e.nombre)
+    {
+      
+      bandera=true;
+      let alert = this.alertCtrl.create({
+        title: 'Info!',
+        subTitle: 'Usted ya voto en esta encuesta!',
+        cssClass:"miClaseDanger",
+      buttons: ['Listo']
+      });
+      alert.present();
+      break;
+    }
+    }
+    
+    if(bandera==false)
+    {
+      
+      this.fireService.agregarRespEncuesta({nombreEncuesta:e.nombre,mailUsuario:localStorage.getItem("mail"),respuesta:e.respuesta2});
+      let alert = this.alertCtrl.create({
+        title: 'Exito!',
+        subTitle: 'Voto con exito!',
+        cssClass:"miClaseAlert",
+      buttons: ['Listo']
+      });
+      alert.present();
+      bandera=true;
+      
+    }
+  }else{
+    bandera=true;
+    let alert = this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: 'La encuesta ya expiro!!',
+      cssClass:"miClaseDanger",
+    buttons: ['Listo']
+    });
+    alert.present();
   }
-  */
+  
+    
+
+
+
+    /*for(let i=0;i<this.encuestasRespuestas.length;i++)
+      {
+       
+       
+
+      
+        
+          if( this.encuestasRespuestas[i].nombreEncuesta == e.nombre && this.encuestasRespuestas[i].voto== "true")
+            {
+              
+              let alert = this.alertCtrl.create({
+                title: 'Info!',
+                subTitle: 'Usted ya voto en esta encuesta!',
+                cssClass:"miClaseAlert",
+              buttons: ['Listo']
+              });
+              alert.present();
+              return;
+              
+            }
+              
+              console.log("no voto, va a votar")
+              this.fireService.agregarRespEncuesta({nombreEncuesta:e.nombre,mailUsuario:localStorage.getItem("mail"),respuesta:e.respuesta1,voto:"true"});
+              
+              let alert = this.alertCtrl.create({
+                title: 'Exito!',
+                subTitle: 'Voto con exito!',
+                cssClass:"miClaseAlert",
+              buttons: ['Listo']
+              });
+              alert.present();
+              this.navCtrl.push(MateriaPage);
+              return;
+            
+          
+
+            
+      }
+
+ 
+    */}
 
 }

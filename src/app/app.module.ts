@@ -47,6 +47,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import{ BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import{ NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { MateriasAdministrativoPage } from '../pages/materias-administrativo/materias-administrativo';
+import { DateValueAccessorModule } from 'angular-date-value-accessor';
 
 
 
@@ -101,6 +102,7 @@ var config = {
     NgxChartsModule,    
     BrowserAnimationsModule,
     NoopAnimationsModule,
+    DateValueAccessorModule,
     AngularFireModule.initializeApp(config)
   ],
   bootstrap: [IonicApp],

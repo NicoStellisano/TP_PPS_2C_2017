@@ -31,6 +31,7 @@
     "@ionic-native/status-bar": "4.3.2",
     "@ionic/storage": "2.0.1",
     "@swimlane/ngx-charts": "^7.0.1",
+    "angular-date-value-accessor": "0.0.2",
     "angularfire2": "^4.0.0-rc0",
     "cordova-android": "^6.3.0",
     "cordova-plugin-device": "^1.1.7",
