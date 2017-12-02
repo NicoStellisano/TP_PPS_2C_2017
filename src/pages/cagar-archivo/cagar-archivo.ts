@@ -273,17 +273,18 @@ if(this.persona=="alumno")
 
     var rows = this.nombreArchivo.split("-");
     console.log(rows);
+    this.listaA.materia=rows[0];
     this.listaA.aula =rows[1];
     this.aula=rows[1];
     this.listaA.alumnos=this.listaAlumnos;
-    this.listaA.materia=rows[0];
+    
     
     let cont:number;
     cont = this.listaAlumnoItem.length;
 
     for (let o = 0; o < this.listaAlumnoItem.length; o++) {
       let element = this.listaAlumnoItem[o];
-      if(element.materia==this.listaA.materia)
+      if(element.aula==this.listaA.aula)
       {
         let listaAux:any[]=[];
         listaAux=this.listaAlumnoItem;
@@ -308,11 +309,11 @@ if(this.persona=="alumno")
       this.listaAlumnos.forEach(alumno => {
         this.firebaseService.agregarListaA(alumno);
       });
-    }else{
+    }else if(this.aula=="4B"){
       console.log("entro a B");
       this.listaAlumnos.forEach(alumno => {
         this.firebaseService.agregarListaB(alumno);
-      })
+      });
     }
 
 //    this.presentAlert("Guardar Lista","Se guado correcetamente la lista");

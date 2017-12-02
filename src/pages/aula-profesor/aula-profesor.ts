@@ -43,6 +43,7 @@ export class AulaProfesorPage {
   showYAxisLabel: boolean;
   showLegend: boolean;
   interval: number;
+  listFaltantesB:any[] =[];
   
   listadoFaltas:Array<any>=[];
   
@@ -55,7 +56,10 @@ listFaltantes:any[]=[];
 this.materia= this.navParams.get('materia');
  
 
-
+this.db.list("/tomarB").subscribe(data=>
+  {
+    this.listFaltantesB=data;
+  });
   
 this.db.list("/tomarA").subscribe(data=>
 {
@@ -108,28 +112,55 @@ toast.present();
       {
         this.listFaltantes=data;
       });
+      this.db.list("/tomarB").subscribe(data=>
+        {
+          this.listFaltantesB=data;
+        });
     this.applyDimensions();
     window.addEventListener('resize', () => {
       this.applyDimensions();
     }, false);
-    let contador=0;
-    for (let i = 0; i < this.listFaltantes.length; i++) {
-      const element = this.listFaltantes[i];
-      if(element.contPresentes!=0)
+    if(this.aula=="4A")
       {
-        contador++;
-      }
-    }
-    this.informacion=[
+        let contador=0;
+        for (let i = 0; i < this.listFaltantes.length; i++) {
+          const element = this.listFaltantes[i];
+          if(element.contPresentes!=0)
+          {
+            contador++;
+          }
+        }
+        this.informacion=[
+          {
+            'name':'Con al menos una falta',
+            'value':contador
+          },
+          {
+            'name':'Sin faltas',
+            'value':this.listFaltantes.length-contador
+          }
+          ];
+      }else if(this.aula=="4B")
       {
-        'name':'Con al menos una falta',
-        'value':contador
-      },
-      {
-        'name':'Sin faltas',
-        'value':this.listFaltantes.length-contador
-      }
-      ];
+        let contador=0;
+        for (let i = 0; i < this.listFaltantesB.length; i++) {
+          const element = this.listFaltantesB[i];
+          if(element.contPresentes!=0)
+          {
+            contador++;
+          }
+        }
+        this.informacion=[
+          {
+            'name':'Con al menos una falta',
+            'value':contador
+          },
+          {
+            'name':'Sin faltas',
+            'value':this.listFaltantesB.length-contador
+          }
+          ];
+        }
      
   }
 

@@ -1609,7 +1609,7 @@ var RespuestaEncuestaPage = (function () {
 }());
 RespuestaEncuestaPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-respuesta-encuesta',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\respuesta-encuesta\respuesta-encuesta.html"*/'<!--\n\n  Generated template for the RespuestaEncuestaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Encuestas a responder</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/halloween-Materias.png\')" class="fondo">\n\n  \n\n  <div *ngFor="let e of encuestas">\n\n    \n\n         <ion-list >\n\n                \n\n             <ion-item class="animated flipInY miItem">\n\n             <ion-label class="miLabel" style="color: orange"  floating>Pregunta:</ion-label>\n\n             <ion-input type="text" [(ngModel)]="e.pregunta" disabled="true"></ion-input>\n\n             </ion-item>\n\n             \n\n             \n\n               <ion-item class="animated flipInY miItem">\n\n                 <ion-label class="miLabel" style="color: orange"  floating>La encuesta finaliza en el horario:</ion-label>\n\n                 <ion-input type="text" [(ngModel)]="e.horaFReal" disabled="true"></ion-input>\n\n                 </ion-item>\n\n\n\n\n\n<!--\n\n                 <ion-item class="animated flipInX miItem">\n\n                     <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de inicio (opcional)</ion-label>\n\n                     <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaInicio" disabled="true"></ion-datetime>\n\n                   </ion-item>\n\n             \n\n                   <ion-item class="animated flipInX miItem">\n\n                       <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de finalización (opcional)</ion-label>\n\n                       <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaFinalizacion" disabled="true"></ion-datetime>\n\n                     </ion-item>\n\n                   -->\n\n\n\n\n\n                 <ion-item *ngIf=\'e.formato == "Botones"\' class="animated flipInY miItem">\n\n                   <ion-list  >\n\n                       <button  class="botones" (click)="respuesta1(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                           Presione para votar: {{e.respuesta1}}\n\n                          </button>\n\n                          <br>\n\n                          <button class="botones" (click)="respuesta2(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                             Presione para votar: {{e.respuesta2}}\n\n                            </button>\n\n\n\n\n\n                     \n\n                       </ion-list>    \n\n                     </ion-item>\n\n        \n\n\n\n                               <ion-list  *ngIf=\'e.formato == "Radio botones"\' (ionChange)="responder(e)" radio-group [(ngModel)]="respuestaR">\n\n                                   <ion-item class="animated flipInY miItem">\n\n                                     <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                     <ion-radio  [value]="e.respuesta1" ></ion-radio>\n\n                                   </ion-item>\n\n                                   <ion-item class="animated flipInY miItem">\n\n                                       <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                       <ion-radio  [value]="e.respuesta2" ></ion-radio>\n\n                                     </ion-item>\n\n                                    \n\n\n\n                                 </ion-list>\n\n\n\n                              <!--   <ion-list  *ngIf=\'e.formato == "Checkbox"\' radio-group [(ngModel)]="respuesta">\n\n                                     <ion-item class="animated flipInY miItem">\n\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>\n\n                                     </ion-item>\n\n                                     <ion-item class="animated flipInY miItem">\n\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta2" ></ion-checkbox>\n\n                                       </ion-item>\n\n                                                 \n\n \n\n                                   </ion-list> -->  \n\n\n\n                                   <ion-list  *ngIf=\'e.formato == "Selección de opciones"\'  >\n\n                                    <ion-item class="animated flipInY miItem" >\n\n                                    <select style="color : rgb(85, 158, 218); width:150px;" (change)="responder(e)" [(ngModel)]="respuestaS"  class="animated flipInY miItem">\n\n  \n\n                                      <option >{{e.respuesta1}} </option>\n\n                                      <option >{{e.respuesta2}} </option>\n\n                                    \n\n                                    </select>\n\n                                  </ion-item>\n\n                                     \n\n\n\n                                  </ion-list>\n\n                                 \n\n\n\n                           \n\n                       \n\n                     \n\n             \n\n               </ion-list> \n\n\n\n         </div>\n\n\n\n  \n\n  </ion-content>'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\respuesta-encuesta\respuesta-encuesta.html"*/,
+        selector: 'page-respuesta-encuesta',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\respuesta-encuesta\respuesta-encuesta.html"*/'<!--\n\n  Generated template for the RespuestaEncuestaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Encuestas a responder</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/halloween-Materias.png\')" class="fondo">\n\n  \n\n  <div *ngFor="let e of encuestas">\n\n    \n\n         <ion-list >\n\n            <ion-item class="animated flipInY miItem">\n\n                <ion-label class="miLabel" style="color: orange"  floating>Nombre:</ion-label>\n\n                <ion-input type="text" [(ngModel)]="e.nombre" disabled="true"></ion-input>\n\n                </ion-item>\n\n                \n\n             <ion-item class="animated flipInY miItem">\n\n             <ion-label class="miLabel" style="color: orange"  floating>Pregunta:</ion-label>\n\n             <ion-input type="text" [(ngModel)]="e.pregunta" disabled="true"></ion-input>\n\n             </ion-item>\n\n             \n\n             \n\n               <ion-item class="animated flipInY miItem">\n\n                 <ion-label class="miLabel" style="color: orange"  floating>La encuesta finaliza en el horario:</ion-label>\n\n                 <ion-input type="text" [(ngModel)]="e.horaFReal" disabled="true"></ion-input>\n\n                 </ion-item>\n\n\n\n\n\n<!--\n\n                 <ion-item class="animated flipInX miItem">\n\n                     <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de inicio (opcional)</ion-label>\n\n                     <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaInicio" disabled="true"></ion-datetime>\n\n                   </ion-item>\n\n             \n\n                   <ion-item class="animated flipInX miItem">\n\n                       <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de finalización (opcional)</ion-label>\n\n                       <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaFinalizacion" disabled="true"></ion-datetime>\n\n                     </ion-item>\n\n                   -->\n\n\n\n\n\n                 <ion-item *ngIf=\'e.formato == "Botones"\' class="animated flipInY miItem">\n\n                   <ion-list  >\n\n                       <button  class="botones" (click)="respuesta1(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                           Presione para votar: {{e.respuesta1}}\n\n                          </button>\n\n                          <br>\n\n                          <button class="botones" (click)="respuesta2(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                             Presione para votar: {{e.respuesta2}}\n\n                            </button>\n\n\n\n\n\n                     \n\n                       </ion-list>    \n\n                     </ion-item>\n\n        \n\n\n\n                               <ion-list  *ngIf=\'e.formato == "Radio botones"\' (ionChange)="responder(e)" radio-group [(ngModel)]="respuestaR">\n\n                                   <ion-item class="animated flipInY miItem">\n\n                                     <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                     <ion-radio  [value]="e.respuesta1" ></ion-radio>\n\n                                   </ion-item>\n\n                                   <ion-item class="animated flipInY miItem">\n\n                                       <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                       <ion-radio  [value]="e.respuesta2" ></ion-radio>\n\n                                     </ion-item>\n\n                                    \n\n\n\n                                 </ion-list>\n\n\n\n                              <!--   <ion-list  *ngIf=\'e.formato == "Checkbox"\' radio-group [(ngModel)]="respuesta">\n\n                                     <ion-item class="animated flipInY miItem">\n\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>\n\n                                     </ion-item>\n\n                                     <ion-item class="animated flipInY miItem">\n\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta2" ></ion-checkbox>\n\n                                       </ion-item>\n\n                                                 \n\n \n\n                                   </ion-list> -->  \n\n\n\n                                   <ion-list  *ngIf=\'e.formato == "Selección de opciones"\'  >\n\n                                    <ion-item class="animated flipInY miItem" >\n\n                                    <select style="color : rgb(85, 158, 218); width:150px;" (change)="responder(e)" [(ngModel)]="respuestaS"  class="animated flipInY miItem">\n\n  \n\n                                      <option >{{e.respuesta1}} </option>\n\n                                      <option >{{e.respuesta2}} </option>\n\n                                    \n\n                                    </select>\n\n                                  </ion-item>\n\n                                     \n\n\n\n                                  </ion-list>\n\n                                 \n\n\n\n                           \n\n                       \n\n                     \n\n             \n\n               </ion-list> \n\n\n\n         </div>\n\n\n\n  \n\n  </ion-content>'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\respuesta-encuesta\respuesta-encuesta.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], RespuestaEncuestaPage);
@@ -1667,11 +1667,15 @@ var AulaProfesorPage = (function () {
         this.listaAlumnos = [];
         this.view = [700, 150];
         this.view2 = [700, 150];
+        this.listFaltantesB = [];
         this.listadoFaltas = [];
         this.informacion = [];
         this.listFaltantes = [];
         this.aula = this.navParams.get('aula');
         this.materia = this.navParams.get('materia');
+        this.db.list("/tomarB").subscribe(function (data) {
+            _this.listFaltantesB = data;
+        });
         this.db.list("/tomarA").subscribe(function (data) {
             _this.listFaltantes = data;
         });
@@ -1708,27 +1712,51 @@ var AulaProfesorPage = (function () {
         this.db.list("/tomarA").subscribe(function (data) {
             _this.listFaltantes = data;
         });
+        this.db.list("/tomarB").subscribe(function (data) {
+            _this.listFaltantesB = data;
+        });
         this.applyDimensions();
         window.addEventListener('resize', function () {
             _this.applyDimensions();
         }, false);
-        var contador = 0;
-        for (var i = 0; i < this.listFaltantes.length; i++) {
-            var element = this.listFaltantes[i];
-            if (element.contPresentes != 0) {
-                contador++;
+        if (this.aula == "4A") {
+            var contador = 0;
+            for (var i = 0; i < this.listFaltantes.length; i++) {
+                var element = this.listFaltantes[i];
+                if (element.contPresentes != 0) {
+                    contador++;
+                }
             }
+            this.informacion = [
+                {
+                    'name': 'Con al menos una falta',
+                    'value': contador
+                },
+                {
+                    'name': 'Sin faltas',
+                    'value': this.listFaltantes.length - contador
+                }
+            ];
         }
-        this.informacion = [
-            {
-                'name': 'Con al menos una falta',
-                'value': contador
-            },
-            {
-                'name': 'Sin faltas',
-                'value': this.listFaltantes.length - contador
+        else if (this.aula == "4B") {
+            var contador = 0;
+            for (var i = 0; i < this.listFaltantesB.length; i++) {
+                var element = this.listFaltantesB[i];
+                if (element.contPresentes != 0) {
+                    contador++;
+                }
             }
-        ];
+            this.informacion = [
+                {
+                    'name': 'Con al menos una falta',
+                    'value': contador
+                },
+                {
+                    'name': 'Sin faltas',
+                    'value': this.listFaltantesB.length - contador
+                }
+            ];
+        }
     };
     AulaProfesorPage.prototype.tomaLista = function () {
         // alert("voy a tomar lista");
@@ -1758,7 +1786,7 @@ __decorate([
 ], AulaProfesorPage.prototype, "content", void 0);
 AulaProfesorPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-aula-profesor',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/'<!--\n\n  Generated template for the AulaProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n\n\n <!--gi <ion-list>\n\n              \n\n    <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n\n    </ion-item>\n\n                    \n\n    <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Materia</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n\n    </ion-item>\n\n                \n\n    <ion-item class="animated flipInX miItem" >\n\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n\n    </ion-item> \n\n  \n\n  </ion-list>-->\n\n\n\n  <div style="height:40%;width:100%">\n\n   \n\n    <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Crear Notificacion\n\n    </button>\n\n    <!--<button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n\n    </button>-->\n\n    <button ion-button round full large  (click)="mostrarQr()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Escaner QR\n\n      </button>\n\n      <button ion-button round full large  (click)="Encuestas()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Ver Encuestas\n\n      </button>\n\n\n\n    <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n\n    </button>\n\n  </div>\n\n<div style="height:10%"></div>\n\n<div style="height:50%;width:100%">\n\n  <ion-grid style="background-color:white;">\n\n    <h4>Faltas</h4>\n\n     <ion-row >\n\n       <ion-col >\n\n         <ngx-charts-bar-horizontal \n\n           [view]="view"\n\n           [results]="informacion"\n\n           xAxis="true"\n\n           yAxis="true"\n\n         >\n\n         </ngx-charts-bar-horizontal>\n\n       </ion-col>\n\n     </ion-row>\n\n   </ion-grid>\n\n  </div>\n\n  <!--  [legend]="showLegend"\n\n           legendTitle="Votos"\n\n           [showXAxisLabel]="showXAxisLabel"\n\n           [showYAxisLabel]="showYAxisLabel"\n\n           xAxisLabel="votos"\n\n           yAxisLabel="resultado" -->\n\n  \n\n    \n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/,
+        selector: 'page-aula-profesor',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/'<!--\n\n  Generated template for the AulaProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n\n\n <!--gi <ion-list>\n\n              \n\n    <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n\n    </ion-item>\n\n                    \n\n    <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Materia</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n\n    </ion-item>\n\n                \n\n    <ion-item class="animated flipInX miItem" >\n\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n\n    </ion-item> \n\n  \n\n  </ion-list>-->\n\n\n\n   \n\n    <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Crear Notificacion\n\n    </button>\n\n    <!--<button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n\n    </button>-->\n\n    <button ion-button round full large  (click)="mostrarQr()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Escaner QR\n\n      </button>\n\n      <button ion-button round full large  (click)="Encuestas()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Ver Encuestas\n\n      </button>\n\n\n\n    <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n\n    </button>\n\n    <br><br>\n\n\n\n<div style="width:100%">\n\n  <ion-grid style="background-color:white;">\n\n    <h4>Faltas</h4>\n\n     <ion-row >\n\n       <ion-col >\n\n         <ngx-charts-bar-horizontal \n\n           [view]="view"\n\n           [results]="informacion"\n\n           xAxis="true"\n\n           yAxis="true"\n\n         >\n\n         </ngx-charts-bar-horizontal>\n\n       </ion-col>\n\n     </ion-row>\n\n   </ion-grid>\n\n  </div>\n\n  <!--  [legend]="showLegend"\n\n           legendTitle="Votos"\n\n           [showXAxisLabel]="showXAxisLabel"\n\n           [showYAxisLabel]="showYAxisLabel"\n\n           xAxisLabel="votos"\n\n           yAxisLabel="resultado" -->\n\n           <br>\n\n    \n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_native_audio__["a" /* NativeAudio */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
 ], AulaProfesorPage);
@@ -2666,6 +2694,7 @@ var LoginPage = (function () {
         this.oct = { email: 'octavio.villegas@gmail.com', password: '28123654' };
         this.dal = { email: 'adiliberti@utn', password: '103295' };
         this.mauroo = { email: 'mauro.suppan@gmail.com', password: '28123654' };
+        this.maxii = { email: 'maxineiner@gmail.com', password: '29134587' };
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.google = false;
         this.fireService.getAdmins().subscribe(function (data) {
@@ -2693,6 +2722,10 @@ var LoginPage = (function () {
         this.email = this.mauroo.email;
         this.password = this.mauroo.password;
     };
+    LoginPage.prototype.maxi = function () {
+        this.email = this.maxii.email;
+        this.password = this.maxii.password;
+    };
     LoginPage.prototype.ionViewDidLoad = function () {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     };
@@ -2718,7 +2751,7 @@ var LoginPage = (function () {
             'offline': true
         })
             .then(function (res) {
-            var firecreds = __WEBPACK_IMPORTED_MODULE_6_firebase___default.a.auth.GoogleAuthProvider.credential(res.idTAceptaren);
+            var firecreds = __WEBPACK_IMPORTED_MODULE_6_firebase___default.a.auth.GoogleAuthProvider.credential(res.idToken);
             __WEBPACK_IMPORTED_MODULE_6_firebase___default.a.auth().signInWithCredential(firecreds).then(function (res) {
                 for (var i = 0; i < _this.listadoAdmins.length; i++) {
                     var element = _this.listadoAdmins[i];
@@ -3078,7 +3111,7 @@ var LoginPage = (function () {
 }());
 LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-login',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Inicio de Sesión</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n \n\n<div style="width:100%;height:100%">\n\n  <br>\n\n  <div style="width:50%;height:10%;margin:auto;text-align:center;display:block;">\n\n<button ion-button icon-right color="danger" style="font-size:11pt;margin:auto;text-align:center;display:block;" round (click)="loginGoogle()">\n\nIniciar sesión con Google<ion-icon style="font-size:250%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>\n\n</button>\n\n</div>\n\n    <br><br><br>\n\n    <div *ngIf="!google">\n\n   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n      <ion-label  style="color:white" floating>Email</ion-label>\n\n<ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>\n\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n    <ion-label style="color:white" floating>Contraseña</ion-label>      \n\n<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>\n\n <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n  <ion-label style="color:white">Elige tu usuario</ion-label>\n\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">\n\n   <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>\n\n   <ion-option>nicostellisano@hotmail.com</ion-option>\n\n  </ion-select>\n\n</ion-item>-->\n\n<br>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>\n\n</div>\n\n</div>\n\n<!--<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>\n\n-->\n\n<br><br><br><br>\n\n<button ion-button full (click)="octa()">Octavio</button>\n\n<button ion-button full (click)="dale()">ADELIBERTI 4A </button>\n\n<button ion-button full (click)="mauro()">Administrativo Mauro </button>\n\n<br><br><br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\login\login.html"*/,
+        selector: 'page-login',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Inicio de Sesión</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n \n\n<div style="width:100%;height:100%">\n\n  <br>\n\n  <div style="width:50%;height:10%;margin:auto;text-align:center;display:block;">\n\n<button ion-button icon-right color="danger" style="font-size:11pt;margin:auto;text-align:center;display:block;" round (click)="loginGoogle()">\n\nIniciar sesión con Google<ion-icon style="font-size:250%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>\n\n</button>\n\n</div>\n\n    <br><br><br>\n\n    <div *ngIf="!google">\n\n   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n      <ion-label  style="color:white" floating>Email</ion-label>\n\n<ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>\n\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n    <ion-label style="color:white" floating>Contraseña</ion-label>      \n\n<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>\n\n <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n  <ion-label style="color:white">Elige tu usuario</ion-label>\n\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">\n\n   <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>\n\n   <ion-option>nicostellisano@hotmail.com</ion-option>\n\n  </ion-select>\n\n</ion-item>-->\n\n<br>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>\n\n</div>\n\n</div>\n\n<!--<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>\n\n-->\n\n<br><br><br><br>\n\n<button ion-button full (click)="octa()">Octavio</button>\n\n<button ion-button full (click)="dale()">ADELIBERTI 4A </button>\n\n<button ion-button full (click)="mauro()">Administrativo Mauro </button>\n\n<button ion-button full (click)="maxi()">Maximiliano </button>\n\n<br><br><br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\login\login.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_google_plus__["a" /* GooglePlus */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_screen_orientation__["a" /* ScreenOrientation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
@@ -3388,15 +3421,19 @@ var MateriasAdministrativoPage = (function () {
         this.view = [700, 150];
         this.view2 = [700, 150];
         this.listFaltantes = [];
+        this.listFaltantesB = [];
         this.listadoFaltas = [];
         this.informacion = [];
         this.db.list("/tomarA").subscribe(function (data) {
             _this.listFaltantes = data;
         });
+        this.db.list("/tomarB").subscribe(function (data) {
+            _this.listFaltantesB = data;
+        });
         this.aula = this.navParams.get('aula');
         this.materia = this.navParams.get('materia');
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-        this.nativeAudio.preloadComplex('bienvenidoProfesor', 'assets/sonidos/bienvenidoProfesor.mp3', 1, 1, 0);
+        this.nativeAudio.preloadComplex('bienvenidoProfesor', 'assets/sonidos/1.mp3', 1, 1, 0);
         this.nativeAudio.play('bienvenidoProfesor');
     }
     MateriasAdministrativoPage.prototype.activar = function () {
@@ -3438,27 +3475,51 @@ var MateriasAdministrativoPage = (function () {
         this.db.list("/tomarA").subscribe(function (data) {
             _this.listFaltantes = data;
         });
+        this.db.list("/tomarB").subscribe(function (data) {
+            _this.listFaltantesB = data;
+        });
         this.applyDimensions();
         window.addEventListener('resize', function () {
             _this.applyDimensions();
         }, false);
-        var contador = 0;
-        for (var i = 0; i < this.listFaltantes.length; i++) {
-            var element = this.listFaltantes[i];
-            if (element.contPresentes != 0) {
-                contador++;
+        if (this.aula == "4A") {
+            var contador = 0;
+            for (var i = 0; i < this.listFaltantes.length; i++) {
+                var element = this.listFaltantes[i];
+                if (element.contPresentes != 0) {
+                    contador++;
+                }
             }
+            this.informacion = [
+                {
+                    'name': 'Con al menos una falta',
+                    'value': contador
+                },
+                {
+                    'name': 'Sin faltas',
+                    'value': this.listFaltantes.length - contador
+                }
+            ];
         }
-        this.informacion = [
-            {
-                'name': 'Con al menos una falta',
-                'value': contador
-            },
-            {
-                'name': 'Sin faltas',
-                'value': this.listFaltantes.length - contador
+        else if (this.aula == "4B") {
+            var contador = 0;
+            for (var i = 0; i < this.listFaltantesB.length; i++) {
+                var element = this.listFaltantesB[i];
+                if (element.contPresentes != 0) {
+                    contador++;
+                }
             }
-        ];
+            this.informacion = [
+                {
+                    'name': 'Con al menos una falta',
+                    'value': contador
+                },
+                {
+                    'name': 'Sin faltas',
+                    'value': this.listFaltantesB.length - contador
+                }
+            ];
+        }
         //mofificar por la ruta y el archivo de bienvenida
         // this.nativeAudio.preloadComplex('bienvenido', 'assets/piano/1.mp3', 1, 1, 0);
         //  this.nativeAudio.play('bienvenido');
@@ -3885,7 +3946,7 @@ __decorate([
 ], MateriasAdministrativoPage.prototype, "content", void 0);
 MateriasAdministrativoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-materias-administrativo',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\materias-administrativo\materias-administrativo.html"*/'<!--\n\n  Generated template for the AulaProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  \n\n    <ion-navbar color="dark">\n\n      <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>\n\n    </ion-navbar>\n\n  \n\n  </ion-header>\n\n  \n\n  <ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n  \n\n   <!--gi <ion-list>\n\n                \n\n      <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Divicion</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n\n      </ion-item>\n\n                      \n\n      <ion-item class="animated flipInY miItem">\n\n        <ion-label class="miLabel" floating>Materia</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n\n      </ion-item>\n\n                  \n\n      <ion-item class="animated flipInX miItem" >\n\n        <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n\n      </ion-item> \n\n    \n\n    </ion-list>-->\n\n  \n\n    <div style="height:10%;width:100%">\n\n     \n\n     \n\n    \n\n      \n\n  \n\n      <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n\n      </button>\n\n    </div>\n\n  <div style="height:10%"></div>\n\n  <div style="height:40%;width:100%">\n\n    <ion-grid style="background-color:white;">\n\n      <h4>Faltas</h4>\n\n       <ion-row >\n\n         <ion-col >\n\n           <ngx-charts-bar-horizontal \n\n             [view]="view"\n\n             [results]="informacion"\n\n             xAxis="true"\n\n             yAxis="true"\n\n           >\n\n           </ngx-charts-bar-horizontal>\n\n         </ion-col>\n\n       </ion-row>\n\n     </ion-grid>\n\n    </div>\n\n    <!--  [legend]="showLegend"\n\n             legendTitle="Votos"\n\n             [showXAxisLabel]="showXAxisLabel"\n\n             [showYAxisLabel]="showYAxisLabel"\n\n             xAxisLabel="votos"\n\n             yAxisLabel="resultado" -->\n\n             <ion-item >\n\n              <ion-label>Curso</ion-label>\n\n              <ion-select interface=\'action-sheet\' [(ngModel)]="seleccion" (ionChange)="changeList($event)">\n\n                <ion-option (ionSelect)="changeList(\'a\')" value="a">4ºA</ion-option>\n\n                <ion-option (ionSelect)="changeList(\'b\')" value="b">4ºB</ion-option>\n\n              </ion-select>\n\n            </ion-item>\n\n            <ion-item >\n\n            <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="a"\'>\n\n              <ng2-smart-table style=\'width:100%;height:100%\' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"\n\n              (editConfirm)="onSaveConfirm($event)"\n\n              (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n\n            </ion-item>\n\n            <ion-item >\n\n              <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="b"\'>\n\n              <ng2-smart-table style=\'width:100%;height:100%\'  [settings]="settings" [source]="source2" (deleteConfirm)="onDeleteConfirm($event)"\n\n              (editConfirm)="onSaveConfirm($event)"\n\n              (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n\n         </ion-item> \n\n     \n\n      \n\n  \n\n  </ion-content>\n\n  '/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\materias-administrativo\materias-administrativo.html"*/,
+        selector: 'page-materias-administrativo',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\materias-administrativo\materias-administrativo.html"*/'<!--\n\n  Generated template for the AulaProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  \n\n    <ion-navbar color="dark">\n\n      <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>\n\n    </ion-navbar>\n\n  \n\n  </ion-header>\n\n  \n\n  <ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n  \n\n   <!--gi <ion-list>\n\n                \n\n      <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Divicion</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n\n      </ion-item>\n\n                      \n\n      <ion-item class="animated flipInY miItem">\n\n        <ion-label class="miLabel" floating>Materia</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n\n      </ion-item>\n\n                  \n\n      <ion-item class="animated flipInX miItem" >\n\n        <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n\n      </ion-item> \n\n    \n\n    </ion-list>-->\n\n  \n\n    <br><br>     \n\n     \n\n    \n\n      \n\n  \n\n      <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n\n      </button>\n\n  <br><br>\n\n  <div style="width:100%">\n\n    <ion-grid style="background-color:white;">\n\n      <h4>Faltas</h4>\n\n       <ion-row >\n\n         <ion-col >\n\n           <ngx-charts-bar-horizontal \n\n             [view]="view"\n\n             [results]="informacion"\n\n             xAxis="true"\n\n             yAxis="true"\n\n           >\n\n           </ngx-charts-bar-horizontal>\n\n         </ion-col>\n\n       </ion-row>\n\n     </ion-grid>\n\n    </div>\n\n    <!--  [legend]="showLegend"\n\n             legendTitle="Votos"\n\n             [showXAxisLabel]="showXAxisLabel"\n\n             [showYAxisLabel]="showYAxisLabel"\n\n             xAxisLabel="votos"\n\n             yAxisLabel="resultado" -->\n\n             <br><br><br><br>\n\n             <ion-item >\n\n              <ion-label>Curso</ion-label>\n\n              <ion-select interface=\'action-sheet\' [(ngModel)]="seleccion" (ionChange)="changeList($event)">\n\n                <ion-option (ionSelect)="changeList(\'a\')" value="a">4ºA</ion-option>\n\n                <ion-option (ionSelect)="changeList(\'b\')" value="b">4ºB</ion-option>\n\n              </ion-select>\n\n            </ion-item>\n\n            <ion-item >\n\n            <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="a"\'>\n\n              <ng2-smart-table style=\'width:100%;height:100%\' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"\n\n              (editConfirm)="onSaveConfirm($event)"\n\n              (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n\n            </ion-item>\n\n            <ion-item >\n\n              <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="b"\'>\n\n              <ng2-smart-table style=\'width:100%;height:100%\'  [settings]="settings" [source]="source2" (deleteConfirm)="onDeleteConfirm($event)"\n\n              (editConfirm)="onSaveConfirm($event)"\n\n              (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n\n         </ion-item> \n\n     \n\n      \n\n  \n\n  </ion-content>\n\n  '/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\materias-administrativo\materias-administrativo.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_11__ionic_native_native_audio__["a" /* NativeAudio */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */],
@@ -3990,11 +4051,11 @@ var map = {
 		9
 	],
 	"../pages/materias-administrativo/materias-administrativo.module": [
-		937,
+		936,
 		8
 	],
 	"../pages/materias-profesor/materias-profesor.module": [
-		936,
+		937,
 		7
 	],
 	"../pages/materias/materias.module": [
@@ -4654,8 +4715,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/inicio-profesor/inicio-profesor.module#InicioProfesorPageModule', name: 'InicioProfesorPage', segment: 'inicio-profesor', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/materia/materia.module#MateriaPageModule', name: 'MateriaPage', segment: 'materia', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/materias-profesor/materias-profesor.module#MateriasProfesorPageModule', name: 'MateriasProfesorPage', segment: 'materias-profesor', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/materias-administrativo/materias-administrativo.module#MateriasAdministrativoPageModule', name: 'MateriasAdministrativoPage', segment: 'materias-administrativo', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/materias-profesor/materias-profesor.module#MateriasProfesorPageModule', name: 'MateriasProfesorPage', segment: 'materias-profesor', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/materias/materias.module#MateriasPageModule', name: 'MateriasPage', segment: 'materias', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notificacion/notificacion.module#NotificacionPageModule', name: 'NotificacionPage', segment: 'notificacion', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/perfil/perfil.module#PerfilPageModule', name: 'PerfilPage', segment: 'perfil', priority: 'low', defaultHistory: [] },
@@ -4960,15 +5021,15 @@ var CagarArchivoPage = (function () {
         if (this.persona == "alumno") {
             var rows = this.nombreArchivo.split("-");
             console.log(rows);
+            this.listaA.materia = rows[0];
             this.listaA.aula = rows[1];
             this.aula = rows[1];
             this.listaA.alumnos = this.listaAlumnos;
-            this.listaA.materia = rows[0];
             var cont = void 0;
             cont = this.listaAlumnoItem.length;
             for (var o = 0; o < this.listaAlumnoItem.length; o++) {
                 var element = this.listaAlumnoItem[o];
-                if (element.materia == this.listaA.materia) {
+                if (element.aula == this.listaA.aula) {
                     var listaAux = [];
                     listaAux = this.listaAlumnoItem;
                     listaAux[o].alumnos = this.listaA.alumnos;
@@ -4987,14 +5048,14 @@ var CagarArchivoPage = (function () {
                     _this.firebaseService.agregarListaA(alumno);
                 });
             }
-            else {
+            else if (this.aula == "4B") {
                 console.log("entro a B");
                 this.listaAlumnos.forEach(function (alumno) {
                     _this.firebaseService.agregarListaB(alumno);
                 });
             }
             //    this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
-            var alert = this.alertCtrl.create({
+            var alert_1 = this.alertCtrl.create({
                 title: "Guardar Lista",
                 subTitle: "La lista se guardó correctamente",
                 cssClass: "miClaseAlert",
@@ -5006,30 +5067,30 @@ var CagarArchivoPage = (function () {
                     }
                 ]
             });
-            alert.present();
+            alert_1.present();
         }
         else if (this.persona == "profesor") {
             console.log('---------- ingreso a profesores carga ---------');
             this.firebaseService.updateProfesor(this.listaGen);
             //this.database.list('/profesores/').push(this.listaGen);
-            var alert = this.alertCtrl.create({
+            var alert_2 = this.alertCtrl.create({
                 title: "Guardar Lista",
                 subTitle: "La lista se guardó correctamente",
                 cssClass: "miClaseAlert",
                 buttons: [{ text: 'Aceptar' }]
             });
-            alert.present();
+            alert_2.present();
         }
         else if (this.persona == "administrativo") {
             console.log('---------- ingreso a administrativos carga ---------');
             this.firebaseService.updateAdministrativo(this.listaGen);
-            var alert = this.alertCtrl.create({
+            var alert_3 = this.alertCtrl.create({
                 title: "Guardar Lista",
                 subTitle: "La lista se guardó correctamente",
                 cssClass: "miClaseAlert",
                 buttons: [{ text: 'Aceptar' }]
             });
-            alert.present();
+            alert_3.present();
             //this.database.list('/administrativos/').push(this.listaGen);
         }
     };
@@ -5049,13 +5110,13 @@ var CagarArchivoPage = (function () {
         else {
             //alert("No hya nada que descargar");
             // this.presentAlert("Sin alumnos","No hay nada que descargar");
-            var alert = this.alertCtrl.create({
+            var alert_4 = this.alertCtrl.create({
                 title: "Sin Alumnos",
                 subTitle: "No hay nada que descargar",
                 cssClass: "miClaseDanger",
                 buttons: ['Aceptar']
             });
-            alert.present();
+            alert_4.present();
         }
     };
     CagarArchivoPage.prototype.presentAlert = function (titulo, subtitulo) {
@@ -5071,12 +5132,11 @@ var CagarArchivoPage = (function () {
 }());
 CagarArchivoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-cagar-archivo',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/'<!--\n\n  Generated template for the CagarArchivoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Cargar Archivo de {{aula}}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n\n\n  <ion-list>\n\n    <ion-item>\n\n      <!--<label>{{label}}</label>-->\n\n      <!--(change)="fileUpload($event)"-->\n\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->\n\n      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">\n\n      <ion-icon name="cloud-done">Selecionar archivo .csv</ion-icon>\n\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>\n\n      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n  \n\n  <div>\n\n    <button center ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Subir\n\n    </button>\n\n    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Descargar\n\n    </button>\n\n  </div>\n\n  \n\n  \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/,
+        selector: 'page-cagar-archivo',template:/*ion-inline-start:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/'<!--\n\n  Generated template for the CagarArchivoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Cargar Archivo </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n\n\n  <ion-list>\n\n    <ion-item>\n\n      <!--<label>{{label}}</label>-->\n\n      <!--(change)="fileUpload($event)"-->\n\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->\n\n      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">\n\n      <ion-icon name="cloud-done">Selecionar archivo .csv</ion-icon>\n\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>\n\n      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n  \n\n  <div>\n\n    <button center ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Subir\n\n    </button>\n\n    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Descargar\n\n    </button>\n\n  </div>\n\n  \n\n  \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Mauro\Desktop\Mauro\tp\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */]])
 ], CagarArchivoPage);
 
-var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=cagar-archivo.js.map
 
 /***/ }),

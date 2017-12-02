@@ -49,6 +49,7 @@ export class LoginPage {
   oct = {email:'octavio.villegas@gmail.com',password:'28123654'};
   dal = {email:'adiliberti@utn',password:'103295'};
   mauroo= {email:'mauro.suppan@gmail.com',password:'28123654'};
+  maxii= {email:'maxineiner@gmail.com',password:'29134587'};
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl:LoadingController,public fireService:FireBaseServiceProvider
     ,public toast:ToastController,public googlePlus:GooglePlus ,private screenOrientation: ScreenOrientation, public alertCtrl:AlertController ) {
@@ -87,7 +88,11 @@ export class LoginPage {
     this.email = this.mauroo.email;
     this.password = this.mauroo.password;
   }
-
+maxi()
+{
+  this.email = this.maxii.email;
+  this.password = this.maxii.password;
+}
   ionViewDidLoad() {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
@@ -121,7 +126,7 @@ loading.present();
     })
     
       .then((res) => {
-        const firecreds = firebase.auth.GoogleAuthProvider.credential(res.idTAceptaren);
+        const firecreds = firebase.auth.GoogleAuthProvider.credential(res.idToken);
         firebase.auth().signInWithCredential(firecreds).then((res) => {
           for (let i = 0; i < this.listadoAdmins.length; i++) {
             let element = this.listadoAdmins[i];
