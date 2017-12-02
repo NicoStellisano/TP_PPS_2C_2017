@@ -4730,7 +4730,6 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_41__swimlane_ngx_charts__["NgxChartsModule"],
             __WEBPACK_IMPORTED_MODULE_42__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
             __WEBPACK_IMPORTED_MODULE_42__angular_platform_browser_animations__["b" /* NoopAnimationsModule */],
-            DateValueAccessorModule,
             __WEBPACK_IMPORTED_MODULE_16_angularfire2__["a" /* AngularFireModule */].initializeApp(config)
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicApp */]],
