@@ -1,6 +1,6 @@
 export interface AdministrativoItem{
-    dni:string;
-    apellido:string;
-    nombre:string;
-    email:string;
+    DNI:string;
+    Apellido:string;
+    Nombre:string;
+    Email:string;
 }

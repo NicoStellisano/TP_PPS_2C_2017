@@ -30,6 +30,7 @@ export class CagarArchivoPage {
 
   //Atributos de descarga
   listaAlumnos:AlumnoItem[] = [];
+  listaGen:AdministrativoItem[] = [];
 
   listaA = {} as AlumnoListaItem;
   
@@ -168,10 +169,10 @@ listaAdministrativos:any[]=[];;
       for (let index = 0; index < arrayFilas.length; index++) {
         const elemento = arrayFilas[index];
         console.log(elemento);
-        admin.dni = elemento[0].trim();
-        admin.apellido = elemento[1].trim();
-        admin.nombre = elemento[2].trim();
-        admin.email = elemento[3].trim();
+        admin.DNI = elemento[0].trim();
+        admin.Apellido = elemento[1].trim();
+        admin.Nombre = elemento[2].trim();
+        admin.Email = elemento[3].trim();
       
         
         lista.push(admin);
@@ -188,13 +189,15 @@ listaAdministrativos:any[]=[];;
 
     fr.readAsText(file,'ISO-8859-4');
     
-    this.listaAlumnos = lista;
+    this.listaGen = lista;
     //console.log(this.listaAlumnos);
     //console.log(file.name);
     //console.log(file.size);
     this.nombreArchivo = file.name;
     this.sizeArchivo = file.size/1000 + " Kb";
-    this.firebaseService.updateProfesor(lista);
+    //this.firebaseService.updateProfesor(lista);
+    //console.log(lista);
+    //this.database.list('/SiFunca/').push(lista);
 
   }else if(this.persona=="administrativo")
   {
@@ -222,10 +225,10 @@ listaAdministrativos:any[]=[];;
       for (let index = 0; index < arrayFilas.length; index++) {
         const elemento = arrayFilas[index];
         console.log(elemento);
-        admin.dni = elemento[0].trim();
-        admin.apellido = elemento[1].trim();
-        admin.nombre = elemento[2].trim();
-        admin.email = elemento[3].trim();
+        admin.DNI = elemento[0].trim();
+        admin.Apellido = elemento[1].trim();
+        admin.Nombre = elemento[2].trim();
+        admin.Email = elemento[3].trim();
       
         
         lista.push(admin);
@@ -242,13 +245,13 @@ listaAdministrativos:any[]=[];;
 
     fr.readAsText(file,'ISO-8859-4');
     
-    this.listaAlumnos = lista;
+    this.listaGen = lista;
     //console.log(this.listaAlumnos);
     //console.log(file.name);
     //console.log(file.size);
     this.nombreArchivo = file.name;
     this.sizeArchivo = file.size/1000 + " Kb";
-    this.firebaseService.updateAdministrativo(lista);
+    //
   }
 }
 
@@ -331,10 +334,14 @@ if(this.persona=="alumno")
     
   }else if(this.persona=="profesor")
   {
-
+    console.log('---------- ingreso a profesores carga ---------');
+    this.firebaseService.updateProfesor(this.listaGen);
+    //this.database.list('/profesores/').push(this.listaGen);
   }else if(this.persona=="administrativo")
   {
-    
+    console.log('---------- ingreso a administrativos carga ---------');
+    this.firebaseService.updateAdministrativo(this.listaGen);
+    //this.database.list('/administrativos/').push(this.listaGen);
   }
 }
 

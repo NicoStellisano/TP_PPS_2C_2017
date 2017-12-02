@@ -9,6 +9,11 @@
   <ion-navbar color="dark">
     <ion-title>Descargar Archivo {{aula}}</ion-title>
     <ion-buttons end>
+      <button ion-button icon-only (click)="generaPDF()">
+        <ion-icon name="logo-dropbox"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
       <button ion-button icon-only (click)="generaCSV()">
         <ion-icon name="logo-dropbox"></ion-icon>
       </button>

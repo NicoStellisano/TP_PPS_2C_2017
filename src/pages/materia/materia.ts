@@ -97,8 +97,7 @@ this.nativeAudio.play('2');
        
         }
     
-//if(this.perfil=='')
-  //{
+
       for(let i=0;i<this.datos.length;i++)
         {
         

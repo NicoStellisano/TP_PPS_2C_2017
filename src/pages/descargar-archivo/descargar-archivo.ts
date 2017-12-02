@@ -36,6 +36,10 @@ export class DescargarArchivoPage {
     console.log('ionViewDidLoad DescargarArchivoPage');
   }
 
+  generaPDF(){
+    
+  }
+
   generaCSV(){
   
     let csvContent = "data:text/csv;charset=utf-8,";

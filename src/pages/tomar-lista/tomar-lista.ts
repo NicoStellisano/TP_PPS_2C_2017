@@ -32,6 +32,7 @@ export class TomarListaPage {
   alumnoItem = {} as AlumnoItem;
   listaAlumnos:AlumnoItem[] = [];
   alumnoPresenteLista:AlumnoPresenteItem[]=[];
+  persona:string;
   
   tomarAlumnos$:FirebaseListObservable<AlumnoItem[]>;
   tomarPresente$:FirebaseObjectObservable<AlumnoItem>;
@@ -39,7 +40,7 @@ export class TomarListaPage {
   constructor(public navCtrl: NavController,private fbService:FireBaseServiceProvider ,
     public navParams: NavParams,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
-    
+    this.persona = this.navParams.get('persona');
     
     if(this.aula == "4A"){
       this.tomarAlumnos$ = this.database.list('tomarA');
