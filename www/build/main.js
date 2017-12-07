@@ -2371,6 +2371,7 @@ var InicioAdminPage = (function () {
                                     if (element.Email == event.newData.Email) {
                                         var listadoAux = _this.listadoProfesores;
                                         listadoAux[i] = event.newData;
+                                        listadoAux[listadoAux.lastIndexOf(event.newData)].password = event.newData.DNI;
                                         console.log(element);
                                         //const key = element['$key'];
                                         _this.fireService.updateProfesor(listadoAux);
@@ -2391,6 +2392,7 @@ var InicioAdminPage = (function () {
                                     if (element.Email == event.newData.Email) {
                                         var listadoAux = _this.listadoAdministrativos;
                                         listadoAux[i] = event.newData;
+                                        listadoAux[listadoAux.lastIndexOf(event.newData)].password = event.newData.DNI;
                                         console.log(element);
                                         //const key = element['$key'];
                                         _this.fireService.updateAdministrativo(listadoAux);
@@ -4031,11 +4033,11 @@ var map = {
 		14
 	],
 	"../pages/inicio-administrativo/inicio-administrativo.module": [
-		932,
+		931,
 		13
 	],
 	"../pages/inicio-alumno/inicio-alumno.module": [
-		931,
+		932,
 		12
 	],
 	"../pages/inicio-profesor/inicio-profesor.module": [
@@ -4710,8 +4712,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/encuestas-editar/encuestas-editar.module#EncuestasEditarPageModule', name: 'EncuestasEditarPage', segment: 'encuestas-editar', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/encuestas/encuestas.module#EncuestasPageModule', name: 'EncuestasPage', segment: 'encuestas', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/inicio-admin/inicio-admin.module#InicioAdminPageModule', name: 'InicioAdminPage', segment: 'inicio-admin', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/inicio-alumno/inicio-alumno.module#InicioAlumnoPageModule', name: 'InicioAlumnoPage', segment: 'inicio-alumno', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/inicio-administrativo/inicio-administrativo.module#InicioAdministrativoPageModule', name: 'InicioAdministrativoPage', segment: 'inicio-administrativo', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/inicio-alumno/inicio-alumno.module#InicioAlumnoPageModule', name: 'InicioAlumnoPage', segment: 'inicio-alumno', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/inicio-profesor/inicio-profesor.module#InicioProfesorPageModule', name: 'InicioProfesorPage', segment: 'inicio-profesor', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/materia/materia.module#MateriaPageModule', name: 'MateriaPage', segment: 'materia', priority: 'low', defaultHistory: [] },
