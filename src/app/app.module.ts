@@ -49,6 +49,7 @@ import{ NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { MateriasAdministrativoPage } from '../pages/materias-administrativo/materias-administrativo';
 import { QrencuestaPage } from '../pages/qrencuesta/qrencuesta';
 //import { DateValueAccessorModule } from 'angular-date-value-accessor';
+import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
 
 
 
@@ -93,7 +94,8 @@ var config = {
     TomarListaPage,
     RespuestaEncuestaPage,
     MateriasAdministrativoPage,
-    QrencuestaPage
+    QrencuestaPage,
+    AbmAlumnosPage
   ],
   imports: [
     BrowserModule,
@@ -137,7 +139,8 @@ var config = {
     TomarListaPage,
     RespuestaEncuestaPage,
     MateriasAdministrativoPage,
-    QrencuestaPage
+    QrencuestaPage,
+    AbmAlumnosPage
   ],
   providers: [
     StatusBar,

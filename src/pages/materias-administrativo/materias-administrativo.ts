@@ -291,7 +291,7 @@ ionViewWillLeave()
   {
     this.navCtrl.push(EncuestasPage,{aulaa:this.aula,materia:this.materia}); 
   }
-
+/*
   onDeleteConfirm(event) {
     let alert = this.alertCtrl.create({
       title: '¿Eliminar?',
@@ -825,6 +825,6 @@ ionViewWillLeave()
   alert.present();
 
 }
-
+*/
 
 }

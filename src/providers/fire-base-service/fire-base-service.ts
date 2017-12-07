@@ -66,6 +66,12 @@ export class FireBaseServiceProvider {
         return this.afd.list('/personas/administrativos');
         
       }
+      
+      getABMAlumnos()
+      {
+        return this.afd.list('/personas/alumnos');
+        
+      }
       getAlumnos()
       {
         return this.afd.list('/alumno-lista');
@@ -178,6 +184,10 @@ export class FireBaseServiceProvider {
       updateAlumno(data,key)
       {
         return this.afd.object('/alumno-lista/'+key+'/alumnos').update(data);
+      }
+      updateABMAlumno(data)
+      {
+        return this.afd.list('/personas/').update('alumnos',data);
       }
       updateAlumnoLista(data,key)
       {
