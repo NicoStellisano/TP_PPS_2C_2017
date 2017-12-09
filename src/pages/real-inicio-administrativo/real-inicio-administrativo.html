@@ -11,13 +11,41 @@
   </ion-navbar>
 
 </ion-header>
-
+<div>
+<ion-select interface='action-sheet' [(ngModel)]="curso" >
+    <ion-option *ngFor="let curso of listadoAlumnos" (ionSelect)="cursar(curso)" [value]="curso">{{curso.aula}},{{curso.materia}}</ion-option>
+  </ion-select>
 
 <ion-content style="background-image:url('assets/hallowenAdministrativo.jpg')" class="fondo">
+  <div style="width:100%">
+      <ion-grid style="background-color:white;">
+        <h4>Faltas</h4>
+         <ion-row >
+           <ion-col >
+             <ngx-charts-bar-horizontal 
+               [view]="view"
+               [results]="informacion"
+               xAxis="true"
+               yAxis="true"
+             >
+             </ngx-charts-bar-horizontal>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+      </div>
+    </div>
+      <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> 
+          <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista
+        </button>
+
   <div *ngIf="seleccion==''">
       <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
           <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos
         </button>
+
+        <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> 
+            <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista
+          </button>
 
           <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion('profesores')">Profesores</button>           
           <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion('alumnos')">Alumnos</button> 

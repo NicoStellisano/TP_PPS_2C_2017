@@ -1,6 +1,6 @@
 import { Component,ViewChild } from '@angular/core';
 
-import { IonicPage, NavController, NavParams,LoadingController,Platform,AlertController,Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController,Platform,AlertController,Content ,ModalController} from 'ionic-angular';
 //import { AulaAdministrativoItem } from '../../models/aula-administrativo-item/aula-administrativo.interface';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
@@ -21,6 +21,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { TomarListaPage } from '../tomar-lista/tomar-lista';
 import { NativeAudio } from '@ionic-native/native-audio';
+import { AsignarMateriaAlumnoPage } from '../asignar-materia-alumno/asignar-materia-alumno';
+
 /**
  * Generated class for the AulaProfesorPage page.
  *
@@ -45,9 +47,10 @@ export class MateriasAdministrativoPage {
   settings = {
     actions:{
       columnTitle:'',
-      /*add:false,
+
+      add:false,
       edit:false,
-      delete:false*/
+      delete:false
     },
     noDataMessage:"No se encuentran registros",
     delete: {
@@ -70,22 +73,29 @@ export class MateriasAdministrativoPage {
       legajo: {
         title: 'legajo',
         filter: false,
+        type: 'number',
         editor: {
           type: 'number',
         },
-      },
-      mail: {
-        title: 'mail',
-        filter: false
       },
       nombre: {
         title: 'nombre',
         filter: false
       },
-      turno: {
-        title: 'Turno',
-        filter: false
-      },
+      Accion: {
+        title: 'Acción',
+        filter: false,
+        type:'custom',
+        add: false,
+        edit: false,  
+        addable: false,
+        editable:false,
+        isEditable:false,
+        isAddable:false,
+        renderComponent: ButtonRenderComponent,
+        onComponentInitFunction: this.actions.bind(this)
+         
+        }
      
       
      
@@ -117,7 +127,7 @@ export class MateriasAdministrativoPage {
 
   constructor( public db: AngularFireDatabase,private nativeAudio: NativeAudio,public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
     public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ,public platform:Platform,public afd:AngularFireDatabase
-    ,public alertCtrl:AlertController) {
+    ,public alertCtrl:AlertController,public modalCtrl: ModalController) {
       this.db.list("/tomarA").subscribe(data=>
         {
           this.listFaltantes=data;
@@ -140,16 +150,24 @@ this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     this.nativeAudio.play('bienvenidoProfesor');
   }
 
+
+  actions(instance) {
+    instance.save.subscribe(row => {
+      let nombreCompleto = row.nombre;
+      let profileModal = this.modalCtrl.create(AsignarMateriaAlumnoPage, { alumno: nombreCompleto,legajo:row.legajo });
+      profileModal.present();
+    });
+  }
+
   activar()
   {
-   this.seleccion="a";
    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
   
    
 
      for (let i = 0; i < this.listadoAlumnos.length; i++) {
        const element = this.listadoAlumnos[i];
-       if(element.aula=="4A")
+       if(element.aula==this.aula && element.materia==this.materia)
        {
          for (let j = 0; j < element.alumnos.length; j++) {
            const element2 = element.alumnos[j];
@@ -197,11 +215,11 @@ loading.present();
         {
           this.listFaltantesB=data;
         });
-    this.applyDimensions();
-    window.addEventListener('resize', () => {
-      this.applyDimensions();
-    }, false);
-    if(this.aula=="4A")
+    //this.applyDimensions();
+    //window.addEventListener('resize', () => {
+     // this.applyDimensions();
+    //}, false);
+    if(this.aula=="4A" && this.materia=="PPS")
       {
         let contador=0;
         for (let i = 0; i < this.listFaltantes.length; i++) {
@@ -221,7 +239,7 @@ loading.present();
             'value':this.listFaltantes.length-contador
           }
           ];
-      }else if(this.aula=="4B")
+      }else if(this.aula=="4B" && this.materia=="PPS")
       {
         let contador=0;
         for (let i = 0; i < this.listFaltantesB.length; i++) {
@@ -239,6 +257,25 @@ loading.present();
           {
             'name':'Sin faltas',
             'value':this.listFaltantesB.length-contador
+          }
+          ];
+      }else{
+        let contador=Math.random()*10;
+        for (let i = 0; i < this.listFaltantes.length; i++) {
+          const element = this.listFaltantes[i];
+          if(element.contPresentes!=0)
+          {
+            contador++;
+          }
+        }
+        this.informacion=[
+          {
+            'name':'Con al menos una falta',
+            'value':contador
+          },
+          {
+            'name':'Sin faltas',
+            'value':this.listFaltantes.length-contador
           }
           ];
       }

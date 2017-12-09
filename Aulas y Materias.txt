@@ -9,3 +9,20 @@
 
 4A Diseño Y Administración De Bases de Datos,Laboratorio De Computación IV,Legislación,Metodología De Sistemas I,PPS
 4B Diseño Y Administración De Bases de Datos,Laboratorio De Computación IV,Legislación,Metodología De Sistemas I,PPS
+
+5A/5B Metodología de Sistemas II
+Programación Avanzada I
+Laboratorio de Computación V
+Bases de Datos II
+Matemática II
+Redes
+Inglés Técnico Avanzado I
+
+6A/6B
+Administración y dirección de Proyectos Informáticos
+Metodología de Sistemas III
+Investigación Operativa II
+Inglés Técnico Avanzado II
+Matemática III
+Programación Avanzada II
+Seminario

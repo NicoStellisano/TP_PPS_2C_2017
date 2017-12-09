@@ -50,6 +50,7 @@ import { MateriasAdministrativoPage } from '../pages/materias-administrativo/mat
 import { QrencuestaPage } from '../pages/qrencuesta/qrencuesta';
 //import { DateValueAccessorModule } from 'angular-date-value-accessor';
 import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
+import { AsignarMateriaAlumnoPage } from '../pages/asignar-materia-alumno/asignar-materia-alumno';
 
 
 
@@ -95,7 +96,8 @@ var config = {
     RespuestaEncuestaPage,
     MateriasAdministrativoPage,
     QrencuestaPage,
-    AbmAlumnosPage
+    AbmAlumnosPage,
+    AsignarMateriaAlumnoPage
   ],
   imports: [
     BrowserModule,
@@ -140,7 +142,8 @@ var config = {
     RespuestaEncuestaPage,
     MateriasAdministrativoPage,
     QrencuestaPage,
-    AbmAlumnosPage
+    AbmAlumnosPage,
+    AsignarMateriaAlumnoPage
   ],
   providers: [
     StatusBar,
