@@ -7,16 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Buscar Por:</ion-title>
+    <ion-select interface='action-sheet'>
+      <ion-option *ngFor="let curso of listadoAlumnos"  [selected]="curso.aula == '4A'" (ionSelect)="cursar(curso)" [value]="curso">{{curso.aula}},{{curso.materia}}</ion-option>
+    </ion-select>
   </ion-navbar>
-
+  
 </ion-header>
-<div>
-<ion-select interface='action-sheet' [(ngModel)]="curso" >
-    <ion-option *ngFor="let curso of listadoAlumnos" (ionSelect)="cursar(curso)" [value]="curso">{{curso.aula}},{{curso.materia}}</ion-option>
-  </ion-select>
+
 
 <ion-content style="background-image:url('assets/hallowenAdministrativo.jpg')" class="fondo">
+  <div>
+    
   <div style="width:100%">
       <ion-grid style="background-color:white;">
         <h4>Faltas</h4>
@@ -34,9 +35,7 @@
        </ion-grid>
       </div>
     </div>
-      <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> 
-          <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista
-        </button>
+     
 
   <div *ngIf="seleccion==''">
       <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 

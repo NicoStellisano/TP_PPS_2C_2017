@@ -36,7 +36,7 @@ listaMaterias:any[]=[];
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public viewCtrl: ViewController,public alertCtrl:AlertController) {
    
     this.alumno=this.navParams.get('alumno');
-
+    this.legajo=this.navParams.get('legajo');
     
     
    
@@ -78,15 +78,51 @@ listaMaterias:any[]=[];
 
   asignar()
   {
+    let bandera=false;
 try{
     for (let i = 0; i < this.listaAlumnos.length; i++) {
       const element = this.listaAlumnos[i];
       if(element.aula==this.aula && element.materia==this.materia)
       {
-        element.alumnos=this.listaAux;
-        this.listaAux.push(element);
-
-                this.fireService.updateAlumno(this.listaAux,element['$key']);
+        for (let j = 0; j < element.alumnos.length; j++) {
+          let element2 = element.alumnos[j];
+          if(element2.nombre==this.alumno)
+          {
+            let alert = this.alertCtrl.create({
+              title: "Error!",
+              subTitle: "El alumno ya está inscripto en esta materia",
+              cssClass:"miClaseDanger",
+            buttons: ['Aceptar']
+          });
+          alert.present();
+          bandera=true;
+          break;
+          }
+        }
+        if(!bandera)
+        {
+          this.listaAux=element.alumnos;
+         for (let h = 0; h < this.listaABMAlumnos.length; h++) {
+           const elementh =  this.listaABMAlumnos[h];
+           if(elementh.legajo==this.legajo)
+           {
+             this.listaAux.push(elementh);
+             this.fireService.updateAlumno(this.listaAux,element['$key']);
+             let alert = this.alertCtrl.create({
+              title: "Exito!",
+              subTitle: "Alumno asignado",
+              cssClass:"miClaseAlert",
+            buttons: ['Aceptar']
+          });
+           alert.present();
+           this.viewCtrl.dismiss();
+           }
+           
+         }
+   
+        }
+       
+        
                 
                 break;
 
@@ -95,14 +131,8 @@ try{
 
      
     
-      let alert = this.alertCtrl.create({
-        title: "Exito!",
-        subTitle: "Alumno asignado",
-        cssClass:"miClaseAlert",
-      buttons: ['Aceptar']
-    });
-     alert.present();
-      this.viewCtrl.dismiss();
+     
+      
     } catch (error) {
       let alert = this.alertCtrl.create({
         title: "Error!",

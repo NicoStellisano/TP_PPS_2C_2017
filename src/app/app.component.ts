@@ -21,7 +21,7 @@ import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
 })
 export class MyApp {
   //rootPage:any = LoginPage;
-  rootPage:any = AbmAlumnosPage; //test
+  rootPage:any = LoginPage; //test
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

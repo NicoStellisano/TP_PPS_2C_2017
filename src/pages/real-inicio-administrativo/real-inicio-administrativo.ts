@@ -76,6 +76,16 @@ informacion: any[] = [];
             
           }); 
 
+          this.db.list("/tomarA").subscribe(data=>
+            {
+              this.listFaltantes=data;
+            });
+      
+            this.db.list("/tomarB").subscribe(data=>
+              {
+                this.listFaltantesB=data;
+              });
+
 
           this.db.list('/notificacionFalta').
           subscribe( data => {
@@ -121,8 +131,10 @@ informacion: any[] = [];
 
       cursar(curso)
       {
+        
         this.aula=curso.aula;
         this.materia=curso.materia;
+      
 
         this.db.list("/tomarA").subscribe(data=>
           {
@@ -202,13 +214,14 @@ informacion: any[] = [];
               ];
           }
       }
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+   
     this.aula="4A";
     this.materia="PPS";
+    
     this.seleccion="";
     
     console.log('ionViewDidLoad RealInicioAdministrativoPage');
-
     this.db.list("/tomarA").subscribe(data=>
       {
         this.listFaltantes=data;
@@ -218,6 +231,14 @@ informacion: any[] = [];
         {
           this.listFaltantesB=data;
         });
+    setTimeout(() => {
+      this.activar();
+    }, 1000); 
+    
+  }
+
+  activar()
+  {
     this.applyDimensions();
     window.addEventListener('resize', () => {
       this.applyDimensions();
@@ -287,7 +308,6 @@ informacion: any[] = [];
           ];
       }
   }
-
   Redireccion(direccion)
   {
     console.log(this.listadoProfesores);
