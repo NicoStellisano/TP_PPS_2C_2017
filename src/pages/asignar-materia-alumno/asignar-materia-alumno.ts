@@ -31,7 +31,7 @@ alumno:string;
 profesor:any;
 legajo:any;
 listaMaterias:any[]=[];
-
+listaAulas:any[]=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public viewCtrl: ViewController,public alertCtrl:AlertController) {
    
@@ -53,9 +53,33 @@ listaMaterias:any[]=[];
           this.listaABMAlumnos=data;
         });
 
+setTimeout(() => {
+  this.act();
+}, 500);
+       
+
      
   }
-
+act()
+{
+  for (let i = 0; i < this.listaAlumnos.length; i++) {
+    const element = this.listaAlumnos[i];
+    let flag=false;
+    for (let j = 0; j < this.listaAulas.length; j++) {
+      const element2 = this.listaAulas[j];
+      if(element.aula==element2.aula)
+      {
+        flag=true;
+        break;
+      }
+    }
+    if(!flag)
+    {
+      this.listaAulas.push(element);
+    }
+    
+  }
+}
   changeList(aula)
   {
     this.aula=aula;

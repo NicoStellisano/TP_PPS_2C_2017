@@ -25,7 +25,7 @@
    <!--   <ion-input clearInput type="text"  [(ngModel)]="aula" name="aula" id="aula"></ion-input>-->
     
       <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" interface='action-sheet' [(ngModel)]="aula" name="aula" id="aula">
-        <ion-option *ngFor="let alumnos of listaAlumnos" (ionSelect)="changeList(alumnos.aula)" [value]="alumnos.aula">{{alumnos.aula}}</ion-option>
+        <ion-option *ngFor="let alumnos of listaAulas" (ionSelect)="changeList(alumnos.aula)" [value]="alumnos.aula">{{alumnos.aula}}</ion-option>
         
        </ion-select>
     </ion-item>

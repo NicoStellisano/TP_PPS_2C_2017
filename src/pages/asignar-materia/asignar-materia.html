@@ -22,7 +22,7 @@
 <ion-input disabled clearInput type="text"  [(ngModel)]="materiaD" name="materiaD" id="materiaD"></ion-input></ion-item>
 <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
   <ion-label style="color:white">Profesor</ion-label>
- <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="profesor" name="profesor" id="profesor">
+ <ion-select interface='action-sheet' style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="profesor" name="profesor" id="profesor">
    <ion-option *ngFor="let profesor of listaProfesores" [value]="profesor">{{profesor.Nombre}} {{profesor.Apellido}}</ion-option>
    
   </ion-select>

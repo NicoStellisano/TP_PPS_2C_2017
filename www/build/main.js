@@ -88,7 +88,7 @@ var AsignarMateriaPage = (function () {
 }());
 AsignarMateriaPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-asignar-materia',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\asignar-materia\asignar-materia.html"*/'<!--\n  Generated template for the AsignarmateriaDPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Asignar Profesor</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n        <ion-label  style="color:white" floating>Aula</ion-label>\n    <ion-input disabled clearInput type="text"  [(ngModel)]="aula" name="aula" id="aula"></ion-input></ion-item>\n  <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n    <ion-label  style="color:white" floating>Materia</ion-label>\n<ion-input disabled clearInput type="text"  [(ngModel)]="materiaD" name="materiaD" id="materiaD"></ion-input></ion-item>\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n  <ion-label style="color:white">Profesor</ion-label>\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="profesor" name="profesor" id="profesor">\n   <ion-option *ngFor="let profesor of listaProfesores" [value]="profesor">{{profesor.Nombre}} {{profesor.Apellido}}</ion-option>\n   \n  </ion-select>\n</ion-item>\n<br> <br>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="asignar()">Asignar</button>\n\n</ion-content>\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\asignar-materia\asignar-materia.html"*/,
+        selector: 'page-asignar-materia',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\asignar-materia\asignar-materia.html"*/'<!--\n  Generated template for the AsignarmateriaDPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Asignar Profesor</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n        <ion-label  style="color:white" floating>Aula</ion-label>\n    <ion-input disabled clearInput type="text"  [(ngModel)]="aula" name="aula" id="aula"></ion-input></ion-item>\n  <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n    <ion-label  style="color:white" floating>Materia</ion-label>\n<ion-input disabled clearInput type="text"  [(ngModel)]="materiaD" name="materiaD" id="materiaD"></ion-input></ion-item>\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n  <ion-label style="color:white">Profesor</ion-label>\n <ion-select interface=\'action-sheet\' style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="profesor" name="profesor" id="profesor">\n   <ion-option *ngFor="let profesor of listaProfesores" [value]="profesor">{{profesor.Nombre}} {{profesor.Apellido}}</ion-option>\n   \n  </ion-select>\n</ion-item>\n<br> <br>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="asignar()">Asignar</button>\n\n</ion-content>\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\asignar-materia\asignar-materia.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], AsignarMateriaPage);
@@ -1661,6 +1661,7 @@ var AsignarMateriaAlumnoPage = (function () {
         this.listaABMAlumnos = [];
         this.listaAux = [];
         this.listaMaterias = [];
+        this.listaAulas = [];
         this.alumno = this.navParams.get('alumno');
         this.legajo = this.navParams.get('legajo');
     }
@@ -1672,6 +1673,25 @@ var AsignarMateriaAlumnoPage = (function () {
         this.fireService.getABMAlumnos().subscribe(function (data) {
             _this.listaABMAlumnos = data;
         });
+        setTimeout(function () {
+            _this.act();
+        }, 500);
+    };
+    AsignarMateriaAlumnoPage.prototype.act = function () {
+        for (var i = 0; i < this.listaAlumnos.length; i++) {
+            var element = this.listaAlumnos[i];
+            var flag = false;
+            for (var j = 0; j < this.listaAulas.length; j++) {
+                var element2 = this.listaAulas[j];
+                if (element.aula == element2.aula) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) {
+                this.listaAulas.push(element);
+            }
+        }
     };
     AsignarMateriaAlumnoPage.prototype.changeList = function (aula) {
         this.aula = aula;
@@ -1695,13 +1715,13 @@ var AsignarMateriaAlumnoPage = (function () {
                     for (var j = 0; j < element.alumnos.length; j++) {
                         var element2 = element.alumnos[j];
                         if (element2.nombre == this.alumno) {
-                            var alert_1 = this.alertCtrl.create({
+                            var alert = this.alertCtrl.create({
                                 title: "Error!",
                                 subTitle: "El alumno ya está inscripto en esta materia",
                                 cssClass: "miClaseDanger",
                                 buttons: ['Aceptar']
                             });
-                            alert_1.present();
+                            alert.present();
                             bandera = true;
                             break;
                         }
@@ -1713,13 +1733,13 @@ var AsignarMateriaAlumnoPage = (function () {
                             if (elementh.legajo == this.legajo) {
                                 this.listaAux.push(elementh);
                                 this.fireService.updateAlumno(this.listaAux, element['$key']);
-                                var alert_2 = this.alertCtrl.create({
+                                var alert = this.alertCtrl.create({
                                     title: "Exito!",
                                     subTitle: "Alumno asignado",
                                     cssClass: "miClaseAlert",
                                     buttons: ['Aceptar']
                                 });
-                                alert_2.present();
+                                alert.present();
                                 this.viewCtrl.dismiss();
                             }
                         }
@@ -1729,13 +1749,13 @@ var AsignarMateriaAlumnoPage = (function () {
             }
         }
         catch (error) {
-            var alert_3 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: "Error!",
                 subTitle: "No se pudo asignar el alumno",
                 cssClass: "miClaseDanger",
                 buttons: ['Aceptar']
             });
-            alert_3.present();
+            alert.present();
             console.log(error);
         }
     };
@@ -1743,11 +1763,12 @@ var AsignarMateriaAlumnoPage = (function () {
 }());
 AsignarMateriaAlumnoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-asignar-materia-alumno',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\asignar-materia-alumno\asignar-materia-alumno.html"*/'<!--\n\n  Generated template for the AsignarmateriaDPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  \n\n    <ion-navbar>\n\n      <ion-title>Asignar Alumno</ion-title>\n\n    </ion-navbar>\n\n  \n\n  </ion-header>\n\n  \n\n  \n\n  <ion-content padding>\n\n\n\n      <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n          <ion-label style="color:white">Alumno</ion-label>\n\n             <ion-input disabled clearInput type="text"  [(ngModel)]="alumno" name="alumno" id="alumno"></ion-input>\n\n        </ion-item>\n\n\n\n      <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n          <ion-label  style="color:white" floating>Aula</ion-label>\n\n   <!--   <ion-input clearInput type="text"  [(ngModel)]="aula" name="aula" id="aula"></ion-input>-->\n\n    \n\n      <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" interface=\'action-sheet\' [(ngModel)]="aula" name="aula" id="aula">\n\n        <ion-option *ngFor="let alumnos of listaAlumnos" (ionSelect)="changeList(alumnos.aula)" [value]="alumnos.aula">{{alumnos.aula}}</ion-option>\n\n        \n\n       </ion-select>\n\n    </ion-item>\n\n    <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n      <ion-label  style="color:white" floating>Materia</ion-label>\n\n  <!--  <ion-input clearInput type="text"  [(ngModel)]="materiaD" name="materiaD" id="materiaD"></ion-input>-->\n\n  <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" interface=\'action-sheet\' [(ngModel)]="materia" name="materia" id="materia">\n\n    <ion-option *ngFor="let item of listaMaterias" (ionSelect)="changeMateria(item.materia)" [value]="item.materia">{{item.materia}}</ion-option>\n\n    \n\n   </ion-select>\n\n\n\n</ion-item>\n\n \n\n  <br> <br>\n\n  <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="asignar()">Asignar</button>\n\n  \n\n  </ion-content>\n\n  '/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\asignar-materia-alumno\asignar-materia-alumno.html"*/,
+        selector: 'page-asignar-materia-alumno',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\asignar-materia-alumno\asignar-materia-alumno.html"*/'<!--\n\n  Generated template for the AsignarmateriaDPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  \n\n    <ion-navbar>\n\n      <ion-title>Asignar Alumno</ion-title>\n\n    </ion-navbar>\n\n  \n\n  </ion-header>\n\n  \n\n  \n\n  <ion-content padding>\n\n\n\n      <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n          <ion-label style="color:white">Alumno</ion-label>\n\n             <ion-input disabled clearInput type="text"  [(ngModel)]="alumno" name="alumno" id="alumno"></ion-input>\n\n        </ion-item>\n\n\n\n      <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n          <ion-label  style="color:white" floating>Aula</ion-label>\n\n   <!--   <ion-input clearInput type="text"  [(ngModel)]="aula" name="aula" id="aula"></ion-input>-->\n\n    \n\n      <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" interface=\'action-sheet\' [(ngModel)]="aula" name="aula" id="aula">\n\n        <ion-option *ngFor="let alumnos of listaAulas" (ionSelect)="changeList(alumnos.aula)" [value]="alumnos.aula">{{alumnos.aula}}</ion-option>\n\n        \n\n       </ion-select>\n\n    </ion-item>\n\n    <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n      <ion-label  style="color:white" floating>Materia</ion-label>\n\n  <!--  <ion-input clearInput type="text"  [(ngModel)]="materiaD" name="materiaD" id="materiaD"></ion-input>-->\n\n  <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" interface=\'action-sheet\' [(ngModel)]="materia" name="materia" id="materia">\n\n    <ion-option *ngFor="let item of listaMaterias" (ionSelect)="changeMateria(item.materia)" [value]="item.materia">{{item.materia}}</ion-option>\n\n    \n\n   </ion-select>\n\n\n\n</ion-item>\n\n \n\n  <br> <br>\n\n  <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="asignar()">Asignar</button>\n\n  \n\n  </ion-content>\n\n  '/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\asignar-materia-alumno\asignar-materia-alumno.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object])
 ], AsignarMateriaAlumnoPage);
 
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=asignar-materia-alumno.js.map
 
 /***/ }),
@@ -3270,6 +3291,7 @@ LoginPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__materias_administrativo_materias_administrativo__ = __webpack_require__(267);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__cagar_archivo_cagar_archivo__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__tomar_lista_tomar_lista__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__abm_alumnos_abm_alumnos__ = __webpack_require__(479);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3283,6 +3305,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 // for databas
+
 
 
 
@@ -3412,7 +3435,8 @@ var RealInicioAdministrativoPage = (function () {
                 var element = this.listadoAlumnos[i];
                 if (element.aula == this.aula && element.materia == this.materia) {
                     cantidad = element.alumnos.length;
-                    contador = Math.random() * cantidad;
+                    contador = Math.round(Math.random() * cantidad);
+                    break;
                 }
             }
             this.informacion = [
@@ -3544,6 +3568,10 @@ var RealInicioAdministrativoPage = (function () {
         // alert("voy a tomar lista");
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__tomar_lista_tomar_lista__["a" /* TomarListaPage */], { aulaa: "", materia: "" });
     };
+    RealInicioAdministrativoPage.prototype.lista = function () {
+        // alert("voy a tomar lista");
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__abm_alumnos_abm_alumnos__["a" /* AbmAlumnosPage */]);
+    };
     RealInicioAdministrativoPage.prototype.Seleccion = function (data) {
         console.log(this.listadoAlumnos);
         switch (this.seleccion) {
@@ -3619,15 +3647,16 @@ var RealInicioAdministrativoPage = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */])
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]) === "function" && _a || Object)
 ], RealInicioAdministrativoPage.prototype, "content", void 0);
 RealInicioAdministrativoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-real-inicio-administrativo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\real-inicio-administrativo\real-inicio-administrativo.html"*/'<!--\n\n  Generated template for the RealInicioAdministrativoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-select interface=\'action-sheet\'>\n\n      <ion-option *ngFor="let curso of listadoAlumnos"  [selected]="curso.aula == \'4A\'" (ionSelect)="cursar(curso)" [value]="curso">{{curso.aula}},{{curso.materia}}</ion-option>\n\n    </ion-select>\n\n  </ion-navbar>\n\n  \n\n</ion-header>\n\n\n\n\n\n<ion-content style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n  <div>\n\n    \n\n  <div style="width:100%">\n\n      <ion-grid style="background-color:white;">\n\n        <h4>Faltas</h4>\n\n         <ion-row >\n\n           <ion-col >\n\n             <ngx-charts-bar-horizontal \n\n               [view]="view"\n\n               [results]="informacion"\n\n               xAxis="true"\n\n               yAxis="true"\n\n             >\n\n             </ngx-charts-bar-horizontal>\n\n           </ion-col>\n\n         </ion-row>\n\n       </ion-grid>\n\n      </div>\n\n    </div>\n\n     \n\n\n\n  <div *ngIf="seleccion==\'\'">\n\n      <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n          <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n\n        </button>\n\n\n\n        <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n\n            <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n\n          </button>\n\n\n\n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'profesores\')">Profesores</button>           \n\n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'alumnos\')">Alumnos</button> \n\n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'materias\')">Materias</button> \n\n        </div>\n\n        <button *ngIf="seleccion!=\'\'" ion-button icon-only round color="primary" (click)="aparecer()" style="margin:auto;text-align:center;display:block;"><ion-icon md="md-arrow-back"></ion-icon></button>\n\n\n\n        <div *ngIf="seleccion==\'alumnos\'" > \n\n          <span *ngFor="let alumno of listaAlumnos">  <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.legajo)">{{alumno.nombre}}</button>  </span>\n\n      </div>\n\n\n\n      <div *ngIf="seleccion==\'materias\'"> \n\n        <span *ngFor="let materia of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(materia)">Materia:{{materia.nombre}},Aula:{{materia.aula}}</button> </span> \n\n    </div>\n\n\n\n      \n\n    <div *ngIf="seleccion==\'profesores\'" > \n\n        <span *ngFor="let profesor of listadoProfesores"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(profesor.Apellido)">{{profesor.Nombre}},{{profesor.Apellido}}</button> </span> \n\n     </div>\n\n\n\n    <div *ngIf="seleccion==\'materiasProfesor\'" > \n\n     <span *ngFor="let mp of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(mp)">Materia:{{mp.materia}},Aula:{{mp.aula}} </button>  </span>\n\n  </div>\n\n    \n\n  <div *ngIf="seleccion==\'aulasAlumnos\'" > \n\n      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(\'a\')">4º A </button>  </span>\n\n      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(\'b\')">4º B </button>  </span>\n\n      \n\n    </div>\n\n\n\n    <div *ngIf="seleccion==\'a\'" > \n\n        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}}</button>  </span>\n\n     </div>\n\n\n\n     <div *ngIf="seleccion==\'b\'" > \n\n        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}} </button>  </span>\n\n     </div>\n\n          \n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\real-inicio-administrativo\real-inicio-administrativo.html"*/,
+        selector: 'page-real-inicio-administrativo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\real-inicio-administrativo\real-inicio-administrativo.html"*/'<!--\n\n  Generated template for the RealInicioAdministrativoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-select interface=\'action-sheet\'>\n\n      <ion-option *ngFor="let curso of listadoAlumnos"  [selected]="curso.aula == \'4A\' && curso.materia==\'PPS\'" (ionSelect)="cursar(curso)" [value]="curso">{{curso.aula}},{{curso.materia}}</ion-option>\n\n    </ion-select>\n\n  </ion-navbar>\n\n  \n\n</ion-header>\n\n\n\n\n\n<ion-content style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n  <div>\n\n    \n\n  <div style="width:100%">\n\n      <ion-grid style="background-color:white;">\n\n        <h4>Faltas</h4>\n\n         <ion-row >\n\n           <ion-col >\n\n             <ngx-charts-bar-horizontal \n\n               [view]="view"\n\n               [results]="informacion"\n\n               xAxis="true"\n\n               yAxis="true"\n\n             >\n\n             </ngx-charts-bar-horizontal>\n\n           </ion-col>\n\n         </ion-row>\n\n       </ion-grid>\n\n      </div>\n\n    </div>\n\n     \n\n\n\n  <div *ngIf="seleccion==\'\'">\n\n      <button ion-button round full large (click)="lista()" class="animated flipInX miBoton miButton"> \n\n          <ion-icon name="arrow-round-back"></ion-icon> Lista de Alumnos\n\n        </button>\n\n\n\n      <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n          <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n\n        </button>\n\n\n\n        <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n\n            <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n\n          </button>\n\n\n\n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'profesores\')">Profesores</button>           \n\n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'alumnos\')">Alumnos</button> \n\n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'materias\')">Materias</button> \n\n        </div>\n\n        <button *ngIf="seleccion!=\'\'" ion-button icon-only round color="primary" (click)="aparecer()" style="margin:auto;text-align:center;display:block;"><ion-icon md="md-arrow-back"></ion-icon></button>\n\n\n\n        <div *ngIf="seleccion==\'alumnos\'" > \n\n          <span *ngFor="let alumno of listaAlumnos">  <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.legajo)">{{alumno.nombre}}</button>  </span>\n\n      </div>\n\n\n\n      <div *ngIf="seleccion==\'materias\'"> \n\n        <span *ngFor="let materia of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(materia)">Materia:{{materia.nombre}},Aula:{{materia.aula}}</button> </span> \n\n    </div>\n\n\n\n      \n\n    <div *ngIf="seleccion==\'profesores\'" > \n\n        <span *ngFor="let profesor of listadoProfesores"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(profesor.Apellido)">{{profesor.Nombre}},{{profesor.Apellido}}</button> </span> \n\n     </div>\n\n\n\n    <div *ngIf="seleccion==\'materiasProfesor\'" > \n\n     <span *ngFor="let mp of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(mp)">Materia:{{mp.materia}},Aula:{{mp.aula}} </button>  </span>\n\n  </div>\n\n    \n\n  <div *ngIf="seleccion==\'aulasAlumnos\'" > \n\n      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(\'a\')">4º A </button>  </span>\n\n      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(\'b\')">4º B </button>  </span>\n\n      \n\n    </div>\n\n\n\n    <div *ngIf="seleccion==\'a\'" > \n\n        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}}</button>  </span>\n\n     </div>\n\n\n\n     <div *ngIf="seleccion==\'b\'" > \n\n        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}} </button>  </span>\n\n     </div>\n\n          \n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\real-inicio-administrativo\real-inicio-administrativo.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]) === "function" && _f || Object])
 ], RealInicioAdministrativoPage);
 
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=real-inicio-administrativo.js.map
 
 /***/ }),
@@ -3641,16 +3670,15 @@ RealInicioAdministrativoPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_button_renderer_button_renderer__ = __webpack_require__(376);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_fire_base_service_fire_base_service__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__notificacion_notificacion__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__materia_materia__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__encuestas_encuestas__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__tomar_lista_tomar_lista__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_native_audio__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__asignar_materia_alumno_asignar_materia_alumno__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__notificacion_notificacion__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__materia_materia__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__encuestas_encuestas__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__tomar_lista_tomar_lista__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_native_audio__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__asignar_materia_alumno_asignar_materia_alumno__ = __webpack_require__(258);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3663,7 +3691,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 //import { AulaAdministrativoItem } from '../../models/aula-administrativo-item/aula-administrativo.interface';
-
 
 
 
@@ -3735,19 +3762,6 @@ var MateriasAdministrativoPage = (function () {
                     title: 'nombre',
                     filter: false
                 },
-                Accion: {
-                    title: 'Acción',
-                    filter: false,
-                    type: 'custom',
-                    add: false,
-                    edit: false,
-                    addable: false,
-                    editable: false,
-                    isEditable: false,
-                    isAddable: false,
-                    renderComponent: __WEBPACK_IMPORTED_MODULE_4__components_button_renderer_button_renderer__["a" /* ButtonRenderComponent */],
-                    onComponentInitFunction: this.actions.bind(this)
-                }
             }
         };
         this.view = [700, 150];
@@ -3772,7 +3786,7 @@ var MateriasAdministrativoPage = (function () {
         var _this = this;
         instance.save.subscribe(function (row) {
             var nombreCompleto = row.nombre;
-            var profileModal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_13__asignar_materia_alumno_asignar_materia_alumno__["a" /* AsignarMateriaAlumnoPage */], { alumno: nombreCompleto, legajo: row.legajo });
+            var profileModal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_12__asignar_materia_alumno_asignar_materia_alumno__["a" /* AsignarMateriaAlumnoPage */], { alumno: nombreCompleto, legajo: row.legajo });
             profileModal.present();
         });
     };
@@ -3894,11 +3908,11 @@ var MateriasAdministrativoPage = (function () {
     };
     MateriasAdministrativoPage.prototype.tomaLista = function () {
         // alert("voy a tomar lista");
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_11__tomar_lista_tomar_lista__["a" /* TomarListaPage */], { aulaa: this.aula, materia: this.materia });
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_10__tomar_lista_tomar_lista__["a" /* TomarListaPage */], { aulaa: this.aula, materia: this.materia });
     };
     MateriasAdministrativoPage.prototype.crearNotificacion = function () {
         console.log(this.aula);
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__notificacion_notificacion__["a" /* NotificacionPage */], { aulaa: this.aula, materia: this.materia });
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__notificacion_notificacion__["a" /* NotificacionPage */], { aulaa: this.aula, materia: this.materia });
     };
     MateriasAdministrativoPage.prototype.cargarLista = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__["a" /* CagarArchivoPage */], { persona: "alumno" });
@@ -3907,26 +3921,25 @@ var MateriasAdministrativoPage = (function () {
     };
     MateriasAdministrativoPage.prototype.mostrarQr = function () {
         //alert("voy a qr");
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_9__materia_materia__["a" /* MateriaPage */], { aulaa: this.aula, materia: this.materia });
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__materia_materia__["a" /* MateriaPage */], { aulaa: this.aula, materia: this.materia });
     };
     MateriasAdministrativoPage.prototype.Encuestas = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_10__encuestas_encuestas__["a" /* EncuestasPage */], { aulaa: this.aula, materia: this.materia });
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_9__encuestas_encuestas__["a" /* EncuestasPage */], { aulaa: this.aula, materia: this.materia });
     };
     return MateriasAdministrativoPage;
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */])
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]) === "function" && _a || Object)
 ], MateriasAdministrativoPage.prototype, "content", void 0);
 MateriasAdministrativoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'page-materias-administrativo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materias-administrativo\materias-administrativo.html"*/'<!--\n\n  Generated template for the AulaProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  \n\n    <ion-navbar color="dark">\n\n      <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>\n\n    </ion-navbar>\n\n  \n\n  </ion-header>\n\n  \n\n  <ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n  \n\n   <!--gi <ion-list>\n\n                \n\n      <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Divicion</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n\n      </ion-item>\n\n                      \n\n      <ion-item class="animated flipInY miItem">\n\n        <ion-label class="miLabel" floating>Materia</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n\n      </ion-item>\n\n                  \n\n      <ion-item class="animated flipInX miItem" >\n\n        <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n\n      </ion-item> \n\n    \n\n    </ion-list>-->\n\n  \n\n    <br><br>     \n\n     \n\n    \n\n      \n\n  <!--\n\n      <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n\n      </button>\n\n  <br><br>-->\n\n  <!--\n\n  <div style="width:100%">\n\n    <ion-grid style="background-color:white;">\n\n      <h4>Faltas</h4>\n\n       <ion-row >\n\n         <ion-col >\n\n           <ngx-charts-bar-horizontal \n\n             [view]="view"\n\n             [results]="informacion"\n\n             xAxis="true"\n\n             yAxis="true"\n\n           >\n\n           </ngx-charts-bar-horizontal>\n\n         </ion-col>\n\n       </ion-row>\n\n     </ion-grid>\n\n    </div>\n\n    ESTO NO [legend]="showLegend"\n\n             legendTitle="Votos"\n\n             [showXAxisLabel]="showXAxisLabel"\n\n             [showYAxisLabel]="showYAxisLabel"\n\n             xAxisLabel="votos"\n\n             yAxisLabel="resultado" -->\n\n             <br><br><br><br>\n\n             <ion-item >\n\n              <ion-label>Curso</ion-label>\n\n              <ion-select interface=\'action-sheet\' [(ngModel)]="seleccion" disabled (ionChange)="changeList($event)">\n\n                <ion-option (ionSelect)="changeList()" value="a">{{aula}}, {{materia}}</ion-option>\n\n              </ion-select>\n\n            </ion-item>\n\n            <ion-item >\n\n            <div style=\'width:100%;height:100%\'>\n\n              <ng2-smart-table style=\'width:100%;height:100%\' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"\n\n              (editConfirm)="onSaveConfirm($event)"\n\n              (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n\n            </ion-item>\n\n          \n\n     \n\n      \n\n  \n\n  </ion-content>\n\n  '/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materias-administrativo\materias-administrativo.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_native_audio__["a" /* NativeAudio */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__["a" /* ScreenOrientation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_7_angularfire2_database__["a" /* AngularFireDatabase */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_11__ionic_native_native_audio__["a" /* NativeAudio */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_11__ionic_native_native_audio__["a" /* NativeAudio */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _m || Object])
 ], MateriasAdministrativoPage);
 
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
 //# sourceMappingURL=materias-administrativo.js.map
 
 /***/ }),
@@ -4199,10 +4212,11 @@ AulaAlumnoPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_screen_orientation__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__asignar_materia_asignar_materia__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_button_renderer_button_renderer__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__cagar_archivo_cagar_archivo__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__asignar_materia_alumno_asignar_materia_alumno__ = __webpack_require__(258);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4212,6 +4226,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -4268,14 +4283,44 @@ var AbmAlumnosPage = (function () {
                     title: 'Correo',
                     filter: false
                 },
+                Accion: {
+                    title: 'Acción',
+                    filter: false,
+                    type: 'custom',
+                    add: false,
+                    edit: false,
+                    addable: false,
+                    editable: false,
+                    isEditable: false,
+                    isAddable: false,
+                    renderComponent: __WEBPACK_IMPORTED_MODULE_3__components_button_renderer_button_renderer__["a" /* ButtonRenderComponent */],
+                    onComponentInitFunction: this.actions.bind(this)
+                }
+                /*
+                Accion: {
+                  title: 'Acción',
+                  filter: false,
+                  type:'custom',
+                  add: false,
+                  edit: false,
+                  addable: false,
+                  editable:false,
+                  isEditable:false,
+                  isAddable:false,
+                  renderComponent: ButtonRenderComponent,
+                  onComponentInitFunction: this.actions.bind(this)
+                   
+                  }
+                  
+                  */
             }
         };
     }
     AbmAlumnosPage.prototype.actions = function (instance) {
         var _this = this;
         instance.save.subscribe(function (row) {
-            var nombreCompleto = row.Nombre + " " + row.Apellido;
-            var profileModal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__asignar_materia_asignar_materia__["a" /* AsignarMateriaPage */], { profesor: nombreCompleto });
+            var nombreCompleto = row.nombre;
+            var profileModal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_7__asignar_materia_alumno_asignar_materia_alumno__["a" /* AsignarMateriaAlumnoPage */], { alumno: nombreCompleto, legajo: row.legajo });
             profileModal.present();
         });
     };
@@ -4285,13 +4330,9 @@ var AbmAlumnosPage = (function () {
         this.fireService.getABMAlumnos().subscribe(function (data) {
             _this.listadoAlumnos = data;
         });
-        this.listaAux = [];
-        for (var i = 0; i < this.listadoAlumnos.length; i++) {
-            var element = this.listadoAlumnos[i];
-            if (element != undefined && (element.vigente == null || element.vigente == undefined))
-                this.listaAux.push(element);
-        }
-        this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
+        setTimeout(function () {
+            _this.activ();
+        }, 1000);
         var loading = this.loadingCtrl.create({
             spinner: 'hide',
             content: "\n       <img src=\"assets/spinner.gif\">",
@@ -4302,6 +4343,15 @@ var AbmAlumnosPage = (function () {
         setTimeout(function () {
             loading.dismiss();
         }, 2000);
+    };
+    AbmAlumnosPage.prototype.activ = function () {
+        this.listaAux = [];
+        for (var i = 0; i < this.listadoAlumnos.length; i++) {
+            var element = this.listadoAlumnos[i];
+            if (element != undefined && (element.vigente == null || element.vigente == undefined))
+                this.listaAux.push(element);
+        }
+        this.source = new __WEBPACK_IMPORTED_MODULE_2_ng2_smart_table__["a" /* LocalDataSource */](this.listaAux);
     };
     AbmAlumnosPage.prototype.ionViewWillLeave = function () {
         this.screenOrientation.unlock();
@@ -4530,10 +4580,10 @@ AbmAlumnosPage = __decorate([
         template: "\n  <ion-content padding style=\"background-image:url('assets/aula-administrativo.jpeg')\" class=\"fondo\">\n \n<ion-item>\n<div style='width:100%;height:100%' >\n  <ng2-smart-table style='width:100%;height:100%' [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div></ion-item>\n  \n\n  <button ion-button round full large (click)=\"cargarLista()\" class=\"animated flipInX miBoton miButton\"> \n  <ion-icon name=\"arrow-round-back\"></ion-icon> Cargar Alumnos\n</button>\n\n</ion-content>\n",
         selector: 'page-abm-alumnos',
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_screen_orientation__["a" /* ScreenOrientation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _g || Object])
 ], AbmAlumnosPage);
 
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=abm-alumnos.js.map
 
 /***/ }),
@@ -5232,9 +5282,6 @@ var CagarArchivoPage = (function () {
         //this.aula = this.navParams.get('aulaa');
         this.persona = this.navParams.get('persona');
         if (this.persona == "alumno") {
-            this.firebaseService.getABMAlumnos().subscribe(function (data) {
-                _this.abmAlumnos = data;
-            });
             this.alumnoLista$ = this.database.list('alumno-lista');
             this.alumnoListaItem$ = this.database.list('alumno-lista');
             this.alumnoListaItem$.subscribe(function (alumLista) {
@@ -5256,10 +5303,17 @@ var CagarArchivoPage = (function () {
     }
     ;
     CagarArchivoPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CagarArchivoPage');
+        var _this = this;
+        this.firebaseService.getABMAlumnos().subscribe(function (data) {
+            _this.abmAlumnos = data;
+        });
     };
     CagarArchivoPage.prototype.leeArchivos = function (numarchivo, file) {
+        var _this = this;
         if (this.persona == "alumno") {
+            this.firebaseService.getABMAlumnos().subscribe(function (data) {
+                _this.abmAlumnos = data;
+            });
             var alumno_1 = {};
             var lista_1 = [];
             var fr = new FileReader();
@@ -5423,6 +5477,7 @@ var CagarArchivoPage = (function () {
             var cont = void 0;
             cont = this.listaAlumnoItem.length;
             var listaAx = [];
+            var banderaGlobal = false;
             for (var o = 0; o < this.listaAlumnoItem.length; o++) {
                 var element = this.listaAlumnoItem[o];
                 if (element.aula == this.listaA.aula && element.materia == this.listaA.materia) {
@@ -5431,18 +5486,20 @@ var CagarArchivoPage = (function () {
                     listaAux[o].alumnos = this.listaA.alumnos;
                     this.firebaseService.agregarLista(listaAux);
                     this.banderita = true;
-                    for (var h = 0; h < this.abmAlumnos.length; h++) {
-                        var elementh = this.abmAlumnos[h];
-                        for (var u = 0; u < this.listaA.alumnos.length; u++) {
-                            var elementu = this.listaA.alumnos[u];
+                    for (var u = 0; u < this.listaA.alumnos.length; u++) {
+                        var elementu = this.listaA.alumnos[u];
+                        for (var h = 0; h < this.abmAlumnos.length; h++) {
+                            var elementh = this.abmAlumnos[h];
                             var bandera = false;
                             if (elementh.mail == elementu.mail) {
                                 this.abmAlumnos[h] = elementu;
                                 bandera = true;
+                                banderaGlobal = true;
+                                break;
                             }
-                            if (!bandera) {
-                                this.abmAlumnos.push(elementu);
-                            }
+                        }
+                        if (!banderaGlobal) {
+                            this.abmAlumnos.push(elementu);
                         }
                     }
                     listaAx = this.abmAlumnos;
@@ -5454,24 +5511,19 @@ var CagarArchivoPage = (function () {
                 var listaAx_1 = [];
                 this.firebaseService.agregarListaDENAZI(this.listaA, cont);
                 for (var u = 0; u < this.listaA.alumnos.length; u++) {
+                    var banderaGlobal_1 = false;
                     var elementu = this.listaA.alumnos[u];
-                    var banderaGlobal = false;
                     for (var h = 0; h < this.abmAlumnos.length; h++) {
                         var elementh = this.abmAlumnos[h];
                         var bandera = false;
                         if (elementh.mail == elementu.mail) {
                             this.abmAlumnos[h] = elementu;
                             bandera = true;
-                            banderaGlobal = true;
-                            break;
-                        }
-                        if (!bandera) {
-                            this.abmAlumnos.push(elementu);
-                            banderaGlobal = true;
+                            banderaGlobal_1 = true;
                             break;
                         }
                     }
-                    if (!banderaGlobal) {
+                    if (!banderaGlobal_1) {
                         this.abmAlumnos.push(elementu);
                     }
                 }

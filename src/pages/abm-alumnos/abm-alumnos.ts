@@ -16,6 +16,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { AsignarMateriaPage } from '../asignar-materia/asignar-materia';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
+import { AsignarMateriaAlumnoPage } from '../asignar-materia-alumno/asignar-materia-alumno';
+
 
 @IonicPage()
 @Component({
@@ -90,6 +92,20 @@ export class AbmAlumnosPage {
             filter: false
           }
           ,
+          Accion: {
+            title: 'Acción',
+            filter: false,
+            type:'custom',
+            add: false,
+            edit: false,  
+            addable: false,
+            editable:false,
+            isEditable:false,
+            isAddable:false,
+            renderComponent: ButtonRenderComponent,
+            onComponentInitFunction: this.actions.bind(this)
+             
+            }
       
           /*
           Accion: {
@@ -117,8 +133,8 @@ export class AbmAlumnosPage {
   }
   actions(instance) {
     instance.save.subscribe(row => {
-      let nombreCompleto = row.Nombre +" "+row.Apellido;
-      let profileModal = this.modalCtrl.create(AsignarMateriaPage, { profesor: nombreCompleto });
+      let nombreCompleto = row.nombre;
+      let profileModal = this.modalCtrl.create(AsignarMateriaAlumnoPage, { alumno: nombreCompleto,legajo:row.legajo });
       profileModal.present();
     });
   }
@@ -135,21 +151,9 @@ ionViewDidEnter()
       this.listadoAlumnos=data;
       
     });
-    
-    this.listaAux=[];
-    for (let i = 0; i < this.listadoAlumnos.length; i++) {
-      const element = this.listadoAlumnos[i];
-     
-        
-          if(element!=undefined && (element.vigente==null || element.vigente==undefined))      
-          
-          this.listaAux.push(element);
-        
-        
-      
-    }
-    this.source= new LocalDataSource(this.listaAux);
-      
+    setTimeout(() => {
+      this.activ();
+    }, 1000);
       
     
     let loading = this.loadingCtrl.create({
@@ -168,6 +172,24 @@ loading.present();
     
 
   
+}
+activ()
+{
+  
+  this.listaAux=[];
+  for (let i = 0; i < this.listadoAlumnos.length; i++) {
+    const element = this.listadoAlumnos[i];
+   
+      
+        if(element!=undefined && (element.vigente==null || element.vigente==undefined))      
+        
+        this.listaAux.push(element);
+      
+      
+    
+  }
+  this.source= new LocalDataSource(this.listaAux);
+    
 }
   ionViewWillLeave()
   {

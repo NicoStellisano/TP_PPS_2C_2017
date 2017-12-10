@@ -82,7 +82,7 @@ export class MateriasAdministrativoPage {
         title: 'nombre',
         filter: false
       },
-      Accion: {
+    /*  Accion: {
         title: 'Acción',
         filter: false,
         type:'custom',
@@ -95,7 +95,7 @@ export class MateriasAdministrativoPage {
         renderComponent: ButtonRenderComponent,
         onComponentInitFunction: this.actions.bind(this)
          
-        }
+        }*/
      
       
      

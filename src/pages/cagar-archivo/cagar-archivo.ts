@@ -52,10 +52,7 @@ materia:string="";
     this.persona = this.navParams.get('persona');
     if(this.persona=="alumno")
     {
-      this.firebaseService.getABMAlumnos().subscribe(data=>
-        {
-          this.abmAlumnos=data;
-        });
+      
     
     this.alumnoLista$ = this.database.list('alumno-lista');
     
@@ -84,7 +81,10 @@ materia:string="";
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CagarArchivoPage');
+    this.firebaseService.getABMAlumnos().subscribe(data=>
+      {
+        this.abmAlumnos=data;
+      });
     
   }
   
@@ -92,6 +92,10 @@ materia:string="";
 
     if(this.persona=="alumno")
     {
+      this.firebaseService.getABMAlumnos().subscribe(data=>
+        {
+          this.abmAlumnos=data;
+        });
 
   
     let alumno = {} as AlumnoItem;
@@ -286,6 +290,7 @@ if(this.persona=="alumno")
     let cont:number;
     cont = this.listaAlumnoItem.length;
     let listaAx:any[]=[];
+    let banderaGlobal=false;
     for (let o = 0; o < this.listaAlumnoItem.length; o++) {
       let element = this.listaAlumnoItem[o];
       if(element.aula==this.listaA.aula && element.materia==this.listaA.materia)
@@ -298,27 +303,31 @@ if(this.persona=="alumno")
         this.banderita=true;
        
       
-        for (let h = 0; h < this.abmAlumnos.length; h++) {
-          const elementh = this.abmAlumnos[h];
-          for (let u = 0; u < this.listaA.alumnos.length; u++) {
-            const elementu = this.listaA.alumnos[u];
-            let bandera=false;
-            if(elementh.mail==elementu.mail)
-            {
-              this.abmAlumnos[h]=elementu;
-              bandera=true;
-            }
-            if(!bandera)
-            {
-              this.abmAlumnos.push(elementu);
-            }
-          }
+        for (let u = 0; u < this.listaA.alumnos.length; u++) {
           
-        }
-
-    listaAx=this.abmAlumnos;
-      this.firebaseService.updateABMAlumno(listaAx);
-
+           const elementu = this.listaA.alumnos[u];
+           
+         for (let h = 0; h < this.abmAlumnos.length; h++) {
+           const elementh = this.abmAlumnos[h];
+           let bandera=false;
+            
+             if(elementh.mail==elementu.mail)
+             {
+               this.abmAlumnos[h]=elementu;
+               bandera=true;
+               banderaGlobal=true;
+               break;
+             }
+           
+           }
+           if(!banderaGlobal)
+           {
+             this.abmAlumnos.push(elementu);
+           }
+           
+         }
+         listaAx=this.abmAlumnos;
+         this.firebaseService.updateABMAlumno(listaAx);
   break;        
 
       }
@@ -328,10 +337,11 @@ if(this.persona=="alumno")
     { 
       let listaAx:any[]=[];
       this.firebaseService.agregarListaDENAZI(this.listaA,cont);
+    
       for (let u = 0; u < this.listaA.alumnos.length; u++) {
-       
-        const elementu = this.listaA.alumnos[u];
         let banderaGlobal=false;
+        const elementu = this.listaA.alumnos[u];
+        
       for (let h = 0; h < this.abmAlumnos.length; h++) {
         const elementh = this.abmAlumnos[h];
         let bandera=false;
@@ -343,12 +353,7 @@ if(this.persona=="alumno")
             banderaGlobal=true;
             break;
           }
-          if(!bandera)
-          {
-            this.abmAlumnos.push(elementu);
-            banderaGlobal=true;
-            break;
-          }
+         
         }
         if(!banderaGlobal)
         {

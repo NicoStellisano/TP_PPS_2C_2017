@@ -14,6 +14,8 @@ import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrati
 import { MateriasAdministrativoPage } from '../materias-administrativo/materias-administrativo';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 import { TomarListaPage } from '../tomar-lista/tomar-lista';
+import { AbmAlumnosPage } from '../abm-alumnos/abm-alumnos';
+
 
 
 /**
@@ -197,7 +199,8 @@ informacion: any[] = [];
               if(element.aula==this.aula && element.materia==this.materia)
               {
                 cantidad=element.alumnos.length;
-                contador=Math.random()*cantidad;
+                contador=Math.round(Math.random()*cantidad);
+                break;
               }
               
              
@@ -355,6 +358,11 @@ informacion: any[] = [];
   tomaLista(){
     // alert("voy a tomar lista");
     this.navCtrl.push(TomarListaPage,{aulaa:"",materia:""});
+   }
+
+   lista(){
+    // alert("voy a tomar lista");
+    this.navCtrl.push(AbmAlumnosPage);
    }
   Seleccion(data)
   {

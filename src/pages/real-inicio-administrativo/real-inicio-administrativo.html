@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <ion-select interface='action-sheet'>
-      <ion-option *ngFor="let curso of listadoAlumnos"  [selected]="curso.aula == '4A'" (ionSelect)="cursar(curso)" [value]="curso">{{curso.aula}},{{curso.materia}}</ion-option>
+      <ion-option *ngFor="let curso of listadoAlumnos"  [selected]="curso.aula == '4A' && curso.materia=='PPS'" (ionSelect)="cursar(curso)" [value]="curso">{{curso.aula}},{{curso.materia}}</ion-option>
     </ion-select>
   </ion-navbar>
   
@@ -38,6 +38,10 @@
      
 
   <div *ngIf="seleccion==''">
+      <button ion-button round full large (click)="lista()" class="animated flipInX miBoton miButton"> 
+          <ion-icon name="arrow-round-back"></ion-icon> Lista de Alumnos
+        </button>
+
       <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
           <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos
         </button>
