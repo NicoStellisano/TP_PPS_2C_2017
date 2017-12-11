@@ -6,6 +6,7 @@ F - Login con red social<br/>
 G - ABM –Alumno<br/> 
 J - ABM Profesor y Administrativo<br/> 
 L - Graficos estadisticos <br/> 
+  - QR Encuestas <br/>
 
 Freire Ezequiel 4ºB<br/>
 A - Toma lista <br/> 
