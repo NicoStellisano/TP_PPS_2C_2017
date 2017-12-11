@@ -334,10 +334,13 @@ if(this.persona=="alumno")
       
     }
     if(this.banderita==false)
-    { 
+    { if(this.aula!="GENERAL" && this.materia!="GENERAL")
+    {
+
+    
       let listaAx:any[]=[];
       this.firebaseService.agregarListaDENAZI(this.listaA,cont);
-    
+    }
       for (let u = 0; u < this.listaA.alumnos.length; u++) {
         let banderaGlobal=false;
         const elementu = this.listaA.alumnos[u];
@@ -387,9 +390,11 @@ if(this.persona=="alumno")
       cssClass:"miClaseAlert",
     buttons: [{text:'Aceptar',
     handler: () => {
+      if(this.aula!="GENERAL" && this.materia!="GENERAL")
+      {
       let profileModal = this.modalCtrl.create(AsignarMateriaPage, {materia:this.listaA.materia,aula:this.listaA.aula});
       profileModal.present();
-      
+      }
     }
     }
    ]

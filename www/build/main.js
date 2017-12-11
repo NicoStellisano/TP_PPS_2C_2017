@@ -5523,8 +5523,10 @@ var CagarArchivoPage = (function () {
                 }
             }
             if (this.banderita == false) {
-                var listaAx_1 = [];
-                this.firebaseService.agregarListaDENAZI(this.listaA, cont);
+                if (this.aula != "GENERAL" && this.materia != "GENERAL") {
+                    var listaAx_1 = [];
+                    this.firebaseService.agregarListaDENAZI(this.listaA, cont);
+                }
                 for (var u = 0; u < this.listaA.alumnos.length; u++) {
                     var banderaGlobal_1 = false;
                     var elementu = this.listaA.alumnos[u];
@@ -5542,8 +5544,8 @@ var CagarArchivoPage = (function () {
                         this.abmAlumnos.push(elementu);
                     }
                 }
-                listaAx_1 = this.abmAlumnos;
-                this.firebaseService.updateABMAlumno(listaAx_1);
+                listaAx = this.abmAlumnos;
+                this.firebaseService.updateABMAlumno(listaAx);
             }
             console.log(this.aula);
             if (this.aula == "4A" && this.materia == "PPS") {
@@ -5559,42 +5561,44 @@ var CagarArchivoPage = (function () {
                 });
             }
             //    this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
-            var alert_1 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: "Guardar Lista",
                 subTitle: "La lista se guardó correctamente",
                 cssClass: "miClaseAlert",
                 buttons: [{ text: 'Aceptar',
                         handler: function () {
-                            var profileModal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__asignar_materia_asignar_materia__["a" /* AsignarMateriaPage */], { materia: _this.listaA.materia, aula: _this.listaA.aula });
-                            profileModal.present();
+                            if (_this.aula != "GENERAL" && _this.materia != "GENERAL") {
+                                var profileModal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__asignar_materia_asignar_materia__["a" /* AsignarMateriaPage */], { materia: _this.listaA.materia, aula: _this.listaA.aula });
+                                profileModal.present();
+                            }
                         }
                     }
                 ]
             });
-            alert_1.present();
+            alert.present();
         }
         else if (this.persona == "profesor") {
             console.log('---------- ingreso a profesores carga ---------');
             this.firebaseService.updateProfesor(this.listaGen);
             //this.database.list('/profesores/').push(this.listaGen);
-            var alert_2 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: "Guardar Lista",
                 subTitle: "La lista se guardó correctamente",
                 cssClass: "miClaseAlert",
                 buttons: [{ text: 'Aceptar' }]
             });
-            alert_2.present();
+            alert.present();
         }
         else if (this.persona == "administrativo") {
             console.log('---------- ingreso a administrativos carga ---------');
             this.firebaseService.updateAdministrativo(this.listaGen);
-            var alert_3 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: "Guardar Lista",
                 subTitle: "La lista se guardó correctamente",
                 cssClass: "miClaseAlert",
                 buttons: [{ text: 'Aceptar' }]
             });
-            alert_3.present();
+            alert.present();
             //this.database.list('/administrativos/').push(this.listaGen);
         }
     };
@@ -5614,13 +5618,13 @@ var CagarArchivoPage = (function () {
         else {
             //alert("No hya nada que descargar");
             // this.presentAlert("Sin alumnos","No hay nada que descargar");
-            var alert_4 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: "Sin Alumnos",
                 subTitle: "No hay nada que descargar",
                 cssClass: "miClaseDanger",
                 buttons: ['Aceptar']
             });
-            alert_4.present();
+            alert.present();
         }
     };
     CagarArchivoPage.prototype.presentAlert = function (titulo, subtitulo) {
@@ -5638,9 +5642,10 @@ CagarArchivoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'page-cagar-archivo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/'<!--\n\n  Generated template for the CagarArchivoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Cargar Archivo </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n\n\n  <ion-list>\n\n    <ion-item>\n\n      <!--<label>{{label}}</label>-->\n\n      <!--(change)="fileUpload($event)"-->\n\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->\n\n      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">\n\n      <ion-icon name="cloud-done">Selecionar archivo .csv</ion-icon>\n\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>\n\n      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n  \n\n  <div>\n\n    <button center ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Subir\n\n    </button>\n\n    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Descargar\n\n    </button>\n\n  </div>\n\n  \n\n  \n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */]) === "function" && _g || Object])
 ], CagarArchivoPage);
 
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=cagar-archivo.js.map
 
 /***/ }),
