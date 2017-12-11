@@ -51,6 +51,7 @@ import { QrencuestaPage } from '../pages/qrencuesta/qrencuesta';
 //import { DateValueAccessorModule } from 'angular-date-value-accessor';
 import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
 import { AsignarMateriaAlumnoPage } from '../pages/asignar-materia-alumno/asignar-materia-alumno';
+import { DesasignarMateriaComponent } from '../components/desasignar-materia/desasignar-materia';
 
 
 
@@ -78,6 +79,7 @@ var config = {
     AulaProfesorPage,
     AulaAdministrativoPage,
     ButtonRenderComponent,
+    DesasignarMateriaComponent,
     MateriasPage,
     MateriasProfesorPage,
     CuestionariosPage,
@@ -124,6 +126,7 @@ var config = {
     AulaAdministrativoPage,
     AulaProfesorPage,
     ButtonRenderComponent,
+    DesasignarMateriaComponent,
     MateriasPage,
     MateriasProfesorPage,
     CuestionariosPage,

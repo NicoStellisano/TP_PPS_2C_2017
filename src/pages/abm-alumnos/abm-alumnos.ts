@@ -44,6 +44,8 @@ export class AbmAlumnosPage {
   personas:string;
 
   listadoAlumnos:any[] =[];
+  listaAulas:any[] =[];
+  
   listaAux:any[] =[];
   source:LocalDataSource;
   
@@ -151,9 +153,14 @@ ionViewDidEnter()
       this.listadoAlumnos=data;
       
     });
+    this.fireService.getAlumnos().subscribe(data=>
+      {
+        this.listaAulas=data;
+        
+      });
     setTimeout(() => {
       this.activ();
-    }, 1000);
+    }, 1200);
       
     
     let loading = this.loadingCtrl.create({
@@ -223,8 +230,22 @@ activ()
                     {
                       this.listaAux[i].vigente=false;
                       this.fireService.updateABMAlumno(this.listaAux);
-                
+                let listaVigentes:any[]=[];
                       event.confirm.reject();
+                      for (let k = 0; k < this.listaAulas.length; k++) {
+                        const elementk= this.listaAulas[k];
+                        for (let o = 0; o < elementk.alumnos.length; o++) {
+                          const elemento = elementk.alumnos[o];
+                          if(elemento.mail==element.mail)
+                          {
+                           listaVigentes=elementk.alumnos;
+                           listaVigentes[o].vigente=false;
+                           this.fireService.updateAlumno(listaVigentes,elementk['$key']);
+                          }
+                        }
+                       
+                        
+                      }
                    
                       
                       break;
@@ -311,6 +332,23 @@ activ()
                                 
                                 this.fireService.updateABMAlumno(this.listaAux);
                                 event.confirm.reject();
+                                let listaVigentes:any[]=[];
+                                
+                                for (let k = 0; k < this.listaAulas.length; k++) {
+                                  const elementk= this.listaAulas[k];
+                                  for (let o = 0; o < elementk.alumnos.length; o++) {
+                                    const elemento = elementk.alumnos[o];
+                                    if(elemento.mail==element.mail)
+                                    {
+                                     listaVigentes=elementk.alumnos;
+                                     listaVigentes[o]=event.newData;
+                                     listaVigentes[o].password=event.newData.legajo;
+                                     this.fireService.updateAlumno(listaVigentes,elementk['$key']);
+                                    }
+                                  }
+                                 
+                                  
+                                }
                                 
                                 break;
                                 
@@ -333,18 +371,19 @@ activ()
                         });
                         this.listaAux=[];
                         
-                        for (let i = 0; i < this.listadoAlumnos.length; i++) {
-                          const element = this.listadoAlumnos[i];
                         
-                            for (let j = 0; j < element.alumnos.length; j++) {
-                              const element2 = element.alumnos[j];
-                              if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
-                              this.listaAux.push(element2);
-                            }
-                            
+                          for (let i = 0; i < this.listadoAlumnos.length; i++) {
+                            const element = this.listadoAlumnos[i];
                           
-                        }
-                        this.source= new LocalDataSource(this.listaAux);
+                                if(element!=undefined && (element.vigente==null || element.vigente==undefined))      
+                                this.listaAux.push(element);
+                              
+                              
+                            
+                          }
+                          this.source= new LocalDataSource(this.listaAux);
+                      
+                  
                       
                         
     
@@ -410,9 +449,9 @@ activ()
           text: 'Aceptar',
           handler: () => {
            
-            if(event.newData.legajo!=null && event.newData.nombre!=null && event.newData.mail!=null && event.newData.turno!=null
-              && event.newData.legajo!=undefined  && event.newData.nombre!=undefined && event.newData.mail!=undefined && event.newData.turno!=undefined &&
-               event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="" && event.newData.turno!="")
+            if(event.newData.legajo!=null && event.newData.nombre!=null && event.newData.mail!=null 
+              && event.newData.legajo!=undefined  && event.newData.nombre!=undefined && event.newData.mail!=undefined  &&
+               event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="")
                {
                  
                  if(event.newData.mail.includes('@'))
@@ -425,9 +464,9 @@ activ()
                       
                           try {
                            
-                             
+                            event.confirm.resolve();
+                               this.listaAux.push(event.newData);
                                
-                                event.confirm.resolve();
                                 this.listaAux[this.listaAux.lastIndexOf(event.newData)].password=event.newData.legajo;
                                 
                                 
@@ -459,11 +498,10 @@ activ()
                         for (let i = 0; i < this.listadoAlumnos.length; i++) {
                           const element = this.listadoAlumnos[i];
                         
-                            for (let j = 0; j < element.alumnos.length; j++) {
-                              const element2 = element.alumnos[j];
-                              if(element2!=undefined && (element2.vigente==null || element2.vigente==undefined))      
-                              this.listaAux.push(element2);
-                            }
+                           
+                              if(element!=undefined && (element.vigente==null || element.vigente==undefined))      
+                              this.listaAux.push(element);
+                            
                             
                           
                         }

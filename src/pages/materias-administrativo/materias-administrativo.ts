@@ -22,6 +22,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { TomarListaPage } from '../tomar-lista/tomar-lista';
 import { NativeAudio } from '@ionic-native/native-audio';
 import { AsignarMateriaAlumnoPage } from '../asignar-materia-alumno/asignar-materia-alumno';
+import { DesasignarMateriaComponent } from '../../components/desasignar-materia/desasignar-materia';
 
 /**
  * Generated class for the AulaProfesorPage page.
@@ -82,6 +83,20 @@ export class MateriasAdministrativoPage {
         title: 'nombre',
         filter: false
       },
+      Accion: {
+        title: 'Acción',
+        filter: false,
+        type:'custom',
+        add: false,
+        edit: false,  
+        addable: false,
+        editable:false,
+        isEditable:false,
+        isAddable:false,
+        renderComponent: DesasignarMateriaComponent,
+        onComponentInitFunction: this.actions.bind(this)
+         
+        }
     /*  Accion: {
         title: 'Acción',
         filter: false,
@@ -151,16 +166,46 @@ this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
   }
 
 
+  
+
   actions(instance) {
     instance.save.subscribe(row => {
       let nombreCompleto = row.nombre;
-      let profileModal = this.modalCtrl.create(AsignarMateriaAlumnoPage, { alumno: nombreCompleto,legajo:row.legajo });
-      profileModal.present();
+      for (let i = 0; i < this.listadoAlumnos.length; i++) {
+        const element = this.listadoAlumnos[i];
+        if(element.aula==this.aula && element.materia==this.materia)
+        {
+          for (let j = 0; j < element.alumnos.length; j++) {
+            const element2 = element.alumnos[j];
+             if(row.mail==element2.mail)
+             {
+               let list:any[]=[];
+               list=element.alumnos;
+               element.alumnos[j].vigente=false;
+               this.fireService.updateAlumno(list,element['$key']);
+             }      
+            
+          }
+          
+        }
+      }
+      this.afd.list("/alumno-lista").subscribe(data=>
+        {
+          this.listadoAlumnos=data;
+         
+            this.activar();
+          
+         
+          
+        }); 
+      
+      //let profileModal = this.modalCtrl.create(AsignarMateriaAlumnoPage, { alumno: nombreCompleto,legajo:row.legajo });
+     // profileModal.present();
     });
   }
 
   activar()
-  {
+  {this.listaAux=[];
    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
   
    
