@@ -52,6 +52,7 @@ import { QrencuestaPage } from '../pages/qrencuesta/qrencuesta';
 import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
 import { AsignarMateriaAlumnoPage } from '../pages/asignar-materia-alumno/asignar-materia-alumno';
 import { DesasignarMateriaComponent } from '../components/desasignar-materia/desasignar-materia';
+import { QrEncuestasPage } from '../pages/qr-encuestas/qr-encuestas';
 
 
 
@@ -99,7 +100,8 @@ var config = {
     MateriasAdministrativoPage,
     QrencuestaPage,
     AbmAlumnosPage,
-    AsignarMateriaAlumnoPage
+    AsignarMateriaAlumnoPage,
+    QrEncuestasPage
   ],
   imports: [
     BrowserModule,
@@ -146,7 +148,8 @@ var config = {
     MateriasAdministrativoPage,
     QrencuestaPage,
     AbmAlumnosPage,
-    AsignarMateriaAlumnoPage
+    AsignarMateriaAlumnoPage,
+    QrEncuestasPage
   ],
   providers: [
     StatusBar,
