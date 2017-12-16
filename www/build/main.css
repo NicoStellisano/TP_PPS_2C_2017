@@ -24,7 +24,7 @@
 }
 
 .argentina-theme ion-item {
-  background-color: rgba(141, 174, 211, 0.747);
+  background-color: rgba(139, 150, 209, 0.747);
   color: white;
 }
 
@@ -38,7 +38,9 @@
 }
 
 .argentina-theme .miButton {
+  margin: auto;
   text-align: center;
+  display: block;
   color: white;
   background-color: rgba(18, 126, 250, 0.849);
 }
@@ -31486,21 +31488,26 @@ page-editar-perfil .botonGuardar {
   margin-top: 0.25cm;
 }
 
-page-encuestas .fondo {
-  background-repeat: no-repeat;
-  background: 50%;
-}
+page-encuestas {
+  /*.fondo{
+        //background: 100% 100%;
+        background-repeat: no-repeat;
+        background: 50%;
+        //background-size: 50px;
+    }*/
+  /* button{
+        border-color:white;
+        border-width: 2px;
+        border-style: solid;
+    }
 
-page-encuestas button {
-  border-color: white;
-  border-width: 2px;
-  border-style: solid;
-}
-
-page-encuestas .botones {
-  border-color: white;
-  border-width: 1px;
-  border-style: solid;
+    .botones
+    {
+        border-color:white;
+        border-width: 1px;
+        border-style: solid;
+    }
+    */
 }
 
 page-encuestas-alta .fondo {
@@ -31610,19 +31617,24 @@ page-notificacion .botonGuardar {
   margin-top: 0.25cm;
 }
 
-page-respuesta-encuesta .fondo {
-  background-repeat: no-repeat;
-  background: 50%;
-}
+page-respuesta-encuesta {
+  /* .fondo{
+        
+        background-repeat: no-repeat;
+        background: 50%;
+        
+    }
 
-page-respuesta-encuesta button {
-  border-color: white;
-  border-width: 2px;
-  border-style: solid;
-}
+    button{
+        border-color:white;
+        border-width: 2px;
+        border-style: solid;
+    }
 
-page-respuesta-encuesta .botones {
-  border-color: white;
-  border-width: 1px;
-  border-style: solid;
+    .botones
+    {
+        border-color:white;
+        border-width: 1px;
+        border-style: solid;
+    }*/
 }

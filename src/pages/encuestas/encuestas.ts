@@ -26,7 +26,7 @@ export class EncuestasPage {
   encuestas: any=[];
 respuesta;
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController,private nativeAudio: NativeAudio) {
-
+    console.log("-------------- Estoy en encuesta --------------");
     this.db.list('/encuestas').
     subscribe( data => {
     this.encuestas=data;

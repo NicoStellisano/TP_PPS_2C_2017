@@ -11,8 +11,8 @@
 </ion-header>
 
 
-<ion-content padding >
-          <br> <button ion-button  (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> 
+<ion-content padding>
+          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> 
          <br>
           
           <div *ngFor="let e of encuestas; let i = index">
@@ -57,12 +57,12 @@
 
 
                   <ion-item *ngIf='e.formato == "Botones"' class="animated flipInY ">
-                    <ion-list  >
-                        <button  class="botones" style="color: rgb(85, 158, 218)" ion-button clear item-end >
+                    <ion-list>
+                        <button  class="miButton" ion-button clear item-end >
                             Presione para votar: {{e.respuesta1}}
                            </button>
                            <br>
-                           <button class="botones" style="color: rgb(85, 158, 218)" ion-button clear item-end >
+                           <button  class="miButton"  ion-button clear item-end >
                               Presione para votar: {{e.respuesta2}}
                              </button>
 
@@ -88,11 +88,11 @@
 
                                 <ion-list  *ngIf='e.formato == "Radio botones"' radio-group [(ngModel)]="respuesta">
                                     <ion-item class="animated flipInY ">
-                                      <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>
+                                      <ion-label style="color : rgb(4, 28, 161)">{{e.respuesta1}}</ion-label>
                                       <ion-radio  value="e.respuesta1" ></ion-radio>
                                     </ion-item>
                                     <ion-item class="animated flipInY ">
-                                        <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>
+                                        <ion-label style="color : rgb(4, 28, 161)">{{e.respuesta2}}</ion-label>
                                         <ion-radio  value="e.respuesta2" ></ion-radio>
                                       </ion-item>
                                      
@@ -101,12 +101,12 @@
 
                                   <ion-list  *ngIf='e.formato == "Checkbox"' radio-group [(ngModel)]="respuesta">
                                       <ion-item class="animated flipInY ">
-                                          <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>
-                                          <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>
+                                          <ion-label style="color : rgb(4, 28, 161)">{{e.respuesta1}}</ion-label>
+                                          <ion-checkbox  style="color : rgb(0, 4, 238)" [(ngModel)]="e.respuesta1"></ion-checkbox>
                                       </ion-item>
-                                      <ion-item class="animated flipInY miItem">
-                                          <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>
-                                          <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta2" ></ion-checkbox>
+                                      <ion-item class="animated flipInY ">
+                                          <ion-label style="color : rgb(4, 28, 161)">{{e.respuesta2}}</ion-label>
+                                          <ion-checkbox  style="color : rgb(0, 4, 238)" [(ngModel)]="e.respuesta2" ></ion-checkbox>
                                         </ion-item>
                                        
   
@@ -114,7 +114,7 @@
 
                                     <ion-list  *ngIf='e.formato == "Selección de opciones"'  >
                                       <ion-item class="animated flipInY " >
-                                      <select style="color : rgb(85, 158, 218); width:150px;" [(ngModel)]="respuesta"  class="animated flipInY miItem">
+                                      <select style="color : rgb(0, 4, 238); width:150px;" [(ngModel)]="respuesta"  class="animated flipInY ">
     
                                         <option >{{e.respuesta1}} </option>
                                         <option >{{e.respuesta2}} </option>

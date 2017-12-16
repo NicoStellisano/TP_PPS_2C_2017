@@ -27,6 +27,7 @@ export class EncuestasEditarPage {
   // console.log(this.encuestaAmodificar)
   this.nativeAudio.preloadComplex('2', 'assets/sonidos/2.mp3', 1, 1, 0);
   this.nativeAudio.play('2');
+  console.log("-------------- Estoy en encuesta editar --------------");
   }
 
 

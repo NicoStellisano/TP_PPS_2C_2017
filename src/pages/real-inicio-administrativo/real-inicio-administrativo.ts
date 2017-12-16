@@ -13,6 +13,8 @@ import { MateriaPage } from '../materia/materia';
 import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrativo';
 import { MateriasAdministrativoPage } from '../materias-administrativo/materias-administrativo';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
+import { SettingProvider } from '../../providers/setting/setting';
+import { ActionSheetController } from 'ionic-angular'
 
 /**
  * Generated class for the RealInicioAdministrativoPage page.
@@ -34,8 +36,11 @@ seleccion:string;
 listaMaterias: any[] = [];
 listaAux: any[] = [];
 datosfaltas;
+selectTheme:String;
  
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public db: AngularFireDatabase,private toastCtrl:ToastController
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public fireService : FireBaseServiceProvider,public db: AngularFireDatabase,
+    private toastCtrl:ToastController,private setting: SettingProvider,public actionSheetCtrl: ActionSheetController
   ) {
     console.log("--------------- Estoy en real administrativo ------------------");
       this.fireService.getAlumnos().subscribe(data=>
@@ -94,6 +99,58 @@ datosfaltas;
     
     console.log('ionViewDidLoad RealInicioAdministrativoPage');
   }
+
+  temaArgentina(){
+    this.setting.setActiveProfesional('argentina-theme');
+  }
+
+  temaProfesional(){
+    this.setting.setActiveProfesional('profesional-theme');
+  }
+
+  temaNaif(){
+    this.setting.setActiveProfesional('naif-theme');
+  }
+
+  presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Elergir un tema',
+      
+      buttons: [
+        {
+          text: 'Profesional',
+          role: 'destructive',
+          handler: () => {
+            console.log('Destructive clicked');
+            this.temaProfesional();
+          }
+        },
+        {
+          text: 'Argentina',
+          handler: () => {
+            console.log('Archive clicked');
+            this.temaArgentina();
+          }
+        },
+        {
+          text: 'Naif',
+          handler: () => {
+            console.log('Archive clicked');
+            this.temaNaif();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
 
   Redireccion(direccion)
   {

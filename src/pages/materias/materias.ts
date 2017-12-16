@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { MateriaPage } from '../materia/materia';
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
-
+import { SettingProvider } from '../../providers/setting/setting';
+import { ActionSheetController } from 'ionic-angular'
 /**
  * Generated class for the MateriasPage page.
  *
@@ -21,12 +22,15 @@ export class MateriasPage {
   curso;
   public datos;
   public datosfaltas;
-
+  selectTheme:String;    
+    
+  
   //HAY QUE CAMBIARLO POR ALGO REAL
   
 public variableGlobal: any;
-    constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController, public db: AngularFireDatabase,private toastCtrl:ToastController ) {
+    constructor(public navCtrl: NavController,private setting: SettingProvider,public actionSheetCtrl: ActionSheetController, public navParams: NavParams, private alertCtrl:AlertController, public db: AngularFireDatabase,private toastCtrl:ToastController ) {
       console.log("--------------- Estoy en aula materias ------------------");
+      this.setting.getActiveProfesional().subscribe(val => this.selectTheme = val);
       this.aula = this.navParams.get('aulaa');
 this.curso=localStorage.getItem("curso");
 
@@ -70,6 +74,58 @@ console.log(this.curso);
  
      }    
   
+
+     temaArgentina(){
+      this.setting.setActiveProfesional('argentina-theme');
+    }
+  
+    temaProfesional(){
+      this.setting.setActiveProfesional('profesional-theme');
+    }
+  
+    temaNaif(){
+      this.setting.setActiveProfesional('naif-theme');
+    }
+  
+    presentActionSheet() {
+      let actionSheet = this.actionSheetCtrl.create({
+        title: 'Elergir un tema',
+        
+        buttons: [
+          {
+            text: 'Profesional',
+            role: 'destructive',
+            handler: () => {
+              console.log('Destructive clicked');
+              this.temaProfesional();
+            }
+          },
+          {
+            text: 'Argentina',
+            handler: () => {
+              console.log('Archive clicked');
+              this.temaArgentina();
+            }
+          },
+          {
+            text: 'Naif',
+            handler: () => {
+              console.log('Archive clicked');
+              this.temaNaif();
+            }
+          },
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          }
+        ]
+      });
+      actionSheet.present();
+    }
+
     ionViewDidLoad() {
 
 

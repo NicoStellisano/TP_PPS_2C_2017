@@ -41,7 +41,7 @@ export class EncuestasAltaPage {
     this.creadorEncuesta=localStorage.getItem("Email");
     this.nativeAudio.preloadComplex('2', 'assets/sonidos/2.mp3', 1, 1, 0);
     this.nativeAudio.play('2');
-
+    console.log("-------------- Estoy en encuesta alta--------------");
     
   }
 

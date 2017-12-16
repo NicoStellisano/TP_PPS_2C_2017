@@ -18,44 +18,44 @@
 
 
   
-  <button ion-button round full large *ngIf="codigoScaneado==null"  (click)="scanCode()" class="animated flipInX miBoton miButton"> 
+  <button ion-button  full large *ngIf="codigoScaneado==null"  (click)="scanCode()" class="animated flipInX  miButton"> 
     <ion-icon name="arrow-round-back"></ion-icon> Escaner QR
   </button>
 
     
-  <button ion-button round full large *ngIf="codigoScaneado==null"  (click)="encuestas()" class="animated flipInX miBoton miButton"> 
+  <button ion-button  full large *ngIf="codigoScaneado==null"  (click)="encuestas()" class="animated flipInX  miButton"> 
     <ion-icon name="arrow-round-back"></ion-icon> Encuestas
   </button>
   
   <ion-list *ngIf="codigoScaneado!=null" >
   <!-- <div *ngIf="perfil==''" > -->
-<ion-item class="animated flipInX miItem">
+<ion-item class="animated flipInX ">
 <ion-label class="miLabel" floating>División</ion-label>
 <ion-input type="text" [(ngModel)]="aulaMateria.curso" disabled="true"></ion-input> 
 </ion-item>
           
-<ion-item class="animated flipInY miItem">
+<ion-item class="animated flipInY ">
   <ion-label class="miLabel" floating>Profesor</ion-label>
   <ion-input type="text" [(ngModel)]="aulaMateria.profesor" disabled="true"></ion-input>
   </ion-item>
 
-<ion-item class="animated flipInY miItem">
+<ion-item class="animated flipInY ">
 <ion-label class="miLabel" floating>Materia</ion-label>
 <ion-input type="text" [(ngModel)]="aulaMateria.materia" disabled="true"></ion-input>
 </ion-item>
 
 
-  <ion-item class="animated flipInY miItem">
+  <ion-item class="animated flipInY ">
     <ion-label class="miLabel" floating>Primer Parcial</ion-label>
     <ion-input type="text" [(ngModel)]="aulaMateria.primerParcial" disabled="true"></ion-input>
     </ion-item>
 
-    <ion-item class="animated flipInY miItem">
+    <ion-item class="animated flipInY ">
       <ion-label class="miLabel" floating>Segundo Parcial</ion-label>
       <ion-input type="text" [(ngModel)]="aulaMateria.segundoParcial" disabled="true"></ion-input>
       </ion-item>
 
-      <ion-item class="animated flipInY miItem">
+      <ion-item class="animated flipInY ">
         <ion-label class="miLabel" floating>Final</ion-label>
         <ion-input type="text" [(ngModel)]="aulaMateria.final" disabled="true"></ion-input>
         </ion-item>

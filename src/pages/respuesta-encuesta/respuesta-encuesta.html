@@ -46,13 +46,13 @@
                    -->
 
 
-                 <ion-item *ngIf='e.formato == "Botones"' class="animated flipInY miItem">
+                 <ion-item *ngIf='e.formato == "Botones"' class="animated flipInY ">
                    <ion-list  >
-                       <button  class="botones" (click)="respuesta1(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >
+                       <button  class="miButton" (click)="respuesta1(e)" style="color: rgb(0, 35, 151)" ion-button clear item-end >
                            Presione para votar: {{e.respuesta1}}
                           </button>
                           <br>
-                          <button class="botones" (click)="respuesta2(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >
+                          <button class="miButton" (click)="respuesta2(e)" style="color: rgb(0, 35, 151)" ion-button clear item-end >
                              Presione para votar: {{e.respuesta2}}
                             </button>
 
@@ -63,12 +63,12 @@
         
 
                                <ion-list  *ngIf='e.formato == "Radio botones"' (ionChange)="responder(e)" radio-group [(ngModel)]="respuestaR">
-                                   <ion-item class="animated flipInY miItem">
-                                     <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>
+                                   <ion-item class="animated flipInY ">
+                                     <ion-label style="color : rgb(0, 35, 151)">{{e.respuesta1}}</ion-label>
                                      <ion-radio  [value]="e.respuesta1" ></ion-radio>
                                    </ion-item>
-                                   <ion-item class="animated flipInY miItem">
-                                       <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>
+                                   <ion-item class="animated flipInY ">
+                                       <ion-label style="color : rgb(0, 35, 151)">{{e.respuesta2}}</ion-label>
                                        <ion-radio  [value]="e.respuesta2" ></ion-radio>
                                      </ion-item>
                                     
@@ -89,8 +89,8 @@
                                    </ion-list> -->  
 
                                    <ion-list  *ngIf='e.formato == "Selección de opciones"'  >
-                                    <ion-item class="animated flipInY miItem" >
-                                    <select style="color : rgb(85, 158, 218); width:150px;" (change)="responder(e)" [(ngModel)]="respuestaS"  class="animated flipInY miItem">
+                                    <ion-item class="animated flipInY " >
+                                    <select style="color : rgb(0, 8, 117); width:150px;" (change)="responder(e)" [(ngModel)]="respuestaS"  class="animated flipInY miItem">
   
                                       <option >{{e.respuesta1}} </option>
                                       <option >{{e.respuesta2}} </option>

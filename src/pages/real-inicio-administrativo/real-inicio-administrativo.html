@@ -8,52 +8,57 @@
 
   <ion-navbar>
     <ion-title>Buscar Por:</ion-title>
+    <ion-buttons end>
+      <button (click)="presentActionSheet()" ion-button>
+        <ion-icon name="brush"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content style="background-image:url('assets/hallowenAdministrativo.jpg')" class="fondo">
+<ion-content >
   <div *ngIf="seleccion==''">
-      <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
+      <button ion-button round full large (click)="cargarLista()" class="animated flipInX miButton"> 
           <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos
         </button>
 
-          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion('profesores')">Profesores</button>           
-          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion('alumnos')">Alumnos</button> 
-          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion('materias')">Materias</button> 
+          <br><br> <button ion-button round full large class="animated flipInX miButton" (click)="Redireccion('profesores')">Profesores</button>           
+          <br><br> <button ion-button round full large class="animated flipInX miButton" (click)="Redireccion('alumnos')">Alumnos</button> 
+          <br><br> <button ion-button round full large class="animated flipInX miButton" (click)="Redireccion('materias')">Materias</button> 
         </div>
-        <button *ngIf="seleccion!=''" ion-button icon-only round color="primary" (click)="aparecer()" style="margin:auto;text-align:center;display:block;"><ion-icon md="md-arrow-back"></ion-icon></button>
+        <button *ngIf="seleccion!=''" ion-button icon-only round color="primary" class="animated flipInX miButton" (click)="aparecer()" ><ion-icon name="arrow-back"></ion-icon></button>
 
         <div *ngIf="seleccion=='alumnos'" > 
-          <span *ngFor="let alumno of listaAlumnos">  <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.legajo)">{{alumno.nombre}}</button>  </span>
+          <span *ngFor="let alumno of listaAlumnos">  <br><button ion-button  class="animated flipInX miButton" (click)="Seleccion(alumno.legajo)">{{alumno.nombre}}</button>  </span>
       </div>
 
       <div *ngIf="seleccion=='materias'"> 
-        <span *ngFor="let materia of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(materia)">Materia:{{materia.nombre}},Aula:{{materia.aula}}</button> </span> 
+        <span *ngFor="let materia of listaAux"> <br><button ion-button class="animated flipInX miButton" (click)="Seleccion(materia)">Materia:{{materia.nombre}},Aula:{{materia.aula}}</button> </span> 
     </div>
 
       
     <div *ngIf="seleccion=='profesores'" > 
-        <span *ngFor="let profesor of listadoProfesores"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(profesor.Apellido)">{{profesor.Nombre}},{{profesor.Apellido}}</button> </span> 
+        <span *ngFor="let profesor of listadoProfesores"> <br><button ion-button  class="animated flipInX miButton" (click)="Seleccion(profesor.Apellido)">{{profesor.Nombre}},{{profesor.Apellido}}</button> </span> 
      </div>
 
     <div *ngIf="seleccion=='materiasProfesor'" > 
-     <span *ngFor="let mp of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(mp)">Materia:{{mp.materia}},Aula:{{mp.aula}} </button>  </span>
+     <span *ngFor="let mp of listaAux"> <br><button ion-button  class="animated flipInX miButton" (click)="Seleccion(mp)">Materia:{{mp.materia}},Aula:{{mp.aula}} </button>  </span>
   </div>
     
   <div *ngIf="seleccion=='aulasAlumnos'" > 
-      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion('a')">4º A </button>  </span>
-      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion('b')">4º B </button>  </span>
+      <span > <br><button ion-button  class="animated flipInX miButton" (click)="Seleccion('a')">4º A </button>  </span>
+      <span > <br><button ion-button  class="animated flipInX miButton" (click)="Seleccion('b')">4º B </button>  </span>
       
     </div>
 
     <div *ngIf="seleccion=='a'" > 
-        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}}</button>  </span>
+        <span *ngFor="let alumno of listaAux"> <br><button ion-button class="animated flipInX miButton" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}}</button>  </span>
      </div>
 
      <div *ngIf="seleccion=='b'" > 
-        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}} </button>  </span>
+        <span *ngFor="let alumno of listaAux"> <br><button ion-button  class="animated flipInX miButton" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}} </button>  </span>
      </div>
           
 </ion-content>

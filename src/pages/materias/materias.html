@@ -7,6 +7,12 @@
 <ion-header>
   <ion-navbar >
     <ion-title>Materias</ion-title>
+
+    <ion-buttons end>
+      <button (click)="presentActionSheet()" ion-button>
+        <ion-icon name="brush"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -14,7 +20,7 @@
 <ion-content padding >
   
       <div *ngFor="let lista of listaMateriasAlumno; let i = index"> 
-          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionMateria('PPS')">{{ lista.materia }}</button> 
+          <br> <button ion-button round full large class="animated flipInX miButton" (click)="RedireccionMateria('PPS')">{{ lista.materia }}</button> 
       </div>
   
   </ion-content>

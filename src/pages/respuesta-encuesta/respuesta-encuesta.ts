@@ -30,7 +30,7 @@ horaActual:Date;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController) {
     
-
+    console.log("-------------- Estoy en encuesta respuesta--------------");
     this.horaActual = new Date();
     
 
