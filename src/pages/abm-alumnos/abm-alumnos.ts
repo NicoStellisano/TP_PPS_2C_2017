@@ -49,6 +49,7 @@ export class AbmAlumnosPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
     public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation,public modalCtrl: ModalController, public alertCtrl:AlertController ) {
+      console.log("--------------- Estoy en aula abm-alumnos ------------------");
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
       
       this.settings = {

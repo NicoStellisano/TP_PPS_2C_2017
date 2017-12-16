@@ -35,7 +35,7 @@ profesor:any;
     this.materiaD=this.navParams.get("materia");
     this.aula=this.navParams.get("aula");
 
-    
+    console.log("--------------- Estoy en adignar materia ------------------");
     
    
   }

@@ -32,6 +32,7 @@ export class MateriasProfesorPage {
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider) {
+    console.log("--------------- Estoy en  materias profesor ------------------");
     this.aula= this.navParams.get('aulaa');
    // alert(this.aula);
 

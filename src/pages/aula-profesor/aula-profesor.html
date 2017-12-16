@@ -6,13 +6,13 @@
 -->
 <ion-header>
 
-  <ion-navbar color="dark">
+  <ion-navbar>
     <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding style="background-image:url('assets/aula-profesor.jpg')" class="fondo">
+<ion-content padding >
 
  <!--gi <ion-list>
               
@@ -34,20 +34,20 @@
   </ion-list>-->
 
    
-    <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> 
+    <button ion-button  (click)="crearNotificacion()" class="animated flipInX  miButton"> 
       <ion-icon name="arrow-round-back"></ion-icon> Crear Notificacion
     </button>
     <!--<button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
       <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos
     </button>-->
-    <button ion-button round full large  (click)="mostrarQr()" class="animated flipInX miBoton miButton"> 
+    <button ion-button   (click)="mostrarQr()" class="animated flipInX  miButton"> 
         <ion-icon name="arrow-round-back"></ion-icon> Escaner QR
       </button>
-      <button ion-button round full large  (click)="Encuestas()" class="animated flipInX miBoton miButton"> 
+      <button ion-button  (click)="Encuestas()" class="animated flipInX miButton "> 
         <ion-icon name="arrow-round-back"></ion-icon> Ver Encuestas
       </button>
 
-    <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> 
+    <button ion-button  (click)="tomaLista()" class="animated flipInX  miButton"> 
       <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista
     </button>
     <br><br>

@@ -14,20 +14,20 @@
 
 
 <ion-content padding>
-    <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
-        <ion-label  style="color:white" floating>Aula</ion-label>
+    <ion-item >
+        <ion-label  >Aula</ion-label>
     <ion-input disabled clearInput type="text"  [(ngModel)]="aula" name="aula" id="aula"></ion-input></ion-item>
-  <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
-    <ion-label  style="color:white" floating>Materia</ion-label>
+  <ion-item >
+    <ion-label  floating>Materia</ion-label>
 <ion-input disabled clearInput type="text"  [(ngModel)]="materiaD" name="materiaD" id="materiaD"></ion-input></ion-item>
-<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
-  <ion-label style="color:white">Profesor</ion-label>
- <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="profesor" name="profesor" id="profesor">
+<ion-item >
+  <ion-label >Profesor</ion-label>
+ <ion-select  [(ngModel)]="profesor" name="profesor" id="profesor">
    <ion-option *ngFor="let profesor of listaProfesores" [value]="profesor">{{profesor.Nombre}} {{profesor.Apellido}}</ion-option>
    
   </ion-select>
 </ion-item>
 <br> <br>
-<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="asignar()">Asignar</button>
+<br> <button ion-button   (click)="asignar()">Asignar</button>
 
 </ion-content>

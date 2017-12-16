@@ -5,39 +5,39 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar color="dark">
+    <ion-navbar >
       <ion-title>Editar encuesta "{{encuestaAmodificar.nombre}}"</ion-title>
     </ion-navbar>
   </ion-header>
   
   
-  <ion-content padding style="background-image:url('assets/hallowenCuestionarios.jpg')" class="fondo">
+  <ion-content padding >
      
     <ion-card-content>
       
       <ion-list >  
-        <ion-item class="animated flipInX miItem">
+        <ion-item class="animated flipInX ">
         <ion-label class="miLabel" floating>Nombre de la encuesta</ion-label>
         <ion-input type="text" [(ngModel)]="encuestaAmodificar.nombre" disabled="false"></ion-input> 
         </ion-item>
       
     
-        <ion-item class="animated flipInX miItem">
+        <ion-item class="animated flipInX ">
         <ion-label class="miLabel" floating>Pregunta</ion-label>
         <ion-input type="text" [(ngModel)]="encuestaAmodificar.pregunta" disabled="false"></ion-input> 
         </ion-item>
   
-        <ion-item class="animated flipInX miItem">
+        <ion-item class="animated flipInX ">
           <ion-label class="miLabel" floating>Primera opción</ion-label>
           <ion-input type="text" [(ngModel)]="encuestaAmodificar.respuesta1" disabled="false"></ion-input> 
           </ion-item>
   
-          <ion-item class="animated flipInX miItem">
+          <ion-item class="animated flipInX ">
             <ion-label class="miLabel" floating>Segunda opción</ion-label>
             <ion-input type="text" [(ngModel)]="encuestaAmodificar.respuesta2" disabled="false"></ion-input> 
             </ion-item>
   
-            <ion-item class="animated flipInX miItem">
+            <ion-item class="animated flipInX ">
               <ion-label class="miLabel" floating>Formato</ion-label>
             <ion-select [(ngModel)]="encuestaAmodificar.formato">
            

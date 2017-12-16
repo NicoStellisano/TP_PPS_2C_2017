@@ -118,6 +118,7 @@ export class MateriasAdministrativoPage {
   constructor( public db: AngularFireDatabase,private nativeAudio: NativeAudio,public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
     public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ,public platform:Platform,public afd:AngularFireDatabase
     ,public alertCtrl:AlertController) {
+      console.log("--------------- Estoy en materias administrativo ------------------");
       this.db.list("/tomarA").subscribe(data=>
         {
           this.listFaltantes=data;

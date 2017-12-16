@@ -37,6 +37,7 @@ datosfaltas;
  
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public db: AngularFireDatabase,private toastCtrl:ToastController
   ) {
+    console.log("--------------- Estoy en real administrativo ------------------");
       this.fireService.getAlumnos().subscribe(data=>
         {
           this.listadoAlumnos=data;

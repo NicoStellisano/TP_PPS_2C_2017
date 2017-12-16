@@ -98,7 +98,7 @@ export class AulaAdministrativoPage {
       cantidadAlumno:25
     };*/
 
-    
+    console.log("--------------- Estoy en aula administrativo ------------------");
   }
 
   activar()

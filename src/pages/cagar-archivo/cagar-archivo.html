@@ -6,14 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar color="dark">
+  <ion-navbar>
     <ion-title>Cargar Archivo </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding style="background-image:url('assets/nube.jpg')" class="fondo">
+<ion-content padding style="background-image:url('assets/nube.jpg')">
 
   <ion-list>
     <ion-item>
@@ -32,10 +32,10 @@
   </ion-list>
   
   <div>
-    <button center ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX miBoton miButton"> 
+    <button center ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX  miButton"> 
       <ion-icon name="cloud-done"></ion-icon> Subir
     </button>
-    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> 
+    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX  miButton"> 
       <ion-icon name="cloud-done"></ion-icon> Descargar
     </button>
   </div>

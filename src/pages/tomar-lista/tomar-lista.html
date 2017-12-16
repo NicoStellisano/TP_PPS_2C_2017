@@ -6,16 +6,16 @@
 -->
 <ion-header>
 
-  <ion-navbar color="dark">
+  <ion-navbar >
     <ion-title>Tomar Lista</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding style="background-image:url('assets/descarga-archivo.png')" class="fondo">
+<ion-content padding >
   
   <ion-list>
-    <ion-item *ngFor="let alumno of tomarAlumnos$ | async" class="miItem animated flipInX">
+    <ion-item *ngFor="let alumno of tomarAlumnos$ | async" class=" animated flipInX">
       <ion-avatar item-end>
         <img src="./assets/icon/bien.png" (click)="presente(alumno)">  
       </ion-avatar>

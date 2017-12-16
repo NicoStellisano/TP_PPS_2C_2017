@@ -6,13 +6,13 @@
 -->
 <ion-header>
 
-  <ion-navbar color="dark">
+  <ion-navbar >
     <ion-title>Aula Alumno</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding style="background-image:url('assets/aula.jpg')" class="fondo">
+<ion-content padding >
 
   <ion-list>
 
@@ -26,24 +26,24 @@
         </ion-select>
     </ion-item> -->
 
-    <ion-item class="animated flipInX miItem">
+    <ion-item class="animated flipInX ">
       <ion-label class="miLabel" floating>Turno</ion-label>
       <ion-input type="text" [(ngModel)]="miAulaAlumno.turno" disabled="true"></ion-input> 
     </ion-item>
             
-     <ion-item class="animated flipInY miItem">
+     <ion-item class="animated flipInY ">
       <ion-label class="miLabel" floating>Profesor</ion-label>
       <ion-input type="text" [(ngModel)]="miAulaAlumno.profesor" disabled="true"></ion-input>
      </ion-item>
         
-    <ion-item class="animated flipInX miItem" >
+    <ion-item class="animated flipInX " >
       <ion-label class="miLabel" floating >Materia</ion-label>
       <ion-input type="text" [(ngModel)]="miAulaAlumno.materia" disabled="true"></ion-input>
     </ion-item> 
   </ion-list>
       
   <div>
-    <button ion-button round full large (click)=RedireccionMaterias()  class="animated flipInX miBoton miButton"> 
+    <button ion-button r (click)=RedireccionMaterias()  class="animated flipInX  miButton"> 
       <ion-icon name="arrow-round-back"></ion-icon> Materias
     </button>
   </div>

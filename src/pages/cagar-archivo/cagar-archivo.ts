@@ -49,6 +49,7 @@ listaAdministrativos:any[]=[];;
 
   constructor(public navCtrl: NavController, public modalCtrl:ModalController,public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     //this.aula = this.navParams.get('aulaa');
+    console.log("--------------- Estoy en cargar-archivo ------------------");
     this.persona = this.navParams.get('persona');
     if(this.persona=="alumno")
     {

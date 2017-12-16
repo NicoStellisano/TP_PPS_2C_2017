@@ -20,6 +20,7 @@ export class AulaAlumnoPage {
   miAulaAlumno = {} as AulaAlumnoItem;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log("--------------- Estoy en aula alumno ------------------");
     this.miAulaAlumno = {
       turno:"tarde",
       profesor:"Pepe",

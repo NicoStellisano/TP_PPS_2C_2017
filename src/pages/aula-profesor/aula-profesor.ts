@@ -52,6 +52,7 @@ export class AulaProfesorPage {
 listFaltantes:any[]=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio, private toastCtrl:ToastController ) {
+    console.log("--------------- Estoy en aula profesor ------------------");
     this.aula = this.navParams.get('aula');
 this.materia= this.navParams.get('materia');
  

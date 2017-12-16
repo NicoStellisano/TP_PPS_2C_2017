@@ -82,7 +82,7 @@
 }
 
 .profesional-theme ion-content {
-  background-image: url("../assets/img/fondo/comida.jpeg");
+  background-image: url("../assets/img/fondo/profesional.jpg");
   background-size: 100% auto;
   background-color: #090f2f;
   color: #fff;
@@ -28262,32 +28262,30 @@ a.sort.desc::after {
   margin-bottom: -2px;
 }
 
-ion-header, ion-content {
-  font-family: 'Kalam', cursive;
+/*ion-header,ion-content{
+    font-family: 'Kalam', cursive;
+}*/
+/*.miButton{
+    border-color:white;
+    border-width: 2px;
+    border-style: solid;
 }
 
-.miButton {
-  border-color: white;
-  border-width: 2px;
-  border-style: solid;
-}
-
-.miItem {
-  background-color: rgba(0, 0, 0, 0.747);
-  color: white;
-}
-
+.miItem{
+  background-color:rgba(0, 0, 0, 0.747);
+  color:white
+}*/
 .miLabel {
   color: white;
 }
 
-.miBoton {
-  margin: auto;
-  text-align: center;
-  display: block;
-  background-color: rgba(250, 103, 18, 0.979);
-}
-
+/*.miBoton{
+  margin:auto;
+  text-align:center;
+  display:block;
+  background-color:rgba(250, 103, 18, 0.979)
+  //color: orangered;
+}*/
 .miClaseDanger {
   background-color: rgba(252, 29, 0, 0.575);
 }

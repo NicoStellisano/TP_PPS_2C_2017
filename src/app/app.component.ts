@@ -12,7 +12,7 @@ import { AlumnosPage } from '../pages/alumnos/alumnos';
 //import { AulaProfesorPage } from '../pages/aula-profesor/aula-profesor';
 import { CagarArchivoPage } from '../pages/cagar-archivo/cagar-archivo';
 import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
-
+import { SettingProvider } from '../providers/setting/setting';
 
 
 
@@ -22,8 +22,9 @@ import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
 export class MyApp {
   rootPage:any = LoginPage;
   //rootPage:any = AbmAlumnosPage; //test
-
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  selectTheme:String;
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private setting: SettingProvider) {
+    this.setting.getActiveProfesional().subscribe(val => this.selectTheme = val);
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

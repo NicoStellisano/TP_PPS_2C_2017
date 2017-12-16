@@ -26,6 +26,7 @@ export class MateriasPage {
   
 public variableGlobal: any;
     constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl:AlertController, public db: AngularFireDatabase,private toastCtrl:ToastController ) {
+      console.log("--------------- Estoy en aula materias ------------------");
       this.aula = this.navParams.get('aulaa');
 this.curso=localStorage.getItem("curso");
 

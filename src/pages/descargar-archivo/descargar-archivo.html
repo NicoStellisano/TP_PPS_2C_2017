@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="dark">
+  <ion-navbar>
     <ion-title>Descargar Archivo {{aula}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="generaPDF()">
@@ -22,9 +22,9 @@
 
 </ion-header>
 
-<ion-content padding style="background-image:url('assets/descarga-archivo.png')" class="fondo">
+<ion-content padding style="background-image:url('assets/descarga-archivo.png')">
   <ion-list>
-    <ion-item *ngFor="let alumno of listaAlumnosCsv " class="animated flipInX miItem">
+    <ion-item *ngFor="let alumno of listaAlumnosCsv " class="animated flipInX">
       <h3>Legajo: {{alumno.legajo}}</h3>
       <h2>Mail: {{alumno.mail}}</h2>
       <h2>Nombre: {{alumno.nombre}}</h2>

@@ -5,21 +5,21 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="dark">
+  <ion-navbar >
     <ion-title>Encuestas</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding style="background-image:url('assets/hallowenCuestionarios.jpg')" class="fondo">
-          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> 
+<ion-content padding >
+          <br> <button ion-button  (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> 
          <br>
           
           <div *ngFor="let e of encuestas; let i = index">
      
           <ion-list >
               <div>
-          <ion-item class="animated flipInX miItem">
+          <ion-item class="animated flipInX ">
               <ion-label class="miLabel" style="color: orange" floating>Nombre:</ion-label>
               <ion-input type="text" [(ngModel)]="e.nombre" disabled="true"></ion-input> 
               <button style="color: yellow" ion-button clear item-end icon-only (click)="modificarEncuesta(e)" >
@@ -31,13 +31,13 @@
               </ion-item>
             </div>
                  
-              <ion-item class="animated flipInY miItem">
+              <ion-item class="animated flipInY ">
               <ion-label class="miLabel" style="color: orange"  floating>Pregunta:</ion-label>
               <ion-input type="text" [(ngModel)]="e.pregunta" disabled="true"></ion-input>
               </ion-item>
               
               
-                <ion-item class="animated flipInY miItem">
+                <ion-item class="animated flipInY ">
                   <ion-label class="miLabel" style="color: orange"  floating>La encuesta finaliza en el horario:</ion-label>
                   <ion-input type="text" [(ngModel)]="e.horaFReal" disabled="true"></ion-input>
                   </ion-item>
@@ -56,7 +56,7 @@
                     -->
 
 
-                  <ion-item *ngIf='e.formato == "Botones"' class="animated flipInY miItem">
+                  <ion-item *ngIf='e.formato == "Botones"' class="animated flipInY ">
                     <ion-list  >
                         <button  class="botones" style="color: rgb(85, 158, 218)" ion-button clear item-end >
                             Presione para votar: {{e.respuesta1}}
@@ -87,11 +87,11 @@
                   
 
                                 <ion-list  *ngIf='e.formato == "Radio botones"' radio-group [(ngModel)]="respuesta">
-                                    <ion-item class="animated flipInY miItem">
+                                    <ion-item class="animated flipInY ">
                                       <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>
                                       <ion-radio  value="e.respuesta1" ></ion-radio>
                                     </ion-item>
-                                    <ion-item class="animated flipInY miItem">
+                                    <ion-item class="animated flipInY ">
                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>
                                         <ion-radio  value="e.respuesta2" ></ion-radio>
                                       </ion-item>
@@ -100,7 +100,7 @@
                                   </ion-list>
 
                                   <ion-list  *ngIf='e.formato == "Checkbox"' radio-group [(ngModel)]="respuesta">
-                                      <ion-item class="animated flipInY miItem">
+                                      <ion-item class="animated flipInY ">
                                           <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>
                                           <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>
                                       </ion-item>
@@ -113,7 +113,7 @@
                                     </ion-list>
 
                                     <ion-list  *ngIf='e.formato == "Selección de opciones"'  >
-                                      <ion-item class="animated flipInY miItem" >
+                                      <ion-item class="animated flipInY " >
                                       <select style="color : rgb(85, 158, 218); width:150px;" [(ngModel)]="respuesta"  class="animated flipInY miItem">
     
                                         <option >{{e.respuesta1}} </option>

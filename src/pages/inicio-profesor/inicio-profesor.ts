@@ -11,6 +11,8 @@ import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/da
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { MateriaPage } from '../materia/materia';
 import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrativo';
+import { ActionSheetController } from 'ionic-angular';
+import { SettingProvider } from '../../providers/setting/setting';
 /**
  * Generated class for the InicioProfesorPage page.
  *
@@ -28,7 +30,10 @@ export class InicioProfesorPage {
   listaMateriasProfesor: any[]=[];
   listaAlumnos: any[]=[];
   apellido:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider) {
+  selectTheme:String;
+  constructor(public navCtrl: NavController,private setting: SettingProvider,public actionSheetCtrl: ActionSheetController, public navParams: NavParams,public fireService : FireBaseServiceProvider) {
+    console.log("--------------- Estoy en  inicio profesor ------------------");
+    this.setting.getActiveProfesional().subscribe(val => this.selectTheme = val);
     this.fireService.getAlumnos().subscribe(data=>
       {
         this.listaAlumnos=data;
@@ -49,6 +54,56 @@ export class InicioProfesorPage {
   
       }
 
+      temaArgentina(){
+        this.setting.setActiveProfesional('argentina-theme');
+      }
+    
+      temaProfesional(){
+        this.setting.setActiveProfesional('profesional-theme');
+      }
+    
+      temaNaif(){
+        this.setting.setActiveProfesional('naif-theme');
+      }
+    
+      presentActionSheet() {
+        let actionSheet = this.actionSheetCtrl.create({
+          title: 'Elergir un tema',
+          
+          buttons: [
+            {
+              text: 'Profesional',
+              role: 'destructive',
+              handler: () => {
+                console.log('Destructive clicked');
+                this.temaProfesional();
+              }
+            },
+            {
+              text: 'Argentina',
+              handler: () => {
+                console.log('Archive clicked');
+                this.temaArgentina();
+              }
+            },
+            {
+              text: 'Naif',
+              handler: () => {
+                console.log('Archive clicked');
+                this.temaNaif();
+              }
+            },
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              handler: () => {
+                console.log('Cancel clicked');
+              }
+            }
+          ]
+        });
+        actionSheet.present();
+      }
     
 
     RedireccionMateria(elemento:any)

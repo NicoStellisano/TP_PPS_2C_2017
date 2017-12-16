@@ -4,21 +4,21 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding style="background-image:url('assets/hallowenAdministrativo.jpg')" class="fondo">
+<ion-content padding  class="fondo">
  
 <div style="width:100%;height:100%">
   <br>
-  <div style="width:50%;height:10%;margin:auto;text-align:center;display:block;">
-<button ion-button icon-right color="danger" style="font-size:11pt;margin:auto;text-align:center;display:block;" round (click)="loginGoogle()">
-Iniciar sesión con Google<ion-icon style="font-size:250%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>
+  <div >
+<button ion-button icon-right color="danger" round (click)="loginGoogle()">
+Iniciar sesión con Google<ion-icon name="logo-googleplus"></ion-icon>
 </button>
 </div>
     <br><br><br>
     <div *ngIf="!google">
-   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
+   <ion-item >
       <ion-label  style="color:white" floating>Email</ion-label>
 <ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>
-<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
+<ion-item >
     <ion-label style="color:white" floating>Contraseña</ion-label>      
 <ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>
  <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">
@@ -29,7 +29,7 @@ Iniciar sesión con Google<ion-icon style="font-size:250%;margin:auto;text-align
   </ion-select>
 </ion-item>-->
 <br>
-<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>
+<br> <button ion-button round full large class="miButton" (click)="loginNormal()">Iniciar Sesión</button>
 </div>
 </div>
 <!--<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>
@@ -38,10 +38,10 @@ Iniciar sesión con Google<ion-icon style="font-size:250%;margin:auto;text-align
 <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>
 -->
 <br><br><br><br>
-<button ion-button full (click)="octa()">Octavio</button>
-<button ion-button full (click)="dale()">ADELIBERTI 4A </button>
-<button ion-button full (click)="mauro()">Administrativo Mauro </button>
-<button ion-button full (click)="maxi()">Maximiliano </button>
+<button class="miButton" ion-button full (click)="octa()">Octavio</button>
+<button class="miButton" ion-button full (click)="dale()">ADELIBERTI 4A </button>
+<button class="miButton" ion-button full (click)="mauro()">Administrativo Mauro </button>
+<button class="miButton" ion-button full (click)="maxi()">Maximiliano </button>
 <br><br><br><br>
 
 </ion-content>
