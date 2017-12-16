@@ -1,0 +1,45 @@
+.profesional-theme{
+
+    ion-content {
+        background-image: url('../assets/img/fondo/profesional.jpeg');
+        background-size: 100% auto;
+        background-color: #090f2f;
+        color: #fff;
+    }
+
+    ion-header, ion-content {
+        font-family: 'Righteous', cursive;
+    }
+     
+    .toolbar-title {
+        color: #fff;
+    }
+     
+    .header .toolbar-background {
+        background-color: orange;
+    }
+
+    ion-item{
+        background-color:rgba(143, 80, 8, 0.747);
+        color:white
+    }
+      
+    ion-list-header{
+        background-color:rgba(143, 80, 8, 0.747);
+        color:white
+    }
+
+    ion-card{
+        background-color:rgba(129, 44, 21, 0.747);
+    }
+
+    .miButton{
+        margin:auto;
+        margin-block-end: auto;
+        text-align:center;
+        display:block;
+        border-radius: 20px;
+        color: white;
+        background-color:rgba(250, 95, 18, 0.87)
+    }
+}

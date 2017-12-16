@@ -88,7 +88,7 @@ var AsignarMateriaPage = (function () {
 }());
 AsignarMateriaPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-asignar-materia',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\asignar-materia\asignar-materia.html"*/'<!--\n  Generated template for the AsignarmateriaDPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Asignar Profesor</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n        <ion-label  style="color:white" floating>Aula</ion-label>\n    <ion-input disabled clearInput type="text"  [(ngModel)]="aula" name="aula" id="aula"></ion-input></ion-item>\n  <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n    <ion-label  style="color:white" floating>Materia</ion-label>\n<ion-input disabled clearInput type="text"  [(ngModel)]="materiaD" name="materiaD" id="materiaD"></ion-input></ion-item>\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n  <ion-label style="color:white">Profesor</ion-label>\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="profesor" name="profesor" id="profesor">\n   <ion-option *ngFor="let profesor of listaProfesores" [value]="profesor">{{profesor.Nombre}} {{profesor.Apellido}}</ion-option>\n   \n  </ion-select>\n</ion-item>\n<br> <br>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="asignar()">Asignar</button>\n\n</ion-content>\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\asignar-materia\asignar-materia.html"*/,
+        selector: 'page-asignar-materia',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/asignar-materia/asignar-materia.html"*/'<!--\n  Generated template for the AsignarmateriaDPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Asignar Profesor</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n        <ion-label  style="color:white" floating>Aula</ion-label>\n    <ion-input disabled clearInput type="text"  [(ngModel)]="aula" name="aula" id="aula"></ion-input></ion-item>\n  <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n    <ion-label  style="color:white" floating>Materia</ion-label>\n<ion-input disabled clearInput type="text"  [(ngModel)]="materiaD" name="materiaD" id="materiaD"></ion-input></ion-item>\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n  <ion-label style="color:white">Profesor</ion-label>\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="profesor" name="profesor" id="profesor">\n   <ion-option *ngFor="let profesor of listaProfesores" [value]="profesor">{{profesor.Nombre}} {{profesor.Apellido}}</ion-option>\n   \n  </ion-select>\n</ion-item>\n<br> <br>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="asignar()">Asignar</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/asignar-materia/asignar-materia.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], AsignarMateriaPage);
@@ -210,11 +210,7 @@ var MateriasPage = (function () {
 }());
 MateriasPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-materias',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/materias/materias.html"*/'<!--\n  Generated template for the MateriasPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Materias</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/halloween-Materias.png\')" class="fondo">\n  \n      <div *ngFor="let lista of listaMateriasAlumno; let i = index"> \n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionMateria(\'PPS\')">{{ lista.materia }}</button> \n      </div>\n  \n  </ion-content>\n  \n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/materias/materias.html"*/,
-=======
-        selector: 'page-materias',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materias\materias.html"*/'<!--\n\n  Generated template for the MateriasPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Materias</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/halloween-Materias.png\')" class="fondo">\n\n  \n\n      <div *ngFor="let lista of listaMateriasAlumno; let i = index"> \n\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionMateria(\'PPS\')">{{ lista.materia }}</button> \n\n      </div>\n\n  \n\n  </ion-content>\n\n  \n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materias\materias.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
 ], MateriasPage);
@@ -301,11 +297,7 @@ var DescargarArchivoPage = (function () {
 }());
 DescargarArchivoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
-        selector: 'page-asignar-materia',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/asignar-materia/asignar-materia.html"*/'<!--\n  Generated template for the AsignarmateriaDPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Asignar Profesor</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n        <ion-label  style="color:white" floating>Aula</ion-label>\n    <ion-input disabled clearInput type="text"  [(ngModel)]="aula" name="aula" id="aula"></ion-input></ion-item>\n  <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n    <ion-label  style="color:white" floating>Materia</ion-label>\n<ion-input disabled clearInput type="text"  [(ngModel)]="materiaD" name="materiaD" id="materiaD"></ion-input></ion-item>\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n  <ion-label style="color:white">Profesor</ion-label>\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="profesor" name="profesor" id="profesor">\n   <ion-option *ngFor="let profesor of listaProfesores" [value]="profesor">{{profesor.Nombre}} {{profesor.Apellido}}</ion-option>\n   \n  </ion-select>\n</ion-item>\n<br> <br>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="asignar()">Asignar</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/asignar-materia/asignar-materia.html"*/,
-=======
-        selector: 'page-descargar-archivo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\descargar-archivo\descargar-archivo.html"*/'<!--\n\n  Generated template for the DescargarArchivoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Descargar Archivo {{aula}}</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="generaPDF()">\n\n        <ion-icon name="logo-dropbox"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="generaCSV()">\n\n        <ion-icon name="logo-dropbox"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/descarga-archivo.png\')" class="fondo">\n\n  <ion-list>\n\n    <ion-item *ngFor="let alumno of listaAlumnosCsv " class="animated flipInX miItem">\n\n      <h3>Legajo: {{alumno.legajo}}</h3>\n\n      <h2>Mail: {{alumno.mail}}</h2>\n\n      <h2>Nombre: {{alumno.nombre}}</h2>\n\n      <h2>Tuno: {{alumno.turno}}</h2>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\descargar-archivo\descargar-archivo.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
+        selector: 'page-descargar-archivo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/'<!--\n  Generated template for the DescargarArchivoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Descargar Archivo {{aula}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="generaPDF()">\n        <ion-icon name="logo-dropbox"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="generaCSV()">\n        <ion-icon name="logo-dropbox"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/descarga-archivo.png\')" class="fondo">\n  <ion-list>\n    <ion-item *ngFor="let alumno of listaAlumnosCsv " class="animated flipInX miItem">\n      <h3>Legajo: {{alumno.legajo}}</h3>\n      <h2>Mail: {{alumno.mail}}</h2>\n      <h2>Nombre: {{alumno.nombre}}</h2>\n      <h2>Tuno: {{alumno.turno}}</h2>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
 ], DescargarArchivoPage);
@@ -848,11 +840,7 @@ var AulaAdministrativoPage = (function () {
 }());
 AulaAdministrativoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-aula-administrativo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-administrativo/aula-administrativo.html"*/'<!--\n  Generated template for the AulaAdministrativoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Aula Administrativo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n <!-- <ion-list>\n        \n    <ion-item class="animated flipInX miItem">\n      <ion-label class="miLabel" floating>Profesor</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.profesor" disabled="true"></ion-input> \n    </ion-item>\n              \n    <ion-item class="animated flipInY miItem">\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.division" disabled="true"></ion-input>\n    </ion-item>\n          \n    <ion-item class="animated flipInX miItem" >\n      <ion-label class="miLabel" floating >Materia</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.materia" disabled="true"></ion-input>\n    </ion-item> \n\n    <ion-item class="animated flipInX miItem" >\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n      <ion-input type="number" [(ngModel)]="miAulaAdministrativo.cantidadAlumno" disabled="true"></ion-input>\n    </ion-item> \n\n  </ion-list>-->\n\n  \n  \n      <ion-item >\n        <ion-label>Curso</ion-label>\n        <ion-select interface=\'action-sheet\' [(ngModel)]="seleccion" (ionChange)="changeList($event)">\n          <ion-option (ionSelect)="changeList(\'a\')" value="a">4ºA</ion-option>\n          <ion-option (ionSelect)="changeList(\'b\')" value="b">4ºB</ion-option>\n        </ion-select>\n      </ion-item>\n      <ion-item >\n      <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="a"\'>\n        <ng2-smart-table style=\'width:100%;height:100%\' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"\n        (editConfirm)="onSaveConfirm($event)"\n        (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n      </ion-item>\n      <ion-item >\n        <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="b"\'>\n        <ng2-smart-table style=\'width:100%;height:100%\'  [settings]="settings" [source]="source2" (deleteConfirm)="onDeleteConfirm($event)"\n        (editConfirm)="onSaveConfirm($event)"\n        (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n   </ion-item> \n\n\n   \n  \n    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n    </button>\n  \n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-administrativo/aula-administrativo.html"*/,
-=======
-        selector: 'page-aula-administrativo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-administrativo\aula-administrativo.html"*/'<!--\n\n  Generated template for the AulaAdministrativoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Aula Administrativo</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n\n\n <!-- <ion-list>\n\n        \n\n    <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Profesor</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.profesor" disabled="true"></ion-input> \n\n    </ion-item>\n\n              \n\n    <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.division" disabled="true"></ion-input>\n\n    </ion-item>\n\n          \n\n    <ion-item class="animated flipInX miItem" >\n\n      <ion-label class="miLabel" floating >Materia</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaAdministrativo.materia" disabled="true"></ion-input>\n\n    </ion-item> \n\n\n\n    <ion-item class="animated flipInX miItem" >\n\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n      <ion-input type="number" [(ngModel)]="miAulaAdministrativo.cantidadAlumno" disabled="true"></ion-input>\n\n    </ion-item> \n\n\n\n  </ion-list>-->\n\n\n\n  \n\n  \n\n      <ion-item >\n\n        <ion-label>Curso</ion-label>\n\n        <ion-select interface=\'action-sheet\' [(ngModel)]="seleccion" (ionChange)="changeList($event)">\n\n          <ion-option (ionSelect)="changeList(\'a\')" value="a">4ºA</ion-option>\n\n          <ion-option (ionSelect)="changeList(\'b\')" value="b">4ºB</ion-option>\n\n        </ion-select>\n\n      </ion-item>\n\n      <ion-item >\n\n      <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="a"\'>\n\n        <ng2-smart-table style=\'width:100%;height:100%\' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"\n\n        (editConfirm)="onSaveConfirm($event)"\n\n        (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n\n      </ion-item>\n\n      <ion-item >\n\n        <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="b"\'>\n\n        <ng2-smart-table style=\'width:100%;height:100%\'  [settings]="settings" [source]="source2" (deleteConfirm)="onDeleteConfirm($event)"\n\n        (editConfirm)="onSaveConfirm($event)"\n\n        (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n\n   </ion-item> \n\n\n\n\n\n   \n\n  \n\n    <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n\n    </button>\n\n  \n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-administrativo\aula-administrativo.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__["a" /* ScreenOrientation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabase */],
@@ -906,94 +894,6 @@ var NotificacionPage = (function () {
     NotificacionPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad NotificacionPage');
     };
-<<<<<<< HEAD
-    DescargarArchivoPage.prototype.generaCSV = function () {
-        var _this = this;
-        var csvContent = "data:text/csv;charset=utf-8,";
-        this.listaAlumnosCsv.forEach(function (alumno) {
-            //alumno
-            console.log(alumno);
-            csvContent += _this.generarLinea(alumno);
-        });
-        var encodedUri = encodeURI(csvContent);
-        var link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "alumnos.csv");
-        document.body.appendChild(link); // Required for FF
-        link.click();
-    };
-    DescargarArchivoPage.prototype.generarLinea = function (alumno) {
-        var texto;
-        texto = alumno.legajo + ";" + alumno.mail + ";" + alumno.nombre + ";" + alumno.turno + ";\r\n";
-        console.log("genera linea: " + texto);
-        return texto;
-    };
-    DescargarArchivoPage.prototype.lista = function (aula) {
-        return this.database.list('/alumno-lista/', {
-            query: {
-                orderByChild: "aula",
-                equalTo: aula
-            }
-        });
-    };
-    return DescargarArchivoPage;
-}());
-DescargarArchivoPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-descargar-archivo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/'<!--\n  Generated template for the DescargarArchivoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Descargar Archivo {{aula}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="generaPDF()">\n        <ion-icon name="logo-dropbox"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="generaCSV()">\n        <ion-icon name="logo-dropbox"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/descarga-archivo.png\')" class="fondo">\n  <ion-list>\n    <ion-item *ngFor="let alumno of listaAlumnosCsv " class="animated flipInX miItem">\n      <h3>Legajo: {{alumno.legajo}}</h3>\n      <h2>Mail: {{alumno.mail}}</h2>\n      <h2>Nombre: {{alumno.nombre}}</h2>\n      <h2>Tuno: {{alumno.turno}}</h2>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/descargar-archivo/descargar-archivo.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
-], DescargarArchivoPage);
-
-//# sourceMappingURL=descargar-archivo.js.map
-
-/***/ }),
-
-/***/ 149:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificacionPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_audio__ = __webpack_require__(34);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/**
- * Generated class for the NotificacionPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var NotificacionPage = (function () {
-    function NotificacionPage(navCtrl, navParams, db, alertCtrl, nativeAudio) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.db = db;
-        this.alertCtrl = alertCtrl;
-        this.nativeAudio = nativeAudio;
-        this.aula = this.navParams.get('aulaa');
-        console.log("dsadada" + this.aula);
-        this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
-        this.nativeAudio.play('1');
-    }
-    NotificacionPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad NotificacionPage');
-    };
-=======
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     NotificacionPage.prototype.Guardar = function () {
         var _this = this;
         this.db.list('/notificacionesProfesor/').push({
@@ -1019,11 +919,7 @@ var NotificacionPage = (function () {
 }());
 NotificacionPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-notificacion',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/notificacion/notificacion.html"*/'<!--\n  Generated template for the NotificacionPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Creación de notificación</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n  \n<ion-list>\n<ion-item class="animated flipInX miItem">\n<ion-label class="miLabel" floating>Titulo</ion-label>\n<ion-input type="text" [(ngModel)]="titulo" disabled="false"></ion-input> \n</ion-item>\n          \n<ion-item class="animated flipInY miItem">\n<ion-label class="miLabel" floating>Mensaje</ion-label>\n<ion-input type="text" [(ngModel)]="mensaje" disabled="false"></ion-input>\n</ion-item>\n<button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>\n</ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/notificacion/notificacion.html"*/,
-=======
-        selector: 'page-notificacion',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\notificacion\notificacion.html"*/'<!--\n\n  Generated template for the NotificacionPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Creación de notificación</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n  \n\n<ion-list>\n\n<ion-item class="animated flipInX miItem">\n\n<ion-label class="miLabel" floating>Titulo</ion-label>\n\n<ion-input type="text" [(ngModel)]="titulo" disabled="false"></ion-input> \n\n</ion-item>\n\n          \n\n<ion-item class="animated flipInY miItem">\n\n<ion-label class="miLabel" floating>Mensaje</ion-label>\n\n<ion-input type="text" [(ngModel)]="mensaje" disabled="false"></ion-input>\n\n</ion-item>\n\n<button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>\n\n</ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\notificacion\notificacion.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_audio__["a" /* NativeAudio */]])
 ], NotificacionPage);
@@ -1156,16 +1052,12 @@ var TomarListaPage = (function () {
 }());
 TomarListaPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-tomar-lista',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/tomar-lista/tomar-lista.html"*/'<!--\n  Generated template for the TomarListaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Tomar Lista</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/descarga-archivo.png\')" class="fondo">\n  \n  <ion-list>\n    <ion-item *ngFor="let alumno of tomarAlumnos$ | async" class="miItem animated flipInX">\n      <ion-avatar item-end>\n        <img src="./assets/icon/bien.png" (click)="presente(alumno)">  \n      </ion-avatar>\n        \n      <ion-avatar item-end>\n        <img src="./assets/icon/mal.png" (click)="ausente(alumno.$key,alumno)">  \n      </ion-avatar>\n\n      <h2>{{alumno.legajo}} - {{alumno.nombre}}</h2>\n    </ion-item>  \n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/tomar-lista/tomar-lista.html"*/,
-=======
-        selector: 'page-tomar-lista',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\tomar-lista\tomar-lista.html"*/'<!--\n\n  Generated template for the TomarListaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Tomar Lista</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/descarga-archivo.png\')" class="fondo">\n\n  \n\n  <ion-list>\n\n    <ion-item *ngFor="let alumno of tomarAlumnos$ | async" class="miItem animated flipInX">\n\n      <ion-avatar item-end>\n\n        <img src="./assets/icon/bien.png" (click)="presente(alumno)">  \n\n      </ion-avatar>\n\n        \n\n      <ion-avatar item-end>\n\n        <img src="./assets/icon/mal.png" (click)="ausente(alumno.$key,alumno)">  \n\n      </ion-avatar>\n\n\n\n      <h2>{{alumno.legajo}} - {{alumno.nombre}}</h2>\n\n    </ion-item>  \n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\tomar-lista\tomar-lista.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */]])
 ], TomarListaPage);
 
-var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=tomar-lista.js.map
 
 /***/ }),
@@ -1241,11 +1133,7 @@ var InicioAlumnoPage = (function () {
 }());
 InicioAlumnoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-inicio-alumno',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/inicio-alumno/inicio-alumno.html"*/'<!--\n  Generated template for the InicioAlumnoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Seleccione un aula</ion-title>\n   \n  </ion-navbar>\n  <button  ion-button round class="botonEditar"  (click)="EditarPerfil()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Editar perfil</button>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenProfesor.jpg\')" class="fondo">\n\n  \n      <div *ngFor="let lista of listaAulasProfesor; let i = index"> \n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.aula)">{{ lista.aula }}</button> \n      </div>\n     \n  \n  </ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/inicio-alumno/inicio-alumno.html"*/,
-=======
-        selector: 'page-inicio-alumno',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\inicio-alumno\inicio-alumno.html"*/'<!--\n\n  Generated template for the InicioAlumnoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Seleccione un aula</ion-title>\n\n   \n\n  </ion-navbar>\n\n  <button  ion-button round class="botonEditar"  (click)="EditarPerfil()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Editar perfil</button>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenProfesor.jpg\')" class="fondo">\n\n\n\n  \n\n      <div *ngFor="let lista of listaAulasProfesor; let i = index"> \n\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.aula)">{{ lista.aula }}</button> \n\n      </div>\n\n     \n\n  \n\n  </ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\inicio-alumno\inicio-alumno.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
 ], InicioAlumnoPage);
@@ -1456,183 +1344,6 @@ FireBaseServiceProvider = __decorate([
 /***/ }),
 
 /***/ 257:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AulaProfesorPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__notificacion_notificacion__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__materia_materia__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__encuestas_encuestas__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__tomar_lista_tomar_lista__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_native_audio__ = __webpack_require__(34);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-/**
- * Generated class for the AulaProfesorPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var AulaProfesorPage = (function () {
-    function AulaProfesorPage(navCtrl, navParams, db, nativeAudio, toastCtrl) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.db = db;
-        this.nativeAudio = nativeAudio;
-        this.toastCtrl = toastCtrl;
-        this.listaAlumnos = [];
-        this.view = [700, 150];
-        this.view2 = [700, 150];
-        this.listFaltantesB = [];
-        this.listadoFaltas = [];
-        this.informacion = [];
-        this.listFaltantes = [];
-        this.aula = this.navParams.get('aula');
-        this.materia = this.navParams.get('materia');
-        this.db.list("/tomarB").subscribe(function (data) {
-            _this.listFaltantesB = data;
-        });
-        this.db.list("/tomarA").subscribe(function (data) {
-            _this.listFaltantes = data;
-        });
-        this.nativeAudio.preloadComplex('bienvenidoProfesor', 'assets/sonidos/bienvenidoProfesor.mp3', 1, 1, 0);
-        this.nativeAudio.play('bienvenidoProfesor');
-        this.db.list('/notificacionFalta').
-            subscribe(function (data) {
-            _this.datosfaltas = data;
-            console.log(_this.datosfaltas);
-            var bandera = false;
-            for (var i = 0; i < _this.datosfaltas.length; i++) {
-                //if(localStorage.getItem("mail")==this.datosfaltas[i].mail){
-                var toast = _this.toastCtrl.create({
-                    message: 'El alumno' + ' ' + _this.datosfaltas[i].alumno + ' ' + 'tiene' + ' ' + _this.datosfaltas[i].cantidadFaltas + ' ' + 'faltas!!!',
-                    duration: 4000,
-                    position: 'top'
-                });
-                toast.onDidDismiss(function () {
-                });
-                toast.present();
-            }
-        });
-    }
-    AulaProfesorPage.prototype.applyDimensions = function () {
-        var width = this.content.getContentDimensions().contentWidth - 50;
-        var state = width >= 320;
-        this.showXAxisLabel = state;
-        this.showYAxisLabel = state;
-        this.showLegend = state;
-        this.view = [width, 150];
-    };
-    AulaProfesorPage.prototype.ionViewDidEnter = function () {
-        var _this = this;
-        this.db.list("/tomarA").subscribe(function (data) {
-            _this.listFaltantes = data;
-        });
-        this.db.list("/tomarB").subscribe(function (data) {
-            _this.listFaltantesB = data;
-        });
-        this.applyDimensions();
-        window.addEventListener('resize', function () {
-            _this.applyDimensions();
-        }, false);
-        if (this.aula == "4A") {
-            var contador = 0;
-            for (var i = 0; i < this.listFaltantes.length; i++) {
-                var element = this.listFaltantes[i];
-                if (element.contPresentes != 0) {
-                    contador++;
-                }
-            }
-            this.informacion = [
-                {
-                    'name': 'Con al menos una falta',
-                    'value': contador
-                },
-                {
-                    'name': 'Sin faltas',
-                    'value': this.listFaltantes.length - contador
-                }
-            ];
-        }
-        else if (this.aula == "4B") {
-            var contador = 0;
-            for (var i = 0; i < this.listFaltantesB.length; i++) {
-                var element = this.listFaltantesB[i];
-                if (element.contPresentes != 0) {
-                    contador++;
-                }
-            }
-            this.informacion = [
-                {
-                    'name': 'Con al menos una falta',
-                    'value': contador
-                },
-                {
-                    'name': 'Sin faltas',
-                    'value': this.listFaltantesB.length - contador
-                }
-            ];
-        }
-    };
-    AulaProfesorPage.prototype.tomaLista = function () {
-        // alert("voy a tomar lista");
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__tomar_lista_tomar_lista__["a" /* TomarListaPage */], { aulaa: this.aula, materia: this.materia });
-    };
-    AulaProfesorPage.prototype.crearNotificacion = function () {
-        console.log(this.aula);
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__notificacion_notificacion__["a" /* NotificacionPage */], { aulaa: this.aula, materia: this.materia });
-    };
-    AulaProfesorPage.prototype.cargarLista = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__["a" /* CagarArchivoPage */], { persona: "alumno" });
-        //  alert("voy a cargar lista");
-        //alert("voy a cargar lista");
-    };
-    AulaProfesorPage.prototype.mostrarQr = function () {
-        //alert("voy a qr");
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__materia_materia__["a" /* MateriaPage */], { aulaa: this.aula, materia: this.materia });
-    };
-    AulaProfesorPage.prototype.Encuestas = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__encuestas_encuestas__["a" /* EncuestasPage */], { aulaa: this.aula, materia: this.materia });
-    };
-    return AulaProfesorPage;
-}());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */])
-], AulaProfesorPage.prototype, "content", void 0);
-AulaProfesorPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-aula-profesor',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/'<!--\n\n  Generated template for the AulaProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n\n\n <!--gi <ion-list>\n\n              \n\n    <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n\n    </ion-item>\n\n                    \n\n    <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Materia</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n\n    </ion-item>\n\n                \n\n    <ion-item class="animated flipInX miItem" >\n\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n\n    </ion-item> \n\n  \n\n  </ion-list>-->\n\n\n\n   \n\n    <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Crear Notificacion\n\n    </button>\n\n    <!--<button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n\n    </button>-->\n\n    <button ion-button round full large  (click)="mostrarQr()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Escaner QR\n\n      </button>\n\n      <button ion-button round full large  (click)="Encuestas()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Ver Encuestas\n\n      </button>\n\n\n\n    <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n\n    </button>\n\n    <br><br>\n\n\n\n<div style="width:100%">\n\n  <ion-grid style="background-color:white;">\n\n    <h4>Faltas</h4>\n\n     <ion-row >\n\n       <ion-col >\n\n         <ngx-charts-bar-horizontal \n\n           [view]="view"\n\n           [results]="informacion"\n\n           xAxis="true"\n\n           yAxis="true"\n\n         >\n\n         </ngx-charts-bar-horizontal>\n\n       </ion-col>\n\n     </ion-row>\n\n   </ion-grid>\n\n  </div>\n\n  <!--  [legend]="showLegend"\n\n           legendTitle="Votos"\n\n           [showXAxisLabel]="showXAxisLabel"\n\n           [showYAxisLabel]="showYAxisLabel"\n\n           xAxisLabel="votos"\n\n           yAxisLabel="resultado" -->\n\n           <br>\n\n    \n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_native_audio__["a" /* NativeAudio */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
-], AulaProfesorPage);
-
-//# sourceMappingURL=aula-profesor.js.map
-
-/***/ }),
-
-/***/ 258:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1904,11 +1615,7 @@ var RespuestaEncuestaPage = (function () {
 }());
 RespuestaEncuestaPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-respuesta-encuesta',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/respuesta-encuesta/respuesta-encuesta.html"*/'<!--\n  Generated template for the RespuestaEncuestaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Encuestas a responder</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/halloween-Materias.png\')" class="fondo">\n  \n  <div *ngFor="let e of encuestas">\n    \n         <ion-list >\n            <ion-item class="animated flipInY miItem">\n                <ion-label class="miLabel" style="color: orange"  floating>Nombre:</ion-label>\n                <ion-input type="text" [(ngModel)]="e.nombre" disabled="true"></ion-input>\n                </ion-item>\n                \n             <ion-item class="animated flipInY miItem">\n             <ion-label class="miLabel" style="color: orange"  floating>Pregunta:</ion-label>\n             <ion-input type="text" [(ngModel)]="e.pregunta" disabled="true"></ion-input>\n             </ion-item>\n             \n             \n               <ion-item class="animated flipInY miItem">\n                 <ion-label class="miLabel" style="color: orange"  floating>La encuesta finaliza en el horario:</ion-label>\n                 <ion-input type="text" [(ngModel)]="e.horaFReal" disabled="true"></ion-input>\n                 </ion-item>\n\n\n<!--\n                 <ion-item class="animated flipInX miItem">\n                     <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de inicio (opcional)</ion-label>\n                     <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaInicio" disabled="true"></ion-datetime>\n                   </ion-item>\n             \n                   <ion-item class="animated flipInX miItem">\n                       <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de finalización (opcional)</ion-label>\n                       <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaFinalizacion" disabled="true"></ion-datetime>\n                     </ion-item>\n                   -->\n\n\n                 <ion-item *ngIf=\'e.formato == "Botones"\' class="animated flipInY miItem">\n                   <ion-list  >\n                       <button  class="botones" (click)="respuesta1(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n                           Presione para votar: {{e.respuesta1}}\n                          </button>\n                          <br>\n                          <button class="botones" (click)="respuesta2(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n                             Presione para votar: {{e.respuesta2}}\n                            </button>\n\n\n                     \n                       </ion-list>    \n                     </ion-item>\n        \n\n                               <ion-list  *ngIf=\'e.formato == "Radio botones"\' (ionChange)="responder(e)" radio-group [(ngModel)]="respuestaR">\n                                   <ion-item class="animated flipInY miItem">\n                                     <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n                                     <ion-radio  [value]="e.respuesta1" ></ion-radio>\n                                   </ion-item>\n                                   <ion-item class="animated flipInY miItem">\n                                       <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n                                       <ion-radio  [value]="e.respuesta2" ></ion-radio>\n                                     </ion-item>\n                                    \n\n                                 </ion-list>\n\n                              <!--   <ion-list  *ngIf=\'e.formato == "Checkbox"\' radio-group [(ngModel)]="respuesta">\n                                     <ion-item class="animated flipInY miItem">\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>\n                                     </ion-item>\n                                     <ion-item class="animated flipInY miItem">\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta2" ></ion-checkbox>\n                                       </ion-item>\n                                                 \n \n                                   </ion-list> -->  \n\n                                   <ion-list  *ngIf=\'e.formato == "Selección de opciones"\'  >\n                                    <ion-item class="animated flipInY miItem" >\n                                    <select style="color : rgb(85, 158, 218); width:150px;" (change)="responder(e)" [(ngModel)]="respuestaS"  class="animated flipInY miItem">\n  \n                                      <option >{{e.respuesta1}} </option>\n                                      <option >{{e.respuesta2}} </option>\n                                    \n                                    </select>\n                                  </ion-item>\n                                     \n\n                                  </ion-list>\n                                 \n\n                           \n                       \n                     \n             \n               </ion-list> \n\n         </div>\n\n  \n  </ion-content>'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/respuesta-encuesta/respuesta-encuesta.html"*/,
-=======
-        selector: 'page-respuesta-encuesta',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\respuesta-encuesta\respuesta-encuesta.html"*/'<!--\n\n  Generated template for the RespuestaEncuestaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Encuestas a responder</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/halloween-Materias.png\')" class="fondo">\n\n  \n\n  <div *ngFor="let e of encuestas">\n\n    \n\n         <ion-list >\n\n            <ion-item class="animated flipInY miItem">\n\n                <ion-label class="miLabel" style="color: orange"  floating>Nombre:</ion-label>\n\n                <ion-input type="text" [(ngModel)]="e.nombre" disabled="true"></ion-input>\n\n                </ion-item>\n\n                \n\n             <ion-item class="animated flipInY miItem">\n\n             <ion-label class="miLabel" style="color: orange"  floating>Pregunta:</ion-label>\n\n             <ion-input type="text" [(ngModel)]="e.pregunta" disabled="true"></ion-input>\n\n             </ion-item>\n\n             \n\n             \n\n               <ion-item class="animated flipInY miItem">\n\n                 <ion-label class="miLabel" style="color: orange"  floating>La encuesta finaliza en el horario:</ion-label>\n\n                 <ion-input type="text" [(ngModel)]="e.horaFReal" disabled="true"></ion-input>\n\n                 </ion-item>\n\n\n\n\n\n<!--\n\n                 <ion-item class="animated flipInX miItem">\n\n                     <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de inicio (opcional)</ion-label>\n\n                     <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaInicio" disabled="true"></ion-datetime>\n\n                   </ion-item>\n\n             \n\n                   <ion-item class="animated flipInX miItem">\n\n                       <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de finalización (opcional)</ion-label>\n\n                       <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaFinalizacion" disabled="true"></ion-datetime>\n\n                     </ion-item>\n\n                   -->\n\n\n\n\n\n                 <ion-item *ngIf=\'e.formato == "Botones"\' class="animated flipInY miItem">\n\n                   <ion-list  >\n\n                       <button  class="botones" (click)="respuesta1(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                           Presione para votar: {{e.respuesta1}}\n\n                          </button>\n\n                          <br>\n\n                          <button class="botones" (click)="respuesta2(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                             Presione para votar: {{e.respuesta2}}\n\n                            </button>\n\n\n\n\n\n                     \n\n                       </ion-list>    \n\n                     </ion-item>\n\n        \n\n\n\n                               <ion-list  *ngIf=\'e.formato == "Radio botones"\' (ionChange)="responder(e)" radio-group [(ngModel)]="respuestaR">\n\n                                   <ion-item class="animated flipInY miItem">\n\n                                     <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                     <ion-radio  [value]="e.respuesta1" ></ion-radio>\n\n                                   </ion-item>\n\n                                   <ion-item class="animated flipInY miItem">\n\n                                       <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                       <ion-radio  [value]="e.respuesta2" ></ion-radio>\n\n                                     </ion-item>\n\n                                    \n\n\n\n                                 </ion-list>\n\n\n\n                              <!--   <ion-list  *ngIf=\'e.formato == "Checkbox"\' radio-group [(ngModel)]="respuesta">\n\n                                     <ion-item class="animated flipInY miItem">\n\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>\n\n                                     </ion-item>\n\n                                     <ion-item class="animated flipInY miItem">\n\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta2" ></ion-checkbox>\n\n                                       </ion-item>\n\n                                                 \n\n \n\n                                   </ion-list> -->  \n\n\n\n                                   <ion-list  *ngIf=\'e.formato == "Selección de opciones"\'  >\n\n                                    <ion-item class="animated flipInY miItem" >\n\n                                    <select style="color : rgb(85, 158, 218); width:150px;" (change)="responder(e)" [(ngModel)]="respuestaS"  class="animated flipInY miItem">\n\n  \n\n                                      <option >{{e.respuesta1}} </option>\n\n                                      <option >{{e.respuesta2}} </option>\n\n                                    \n\n                                    </select>\n\n                                  </ion-item>\n\n                                     \n\n\n\n                                  </ion-list>\n\n                                 \n\n\n\n                           \n\n                       \n\n                     \n\n             \n\n               </ion-list> \n\n\n\n         </div>\n\n\n\n  \n\n  </ion-content>'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\respuesta-encuesta\respuesta-encuesta.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], RespuestaEncuestaPage);
@@ -1917,19 +1624,18 @@ RespuestaEncuestaPage = __decorate([
 
 /***/ }),
 
-/***/ 259:
+/***/ 258:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EncuestasAltaPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AulaProfesorPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__notificacion_notificacion__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__materia_materia__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__encuestas_encuestas__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__materia_materia__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__encuestas_encuestas__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__tomar_lista_tomar_lista__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_native_audio__ = __webpack_require__(34);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2082,16 +1788,15 @@ var AulaProfesorPage = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]) === "function" && _a || Object)
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */])
 ], AulaProfesorPage.prototype, "content", void 0);
 AulaProfesorPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'page-aula-profesor',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-profesor/aula-profesor.html"*/'<!--\n  Generated template for the AulaProfesorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n <!--gi <ion-list>\n              \n    <ion-item class="animated flipInX miItem">\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n    </ion-item>\n                    \n    <ion-item class="animated flipInY miItem">\n      <ion-label class="miLabel" floating>Materia</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n    </ion-item>\n                \n    <ion-item class="animated flipInX miItem" >\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n    </ion-item> \n  \n  </ion-list>-->\n\n   \n    <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Crear Notificacion\n    </button>\n    <!--<button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n    </button>-->\n    <button ion-button round full large  (click)="mostrarQr()" class="animated flipInX miBoton miButton"> \n        <ion-icon name="arrow-round-back"></ion-icon> Escaner QR\n      </button>\n      <button ion-button round full large  (click)="Encuestas()" class="animated flipInX miBoton miButton"> \n        <ion-icon name="arrow-round-back"></ion-icon> Ver Encuestas\n      </button>\n\n    <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n    </button>\n    <br><br>\n\n<div style="width:100%">\n  <ion-grid style="background-color:white;">\n    <h4>Faltas</h4>\n     <ion-row >\n       <ion-col >\n         <ngx-charts-bar-horizontal \n           [view]="view"\n           [results]="informacion"\n           xAxis="true"\n           yAxis="true"\n         >\n         </ngx-charts-bar-horizontal>\n       </ion-col>\n     </ion-row>\n   </ion-grid>\n  </div>\n  <!--  [legend]="showLegend"\n           legendTitle="Votos"\n           [showXAxisLabel]="showXAxisLabel"\n           [showYAxisLabel]="showYAxisLabel"\n           xAxisLabel="votos"\n           yAxisLabel="resultado" -->\n           <br>\n    \n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-profesor/aula-profesor.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_native_native_audio__["a" /* NativeAudio */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_native_native_audio__["a" /* NativeAudio */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_native_audio__["a" /* NativeAudio */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
 ], AulaProfesorPage);
 
-var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=aula-profesor.js.map
 
 /***/ }),
@@ -2104,11 +1809,7 @@ var _a, _b, _c, _d, _e, _f;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__encuestas_encuestas__ = __webpack_require__(84);
-=======
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__encuestas_encuestas__ = __webpack_require__(85);
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__ = __webpack_require__(34);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2190,23 +1891,23 @@ var EncuestasAltaPage = (function () {
                 horaFinalizacion: this.horaActual.toString(),
                 creadorEncuesta: this.creadorEncuesta
             });
-            var alert = this.alertCtrl.create({
+            var alert_1 = this.alertCtrl.create({
                 title: 'Exito!',
                 subTitle: 'Encuesta cargada exitosamente',
                 cssClass: "miClaseAlert",
                 buttons: ['Listo']
             });
-            alert.present();
+            alert_1.present();
             this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__encuestas_encuestas__["a" /* EncuestasPage */]);
         }
         else {
-            var alert = this.alertCtrl.create({
+            var alert_2 = this.alertCtrl.create({
                 title: "Info",
                 subTitle: "Faltan datos",
                 cssClass: "miClaseDanger",
                 buttons: ['Aceptar']
             });
-            alert.present();
+            alert_2.present();
         }
         /*
         this.fireService.agregarEncuesta({nombre:this.nombre,pregunta:this.pregunta,respuesta1:this.respuesta1,
@@ -2227,16 +1928,11 @@ var EncuestasAltaPage = (function () {
 }());
 EncuestasAltaPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-encuestas-alta',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/encuestas-alta/encuestas-alta.html"*/'<!--\n  Generated template for the EncuestasAltaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Crear encuesta</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n   \n  <ion-card-content>\n    \n    <ion-list >  \n      <ion-item class="animated flipInX miItem">\n      <ion-label class="miLabel" floating>Nombre de la encuesta</ion-label>\n      <ion-input type="text" [(ngModel)]="nombre" disabled="false"></ion-input> \n      </ion-item>\n    \n  \n      <ion-item class="animated flipInX miItem">\n      <ion-label class="miLabel" floating>Pregunta</ion-label>\n      <ion-input type="text" [(ngModel)]="pregunta" disabled="false"></ion-input> \n      </ion-item>\n\n      <ion-item class="animated flipInX miItem">\n        <ion-label class="miLabel" floating>Primera opción</ion-label>\n        <ion-input type="text" [(ngModel)]="respuesta1" disabled="false"></ion-input> \n        </ion-item>\n\n        <ion-item class="animated flipInX miItem">\n          <ion-label class="miLabel" floating>Segunda opción</ion-label>\n          <ion-input type="text" [(ngModel)]="respuesta2" disabled="false"></ion-input> \n          </ion-item>\n\n          <ion-item class="animated flipInX miItem">\n            <ion-label class="miLabel" floating>Formato</ion-label>\n          <ion-select [(ngModel)]="formato">\n         \n            <ion-option>Radio botones</ion-option> \n           <!-- <ion-option>Checkbox</ion-option> -->\n            <ion-option>Botones</ion-option> \n            <ion-option>Selección de opciones</ion-option> \n          </ion-select>\n        </ion-item>\n\n      <ion-item class="animated flipInX miItem">\n        <ion-label class="miLabel" floating>Duración</ion-label>\n      <ion-select [(ngModel)]="duracion">\n      \n        <ion-option >5 minutos</ion-option> \n        <ion-option >30 minutos</ion-option> \n        <ion-option >60 minutos</ion-option> \n      </ion-select>\n    </ion-item>\n     <!-- <ion-item class="animated flipInX miItem">\n          <ion-label class="miLabel" floating>Fecha de Inicio</ion-label>\n          <ion-datetime displayFormat="D/M/YYYY HH:mm:ss" [(ngModel)]="horaAux"></ion-datetime>\n        </ion-item>-->\n    \n\n    <!--\n    <ion-item class="animated flipInX miItem">\n        <ion-label class="miLabel" floating>Fecha y hora de inicio (opcional)</ion-label>\n        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="fechaInicio"></ion-datetime>\n      </ion-item>\n\n      <ion-item class="animated flipInX miItem">\n          <ion-label class="miLabel" floating>Fecha y hora de finalización (opcional)</ion-label>\n          <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="fechaFinalizacion"></ion-datetime>\n        </ion-item>\n      -->\n\n\n    <button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>\n\n\n    </ion-list>\n\n\n          </ion-card-content>\n\n\n\n          \n        </ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/encuestas-alta/encuestas-alta.html"*/,
-=======
-        selector: 'page-encuestas-alta',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\encuestas-alta\encuestas-alta.html"*/'<!--\n\n  Generated template for the EncuestasAltaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Crear encuesta</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n\n   \n\n  <ion-card-content>\n\n    \n\n    <ion-list >  \n\n      <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Nombre de la encuesta</ion-label>\n\n      <ion-input type="text" [(ngModel)]="nombre" disabled="false"></ion-input> \n\n      </ion-item>\n\n    \n\n  \n\n      <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Pregunta</ion-label>\n\n      <ion-input type="text" [(ngModel)]="pregunta" disabled="false"></ion-input> \n\n      </ion-item>\n\n\n\n      <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Primera opción</ion-label>\n\n        <ion-input type="text" [(ngModel)]="respuesta1" disabled="false"></ion-input> \n\n        </ion-item>\n\n\n\n        <ion-item class="animated flipInX miItem">\n\n          <ion-label class="miLabel" floating>Segunda opción</ion-label>\n\n          <ion-input type="text" [(ngModel)]="respuesta2" disabled="false"></ion-input> \n\n          </ion-item>\n\n\n\n          <ion-item class="animated flipInX miItem">\n\n            <ion-label class="miLabel" floating>Formato</ion-label>\n\n          <ion-select [(ngModel)]="formato">\n\n         \n\n            <ion-option>Radio botones</ion-option> \n\n           <!-- <ion-option>Checkbox</ion-option> -->\n\n            <ion-option>Botones</ion-option> \n\n            <ion-option>Selección de opciones</ion-option> \n\n          </ion-select>\n\n        </ion-item>\n\n\n\n      <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Duración</ion-label>\n\n      <ion-select [(ngModel)]="duracion">\n\n      \n\n        <ion-option >5 minutos</ion-option> \n\n        <ion-option >30 minutos</ion-option> \n\n        <ion-option >60 minutos</ion-option> \n\n      </ion-select>\n\n    </ion-item>\n\n     <!-- <ion-item class="animated flipInX miItem">\n\n          <ion-label class="miLabel" floating>Fecha de Inicio</ion-label>\n\n          <ion-datetime displayFormat="D/M/YYYY HH:mm:ss" [(ngModel)]="horaAux"></ion-datetime>\n\n        </ion-item>-->\n\n    \n\n\n\n    <!--\n\n    <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Fecha y hora de inicio (opcional)</ion-label>\n\n        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="fechaInicio"></ion-datetime>\n\n      </ion-item>\n\n\n\n      <ion-item class="animated flipInX miItem">\n\n          <ion-label class="miLabel" floating>Fecha y hora de finalización (opcional)</ion-label>\n\n          <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="fechaFinalizacion"></ion-datetime>\n\n        </ion-item>\n\n      -->\n\n\n\n\n\n    <button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>\n\n\n\n\n\n    </ion-list>\n\n\n\n\n\n          </ion-card-content>\n\n\n\n\n\n\n\n          \n\n        </ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\encuestas-alta\encuestas-alta.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */]])
 ], EncuestasAltaPage);
 
-var _a, _b, _c, _d, _e;
 //# sourceMappingURL=encuestas-alta.js.map
 
 /***/ }),
@@ -2301,11 +1997,7 @@ var EncuestasEditarPage = (function () {
 }());
 EncuestasEditarPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-encuestas-editar',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/encuestas-editar/encuestas-editar.html"*/'<!--\n  Generated template for the EncuestasEditarPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="dark">\n      <ion-title>Editar encuesta "{{encuestaAmodificar.nombre}}"</ion-title>\n    </ion-navbar>\n  </ion-header>\n  \n  \n  <ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n     \n    <ion-card-content>\n      \n      <ion-list >  \n        <ion-item class="animated flipInX miItem">\n        <ion-label class="miLabel" floating>Nombre de la encuesta</ion-label>\n        <ion-input type="text" [(ngModel)]="encuestaAmodificar.nombre" disabled="false"></ion-input> \n        </ion-item>\n      \n    \n        <ion-item class="animated flipInX miItem">\n        <ion-label class="miLabel" floating>Pregunta</ion-label>\n        <ion-input type="text" [(ngModel)]="encuestaAmodificar.pregunta" disabled="false"></ion-input> \n        </ion-item>\n  \n        <ion-item class="animated flipInX miItem">\n          <ion-label class="miLabel" floating>Primera opción</ion-label>\n          <ion-input type="text" [(ngModel)]="encuestaAmodificar.respuesta1" disabled="false"></ion-input> \n          </ion-item>\n  \n          <ion-item class="animated flipInX miItem">\n            <ion-label class="miLabel" floating>Segunda opción</ion-label>\n            <ion-input type="text" [(ngModel)]="encuestaAmodificar.respuesta2" disabled="false"></ion-input> \n            </ion-item>\n  \n            <ion-item class="animated flipInX miItem">\n              <ion-label class="miLabel" floating>Formato</ion-label>\n            <ion-select [(ngModel)]="encuestaAmodificar.formato">\n           \n              <ion-option>Radio botones</ion-option> \n             <!-- <ion-option>Checkbox</ion-option> -->\n              <ion-option>Botones</ion-option> \n              <ion-option>Selección de opciones</ion-option> \n            </ion-select>\n          </ion-item>\n  <!--\n          <ion-item class="animated flipInX miItem">\n            <ion-label class="miLabel" floating>Duración</ion-label>\n          <ion-select [(ngModel)]="encuestaAmodificar.duracion">\n          \n            <ion-option>5 minutos</ion-option> \n            <ion-option>30 minutos</ion-option> \n            <ion-option>55 minutos</ion-option> \n          </ion-select>\n        </ion-item>\n      -->\n\n      <!--\n    <ion-item class="animated flipInX miItem">\n        <ion-label class="miLabel" floating>Fecha y hora de inicio (opcional)</ion-label>\n        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="encuestaAmodificar.fechaInicio"></ion-datetime>\n      </ion-item>\n\n      <ion-item class="animated flipInX miItem">\n          <ion-label class="miLabel" floating>Fecha y hora de finalización (opcional)</ion-label>\n          <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="encuestaAmodificar.fechaFinalizacion"></ion-datetime>\n        </ion-item>\n      -->        \n  \n  \n      <button  ion-button round class="botonGuardar"  (click)="EditarEncuestaa(encuestaAmodificar)"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar Modificación</button>\n  \n  \n      </ion-list>\n  \n  \n            </ion-card-content>\n  \n  \n  \n            \n          </ion-content>\n  '/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/encuestas-editar/encuestas-editar.html"*/,
-=======
-        selector: 'page-encuestas-editar',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\encuestas-editar\encuestas-editar.html"*/'<!--\n\n  Generated template for the EncuestasEditarPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n    <ion-navbar color="dark">\n\n      <ion-title>Editar encuesta "{{encuestaAmodificar.nombre}}"</ion-title>\n\n    </ion-navbar>\n\n  </ion-header>\n\n  \n\n  \n\n  <ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n\n     \n\n    <ion-card-content>\n\n      \n\n      <ion-list >  \n\n        <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Nombre de la encuesta</ion-label>\n\n        <ion-input type="text" [(ngModel)]="encuestaAmodificar.nombre" disabled="false"></ion-input> \n\n        </ion-item>\n\n      \n\n    \n\n        <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Pregunta</ion-label>\n\n        <ion-input type="text" [(ngModel)]="encuestaAmodificar.pregunta" disabled="false"></ion-input> \n\n        </ion-item>\n\n  \n\n        <ion-item class="animated flipInX miItem">\n\n          <ion-label class="miLabel" floating>Primera opción</ion-label>\n\n          <ion-input type="text" [(ngModel)]="encuestaAmodificar.respuesta1" disabled="false"></ion-input> \n\n          </ion-item>\n\n  \n\n          <ion-item class="animated flipInX miItem">\n\n            <ion-label class="miLabel" floating>Segunda opción</ion-label>\n\n            <ion-input type="text" [(ngModel)]="encuestaAmodificar.respuesta2" disabled="false"></ion-input> \n\n            </ion-item>\n\n  \n\n            <ion-item class="animated flipInX miItem">\n\n              <ion-label class="miLabel" floating>Formato</ion-label>\n\n            <ion-select [(ngModel)]="encuestaAmodificar.formato">\n\n           \n\n              <ion-option>Radio botones</ion-option> \n\n             <!-- <ion-option>Checkbox</ion-option> -->\n\n              <ion-option>Botones</ion-option> \n\n              <ion-option>Selección de opciones</ion-option> \n\n            </ion-select>\n\n          </ion-item>\n\n  <!--\n\n          <ion-item class="animated flipInX miItem">\n\n            <ion-label class="miLabel" floating>Duración</ion-label>\n\n          <ion-select [(ngModel)]="encuestaAmodificar.duracion">\n\n          \n\n            <ion-option>5 minutos</ion-option> \n\n            <ion-option>30 minutos</ion-option> \n\n            <ion-option>55 minutos</ion-option> \n\n          </ion-select>\n\n        </ion-item>\n\n      -->\n\n\n\n      <!--\n\n    <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Fecha y hora de inicio (opcional)</ion-label>\n\n        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="encuestaAmodificar.fechaInicio"></ion-datetime>\n\n      </ion-item>\n\n\n\n      <ion-item class="animated flipInX miItem">\n\n          <ion-label class="miLabel" floating>Fecha y hora de finalización (opcional)</ion-label>\n\n          <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="encuestaAmodificar.fechaFinalizacion"></ion-datetime>\n\n        </ion-item>\n\n      -->        \n\n  \n\n  \n\n      <button  ion-button round class="botonGuardar"  (click)="EditarEncuestaa(encuestaAmodificar)"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar Modificación</button>\n\n  \n\n  \n\n      </ion-list>\n\n  \n\n  \n\n            </ion-card-content>\n\n  \n\n  \n\n  \n\n            \n\n          </ion-content>\n\n  '/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\encuestas-editar\encuestas-editar.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */]])
 ], EncuestasEditarPage);
@@ -2380,11 +2072,7 @@ var EditarPerfilPage = (function () {
 }());
 EditarPerfilPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-editar-perfil',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/editar-perfil/editar-perfil.html"*/'<!--\n  Generated template for the EditarPerfilPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Modifique su contraseña</ion-title>\n   </ion-navbar>\n  \n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n  <ion-list >  \n<ion-item class="animated flipInX miItem">\n<ion-label class="miLabel" floating>Contraseña</ion-label>\n<ion-input type="text" [(ngModel)]="datosUsuario.password" disabled="false"></ion-input> \n</ion-item>\n\n\n\n\n</ion-list>\n<button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/editar-perfil/editar-perfil.html"*/,
-=======
-        selector: 'page-editar-perfil',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\editar-perfil\editar-perfil.html"*/'<!--\n\n  Generated template for the EditarPerfilPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Modifique su contraseña</ion-title>\n\n   </ion-navbar>\n\n  \n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n\n\n  <ion-list >  \n\n<ion-item class="animated flipInX miItem">\n\n<ion-label class="miLabel" floating>Contraseña</ion-label>\n\n<ion-input type="text" [(ngModel)]="datosUsuario.password" disabled="false"></ion-input> \n\n</ion-item>\n\n\n\n\n\n\n\n\n\n</ion-list>\n\n<button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\editar-perfil\editar-perfil.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], EditarPerfilPage);
@@ -2870,7 +2558,7 @@ InicioAdminPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InicioProfesorPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aula_profesor_aula_profesor__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aula_profesor_aula_profesor__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__ = __webpack_require__(17);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2942,11 +2630,7 @@ var InicioProfesorPage = (function () {
 }());
 InicioProfesorPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-inicio-profesor',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/inicio-profesor/inicio-profesor.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Seleccione una materia</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenProfesor.jpg\')" class="fondo">\n  \n      <div *ngFor="let lista of listaMateriasProfesor; let i = index"> \n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionMateria(lista)">{{lista.aula}}, {{lista.materia}}</button> \n      </div>\n  \n  </ion-content>'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/inicio-profesor/inicio-profesor.html"*/,
-=======
-        selector: 'page-inicio-profesor',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\inicio-profesor\inicio-profesor.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Seleccione una materia</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenProfesor.jpg\')" class="fondo">\n\n  \n\n      <div *ngFor="let lista of listaMateriasProfesor; let i = index"> \n\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionMateria(lista)">{{lista.aula}}, {{lista.materia}}</button> \n\n      </div>\n\n  \n\n  </ion-content>'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\inicio-profesor\inicio-profesor.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]])
 ], InicioProfesorPage);
@@ -2996,439 +2680,6 @@ var RealInicioAdministrativoPage = (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.fireService = fireService;
-        this.db = db;
-        this.toastCtrl = toastCtrl;
-        this.listadoProfesores = [];
-        this.listadoAlumnos = [];
-        this.listaMaterias = [];
-        this.listaAux = [];
-        this.fireService.getAlumnos().subscribe(function (data) {
-            _this.listadoAlumnos = data;
-        });
-        this.fireService.getMaterias().subscribe(function (data) {
-            _this.listaMaterias = data;
-        });
-        this.fireService.getProfesores().subscribe(function (data) {
-            _this.listadoProfesores = data;
-        });
-        this.db.list('/notificacionFalta').
-            subscribe(function (data) {
-            _this.datosfaltas = data;
-            console.log(_this.datosfaltas);
-            var bandera = false;
-            for (var i = 0; i < _this.datosfaltas.length; i++) {
-                //if(localStorage.getItem("mail")==this.datosfaltas[i].mail){
-                var toast = _this.toastCtrl.create({
-                    message: 'El alumno' + ' ' + _this.datosfaltas[i].alumno + ' ' + 'tiene' + ' ' + _this.datosfaltas[i].cantidadFaltas + ' ' + 'faltas!!!',
-                    duration: 4000,
-                    position: 'top'
-                });
-                toast.onDidDismiss(function () {
-                });
-                toast.present();
-            }
-        });
-    }
-    RealInicioAdministrativoPage.prototype.ionViewDidLoad = function () {
-        this.seleccion = "";
-        console.log('ionViewDidLoad RealInicioAdministrativoPage');
-    };
-    RealInicioAdministrativoPage.prototype.Redireccion = function (direccion) {
-        console.log(this.listadoProfesores);
-        switch (direccion) {
-            case "aulas":
-                this.seleccion = "";
-                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__aula_administrativo_aula_administrativo__["a" /* AulaAdministrativoPage */]);
-                break;
-            case "profesores":
-                this.seleccion = "profesores";
-                break;
-            case "alumnos":
-                this.seleccion = "aulasAlumnos";
-                break;
-            case "materias":
-                this.listaAux = [];
-                for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                    var element = this.listadoAlumnos[i];
-                    this.listaAux.push({ aula: element.aula, profesor: element.profesor, nombre: element.materia });
-                }
-                this.seleccion = "materias";
-                break;
-        }
-    };
-    RealInicioAdministrativoPage.prototype.cargarLista = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__cagar_archivo_cagar_archivo__["a" /* CagarArchivoPage */], { persona: "alumno" });
-        //  alert("voy a cargar lista");
-        //alert("voy a cargar lista");
-    };
-    RealInicioAdministrativoPage.prototype.aparecer = function () {
-        this.seleccion = "";
-    };
-    RealInicioAdministrativoPage.prototype.Seleccion = function (data) {
-        console.log(this.listadoAlumnos);
-        switch (this.seleccion) {
-            case "profesores":
-                this.listaAux = [];
-                for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                    var element = this.listadoAlumnos[i];
-                    if (element.profesor == data) {
-                        this.listaAux.push({ aula: element.aula, profesor: element.profesor, materia: element.materia });
-                    }
-                }
-                this.seleccion = "materiasProfesor";
-                break;
-            case "aulasAlumnos":
-                if (data == "a") {
-                    this.listaAux = [];
-                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                        var element = this.listadoAlumnos[i];
-                        if (element.aula == "4A") {
-                            for (var j = 0; j < element.alumnos.length; j++) {
-                                var element2 = element.alumnos[j];
-<<<<<<< HEAD
-                                if (element2.mail == __WEBPACK_IMPORTED_MODULE_6_firebase___default.a.auth().currentUser.email) {
-                                    localStorage.setItem("nombre", element2.nombre);
-                                    localStorage.setItem("mail", element2.mail);
-                                    localStorage.setItem("curso", "4° A");
-                                    localStorage.setItem("legajo", element2.legajo);
-                                    localStorage.setItem("turno", element2.turno);
-                                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_10__materias_materias__["a" /* MateriasPage */]);
-                                    flag = true;
-                                    break;
-                                }
-                                else if (element2.mail == _this.email && element2.legajo == _this.password) {
-                                    var alert = _this.alertCtrl.create({
-                                        title: "Info",
-                                        subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
-                                        cssClass: "miClaseDanger",
-                                        buttons: ['Aceptar']
-                                    });
-                                    alert.present();
-                                    //        this.google=true;
-                                }
-=======
-                                this.listaAux.push(element2);
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
-                            }
-                        }
-                    }
-                }
-                else if (data == "b") {
-                    this.listaAux = [];
-                    for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                        var element = this.listadoAlumnos[i];
-                        if (element.aula == "4B") {
-                            for (var j = 0; j < element.alumnos.length; j++) {
-                                var element2 = element.alumnos[j];
-<<<<<<< HEAD
-                                if (element2.mail == __WEBPACK_IMPORTED_MODULE_6_firebase___default.a.auth().currentUser.email) {
-                                    localStorage.setItem("nombre", element2.nombre);
-                                    localStorage.setItem("mail", element2.mail);
-                                    localStorage.setItem("curso", "4° B");
-                                    localStorage.setItem("legajo", element2.legajo);
-                                    localStorage.setItem("turno", element2.turno);
-                                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_10__materias_materias__["a" /* MateriasPage */]);
-                                    flag = true;
-                                    break;
-                                }
-                                else if (element2.mail == _this.email && element2.legajo == _this.password) {
-                                    var alert = _this.alertCtrl.create({
-                                        title: "Info!",
-                                        subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
-                                        cssClass: "miClaseDanger",
-                                        buttons: ['Aceptar']
-                                    });
-                                    alert.present();
-                                    //        this.google=true;
-                                }
-=======
-                                this.listaAux.push(element2);
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
-                            }
-                        }
-                    }
-                }
-                this.seleccion = data;
-                console.log(this.listaAux);
-                break;
-            case "a":
-                this.listaAux = [];
-                for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                    var element = this.listadoAlumnos[i];
-                    if (element.aula == "4A") {
-                        this.listaAux.push({ aula: element.aula, profesor: element.profesor, materia: element.materia });
-                    }
-                }
-                this.seleccion = "materiasProfesor";
-                break;
-<<<<<<< HEAD
-          */
-                if (!flag) {
-                    _this.googlePlus.disconnect();
-                    var alert = _this.alertCtrl.create({
-                        title: "Info!",
-                        subTitle: "Usuario no registrado",
-                        cssClass: "miClaseDanger",
-                        buttons: ['Aceptar']
-                    });
-                    alert.present();
-=======
-            case "b":
-                this.listaAux = [];
-                for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                    var element = this.listadoAlumnos[i];
-                    if (element.aula == "4B") {
-                        this.listaAux.push({ aula: element.aula, profesor: element.profesor, materia: element.materia });
-                    }
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
-                }
-                this.seleccion = "materiasProfesor";
-                break;
-            case "materias":
-                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__materias_administrativo_materias_administrativo__["a" /* MateriasAdministrativoPage */], { materia: data.nombre, aula: data.aula });
-                this.seleccion = "";
-                break;
-            case "materiasProfesor":
-                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__materias_administrativo_materias_administrativo__["a" /* MateriasAdministrativoPage */], { materia: data.materia, aula: data.aula });
-                this.seleccion = "";
-                break;
-<<<<<<< HEAD
-            }
-            else if (element.Email == this.email && element.password == null) {
-                var alert = this.alertCtrl.create({
-                    title: "Info!",
-                    subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
-                    cssClass: "miClaseDanger",
-                    buttons: ['Aceptar']
-                });
-                alert.present();
-                // this.google=true;
-            }
-        }
-        if (!flag) {
-            for (var i = 0; i < this.listadoAdministrativos.length; i++) {
-                var element = this.listadoAdministrativos[i];
-                if (element.Email == this.email && element.password == this.password) {
-                    localStorage.setItem("Nombre", element.Nombre);
-                    localStorage.setItem("Email", element.Email);
-                    localStorage.setItem("Apellido", element.Apellido);
-                    localStorage.setItem("DNI", element.DNI);
-                    localStorage.setItem("password", element.password);
-                    localStorage.setItem("Perfil", element.Perfil);
-                    this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_9__real_inicio_administrativo_real_inicio_administrativo__["a" /* RealInicioAdministrativoPage */]);
-                    flag = true;
-                    break;
-                }
-                else if (element.Email == this.email && element.password == null) {
-                    var alert = this.alertCtrl.create({
-                        title: "Info!",
-                        subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
-                        cssClass: "miClaseAlert",
-                        buttons: ['Aceptar']
-                    });
-                    alert.present();
-                    //this.google=true;
-                }
-            }
-        }
-        if (!flag) {
-            for (var i = 0; i < this.listadoAlumnos.length; i++) {
-                if (flag) {
-                    break;
-                }
-                var element = this.listadoAlumnos[i];
-                if (element.aula == "4A") {
-                    for (var j = 0; j < element.alumnos.length; j++) {
-                        var element2 = element.alumnos[j];
-                        if (element2.mail == this.email && element2.legajo == this.password) {
-                            localStorage.setItem("nombre", element2.nombre);
-                            localStorage.setItem("mail", element2.mail);
-                            localStorage.setItem("curso", "4A");
-                            localStorage.setItem("legajo", element2.legajo);
-                            localStorage.setItem("turno", element2.turno);
-                            this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_10__materias_materias__["a" /* MateriasPage */]);
-                            flag = true;
-                            break;
-                        }
-                        else if (element2.mail == this.email && element2.legajo != this.password) {
-                            var alert = this.alertCtrl.create({
-                                title: "Info!",
-                                subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
-                                cssClass: "miClaseDanger",
-                                buttons: ['Aceptar']
-                            });
-                            alert.present();
-                            //  this.google=true;
-                        }
-                    }
-                }
-                else if (element.aula == "4B") {
-                    for (var j = 0; j < element.alumnos.length; j++) {
-                        var element2 = element.alumnos[j];
-                        if (element2.mail == this.email && element2.legajo == this.password) {
-                            localStorage.setItem("nombre", element2.nombre);
-                            localStorage.setItem("mail", element2.mail);
-                            localStorage.setItem("curso", "4B");
-                            localStorage.setItem("legajo", element2.legajo);
-                            localStorage.setItem("turno", element2.turno);
-                            this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_10__materias_materias__["a" /* MateriasPage */]);
-                            flag = true;
-                            break;
-                        }
-                        else if (element2.mail == this.email && element2.legajo != this.password) {
-                            var alert = this.alertCtrl.create({
-                                title: "Info!",
-                                subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
-                                cssClass: "miClaseDanger",
-                                buttons: ['Aceptar']
-                            });
-                            alert.present();
-                            //  this.google=true;
-                        }
-                    }
-                }
-            }
-        }
-        /* for (var i = 0; i < this.listadoAlumnos.length; i++) {
-           var element = this.listadoAlumnos[i];
-           if(element.Email==this.email && element.password==this.password)
-           {
-               this.navCtrl.setRoot(AulaAlumnoPage);
-               flag=true;
-               break;
-             }else if(element.Email==this.email && element.password==null)
-             {
-               alert("Contraseña incorrecta,prueba iniciar Sesión con Google porfavor");
-               //this.google=true;
-             }
-           }*/
-        if (!flag) {
-            for (var h = 0; h < this.listadoProfesores.length; h++) {
-                var elementh = this.listadoProfesores[h];
-                if ((elementh.Email == this.email && elementh.password == this.password) || (elementh.email == this.email && elementh.dni == this.password)) {
-                    localStorage.setItem("Nombre", elementh.Nombre);
-                    localStorage.setItem("Email", elementh.Email);
-                    localStorage.setItem("Apellido", elementh.Apellido);
-                    localStorage.setItem("DNI", elementh.DNI);
-                    localStorage.setItem("password", elementh.password);
-                    localStorage.setItem("Perfil", elementh.Perfil);
-                    flag = true;
-                    this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__inicio_profesor_inicio_profesor__["a" /* InicioProfesorPage */]);
-                    break;
-                }
-                else if (elementh.Email == this.email && elementh.password == null) {
-                    var alert = this.alertCtrl.create({
-                        title: "Info!",
-                        subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
-                        cssClass: "miClaseDanger",
-                        buttons: ['Aceptar']
-                    });
-                    alert.present();
-                    //this.google=true;
-                }
-            }
-        }
-        /*
-        case "Administrativo":
-        this.navCtrl.setRoot(InicioAdministrativoPage);
-        break;
-        case "Profesor":
-        this.navCtrl.setRoot(InicioProfesorPage);
-        break;
-        case "Alumno":
-        this.navCtrl.setRoot(AulaAlumnoPage);
-        break;
-  */
-        if (!flag) {
-            this.googlePlus.disconnect();
-            var alert = this.alertCtrl.create({
-                title: "Info!",
-                subTitle: "Usuario no registrado o contraseña incorrecta",
-                cssClass: "miClaseDanger",
-                buttons: ['Aceptar']
-            });
-            alert.present();
-=======
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
-        }
-    };
-    return RealInicioAdministrativoPage;
-}());
-RealInicioAdministrativoPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
-        selector: 'page-login',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/login/login.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Inicio de Sesión</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n \n<div style="width:100%;height:100%">\n  <br>\n  <div style="width:50%;height:10%;margin:auto;text-align:center;display:block;">\n<button ion-button icon-right color="danger" style="font-size:11pt;margin:auto;text-align:center;display:block;" round (click)="loginGoogle()">\nIniciar sesión con Google<ion-icon style="font-size:250%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>\n</button>\n</div>\n    <br><br><br>\n    <div *ngIf="!google">\n   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n      <ion-label  style="color:white" floating>Email</ion-label>\n<ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n    <ion-label style="color:white" floating>Contraseña</ion-label>      \n<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>\n <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n  <ion-label style="color:white">Elige tu usuario</ion-label>\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">\n   <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>\n   <ion-option>nicostellisano@hotmail.com</ion-option>\n  </ion-select>\n</ion-item>-->\n<br>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>\n</div>\n</div>\n<!--<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>\n-->\n<br><br><br><br>\n<button ion-button full (click)="octa()">Octavio</button>\n<button ion-button full (click)="dale()">ADELIBERTI 4A </button>\n<button ion-button full (click)="mauro()">Administrativo Mauro </button>\n<button ion-button full (click)="maxi()">Maximiliano </button>\n<br><br><br><br>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/login/login.html"*/,
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__ionic_native_google_plus__["a" /* GooglePlus */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ionic_native_google_plus__["a" /* GooglePlus */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _h || Object])
-], LoginPage);
-
-var _a, _b, _c, _d, _e, _f, _g, _h;
-//# sourceMappingURL=login.js.map
-=======
-        selector: 'page-real-inicio-administrativo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\real-inicio-administrativo\real-inicio-administrativo.html"*/'<!--\n\n  Generated template for the RealInicioAdministrativoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Buscar Por:</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n  <div *ngIf="seleccion==\'\'">\n\n      <button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n          <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n\n        </button>\n\n\n\n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'profesores\')">Profesores</button>           \n\n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'alumnos\')">Alumnos</button> \n\n          <br><br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="Redireccion(\'materias\')">Materias</button> \n\n        </div>\n\n        <button *ngIf="seleccion!=\'\'" ion-button icon-only round color="primary" (click)="aparecer()" style="margin:auto;text-align:center;display:block;"><ion-icon md="md-arrow-back"></ion-icon></button>\n\n\n\n        <div *ngIf="seleccion==\'alumnos\'" > \n\n          <span *ngFor="let alumno of listaAlumnos">  <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.legajo)">{{alumno.nombre}}</button>  </span>\n\n      </div>\n\n\n\n      <div *ngIf="seleccion==\'materias\'"> \n\n        <span *ngFor="let materia of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(materia)">Materia:{{materia.nombre}},Aula:{{materia.aula}}</button> </span> \n\n    </div>\n\n\n\n      \n\n    <div *ngIf="seleccion==\'profesores\'" > \n\n        <span *ngFor="let profesor of listadoProfesores"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(profesor.Apellido)">{{profesor.Nombre}},{{profesor.Apellido}}</button> </span> \n\n     </div>\n\n\n\n    <div *ngIf="seleccion==\'materiasProfesor\'" > \n\n     <span *ngFor="let mp of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(mp)">Materia:{{mp.materia}},Aula:{{mp.aula}} </button>  </span>\n\n  </div>\n\n    \n\n  <div *ngIf="seleccion==\'aulasAlumnos\'" > \n\n      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(\'a\')">4º A </button>  </span>\n\n      <span > <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(\'b\')">4º B </button>  </span>\n\n      \n\n    </div>\n\n\n\n    <div *ngIf="seleccion==\'a\'" > \n\n        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}}</button>  </span>\n\n     </div>\n\n\n\n     <div *ngIf="seleccion==\'b\'" > \n\n        <span *ngFor="let alumno of listaAux"> <br><button ion-button  style="width:70%;color:red;margin:auto;text-align:center;display:block;background-color:rgb(255, 255, 255)" (click)="Seleccion(alumno.nombre)">{{alumno.nombre}} </button>  </span>\n\n     </div>\n\n          \n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\real-inicio-administrativo\real-inicio-administrativo.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
-], RealInicioAdministrativoPage);
-
-//# sourceMappingURL=real-inicio-administrativo.js.map
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
-
-/***/ }),
-
-/***/ 265:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MateriasAdministrativoPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__notificacion_notificacion__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__materia_materia__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__encuestas_encuestas__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__tomar_lista_tomar_lista__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_native_audio__ = __webpack_require__(34);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-//import { AulaAdministrativoItem } from '../../models/aula-administrativo-item/aula-administrativo.interface';
-
-
-
-
-
-
-
-
-
-
-/**
- * Generated class for the AulaProfesorPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var MateriasAdministrativoPage = (function () {
-    function MateriasAdministrativoPage(db, nativeAudio, navCtrl, navParams, fireService, loadingCtrl, screenOrientation, platform, afd, alertCtrl) {
-        var _this = this;
-        this.db = db;
-        this.nativeAudio = nativeAudio;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.fireService = fireService;
-<<<<<<< HEAD
         this.db = db;
         this.toastCtrl = toastCtrl;
         this.listadoProfesores = [];
@@ -3581,21 +2832,21 @@ RealInicioAdministrativoPage = __decorate([
 
 /***/ }),
 
-/***/ 266:
+/***/ 265:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MateriasAdministrativoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_smart_table__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__notificacion_notificacion__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__materia_materia__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__encuestas_encuestas__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__materia_materia__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__encuestas_encuestas__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__tomar_lista_tomar_lista__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_native_audio__ = __webpack_require__(34);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3634,8 +2885,6 @@ var MateriasAdministrativoPage = (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.fireService = fireService;
-=======
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
         this.loadingCtrl = loadingCtrl;
         this.screenOrientation = screenOrientation;
         this.platform = platform;
@@ -3827,20 +3076,17 @@ var MateriasAdministrativoPage = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */]) === "function" && _a || Object)
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Content */])
 ], MateriasAdministrativoPage.prototype, "content", void 0);
 MateriasAdministrativoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-materias-administrativo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/materias-administrativo/materias-administrativo.html"*/'<!--\n  Generated template for the AulaProfesorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  \n    <ion-navbar color="dark">\n      <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>\n    </ion-navbar>\n  \n  </ion-header>\n  \n  <ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n  \n   <!--gi <ion-list>\n                \n      <ion-item class="animated flipInX miItem">\n        <ion-label class="miLabel" floating>Divicion</ion-label>\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n      </ion-item>\n                      \n      <ion-item class="animated flipInY miItem">\n        <ion-label class="miLabel" floating>Materia</ion-label>\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n      </ion-item>\n                  \n      <ion-item class="animated flipInX miItem" >\n        <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n      </ion-item> \n    \n    </ion-list>-->\n  \n    <br><br>     \n     \n    \n      \n  \n      <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n        <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n      </button>\n  <br><br>\n  <div style="width:100%">\n    <ion-grid style="background-color:white;">\n      <h4>Faltas</h4>\n       <ion-row >\n         <ion-col >\n           <ngx-charts-bar-horizontal \n             [view]="view"\n             [results]="informacion"\n             xAxis="true"\n             yAxis="true"\n           >\n           </ngx-charts-bar-horizontal>\n         </ion-col>\n       </ion-row>\n     </ion-grid>\n    </div>\n    <!--  [legend]="showLegend"\n             legendTitle="Votos"\n             [showXAxisLabel]="showXAxisLabel"\n             [showYAxisLabel]="showYAxisLabel"\n             xAxisLabel="votos"\n             yAxisLabel="resultado" -->\n             <br><br><br><br>\n             <ion-item >\n              <ion-label>Curso</ion-label>\n              <ion-select interface=\'action-sheet\' [(ngModel)]="seleccion" (ionChange)="changeList($event)">\n                <ion-option (ionSelect)="changeList(\'a\')" value="a">4ºA</ion-option>\n                <ion-option (ionSelect)="changeList(\'b\')" value="b">4ºB</ion-option>\n              </ion-select>\n            </ion-item>\n            <ion-item >\n            <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="a"\'>\n              <ng2-smart-table style=\'width:100%;height:100%\' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"\n              (editConfirm)="onSaveConfirm($event)"\n              (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n            </ion-item>\n            <ion-item >\n              <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="b"\'>\n              <ng2-smart-table style=\'width:100%;height:100%\'  [settings]="settings" [source]="source2" (deleteConfirm)="onDeleteConfirm($event)"\n              (editConfirm)="onSaveConfirm($event)"\n              (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n         </ion-item> \n     \n      \n  \n  </ion-content>\n  '/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/materias-administrativo/materias-administrativo.html"*/,
-=======
-        selector: 'page-materias-administrativo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materias-administrativo\materias-administrativo.html"*/'<!--\n\n  Generated template for the AulaProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  \n\n    <ion-navbar color="dark">\n\n      <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>\n\n    </ion-navbar>\n\n  \n\n  </ion-header>\n\n  \n\n  <ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n  \n\n   <!--gi <ion-list>\n\n                \n\n      <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Divicion</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n\n      </ion-item>\n\n                      \n\n      <ion-item class="animated flipInY miItem">\n\n        <ion-label class="miLabel" floating>Materia</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n\n      </ion-item>\n\n                  \n\n      <ion-item class="animated flipInX miItem" >\n\n        <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n        <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n\n      </ion-item> \n\n    \n\n    </ion-list>-->\n\n  \n\n    <br><br>     \n\n     \n\n    \n\n      \n\n  \n\n      <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n\n      </button>\n\n  <br><br>\n\n  <div style="width:100%">\n\n    <ion-grid style="background-color:white;">\n\n      <h4>Faltas</h4>\n\n       <ion-row >\n\n         <ion-col >\n\n           <ngx-charts-bar-horizontal \n\n             [view]="view"\n\n             [results]="informacion"\n\n             xAxis="true"\n\n             yAxis="true"\n\n           >\n\n           </ngx-charts-bar-horizontal>\n\n         </ion-col>\n\n       </ion-row>\n\n     </ion-grid>\n\n    </div>\n\n    <!--  [legend]="showLegend"\n\n             legendTitle="Votos"\n\n             [showXAxisLabel]="showXAxisLabel"\n\n             [showYAxisLabel]="showYAxisLabel"\n\n             xAxisLabel="votos"\n\n             yAxisLabel="resultado" -->\n\n             <br><br><br><br>\n\n             <ion-item >\n\n              <ion-label>Curso</ion-label>\n\n              <ion-select interface=\'action-sheet\' [(ngModel)]="seleccion" (ionChange)="changeList($event)">\n\n                <ion-option (ionSelect)="changeList(\'a\')" value="a">4ºA</ion-option>\n\n                <ion-option (ionSelect)="changeList(\'b\')" value="b">4ºB</ion-option>\n\n              </ion-select>\n\n            </ion-item>\n\n            <ion-item >\n\n            <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="a"\'>\n\n              <ng2-smart-table style=\'width:100%;height:100%\' [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"\n\n              (editConfirm)="onSaveConfirm($event)"\n\n              (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n\n            </ion-item>\n\n            <ion-item >\n\n              <div style=\'width:100%;height:100%\' *ngIf=\'seleccion=="b"\'>\n\n              <ng2-smart-table style=\'width:100%;height:100%\'  [settings]="settings" [source]="source2" (deleteConfirm)="onDeleteConfirm($event)"\n\n              (editConfirm)="onSaveConfirm($event)"\n\n              (createConfirm)="onCreateConfirm($event)"></ng2-smart-table></div>\n\n         </ion-item> \n\n     \n\n      \n\n  \n\n  </ion-content>\n\n  '/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materias-administrativo\materias-administrativo.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_11__ionic_native_native_audio__["a" /* NativeAudio */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_11__ionic_native_native_audio__["a" /* NativeAudio */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _l || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_11__ionic_native_native_audio__["a" /* NativeAudio */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__["a" /* ScreenOrientation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], MateriasAdministrativoPage);
 
-var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
 //# sourceMappingURL=materias-administrativo.js.map
 
 /***/ }),
@@ -3867,11 +3113,11 @@ webpackEmptyAsyncContext.id = 270;
 
 var map = {
 	"../pages/abm-alumnos/abm-alumnos.module": [
-		920,
+		919,
 		27
 	],
 	"../pages/alumnos/alumnos.module": [
-		919,
+		920,
 		26
 	],
 	"../pages/asignar-materia/asignar-materia.module": [
@@ -3879,19 +3125,19 @@ var map = {
 		25
 	],
 	"../pages/aula-administrativo/aula-administrativo.module": [
-		922,
+		923,
 		24
 	],
 	"../pages/aula-alumno/aula-alumno.module": [
-		925,
+		922,
 		23
 	],
 	"../pages/aula-profesor/aula-profesor.module": [
-		923,
+		924,
 		22
 	],
 	"../pages/cagar-archivo/cagar-archivo.module": [
-		924,
+		925,
 		21
 	],
 	"../pages/cuestionarios/cuestionarios.module": [
@@ -3911,15 +3157,15 @@ var map = {
 		17
 	],
 	"../pages/encuestas-editar/encuestas-editar.module": [
-		932,
+		930,
 		16
 	],
 	"../pages/encuestas/encuestas.module": [
-		930,
+		931,
 		15
 	],
 	"../pages/inicio-admin/inicio-admin.module": [
-		931,
+		932,
 		14
 	],
 	"../pages/inicio-administrativo/inicio-administrativo.module": [
@@ -3943,19 +3189,11 @@ var map = {
 		9
 	],
 	"../pages/materias-administrativo/materias-administrativo.module": [
-<<<<<<< HEAD
-		937,
-		8
-	],
-	"../pages/materias-profesor/materias-profesor.module": [
-		936,
-=======
-		938,
-		8
-	],
-	"../pages/materias-profesor/materias-profesor.module": [
 		939,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
+		8
+	],
+	"../pages/materias-profesor/materias-profesor.module": [
+		938,
 		7
 	],
 	"../pages/materias/materias.module": [
@@ -4004,41 +3242,6 @@ module.exports = webpackAsyncContext;
 /***/ }),
 
 /***/ 475:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlumnosPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-/**
- * Generated class for the AlumnosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var AlumnosPage = (function () {
-    function AlumnosPage() {
-    }
-    return AlumnosPage;
-}());
-AlumnosPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-alumnos',
-        template: "\n\n  <ion-item style='float:right'>\n  <ion-label>Curso</ion-label>\n  <ion-select [(ngModel)]=\"seleccion\" (ionChange)=\"changeList($event)\">\n    <ion-option value=\"a\">4\u00BAA</ion-option>\n    <ion-option value=\"b\">4\u00BAB</ion-option>\n  </ion-select>\n</ion-item>\n<div style='width:100%;height:100%' *ngIf='seleccion==\"a\"'>\n  <ng2-smart-table style='width:100%;height:100%' [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n  <div style='width:100%;height:100%' *ngIf='seleccion==\"b\"'>\n  <ng2-smart-table style='width:100%;height:100%'  [settings]=\"settings\" [source]=\"source2\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n\n",
-    })
-], AlumnosPage);
-
-//# sourceMappingURL=alumnos.js.map
-
-/***/ }),
-
-/***/ 476:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4385,6 +3588,41 @@ AbmAlumnosPage = __decorate([
 
 /***/ }),
 
+/***/ 476:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlumnosPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+/**
+ * Generated class for the AlumnosPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var AlumnosPage = (function () {
+    function AlumnosPage() {
+    }
+    return AlumnosPage;
+}());
+AlumnosPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-alumnos',
+        template: "\n\n  <ion-item style='float:right'>\n  <ion-label>Curso</ion-label>\n  <ion-select [(ngModel)]=\"seleccion\" (ionChange)=\"changeList($event)\">\n    <ion-option value=\"a\">4\u00BAA</ion-option>\n    <ion-option value=\"b\">4\u00BAB</ion-option>\n  </ion-select>\n</ion-item>\n<div style='width:100%;height:100%' *ngIf='seleccion==\"a\"'>\n  <ng2-smart-table style='width:100%;height:100%' [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n  <div style='width:100%;height:100%' *ngIf='seleccion==\"b\"'>\n  <ng2-smart-table style='width:100%;height:100%'  [settings]=\"settings\" [source]=\"source2\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div>\n\n",
+    })
+], AlumnosPage);
+
+//# sourceMappingURL=alumnos.js.map
+
+/***/ }),
+
 /***/ 477:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4432,11 +3670,7 @@ var AulaAlumnoPage = (function () {
 }());
 AulaAlumnoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-aula-alumno',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-alumno/aula-alumno.html"*/'<!--\n  Generated template for the AulaAlumnoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Aula Alumno</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/aula.jpg\')" class="fondo">\n\n  <ion-list>\n\n   <!-- <ion-item>\n      <ion-label>Toppings</ion-label>\n        <ion-select [(ngModel)]="miAulaAlumno.turno"cancelText="cancelar" okText="elegir">\n          <ion-option value="nulo" selected="true">Elegir turno</ion-option>\n          <ion-option value="mañana">Mañana</ion-option>\n          <ion-option value="tarde" selected="true">Tarde</ion-option>\n          <ion-option value="noche">Noche</ion-option>\n        </ion-select>\n    </ion-item> -->\n\n    <ion-item class="animated flipInX miItem">\n      <ion-label class="miLabel" floating>Turno</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAlumno.turno" disabled="true"></ion-input> \n    </ion-item>\n            \n     <ion-item class="animated flipInY miItem">\n      <ion-label class="miLabel" floating>Profesor</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAlumno.profesor" disabled="true"></ion-input>\n     </ion-item>\n        \n    <ion-item class="animated flipInX miItem" >\n      <ion-label class="miLabel" floating >Materia</ion-label>\n      <ion-input type="text" [(ngModel)]="miAulaAlumno.materia" disabled="true"></ion-input>\n    </ion-item> \n  </ion-list>\n      \n  <div>\n    <button ion-button round full large (click)=RedireccionMaterias()  class="animated flipInX miBoton miButton"> \n      <ion-icon name="arrow-round-back"></ion-icon> Materias\n    </button>\n  </div>\n  \n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/aula-alumno/aula-alumno.html"*/,
-=======
-        selector: 'page-aula-alumno',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-alumno\aula-alumno.html"*/'<!--\n\n  Generated template for the AulaAlumnoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Aula Alumno</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula.jpg\')" class="fondo">\n\n\n\n  <ion-list>\n\n\n\n   <!-- <ion-item>\n\n      <ion-label>Toppings</ion-label>\n\n        <ion-select [(ngModel)]="miAulaAlumno.turno"cancelText="cancelar" okText="elegir">\n\n          <ion-option value="nulo" selected="true">Elegir turno</ion-option>\n\n          <ion-option value="mañana">Mañana</ion-option>\n\n          <ion-option value="tarde" selected="true">Tarde</ion-option>\n\n          <ion-option value="noche">Noche</ion-option>\n\n        </ion-select>\n\n    </ion-item> -->\n\n\n\n    <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Turno</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaAlumno.turno" disabled="true"></ion-input> \n\n    </ion-item>\n\n            \n\n     <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Profesor</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaAlumno.profesor" disabled="true"></ion-input>\n\n     </ion-item>\n\n        \n\n    <ion-item class="animated flipInX miItem" >\n\n      <ion-label class="miLabel" floating >Materia</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaAlumno.materia" disabled="true"></ion-input>\n\n    </ion-item> \n\n  </ion-list>\n\n      \n\n  <div>\n\n    <button ion-button round full large (click)=RedireccionMaterias()  class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Materias\n\n    </button>\n\n  </div>\n\n  \n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\aula-alumno\aula-alumno.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
 ], AulaAlumnoPage);
@@ -4506,11 +3740,7 @@ var CuestionariosPage = (function () {
 }());
 CuestionariosPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-cuestionarios',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cuestionarios/cuestionarios.html"*/'<!--\n  Generated template for the MateriasProfesorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Seleccione un cuestionario</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> \n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="MostrarCuestionariosProfesor()">Mostrar cuestionarios</button> \n          \n        </ion-content>'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cuestionarios/cuestionarios.html"*/,
-=======
-        selector: 'page-cuestionarios',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\cuestionarios\cuestionarios.html"*/'<!--\n\n  Generated template for the MateriasProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Seleccione un cuestionario</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> \n\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="MostrarCuestionariosProfesor()">Mostrar cuestionarios</button> \n\n          \n\n        </ion-content>'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\cuestionarios\cuestionarios.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
 ], CuestionariosPage);
@@ -4613,7 +3843,7 @@ var InicioAdministrativoPage = (function () {
 }());
 InicioAdministrativoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-inicio-administrativo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\inicio-administrativo\inicio-administrativo.html"*/'<!--\n\n  Generated template for the InicioAdministrativoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Seleccione un aula</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n\n\n    <div *ngFor="let lista of listaAulas; let i = index"> \n\n        <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.nombre)">{{ lista.nombre }}</button> \n\n    </div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\inicio-administrativo\inicio-administrativo.html"*/,
+        selector: 'page-inicio-administrativo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/inicio-administrativo/inicio-administrativo.html"*/'<!--\n  Generated template for the InicioAdministrativoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Seleccione un aula</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n    <div *ngFor="let lista of listaAulas; let i = index"> \n        <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.nombre)">{{ lista.nombre }}</button> \n    </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/inicio-administrativo/inicio-administrativo.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_audio__["a" /* NativeAudio */]])
 ], InicioAdministrativoPage);
@@ -5102,11 +4332,7 @@ var LoginPage = (function () {
 }());
 LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
-        selector: 'page-inicio-administrativo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/inicio-administrativo/inicio-administrativo.html"*/'<!--\n  Generated template for the InicioAdministrativoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Seleccione un aula</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n    <div *ngFor="let lista of listaAulas; let i = index"> \n        <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.nombre)">{{ lista.nombre }}</button> \n    </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/inicio-administrativo/inicio-administrativo.html"*/,
-=======
-        selector: 'page-login',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\login\login.html"*/'<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Inicio de Sesión</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n\n \n\n<div style="width:100%;height:100%">\n\n  <br>\n\n  <div style="width:50%;height:10%;margin:auto;text-align:center;display:block;">\n\n<button ion-button icon-right color="danger" style="font-size:11pt;margin:auto;text-align:center;display:block;" round (click)="loginGoogle()">\n\nIniciar sesión con Google<ion-icon style="font-size:250%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>\n\n</button>\n\n</div>\n\n    <br><br><br>\n\n    <div *ngIf="!google">\n\n   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n      <ion-label  style="color:white" floating>Email</ion-label>\n\n<ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>\n\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n    <ion-label style="color:white" floating>Contraseña</ion-label>      \n\n<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>\n\n <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n\n  <ion-label style="color:white">Elige tu usuario</ion-label>\n\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">\n\n   <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>\n\n   <ion-option>nicostellisano@hotmail.com</ion-option>\n\n  </ion-select>\n\n</ion-item>-->\n\n<br>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>\n\n</div>\n\n</div>\n\n<!--<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>\n\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>\n\n-->\n\n<br><br><br><br>\n\n<button ion-button full (click)="octa()">Octavio</button>\n\n<button ion-button full (click)="dale()">ADELIBERTI 4A </button>\n\n<button ion-button full (click)="mauro()">Administrativo Mauro </button>\n\n<button ion-button full (click)="maxi()">Maximiliano </button>\n\n<br><br><br><br>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\login\login.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
+        selector: 'page-login',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/login/login.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Inicio de Sesión</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding style="background-image:url(\'assets/hallowenAdministrativo.jpg\')" class="fondo">\n \n<div style="width:100%;height:100%">\n  <br>\n  <div style="width:50%;height:10%;margin:auto;text-align:center;display:block;">\n<button ion-button icon-right color="danger" style="font-size:11pt;margin:auto;text-align:center;display:block;" round (click)="loginGoogle()">\nIniciar sesión con Google<ion-icon style="font-size:250%;margin:auto;text-align:center;display:block;" name="logo-googleplus"></ion-icon>\n</button>\n</div>\n    <br><br><br>\n    <div *ngIf="!google">\n   <ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n      <ion-label  style="color:white" floating>Email</ion-label>\n<ion-input clearInput type="text"  [(ngModel)]="email" name="email" id="email"></ion-input></ion-item>\n<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n    <ion-label style="color:white" floating>Contraseña</ion-label>      \n<ion-input type="password"  [(ngModel)]="password" name="password" id="password"></ion-input></ion-item>\n <!--<ion-item style="background-color:rgba(0, 0, 0, 0.747);color:white">\n  <ion-label style="color:white">Elige tu usuario</ion-label>\n <ion-select style="background-color:rgba(0, 0, 0, 0.747);color:white" [(ngModel)]="usuarioo" name="usuarioo" id="usuarioo" (ionChange)="selectChange()">\n   <ion-option *ngFor="let usuario of usuarios | async"  [value]="usuario">{{usuario.nombre}}</ion-option>\n   <ion-option>nicostellisano@hotmail.com</ion-option>\n  </ion-select>\n</ion-item>-->\n<br>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="loginNormal()">Iniciar Sesión</button>\n</div>\n</div>\n<!--<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(0)">Iniciar Sesión(Admin)</button>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(1)">Iniciar Sesión(Administrativo)</button>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(2)">Iniciar Sesión(Profesor)</button>\n<br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="login(3)">Iniciar Sesión(Alumno)</button>\n-->\n<br><br><br><br>\n<button ion-button full (click)="octa()">Octavio</button>\n<button ion-button full (click)="dale()">ADELIBERTI 4A </button>\n<button ion-button full (click)="mauro()">Administrativo Mauro </button>\n<button ion-button full (click)="maxi()">Maximiliano </button>\n<br><br><br><br>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/login/login.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_google_plus__["a" /* GooglePlus */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_screen_orientation__["a" /* ScreenOrientation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
@@ -5222,11 +4448,7 @@ var MateriasProfesorPage = (function () {
 }());
 MateriasProfesorPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-materias-profesor',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/materias-profesor/materias-profesor.html"*/'<!--\n  Generated template for the MateriasProfesorPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Seleccione una materia</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenProfesor.jpg\')" class="fondo">\n  \n      <div *ngFor="let lista of listaMateriasProfesor; let i = index"> \n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionMateria(lista)">{{lista.aula}}, {{lista.materia}}</button> \n      </div>\n  \n  </ion-content>'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/materias-profesor/materias-profesor.html"*/,
-=======
-        selector: 'page-materias-profesor',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materias-profesor\materias-profesor.html"*/'<!--\n\n  Generated template for the MateriasProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Seleccione una materia</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenProfesor.jpg\')" class="fondo">\n\n  \n\n      <div *ngFor="let lista of listaMateriasProfesor; let i = index"> \n\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionMateria(lista)">{{lista.aula}}, {{lista.materia}}</button> \n\n      </div>\n\n  \n\n  </ion-content>'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materias-profesor\materias-profesor.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]])
 ], MateriasProfesorPage);
@@ -5271,11 +4493,7 @@ var QrencuestaPage = (function () {
 }());
 QrencuestaPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-qrencuesta',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/qrencuesta/qrencuesta.html"*/'<!--\n  Generated template for the QrencuestaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>qrencuesta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/qrencuesta/qrencuesta.html"*/,
-=======
-        selector: 'page-qrencuesta',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\qrencuesta\qrencuesta.html"*/'<!--\n\n  Generated template for the QrencuestaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>qrencuesta</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\qrencuesta\qrencuesta.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
 ], QrencuestaPage);
@@ -5317,7 +4535,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_inicio_alumno_inicio_alumno__ = __webpack_require__(151);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_aula_alumno_aula_alumno__ = __webpack_require__(477);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_aula_administrativo_aula_administrativo__ = __webpack_require__(148);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_aula_profesor_aula_profesor__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_aula_profesor_aula_profesor__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angularfire2_database__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_angularfire2__ = __webpack_require__(694);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_fire_base_service_fire_base_service__ = __webpack_require__(17);
@@ -5330,7 +4548,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_screen_orientation__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_cuestionarios_cuestionarios__ = __webpack_require__(478);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_cagar_archivo_cagar_archivo__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_alumnos_alumnos__ = __webpack_require__(475);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_alumnos_alumnos__ = __webpack_require__(476);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__ionic_native_barcode_scanner__ = __webpack_require__(362);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_materia_materia__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_editar_perfil_editar_perfil__ = __webpack_require__(261);
@@ -5343,13 +4561,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_encuestas_editar_encuestas_editar__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_tomar_lista_tomar_lista__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__ionic_native_native_audio__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_respuesta_encuesta_respuesta_encuesta__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_respuesta_encuesta_respuesta_encuesta__ = __webpack_require__(257);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__swimlane_ngx_charts__ = __webpack_require__(696);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_41__swimlane_ngx_charts__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__angular_platform_browser_animations__ = __webpack_require__(474);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pages_materias_administrativo_materias_administrativo__ = __webpack_require__(265);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_qrencuesta_qrencuesta__ = __webpack_require__(482);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pages_abm_alumnos_abm_alumnos__ = __webpack_require__(476);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pages_abm_alumnos_abm_alumnos__ = __webpack_require__(475);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5402,11 +4620,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-<<<<<<< HEAD
-=======
-//import { DateValueAccessorModule } from 'angular-date-value-accessor';
 
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
 var config = {
     apiKey: "AIzaSyAyMMkFUgvDYxYawz6yGUWlSaHyyk32QAo",
     authDomain: "controlalumnos-6cbb9.firebaseapp.com",
@@ -5460,20 +4674,20 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_19_ng2_smart_table__["b" /* Ng2SmartTableModule */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */], {}, {
                 links: [
-                    { loadChildren: '../pages/alumnos/alumnos.module#AlumnosPageModule', name: 'AlumnosPage', segment: 'alumnos', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/abm-alumnos/abm-alumnos.module#AbmAlumnosPageModule', name: 'AbmAlumnosPage', segment: 'abm-alumnos', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/alumnos/alumnos.module#AlumnosPageModule', name: 'AlumnosPage', segment: 'alumnos', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/asignar-materia/asignar-materia.module#AsignarMateriaPageModule', name: 'AsignarMateriaPage', segment: 'asignar-materia', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/aula-alumno/aula-alumno.module#AulaAlumnoPageModule', name: 'AulaAlumnoPage', segment: 'aula-alumno', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/aula-administrativo/aula-administrativo.module#AulaAdministrativoPageModule', name: 'AulaAdministrativoPage', segment: 'aula-administrativo', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/aula-profesor/aula-profesor.module#AulaProfesorPageModule', name: 'AulaProfesorPage', segment: 'aula-profesor', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/cagar-archivo/cagar-archivo.module#CagarArchivoPageModule', name: 'CagarArchivoPage', segment: 'cagar-archivo', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/aula-alumno/aula-alumno.module#AulaAlumnoPageModule', name: 'AulaAlumnoPage', segment: 'aula-alumno', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/cuestionarios/cuestionarios.module#CuestionariosPageModule', name: 'CuestionariosPage', segment: 'cuestionarios', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/descargar-archivo/descargar-archivo.module#DescargarArchivoPageModule', name: 'DescargarArchivoPage', segment: 'descargar-archivo', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/editar-perfil/editar-perfil.module#EditarPerfilPageModule', name: 'EditarPerfilPage', segment: 'editar-perfil', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/encuestas-alta/encuestas-alta.module#EncuestasAltaPageModule', name: 'EncuestasAltaPage', segment: 'encuestas-alta', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/encuestas-editar/encuestas-editar.module#EncuestasEditarPageModule', name: 'EncuestasEditarPage', segment: 'encuestas-editar', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/encuestas/encuestas.module#EncuestasPageModule', name: 'EncuestasPage', segment: 'encuestas', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/inicio-admin/inicio-admin.module#InicioAdminPageModule', name: 'InicioAdminPage', segment: 'inicio-admin', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/encuestas-editar/encuestas-editar.module#EncuestasEditarPageModule', name: 'EncuestasEditarPage', segment: 'encuestas-editar', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/inicio-administrativo/inicio-administrativo.module#InicioAdministrativoPageModule', name: 'InicioAdministrativoPage', segment: 'inicio-administrativo', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/inicio-alumno/inicio-alumno.module#InicioAlumnoPageModule', name: 'InicioAlumnoPage', segment: 'inicio-alumno', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/inicio-profesor/inicio-profesor.module#InicioProfesorPageModule', name: 'InicioProfesorPage', segment: 'inicio-profesor', priority: 'low', defaultHistory: [] },
@@ -5820,7 +5034,7 @@ var CagarArchivoPage = (function () {
                 });
             }
             //    this.presentAlert("Guardar Lista","Se guado correcetamente la lista");
-            var alert = this.alertCtrl.create({
+            var alert_1 = this.alertCtrl.create({
                 title: "Guardar Lista",
                 subTitle: "La lista se guardó correctamente",
                 cssClass: "miClaseAlert",
@@ -5832,30 +5046,30 @@ var CagarArchivoPage = (function () {
                     }
                 ]
             });
-            alert.present();
+            alert_1.present();
         }
         else if (this.persona == "profesor") {
             console.log('---------- ingreso a profesores carga ---------');
             this.firebaseService.updateProfesor(this.listaGen);
             //this.database.list('/profesores/').push(this.listaGen);
-            var alert = this.alertCtrl.create({
+            var alert_2 = this.alertCtrl.create({
                 title: "Guardar Lista",
                 subTitle: "La lista se guardó correctamente",
                 cssClass: "miClaseAlert",
                 buttons: [{ text: 'Aceptar' }]
             });
-            alert.present();
+            alert_2.present();
         }
         else if (this.persona == "administrativo") {
             console.log('---------- ingreso a administrativos carga ---------');
             this.firebaseService.updateAdministrativo(this.listaGen);
-            var alert = this.alertCtrl.create({
+            var alert_3 = this.alertCtrl.create({
                 title: "Guardar Lista",
                 subTitle: "La lista se guardó correctamente",
                 cssClass: "miClaseAlert",
                 buttons: [{ text: 'Aceptar' }]
             });
-            alert.present();
+            alert_3.present();
             //this.database.list('/administrativos/').push(this.listaGen);
         }
     };
@@ -5875,13 +5089,13 @@ var CagarArchivoPage = (function () {
         else {
             //alert("No hya nada que descargar");
             // this.presentAlert("Sin alumnos","No hay nada que descargar");
-            var alert = this.alertCtrl.create({
+            var alert_4 = this.alertCtrl.create({
                 title: "Sin Alumnos",
                 subTitle: "No hay nada que descargar",
                 cssClass: "miClaseDanger",
                 buttons: ['Aceptar']
             });
-            alert.present();
+            alert_4.present();
         }
     };
     CagarArchivoPage.prototype.presentAlert = function (titulo, subtitulo) {
@@ -5897,16 +5111,11 @@ var CagarArchivoPage = (function () {
 }());
 CagarArchivoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-cagar-archivo',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cagar-archivo/cagar-archivo.html"*/'<!--\n  Generated template for the CagarArchivoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="dark">\n    <ion-title>Cargar Archivo </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n  <ion-list>\n    <ion-item>\n      <!--<label>{{label}}</label>-->\n      <!--(change)="fileUpload($event)"-->\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->\n      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">\n      <ion-icon name="cloud-done">Selecionar archivo .csv</ion-icon>\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n    </ion-item>\n\n    <ion-item>\n      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>\n      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>\n    </ion-item>\n  </ion-list>\n  \n  <div>\n    <button center ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="cloud-done"></ion-icon> Subir\n    </button>\n    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> \n      <ion-icon name="cloud-done"></ion-icon> Descargar\n    </button>\n  </div>\n  \n  \n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/cagar-archivo/cagar-archivo.html"*/,
-=======
-        selector: 'page-cagar-archivo',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/'<!--\n\n  Generated template for the CagarArchivoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Cargar Archivo </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n\n\n  <ion-list>\n\n    <ion-item>\n\n      <!--<label>{{label}}</label>-->\n\n      <!--(change)="fileUpload($event)"-->\n\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->\n\n      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">\n\n      <ion-icon name="cloud-done">Selecionar archivo .csv</ion-icon>\n\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>\n\n      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n  \n\n  <div>\n\n    <button center ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Subir\n\n    </button>\n\n    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Descargar\n\n    </button>\n\n  </div>\n\n  \n\n  \n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */]])
 ], CagarArchivoPage);
 
-var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=cagar-archivo.js.map
 
 /***/ }),
@@ -5920,7 +5129,7 @@ var _a, _b, _c, _d, _e, _f, _g;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(414);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(413);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_abm_alumnos_abm_alumnos__ = __webpack_require__(476);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(480);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5936,9 +5145,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MyApp = (function () {
+    //rootPage:any = AbmAlumnosPage; //test
     function MyApp(platform, statusBar, splashScreen) {
-        //rootPage:any = LoginPage;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_abm_alumnos_abm_alumnos__["a" /* AbmAlumnosPage */]; //test
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_login_login__["a" /* LoginPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -5949,15 +5158,12 @@ var MyApp = (function () {
     return MyApp;
 }());
 MyApp = __decorate([
-<<<<<<< HEAD
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/app/app.html"*/
-=======
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\app\app.html"*/
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object])
 ], MyApp);
 
+var _a, _b, _c;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -5988,11 +5194,7 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-home',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Blank\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  The world is your oyster.\n  <p>\n    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.\n  </p>\n</ion-content>\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/home/home.html"*/
-=======
-        selector: 'page-home',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Ionic Blank\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  The world is your oyster.\n\n  <p>\n\n    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.\n\n  </p>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\home\home.html"*/
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
 ], HomePage);
@@ -6062,7 +5264,7 @@ ButtonRenderComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__descargar_archivo_descargar_archivo__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__respuesta_encuesta_respuesta_encuesta__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__respuesta_encuesta_respuesta_encuesta__ = __webpack_require__(257);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6201,11 +5403,7 @@ var MateriaPage = (function () {
 }());
 MateriaPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-materia',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/materia/materia.html"*/'<!--\n  Generated template for the MateriaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Materia: {{materia}}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n\n\n\n  \n  <button ion-button round full large *ngIf="codigoScaneado==null"  (click)="scanCode()" class="animated flipInX miBoton miButton"> \n    <ion-icon name="arrow-round-back"></ion-icon> Escaner QR\n  </button>\n\n    \n  <button ion-button round full large *ngIf="codigoScaneado==null"  (click)="encuestas()" class="animated flipInX miBoton miButton"> \n    <ion-icon name="arrow-round-back"></ion-icon> Encuestas\n  </button>\n  \n  <ion-list *ngIf="codigoScaneado!=null" >\n  <!-- <div *ngIf="perfil==\'\'" > -->\n<ion-item class="animated flipInX miItem">\n<ion-label class="miLabel" floating>División</ion-label>\n<ion-input type="text" [(ngModel)]="aulaMateria.curso" disabled="true"></ion-input> \n</ion-item>\n          \n<ion-item class="animated flipInY miItem">\n  <ion-label class="miLabel" floating>Profesor</ion-label>\n  <ion-input type="text" [(ngModel)]="aulaMateria.profesor" disabled="true"></ion-input>\n  </ion-item>\n\n<ion-item class="animated flipInY miItem">\n<ion-label class="miLabel" floating>Materia</ion-label>\n<ion-input type="text" [(ngModel)]="aulaMateria.materia" disabled="true"></ion-input>\n</ion-item>\n\n\n  <ion-item class="animated flipInY miItem">\n    <ion-label class="miLabel" floating>Primer Parcial</ion-label>\n    <ion-input type="text" [(ngModel)]="aulaMateria.primerParcial" disabled="true"></ion-input>\n    </ion-item>\n\n    <ion-item class="animated flipInY miItem">\n      <ion-label class="miLabel" floating>Segundo Parcial</ion-label>\n      <ion-input type="text" [(ngModel)]="aulaMateria.segundoParcial" disabled="true"></ion-input>\n      </ion-item>\n\n      <ion-item class="animated flipInY miItem">\n        <ion-label class="miLabel" floating>Final</ion-label>\n        <ion-input type="text" [(ngModel)]="aulaMateria.final" disabled="true"></ion-input>\n        </ion-item>\n\n      <!--</div>-->\n\n\n</ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/materia/materia.html"*/,
-=======
-        selector: 'page-materia',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materia\materia.html"*/'<!--\n\n  Generated template for the MateriaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Materia: {{materia}}</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n\n\n\n\n\n\n\n\n  \n\n  <button ion-button round full large *ngIf="codigoScaneado==null"  (click)="scanCode()" class="animated flipInX miBoton miButton"> \n\n    <ion-icon name="arrow-round-back"></ion-icon> Escaner QR\n\n  </button>\n\n\n\n    \n\n  <button ion-button round full large *ngIf="codigoScaneado==null"  (click)="encuestas()" class="animated flipInX miBoton miButton"> \n\n    <ion-icon name="arrow-round-back"></ion-icon> Encuestas\n\n  </button>\n\n  \n\n  <ion-list *ngIf="codigoScaneado!=null" >\n\n  <!-- <div *ngIf="perfil==\'\'" > -->\n\n<ion-item class="animated flipInX miItem">\n\n<ion-label class="miLabel" floating>División</ion-label>\n\n<ion-input type="text" [(ngModel)]="aulaMateria.curso" disabled="true"></ion-input> \n\n</ion-item>\n\n          \n\n<ion-item class="animated flipInY miItem">\n\n  <ion-label class="miLabel" floating>Profesor</ion-label>\n\n  <ion-input type="text" [(ngModel)]="aulaMateria.profesor" disabled="true"></ion-input>\n\n  </ion-item>\n\n\n\n<ion-item class="animated flipInY miItem">\n\n<ion-label class="miLabel" floating>Materia</ion-label>\n\n<ion-input type="text" [(ngModel)]="aulaMateria.materia" disabled="true"></ion-input>\n\n</ion-item>\n\n\n\n\n\n  <ion-item class="animated flipInY miItem">\n\n    <ion-label class="miLabel" floating>Primer Parcial</ion-label>\n\n    <ion-input type="text" [(ngModel)]="aulaMateria.primerParcial" disabled="true"></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Segundo Parcial</ion-label>\n\n      <ion-input type="text" [(ngModel)]="aulaMateria.segundoParcial" disabled="true"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item class="animated flipInY miItem">\n\n        <ion-label class="miLabel" floating>Final</ion-label>\n\n        <ion-input type="text" [(ngModel)]="aulaMateria.final" disabled="true"></ion-input>\n\n        </ion-item>\n\n\n\n      <!--</div>-->\n\n\n\n\n\n</ion-list>\n\n\n\n</ion-content>\n\n\n\n'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\materia\materia.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */]])
 ], MateriaPage);
@@ -6304,11 +5502,7 @@ var EncuestasPage = (function () {
 }());
 EncuestasPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-<<<<<<< HEAD
         selector: 'page-encuestas',template:/*ion-inline-start:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/encuestas/encuestas.html"*/'<!--\n  Generated template for the EncuestasPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>Encuestas</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> \n         <br>\n          \n          <div *ngFor="let e of encuestas; let i = index">\n     \n          <ion-list >\n              <div>\n          <ion-item class="animated flipInX miItem">\n              <ion-label class="miLabel" style="color: orange" floating>Nombre:</ion-label>\n              <ion-input type="text" [(ngModel)]="e.nombre" disabled="true"></ion-input> \n              <button style="color: yellow" ion-button clear item-end icon-only (click)="modificarEncuesta(e)" >\n                  <ion-icon style="width:50px" name="md-create"></ion-icon>\n                </button>\n                <button style="color: red" ion-button clear item-end icon-only (click)="eliminarEncuesta(e)">\n                  <ion-icon style="width:50px" name="trash"></ion-icon>\n                </button>\n              </ion-item>\n            </div>\n                 \n              <ion-item class="animated flipInY miItem">\n              <ion-label class="miLabel" style="color: orange"  floating>Pregunta:</ion-label>\n              <ion-input type="text" [(ngModel)]="e.pregunta" disabled="true"></ion-input>\n              </ion-item>\n              \n              \n                <ion-item class="animated flipInY miItem">\n                  <ion-label class="miLabel" style="color: orange"  floating>La encuesta finaliza en el horario:</ion-label>\n                  <ion-input type="text" [(ngModel)]="e.horaFReal" disabled="true"></ion-input>\n                  </ion-item>\n\n\n<!--\n                  <ion-item class="animated flipInX miItem">\n                      <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de inicio (opcional)</ion-label>\n                      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaInicio" disabled="true"></ion-datetime>\n                    </ion-item>\n              \n                    <ion-item class="animated flipInX miItem">\n                        <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de finalización (opcional)</ion-label>\n                        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaFinalizacion" disabled="true"></ion-datetime>\n                      </ion-item>\n                    -->\n\n\n                  <ion-item *ngIf=\'e.formato == "Botones"\' class="animated flipInY miItem">\n                    <ion-list  >\n                        <button  class="botones" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n                            Presione para votar: {{e.respuesta1}}\n                           </button>\n                           <br>\n                           <button class="botones" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n                              Presione para votar: {{e.respuesta2}}\n                             </button>\n\n\n                      \n                        </ion-list>    \n                      </ion-item>\n         \n                   \n                   <!-- \n                      <ion-list radio-group [(ngModel)]="respuesta" *ngIf=\'e.formato == "Radio button"\'>\n                          \n                            <ion-label style="color : white">{{e.respuesta1}}</ion-label>\n                            <ion-radio style="color : rgb(233, 67, 67)" value="e.respuesta1" ></ion-radio>\n\n                            <ion-label style="color : white">{{e.respuesta2}}</ion-label>\n                            <ion-radio style="color : rgb(233, 67, 67)" value="e.respuesta2" ></ion-radio>\n                          \n                          </ion-list>\n                        -->\n\n                  \n\n                                <ion-list  *ngIf=\'e.formato == "Radio botones"\' radio-group [(ngModel)]="respuesta">\n                                    <ion-item class="animated flipInY miItem">\n                                      <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n                                      <ion-radio  value="e.respuesta1" ></ion-radio>\n                                    </ion-item>\n                                    <ion-item class="animated flipInY miItem">\n                                        <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n                                        <ion-radio  value="e.respuesta2" ></ion-radio>\n                                      </ion-item>\n                                     \n\n                                  </ion-list>\n\n                                  <ion-list  *ngIf=\'e.formato == "Checkbox"\' radio-group [(ngModel)]="respuesta">\n                                      <ion-item class="animated flipInY miItem">\n                                          <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n                                          <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>\n                                      </ion-item>\n                                      <ion-item class="animated flipInY miItem">\n                                          <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n                                          <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta2" ></ion-checkbox>\n                                        </ion-item>\n                                       \n  \n                                    </ion-list>\n\n                                    <ion-list  *ngIf=\'e.formato == "Selección de opciones"\'  >\n                                      <ion-item class="animated flipInY miItem" >\n                                      <select style="color : rgb(85, 158, 218); width:150px;" [(ngModel)]="respuesta"  class="animated flipInY miItem">\n    \n                                        <option >{{e.respuesta1}} </option>\n                                        <option >{{e.respuesta2}} </option>\n                                      \n                                      </select>\n                                    </ion-item>\n                                       \n  \n                                    </ion-list>\n\n                                  \n                                    \n\n\n                                  \n\n                            \n                        \n                      \n              \n                </ion-list> \n\n          </div>\n\n\n\n        </ion-content>'/*ion-inline-end:"/home/ezequiel/Proyectos/TP_PPS_2C_2017/src/pages/encuestas/encuestas.html"*/,
-=======
-        selector: 'page-encuestas',template:/*ion-inline-start:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\encuestas\encuestas.html"*/'<!--\n\n  Generated template for the EncuestasPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Encuestas</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> \n\n         <br>\n\n          \n\n          <div *ngFor="let e of encuestas; let i = index">\n\n     \n\n          <ion-list >\n\n              <div>\n\n          <ion-item class="animated flipInX miItem">\n\n              <ion-label class="miLabel" style="color: orange" floating>Nombre:</ion-label>\n\n              <ion-input type="text" [(ngModel)]="e.nombre" disabled="true"></ion-input> \n\n              <button style="color: yellow" ion-button clear item-end icon-only (click)="modificarEncuesta(e)" >\n\n                  <ion-icon style="width:50px" name="md-create"></ion-icon>\n\n                </button>\n\n                <button style="color: red" ion-button clear item-end icon-only (click)="eliminarEncuesta(e)">\n\n                  <ion-icon style="width:50px" name="trash"></ion-icon>\n\n                </button>\n\n              </ion-item>\n\n            </div>\n\n                 \n\n              <ion-item class="animated flipInY miItem">\n\n              <ion-label class="miLabel" style="color: orange"  floating>Pregunta:</ion-label>\n\n              <ion-input type="text" [(ngModel)]="e.pregunta" disabled="true"></ion-input>\n\n              </ion-item>\n\n              \n\n              \n\n                <ion-item class="animated flipInY miItem">\n\n                  <ion-label class="miLabel" style="color: orange"  floating>La encuesta finaliza en el horario:</ion-label>\n\n                  <ion-input type="text" [(ngModel)]="e.horaFReal" disabled="true"></ion-input>\n\n                  </ion-item>\n\n\n\n\n\n<!--\n\n                  <ion-item class="animated flipInX miItem">\n\n                      <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de inicio (opcional)</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaInicio" disabled="true"></ion-datetime>\n\n                    </ion-item>\n\n              \n\n                    <ion-item class="animated flipInX miItem">\n\n                        <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de finalización (opcional)</ion-label>\n\n                        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaFinalizacion" disabled="true"></ion-datetime>\n\n                      </ion-item>\n\n                    -->\n\n\n\n\n\n                  <ion-item *ngIf=\'e.formato == "Botones"\' class="animated flipInY miItem">\n\n                    <ion-list  >\n\n                        <button  class="botones" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                            Presione para votar: {{e.respuesta1}}\n\n                           </button>\n\n                           <br>\n\n                           <button class="botones" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                              Presione para votar: {{e.respuesta2}}\n\n                             </button>\n\n\n\n\n\n                      \n\n                        </ion-list>    \n\n                      </ion-item>\n\n         \n\n                   \n\n                   <!-- \n\n                      <ion-list radio-group [(ngModel)]="respuesta" *ngIf=\'e.formato == "Radio button"\'>\n\n                          \n\n                            <ion-label style="color : white">{{e.respuesta1}}</ion-label>\n\n                            <ion-radio style="color : rgb(233, 67, 67)" value="e.respuesta1" ></ion-radio>\n\n\n\n                            <ion-label style="color : white">{{e.respuesta2}}</ion-label>\n\n                            <ion-radio style="color : rgb(233, 67, 67)" value="e.respuesta2" ></ion-radio>\n\n                          \n\n                          </ion-list>\n\n                        -->\n\n\n\n                  \n\n\n\n                                <ion-list  *ngIf=\'e.formato == "Radio botones"\' radio-group [(ngModel)]="respuesta">\n\n                                    <ion-item class="animated flipInY miItem">\n\n                                      <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                      <ion-radio  value="e.respuesta1" ></ion-radio>\n\n                                    </ion-item>\n\n                                    <ion-item class="animated flipInY miItem">\n\n                                        <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                        <ion-radio  value="e.respuesta2" ></ion-radio>\n\n                                      </ion-item>\n\n                                     \n\n\n\n                                  </ion-list>\n\n\n\n                                  <ion-list  *ngIf=\'e.formato == "Checkbox"\' radio-group [(ngModel)]="respuesta">\n\n                                      <ion-item class="animated flipInY miItem">\n\n                                          <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                          <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>\n\n                                      </ion-item>\n\n                                      <ion-item class="animated flipInY miItem">\n\n                                          <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                          <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta2" ></ion-checkbox>\n\n                                        </ion-item>\n\n                                       \n\n  \n\n                                    </ion-list>\n\n\n\n                                    <ion-list  *ngIf=\'e.formato == "Selección de opciones"\'  >\n\n                                      <ion-item class="animated flipInY miItem" >\n\n                                      <select style="color : rgb(85, 158, 218); width:150px;" [(ngModel)]="respuesta"  class="animated flipInY miItem">\n\n    \n\n                                        <option >{{e.respuesta1}} </option>\n\n                                        <option >{{e.respuesta2}} </option>\n\n                                      \n\n                                      </select>\n\n                                    </ion-item>\n\n                                       \n\n  \n\n                                    </ion-list>\n\n\n\n                                  \n\n                                    \n\n\n\n\n\n                                  \n\n\n\n                            \n\n                        \n\n                      \n\n              \n\n                </ion-list> \n\n\n\n          </div>\n\n\n\n\n\n\n\n        </ion-content>'/*ion-inline-end:"D:\Nico\clonar\TP_PPS_2C_2017\src\pages\encuestas\encuestas.html"*/,
->>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_native_audio__["a" /* NativeAudio */]])
 ], EncuestasPage);

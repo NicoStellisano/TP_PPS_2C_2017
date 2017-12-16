@@ -1,0 +1,39 @@
+.naif-theme{
+    ion-content {
+        background-image: url('../assets/img/fondo/naif.jpg');
+        background-size: 100% auto;
+        background-color: #fff;
+    }
+     
+    ion-header, ion-content {
+        font-family: 'Boogaloo', cursive;
+    }
+     
+    .header .toolbar-background {
+        background-color: #b2ff59;
+    }
+
+    ion-item{
+        background-color:rgba(83, 182, 69, 0.582);
+        color:rgba(248, 83, 7, 0.897);
+        border-radius: 20px;
+        border-block-end-color: white;
+    }
+      
+    ion-list-header{
+        background-color:rgba(83, 182, 69, 0.582);
+        color:rgba(248, 83, 7, 0.897)
+    }
+
+    ion-card{
+        background-color:rgba(129, 44, 21, 0.747);
+    }
+
+    .miButton{
+        margin:auto;
+        text-align:center;
+        display:block;
+        color: white;
+        background-color:rgba(99, 219, 18, 0.699)
+    }
+}

@@ -1,0 +1,44 @@
+.argentina-theme{
+    ion-content{
+        background-image: url('../assets/img/fondo/bandera.jpg');
+        background-size: 100% auto;
+    }
+
+    ion-header,ion-content{
+        font-family: 'Lobster', cursive;
+    }
+
+    ion-nav{
+        background-color: #03A9F4;
+    }
+
+    .toolbar-title {
+        color: #fff;
+    }
+     
+    .header .toolbar-background {
+        background-color:rgba(23, 90, 216, 0.897);
+    }
+
+    ion-item{
+        background-color:rgba(141, 174, 211, 0.747);
+        color:white
+    }
+      
+    ion-list-header{
+        background-color:rgba(141, 174, 211, 0.747);
+        color:white
+    }
+
+    ion-card{
+        background-color:rgba(141, 174, 211, 0.747);
+    }
+
+    .miButton{
+        //margin:auto;
+        text-align:center;
+        //display:block;
+        color: white;
+        background-color:rgba(18, 126, 250, 0.849)
+    }
+}

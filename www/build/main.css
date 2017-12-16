@@ -1,4 +1,130 @@
 @import url("https://fonts.googleapis.com/css?family=Kalam");
+@import url("https://fonts.googleapis.com/css?family=Righteous");
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url("https://fonts.googleapis.com/css?family=Boogaloo");
+.argentina-theme ion-content {
+  background-image: url("../assets/img/fondo/bandera.jpg");
+  background-size: 100% auto;
+}
+
+.argentina-theme ion-header, .argentina-theme ion-content {
+  font-family: 'Lobster', cursive;
+}
+
+.argentina-theme ion-nav {
+  background-color: #03A9F4;
+}
+
+.argentina-theme .toolbar-title {
+  color: #fff;
+}
+
+.argentina-theme .header .toolbar-background {
+  background-color: rgba(23, 90, 216, 0.897);
+}
+
+.argentina-theme ion-item {
+  background-color: rgba(141, 174, 211, 0.747);
+  color: white;
+}
+
+.argentina-theme ion-list-header {
+  background-color: rgba(141, 174, 211, 0.747);
+  color: white;
+}
+
+.argentina-theme ion-card {
+  background-color: rgba(141, 174, 211, 0.747);
+}
+
+.argentina-theme .miButton {
+  text-align: center;
+  color: white;
+  background-color: rgba(18, 126, 250, 0.849);
+}
+
+.naif-theme ion-content {
+  background-image: url("../assets/img/fondo/naif.jpg");
+  background-size: 100% auto;
+  background-color: #fff;
+}
+
+.naif-theme ion-header, .naif-theme ion-content {
+  font-family: 'Boogaloo', cursive;
+}
+
+.naif-theme .header .toolbar-background {
+  background-color: #b2ff59;
+}
+
+.naif-theme ion-item {
+  background-color: rgba(83, 182, 69, 0.582);
+  color: rgba(248, 83, 7, 0.897);
+  border-radius: 20px;
+  border-block-end-color: white;
+}
+
+.naif-theme ion-list-header {
+  background-color: rgba(83, 182, 69, 0.582);
+  color: rgba(248, 83, 7, 0.897);
+}
+
+.naif-theme ion-card {
+  background-color: rgba(129, 44, 21, 0.747);
+}
+
+.naif-theme .miButton {
+  margin: auto;
+  text-align: center;
+  display: block;
+  color: white;
+  background-color: rgba(99, 219, 18, 0.699);
+}
+
+.profesional-theme ion-content {
+  background-image: url("../assets/img/fondo/comida.jpeg");
+  background-size: 100% auto;
+  background-color: #090f2f;
+  color: #fff;
+}
+
+.profesional-theme ion-header, .profesional-theme ion-content {
+  font-family: 'Righteous', cursive;
+}
+
+.profesional-theme .toolbar-title {
+  color: #fff;
+}
+
+.profesional-theme .header .toolbar-background {
+  background-color: orange;
+}
+
+.profesional-theme ion-item {
+  background-color: rgba(143, 80, 8, 0.747);
+  color: white;
+}
+
+.profesional-theme ion-list-header {
+  background-color: rgba(143, 80, 8, 0.747);
+  color: white;
+}
+
+.profesional-theme ion-card {
+  background-color: rgba(129, 44, 21, 0.747);
+}
+
+.profesional-theme .miButton {
+  margin: auto;
+  -webkit-margin-after: auto;
+  margin-block-end: auto;
+  text-align: center;
+  display: block;
+  border-radius: 20px;
+  color: white;
+  background-color: rgba(250, 95, 18, 0.87);
+}
+
 .ion-ios-add:before {
   content: "\f102";
 }
@@ -28742,8 +28868,8 @@ ion-header, ion-content {
     transform: skewX(-0.78125deg) skewY(-0.78125deg);
   }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg);
+    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
+    transform: skewX(0.39062deg) skewY(0.39062deg);
   }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
@@ -28777,8 +28903,8 @@ ion-header, ion-content {
     transform: skewX(-0.78125deg) skewY(-0.78125deg);
   }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg);
+    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
+    transform: skewX(0.39062deg) skewY(0.39062deg);
   }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);

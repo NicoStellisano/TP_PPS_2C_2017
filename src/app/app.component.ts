@@ -20,8 +20,8 @@ import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  //rootPage:any = LoginPage;
-  rootPage:any = AbmAlumnosPage; //test
+  rootPage:any = LoginPage;
+  //rootPage:any = AbmAlumnosPage; //test
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

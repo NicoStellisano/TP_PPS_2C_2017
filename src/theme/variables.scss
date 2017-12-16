@@ -28,6 +28,11 @@ $loading-md-background: $loading-ios-background;
 $loading-wp-background: $loading-ios-background;
 $toast-md-background: rgba(0, 0, 0, 0.733);
 
+//Agregamos los temas visuales del proyecto
+@import "theme.argentina";
+@import "theme.naif";
+@import "theme.profesional";
+
 
 // Named Color Variables
 // --------------------------------------------------
@@ -94,4 +99,7 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
-@import url("https://fonts.googleapis.com/css?family=Kalam");
+@import url("https://fonts.googleapis.com/css?family=Kalam");//antigua
+@import url("https://fonts.googleapis.com/css?family=Righteous"); //fuente de profesional
+@import url("https://fonts.googleapis.com/css?family=Lobster"); //fueten de argentina
+@import url("https://fonts.googleapis.com/css?family=Boogaloo");//fuente de naif
