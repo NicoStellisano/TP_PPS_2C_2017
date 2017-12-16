@@ -48,6 +48,12 @@ import{ BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import{ NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { MateriasAdministrativoPage } from '../pages/materias-administrativo/materias-administrativo';
 import { QrencuestaPage } from '../pages/qrencuesta/qrencuesta';
+<<<<<<< HEAD
+=======
+//import { DateValueAccessorModule } from 'angular-date-value-accessor';
+import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
+
+>>>>>>> 2de6d8c9e2607984395047e4389c3c24b03b136b
 
 
 
@@ -91,7 +97,8 @@ var config = {
     TomarListaPage,
     RespuestaEncuestaPage,
     MateriasAdministrativoPage,
-    QrencuestaPage
+    QrencuestaPage,
+    AbmAlumnosPage
   ],
   imports: [
     BrowserModule,
@@ -135,7 +142,8 @@ var config = {
     TomarListaPage,
     RespuestaEncuestaPage,
     MateriasAdministrativoPage,
-    QrencuestaPage
+    QrencuestaPage,
+    AbmAlumnosPage
   ],
   providers: [
     StatusBar,

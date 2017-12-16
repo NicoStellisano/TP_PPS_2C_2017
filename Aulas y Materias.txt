@@ -1,0 +1,11 @@
+1A Matemática,Sistema De Procesamiento De Datos,Inglés,Programación I,Laboratorio De Computación I
+1B Matemática,Sistema De Procesamiento De Datos,Inglés,Programación I,Laboratorio De Computación I
+
+2A Arquitectura Y Sistemas Operativos,Estadística,Inglés II,Programación II,Laboratorio De Computación II,Metodología De La Investigación
+2B Arquitectura Y Sistemas Operativos,Estadística,Inglés II,Programación II,Laboratorio De Computación II,Metodología De La Investigación
+
+3A Elementos De Investigación Operativa,Programación III,Laboratorio De Computación III,Organización Contable De La Empresa,Organización Empresarial
+3B Elementos De Investigación Operativa,Programación III,Laboratorio De Computación III,Organización Contable De La Empresa,Organización Empresarial	
+
+4A Diseño Y Administración De Bases de Datos,Laboratorio De Computación IV,Legislación,Metodología De Sistemas I,PPS
+4B Diseño Y Administración De Bases de Datos,Laboratorio De Computación IV,Legislación,Metodología De Sistemas I,PPS

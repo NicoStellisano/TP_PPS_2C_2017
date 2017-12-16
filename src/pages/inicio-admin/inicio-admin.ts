@@ -394,6 +394,8 @@ loading.present();
                 {
                   let listadoAux=this.listadoProfesores;
                   listadoAux[i]=event.newData;
+                  listadoAux[listadoAux.lastIndexOf(event.newData)].password=event.newData.DNI;
+                  
                   console.log(element);
                   //const key = element['$key'];
                   this.fireService.updateProfesor(listadoAux);
@@ -421,6 +423,8 @@ loading.present();
                 {
                   let listadoAux=this.listadoAdministrativos;
                   listadoAux[i]=event.newData;
+                  listadoAux[listadoAux.lastIndexOf(event.newData)].password=event.newData.DNI;
+                  
                   console.log(element);
                   //const key = element['$key'];
                   this.fireService.updateAdministrativo(listadoAux);
