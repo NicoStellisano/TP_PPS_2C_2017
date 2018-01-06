@@ -48,9 +48,6 @@ export class EncuestasAltaPage {
   ionViewDidLoad() {
     this.horaActual= new Date();
     this.horaAux=new Date();
-    
-    
-  
     }
 
   Guardar()
