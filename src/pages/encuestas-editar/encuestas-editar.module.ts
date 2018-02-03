@@ -4,7 +4,6 @@ import { EncuestasEditarPage } from './encuestas-editar';
 
 @NgModule({
   declarations: [
-    EncuestasEditarPage,
   ],
   imports: [
     IonicPageModule.forChild(EncuestasEditarPage),

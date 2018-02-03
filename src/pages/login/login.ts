@@ -19,6 +19,7 @@ import { RealInicioAdministrativoPage } from '../real-inicio-administrativo/real
 import { MateriasPage } from '../materias/materias';
 import { EncuestasAltaPage } from '../encuestas-alta/encuestas-alta';
 import { EncuestasPage } from '../encuestas/encuestas';
+import { QrEncuestasPage } from '../qr-encuestas/qr-encuestas';
 
 
 /**
@@ -46,7 +47,7 @@ export class LoginPage {
   google:boolean;
   listaAux: any[]=[];
 
-  oct = {email:'octavio.villegas@gmail.com',password:'28123654'};
+  oct = {email:'octaviovillegas@gmail.com',password:'28123654'};
   dal = {email:'adiliberti@utn',password:'103295'};
   mauroo= {email:'mauro.suppan@gmail.com',password:'28123654'};
   maxii= {email:'maxineiner@gmail.com',password:'29134587'};
@@ -132,7 +133,7 @@ loading.present();
             let element = this.listadoAdmins[i];
             if(element.Email==firebase.auth().currentUser.email)
             {                
-               element.password=null;
+              
                localStorage.setItem("Nombre",element.Nombre);
                localStorage.setItem("Email",element.Email);
                localStorage.setItem("Apellido",element.Apellido);                
@@ -173,15 +174,14 @@ loading.present();
                   break;
                 }
                 let element = this.listadoAlumnos[i];
-                if(element.aula=="4A")
-                {
+               
                   for (let j = 0; j < element.alumnos.length; j++) {
                     let element2 = element.alumnos[j];
                     if(element2.mail==firebase.auth().currentUser.email)
                     {
                       localStorage.setItem("nombre",element2.nombre);
                       localStorage.setItem("mail",element2.mail);
-                      localStorage.setItem("curso","4° A");                
+                      localStorage.setItem("curso",element.aula);                
                       localStorage.setItem("legajo",element2.legajo);
                       localStorage.setItem("turno",element2.turno);
                       this.navCtrl.setRoot(MateriasPage);
@@ -201,34 +201,7 @@ loading.present();
                     } 
                   }
                   
-                }else if(element.aula=="4B")
-                {
-                  for (let j = 0; j < element.alumnos.length; j++) {
-                    let element2 = element.alumnos[j];
-                    if(element2.mail==firebase.auth().currentUser.email)
-                    {
-                      localStorage.setItem("nombre",element2.nombre);
-                      localStorage.setItem("mail",element2.mail);
-                      localStorage.setItem("curso","4° B");                
-                      localStorage.setItem("legajo",element2.legajo);
-                      localStorage.setItem("turno",element2.turno);
-                      this.navCtrl.setRoot(MateriasPage);
-                      flag=true;
-                      break;
-                    }else if(element2.mail==this.email && element2.legajo==this.password)
-                    {
-                      
-                      let alert = this.alertCtrl.create({
-                        title: "Info!",
-                        subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
-                        cssClass:"miClaseDanger",
-                      buttons: ['Aceptar']
-                    });
-                     alert.present();
-              //        this.google=true;
-                    } 
-                  } 
-                  }
+                
                 }
               
                 
@@ -245,7 +218,7 @@ loading.present();
                   localStorage.setItem("Apellido",elementk.Apellido);                
                   localStorage.setItem("DNI",elementk.DNI);
                   localStorage.setItem("password",elementk.password);
-                  localStorage.setItem("Perfil",elementk.Perfil);   
+                  localStorage.setItem("Perfil","Profesor");   
                     this.navCtrl.setRoot(InicioProfesorPage);
                     flag=true;
                     break;
@@ -415,15 +388,14 @@ if(!flag)
             break;
           }
           let element = this.listadoAlumnos[i];
-          if(element.aula=="4A")
-          {
+         
             for (let j = 0; j < element.alumnos.length; j++) {
               let element2 = element.alumnos[j];
               if(element2.mail==this.email && element2.legajo == this.password)
               {
                 localStorage.setItem("nombre",element2.nombre);
                 localStorage.setItem("mail",element2.mail);
-                localStorage.setItem("curso","4A");                
+                localStorage.setItem("curso",element.aula);                
                 localStorage.setItem("legajo",element2.legajo);
                 localStorage.setItem("turno",element2.turno);
                 this.navCtrl.setRoot(MateriasPage);
@@ -443,33 +415,7 @@ if(!flag)
               } 
             }
             
-          }else if(element.aula=="4B")
-          {
-            for (let j = 0; j < element.alumnos.length; j++) {
-              let element2 = element.alumnos[j];
-              if(element2.mail==this.email && element2.legajo == this.password)
-              {
-                localStorage.setItem("nombre",element2.nombre);
-                localStorage.setItem("mail",element2.mail);
-                localStorage.setItem("curso","4B");                
-                localStorage.setItem("legajo",element2.legajo);
-                localStorage.setItem("turno",element2.turno);
-                this.navCtrl.setRoot(MateriasPage);
-                flag=true;
-                break;
-              }else if(element2.mail==this.email && element2.legajo!=this.password)
-              {
-                let alert = this.alertCtrl.create({
-                  title: "Info!",
-                  subTitle: "Contraseña incorrecta,prueba iniciar Sesión con Google porfavor",
-                  cssClass:"miClaseDanger",
-                buttons: ['Aceptar']
-              });
-               alert.present();
-              //  this.google=true;
-              } 
-            }
-          }
+          
         }
         }
 
@@ -492,14 +438,14 @@ if(!flag)
       {
         for (let h = 0; h < this.listadoProfesores.length; h++) {
           let elementh = this.listadoProfesores[h];
-          if((elementh.Email==this.email && elementh.password==this.password) || (elementh.email==this.email && elementh.dni==this.password))
+          if(elementh.Email==this.email && elementh.password==this.password)
           {                
             localStorage.setItem("Nombre",elementh.Nombre);
             localStorage.setItem("Email",elementh.Email);
             localStorage.setItem("Apellido",elementh.Apellido);                
             localStorage.setItem("DNI",elementh.DNI);
             localStorage.setItem("password",elementh.password);
-            localStorage.setItem("Perfil",elementh.Perfil);
+            localStorage.setItem("Perfil","Profesor");
             flag=true;
             
               this.navCtrl.setRoot(InicioProfesorPage);

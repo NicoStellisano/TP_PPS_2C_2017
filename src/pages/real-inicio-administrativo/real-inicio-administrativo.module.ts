@@ -4,7 +4,6 @@ import { RealInicioAdministrativoPage } from './real-inicio-administrativo';
 
 @NgModule({
   declarations: [
-    RealInicioAdministrativoPage,
   ],
   imports: [
     IonicPageModule.forChild(RealInicioAdministrativoPage),

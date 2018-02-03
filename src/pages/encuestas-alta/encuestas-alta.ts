@@ -34,6 +34,9 @@ export class EncuestasAltaPage {
   horaActual:any;
   horaAux:any;
   horaAux2:Date;
+  codigo="";
+  aula:string;
+  materia:string;
   
   
 
@@ -49,7 +52,8 @@ export class EncuestasAltaPage {
     this.horaActual= new Date();
     this.horaAux=new Date();
     
-    
+    this.aula=this.navParams.get('aula');
+    this.materia=this.navParams.get('materia');
   
     }
 
@@ -93,6 +97,9 @@ export class EncuestasAltaPage {
           duracion:this.duracion,
           horaFReal:this.horaActual.toLocaleString(),
           horaInicio:this.horaAux.toLocaleString(),
+          codigo:"Encuesta"+this.nombre,
+          aula:this.aula,
+          materia:this.materia,
           horaFinalizacion: this.horaActual.toString(),
           creadorEncuesta:this.creadorEncuesta});
 

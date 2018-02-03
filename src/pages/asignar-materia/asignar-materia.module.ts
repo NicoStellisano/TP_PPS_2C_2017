@@ -4,7 +4,6 @@ import { AsignarMateriaPage } from './asignar-materia';
 
 @NgModule({
   declarations: [
-    AsignarMateriaPage,
   ],
   imports: [
     IonicPageModule.forChild(AsignarMateriaPage),

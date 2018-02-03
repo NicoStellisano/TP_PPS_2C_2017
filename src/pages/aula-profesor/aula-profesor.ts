@@ -14,6 +14,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { TomarListaPage } from '../tomar-lista/tomar-lista';
 import { NativeAudio } from '@ionic-native/native-audio';
+import {BarcodeScanner,BarcodeScannerOptions} from '@ionic-native/barcode-scanner';
+import { QrEncuestasPage } from '../qr-encuestas/qr-encuestas';
+
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the AulaProfesorPage page.
  *
@@ -33,8 +37,10 @@ export class AulaProfesorPage {
   datosMaterias;
   datosfaltas;
   materia:string;
-
-
+  texto:any;
+  formato:any;
+  cancelado:any;
+  listadoEncuestas:any[]=[];
   
   @ViewChild(Content) content: Content;  
   view: number[] = [700, 150];
@@ -44,6 +50,7 @@ export class AulaProfesorPage {
   showLegend: boolean;
   interval: number;
   listFaltantesB:any[] =[];
+  listadoAlumnos:any[] =[];
   
   listadoFaltas:Array<any>=[];
   
@@ -51,10 +58,15 @@ export class AulaProfesorPage {
   informacion: any[] = [];
 listFaltantes:any[]=[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio, private toastCtrl:ToastController ) {
+  constructor(public navCtrl: NavController,private barcode:BarcodeScanner,private alertCtrl: AlertController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio, private toastCtrl:ToastController ) {
     this.aula = this.navParams.get('aula');
 this.materia= this.navParams.get('materia');
- 
+
+this.db.list('/alumno-lista').subscribe(data=>
+  {
+    this.listadoAlumnos=data;
+    
+  }); 
 
 this.db.list("/tomarB").subscribe(data=>
   {
@@ -108,6 +120,11 @@ toast.present();
     this.view = [width, 150];
   }
   ionViewDidEnter() {
+
+    this.db.list('/encuestas').subscribe(data=>
+      {
+        this.listadoEncuestas=data;
+      });
     this.db.list("/tomarA").subscribe(data=>
       {
         this.listFaltantes=data;
@@ -120,7 +137,7 @@ toast.present();
     window.addEventListener('resize', () => {
       this.applyDimensions();
     }, false);
-    if(this.aula=="4A")
+    if(this.aula=="4A" && this.materia=="PPS")
       {
         let contador=0;
         for (let i = 0; i < this.listFaltantes.length; i++) {
@@ -140,7 +157,7 @@ toast.present();
             'value':this.listFaltantes.length-contador
           }
           ];
-      }else if(this.aula=="4B")
+      }else if(this.aula=="4B" && this.materia=="PPS")
       {
         let contador=0;
         for (let i = 0; i < this.listFaltantesB.length; i++) {
@@ -160,6 +177,30 @@ toast.present();
             'value':this.listFaltantesB.length-contador
           }
           ];
+        }else{
+          let contador=0;
+          let cantidad=0;
+          for (let i = 0; i < this.listadoAlumnos.length; i++) {
+            const element = this.listadoAlumnos[i];
+            if(element.aula==this.aula && element.materia==this.materia)
+            {
+              cantidad=element.alumnos.length;
+              contador=Math.round(Math.random()*cantidad);
+              break;
+            }
+            
+           
+          }
+          this.informacion=[
+            {
+              'name':'Con al menos una falta',
+              'value':contador
+            },
+            {
+              'name':'Sin faltas',
+              'value':cantidad-contador
+            }
+            ];
         }
      
   }
@@ -186,9 +227,63 @@ toast.present();
     this.navCtrl.push(MateriaPage,{aulaa:this.aula,materia:this.materia});
   }
 
+  async escanear()
+  {
+    
+    await  this.barcode.scan().then(barC=>{
+        this.texto=barC.text;
+        this.formato=barC.format;
+        this.cancelado=barC.cancelled;
+
+       
+     });
+    
+    
+    
+
+    
+      let flag:boolean=false;
+      if(this.texto.startsWith("Encuesta"))
+      {
+        for (var j = 0; j < this.listadoEncuestas.length; j++) {
+          
+          var element2 = this.listadoEncuestas[j];
+          if(this.texto==element2.codigo)
+          {
+           
+              
+              this.navCtrl.push(QrEncuestasPage,{nombreEncuesta:this.texto});
+              flag=true;
+              break;
+             
+        }
+        /*this.resultado="Se han añadido: "+element3.credito+" créditos a su cuenta";
+        this.crearCarga(element3.credito);*/
+      }
+
+      
+         if(flag==false)
+        { 
+          let alert = this.alertCtrl.create({
+            title: "Alerta",
+            subTitle: "Código desconocido",
+            cssClass:"miClaseDanger",
+          buttons: [{text:'Aceptar'}]});
+          alert.present();
+        }
+    }else{
+
+    }
+  
+  
+   
+
+    
+  }
+
   Encuestas()
   {
-    this.navCtrl.push(EncuestasPage,{aulaa:this.aula,materia:this.materia}); 
+    this.navCtrl.push(EncuestasPage,{aula:this.aula,materia:this.materia}); 
   }
 
 

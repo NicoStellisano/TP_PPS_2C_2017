@@ -4,7 +4,6 @@ import { DescargarArchivoPage } from './descargar-archivo';
 
 @NgModule({
   declarations: [
-    DescargarArchivoPage,
   ],
   imports: [
     IonicPageModule.forChild(DescargarArchivoPage),

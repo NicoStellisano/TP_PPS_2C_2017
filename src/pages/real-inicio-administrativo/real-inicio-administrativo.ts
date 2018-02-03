@@ -15,6 +15,10 @@ import { MateriasAdministrativoPage } from '../materias-administrativo/materias-
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 import { TomarListaPage } from '../tomar-lista/tomar-lista';
 import { AbmAlumnosPage } from '../abm-alumnos/abm-alumnos';
+import {BarcodeScanner,BarcodeScannerOptions} from '@ionic-native/barcode-scanner';
+import { QrEncuestasPage } from '../qr-encuestas/qr-encuestas';
+
+import { AlertController } from 'ionic-angular';
 
 
 
@@ -33,11 +37,14 @@ import { AbmAlumnosPage } from '../abm-alumnos/abm-alumnos';
 export class RealInicioAdministrativoPage {
 listadoProfesores:any[] =[];
 listadoAlumnos:any[] =[];
-
+listadoEncuestas:any[]=[];
 seleccion:string;
 listaMaterias: any[] = [];
 listaAux: any[] = [];
 datosfaltas;
+texto:string;
+formato:any;
+cancelado:any;
 
 
 @ViewChild(Content) content: Content;  
@@ -58,7 +65,7 @@ listadoFaltas:Array<any>=[];
 
 informacion: any[] = [];
  
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public db: AngularFireDatabase,private toastCtrl:ToastController
+  constructor(public navCtrl: NavController,private barcode:BarcodeScanner,private alertCtrl: AlertController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public db: AngularFireDatabase,private toastCtrl:ToastController
   ) {
       this.fireService.getAlumnos().subscribe(data=>
         {
@@ -234,6 +241,11 @@ informacion: any[] = [];
         {
           this.listFaltantesB=data;
         });
+
+        this.db.list('/encuestas').subscribe(data=>
+          {
+            this.listadoEncuestas=data;
+          });
     setTimeout(() => {
       this.activar();
     }, 1000); 
@@ -349,7 +361,61 @@ informacion: any[] = [];
     //  alert("voy a cargar lista");
     //alert("voy a cargar lista");
   }
+  async escanear()
+  {
+    
+    await  this.barcode.scan().then(barC=>{
+        this.texto=barC.text;
+        this.formato=barC.format;
+        this.cancelado=barC.cancelled;
 
+       
+     });
+    
+    
+    
+
+    
+      let flag:boolean=false;
+      if(this.texto.startsWith("Encuesta"))
+      {
+        for (var j = 0; j < this.listadoEncuestas.length; j++) {
+          
+          var element2 = this.listadoEncuestas[j];
+          if(this.texto==element2.codigo)
+          {
+           
+              let textoReal=this.texto.slice(8);
+              this.navCtrl.push(QrEncuestasPage,{nombreEncuesta:textoReal});
+              flag=true;
+              break;
+             
+        }
+        /*this.resultado="Se han añadido: "+element3.credito+" créditos a su cuenta";
+        this.crearCarga(element3.credito);*/
+      }
+
+      
+         if(flag==false)
+        { 
+          let alert = this.alertCtrl.create({
+            title: "Alerta",
+            subTitle: "Código desconocido",
+            cssClass:"miClaseDanger",
+          buttons: [{text:'Aceptar'}]});
+          alert.present();
+        }
+    }else{
+
+    }
+  
+  
+   
+
+    
+  }
+
+  
   aparecer()
   {
     this.seleccion="";

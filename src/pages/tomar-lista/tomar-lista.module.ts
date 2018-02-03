@@ -4,7 +4,6 @@ import { TomarListaPage } from './tomar-lista';
 
 @NgModule({
   declarations: [
-    TomarListaPage,
   ],
   imports: [
     IonicPageModule.forChild(TomarListaPage),

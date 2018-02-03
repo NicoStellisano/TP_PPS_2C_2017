@@ -14,6 +14,9 @@
 
 
 <ion-content padding>
+    <button ion-button round full large  *ngIf="mostrado" (click)="activar()" class="animated flipInX miBoton miButton"> 
+        <ion-icon name="arrow-round-back"></ion-icon> Mostrar Informacion
+      </button>
   <div style="width:100%" *ngIf="grafico">
     <ion-grid style="background-color:white;">
       <h4>Votaciones</h4>
@@ -27,7 +30,8 @@
            [explodeSlices]="explodeSlices"
            [labels]="showLabels"
            [doughnut]="doughnut"
-           (select)="onSelect($event)">
+      [gradient]="gradient"
+          >
            </ngx-charts-pie-chart>
          </ion-col>
        </ion-row>

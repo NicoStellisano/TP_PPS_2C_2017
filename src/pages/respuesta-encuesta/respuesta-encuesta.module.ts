@@ -4,7 +4,6 @@ import { RespuestaEncuestaPage } from './respuesta-encuesta';
 
 @NgModule({
   declarations: [
-    RespuestaEncuestaPage,
   ],
   imports: [
     IonicPageModule.forChild(RespuestaEncuestaPage),

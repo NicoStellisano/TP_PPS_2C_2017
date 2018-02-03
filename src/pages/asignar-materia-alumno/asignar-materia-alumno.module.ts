@@ -4,7 +4,6 @@ import { AsignarMateriaAlumnoPage } from './asignar-materia-alumno';
 
 @NgModule({
   declarations: [
-    AsignarMateriaAlumnoPage,
   ],
   imports: [
     IonicPageModule.forChild(AsignarMateriaAlumnoPage),

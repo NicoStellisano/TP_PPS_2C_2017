@@ -12,7 +12,7 @@ import { AlumnosPage } from '../pages/alumnos/alumnos';
 //import { AulaProfesorPage } from '../pages/aula-profesor/aula-profesor';
 import { CagarArchivoPage } from '../pages/cagar-archivo/cagar-archivo';
 import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
-
+import { QrEncuestasPage } from '../pages/qr-encuestas/qr-encuestas';
 
 
 
@@ -21,7 +21,7 @@ import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
 })
 export class MyApp {
   //rootPage:any = LoginPage;
-  rootPage:any = LoginPage; //test
+  rootPage:any = HomePage; //test
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

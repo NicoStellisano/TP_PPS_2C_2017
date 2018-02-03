@@ -309,9 +309,9 @@ activ()
         {
           text: 'Aceptar',
           handler: () => {
-            if(event.newData.legajo!=null && event.newData.nombre!=null && event.newData.mail!=null && event.newData.turno!=null
-              && event.newData.legajo!=undefined  && event.newData.nombre!=undefined && event.newData.mail!=undefined && event.newData.turno!=undefined &&
-               event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="" && event.newData.turno!="")
+            if(event.newData.legajo!=null && event.newData.nombre!=null && event.newData.mail!=null
+              && event.newData.legajo!=undefined  && event.newData.nombre!=undefined && event.newData.mail!=undefined &&
+               event.newData.legajo!=""  && event.newData.nombre!="" && event.newData.mail!="")
                {
                  
                  if(event.newData.mail.includes('@'))

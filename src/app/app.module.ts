@@ -21,7 +21,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FireBaseServiceProvider } from '../providers/fire-base-service/fire-base-service';
 import {HttpModule} from '@angular/http';
 import { Ng2SmartTableModule,LocalDataSource } from 'ng2-smart-table';
-import { ButtonRenderComponent } from '../components/button-renderer/button-renderer';
 import { MateriasPage} from '../pages/materias/materias';
 import { MateriasProfesorPage} from '../pages/materias-profesor/materias-profesor';
 import { GooglePlus } from '@ionic-native/google-plus';
@@ -33,7 +32,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { MateriaPage } from '../pages/materia/materia';
 import { EditarPerfilPage } from '../pages/editar-perfil/editar-perfil';
 import { DescargarArchivoPage } from '../pages/descargar-archivo/descargar-archivo';
-
+import {PerfilPage} from '../pages/perfil/perfil';
 import { NotificacionPage } from '../pages/notificacion/notificacion';
 import { RealInicioAdministrativoPage } from '../pages/real-inicio-administrativo/real-inicio-administrativo';
 import { AsignarMateriaPage } from '../pages/asignar-materia/asignar-materia';
@@ -51,8 +50,8 @@ import { QrencuestaPage } from '../pages/qrencuesta/qrencuesta';
 //import { DateValueAccessorModule } from 'angular-date-value-accessor';
 import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
 import { AsignarMateriaAlumnoPage } from '../pages/asignar-materia-alumno/asignar-materia-alumno';
-import { DesasignarMateriaComponent } from '../components/desasignar-materia/desasignar-materia';
 import { QrEncuestasPage } from '../pages/qr-encuestas/qr-encuestas';
+import { ResultadosVotacionPage } from '../pages/resultados-votacion/resultados-votacion';
 
 
 
@@ -72,6 +71,7 @@ var config = {
     MyApp,
     HomePage,
     LoginPage,
+    PerfilPage,
     InicioAdminPage,
     InicioAdministrativoPage,
     InicioProfesorPage,
@@ -79,8 +79,6 @@ var config = {
     AulaAlumnoPage,
     AulaProfesorPage,
     AulaAdministrativoPage,
-    ButtonRenderComponent,
-    DesasignarMateriaComponent,
     MateriasPage,
     MateriasProfesorPage,
     CuestionariosPage,
@@ -101,7 +99,8 @@ var config = {
     QrencuestaPage,
     AbmAlumnosPage,
     AsignarMateriaAlumnoPage,
-    QrEncuestasPage
+    QrEncuestasPage,
+    ResultadosVotacionPage
   ],
   imports: [
     BrowserModule,
@@ -120,6 +119,7 @@ var config = {
     MyApp,
     HomePage,
     LoginPage,
+    PerfilPage,
     InicioAdminPage,
     InicioAdministrativoPage,
     InicioProfesorPage,
@@ -127,8 +127,6 @@ var config = {
     AulaAlumnoPage,
     AulaAdministrativoPage,
     AulaProfesorPage,
-    ButtonRenderComponent,
-    DesasignarMateriaComponent,
     MateriasPage,
     MateriasProfesorPage,
     CuestionariosPage,
@@ -149,7 +147,8 @@ var config = {
     QrencuestaPage,
     AbmAlumnosPage,
     AsignarMateriaAlumnoPage,
-    QrEncuestasPage
+    QrEncuestasPage,
+    ResultadosVotacionPage
   ],
   providers: [
     StatusBar,

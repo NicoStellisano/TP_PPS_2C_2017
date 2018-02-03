@@ -4,7 +4,6 @@ import { QrEncuestasPage } from './qr-encuestas';
 
 @NgModule({
   declarations: [
-    QrEncuestasPage,
   ],
   imports: [
     IonicPageModule.forChild(QrEncuestasPage),

@@ -1,0 +1,41 @@
+<!--
+  Generated template for the QrEncuestasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    
+      <ion-navbar>
+        <ion-title>QrEncuestas</ion-title>
+      </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content padding>
+        <button ion-button round full large  *ngIf="mostrado" (click)="mostrarGrafico()" class="animated flipInX miBoton miButton"> 
+            <ion-icon name="arrow-round-back"></ion-icon> Mostrar Informacion
+          </button>
+      <div style="width:100%" *ngIf="grafico">
+        <ion-grid style="background-color:white;">
+          <h4>Votaciones</h4>
+           <ion-row >
+             <ion-col >
+               <ngx-charts-pie-chart 
+               [view]="view"
+               [scheme]="colorScheme"
+               [results]="single"
+               [legend]="showLegend"
+               [explodeSlices]="explodeSlices"
+               [labels]="showLabels"
+               [doughnut]="doughnut"
+          [gradient]="gradient"
+              >
+               </ngx-charts-pie-chart>
+             </ion-col>
+           </ion-row>
+         </ion-grid>
+        </div>
+    </ion-content>
+    

@@ -4,7 +4,6 @@ import { CagarArchivoPage } from './cagar-archivo';
 
 @NgModule({
   declarations: [
-    CagarArchivoPage,
   ],
   imports: [
     IonicPageModule.forChild(CagarArchivoPage),

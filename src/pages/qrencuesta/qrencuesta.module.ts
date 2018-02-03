@@ -4,7 +4,6 @@ import { QrencuestaPage } from './qrencuesta';
 
 @NgModule({
   declarations: [
-    QrencuestaPage,
   ],
   imports: [
     IonicPageModule.forChild(QrencuestaPage),

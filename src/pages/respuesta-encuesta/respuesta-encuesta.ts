@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import  firebase  from 'firebase';
 import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { MateriaPage } from '../materia/materia';
+import { ResultadosVotacionPage } from '../resultados-votacion/resultados-votacion';
 
 
 /**
@@ -91,6 +92,7 @@ return;
         this.fireService.agregarRespEncuesta({nombreEncuesta:e.nombre,mailUsuario:localStorage.getItem("mail"),respuesta:this.respuestaS});
         
       }
+      this.navCtrl.push(ResultadosVotacionPage,{nombreEncuesta:e.nombre});
       let alert = this.alertCtrl.create({
         title: 'Exito!',
         subTitle: 'Voto con exito!',

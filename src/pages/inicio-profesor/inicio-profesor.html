@@ -6,7 +6,9 @@
 
 
 <ion-content padding style="background-image:url('assets/hallowenProfesor.jpg')" class="fondo">
-  
+  <button ion-button round full large  (click)="escanear()" class="animated flipInX miBoton miButton"> 
+    <ion-icon name="arrow-round-back"></ion-icon> Escaner QR
+  </button>
       <div *ngFor="let lista of listaMateriasProfesor; let i = index"> 
           <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionMateria(lista)">{{lista.aula}}, {{lista.materia}}</button> 
       </div>

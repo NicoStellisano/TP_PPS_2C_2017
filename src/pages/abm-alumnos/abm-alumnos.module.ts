@@ -4,7 +4,6 @@ import { AbmAlumnosPage } from './abm-alumnos';
 
 @NgModule({
   declarations: [
-    AbmAlumnosPage,
   ],
   imports: [
     IonicPageModule.forChild(AbmAlumnosPage),

@@ -11,6 +11,10 @@ import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/da
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { MateriaPage } from '../materia/materia';
 import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrativo';
+import {BarcodeScanner,BarcodeScannerOptions} from '@ionic-native/barcode-scanner';
+import { QrEncuestasPage } from '../qr-encuestas/qr-encuestas';
+
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the InicioProfesorPage page.
  *
@@ -24,11 +28,22 @@ import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrati
   templateUrl: 'inicio-profesor.html',
 })
 export class InicioProfesorPage {
+
+  listadoProfesores:any[] =[];
+  listadoAlumnos:any[] =[];
+  listadoEncuestas:any[]=[];
+  seleccion:string;
+  listaMaterias: any[] = [];
+  listaAux: any[] = [];
+  datosfaltas;
+  texto:any;
+  formato:any;
+  cancelado:any;
   aula: string;
   listaMateriasProfesor: any[]=[];
   listaAlumnos: any[]=[];
   apellido:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider) {
+  constructor(public navCtrl: NavController,private barcode:BarcodeScanner,public db: AngularFireDatabase,private alertCtrl: AlertController, public navParams: NavParams,public fireService : FireBaseServiceProvider) {
     this.fireService.getAlumnos().subscribe(data=>
       {
         this.listaAlumnos=data;
@@ -46,11 +61,67 @@ export class InicioProfesorPage {
   }
 
   ionViewDidEnter() {
-  
+    this.db.list('/encuestas').subscribe(data=>
+      {
+        this.listadoEncuestas=data;
+      });
       }
 
     
-
+      async escanear()
+      {
+        
+        await  this.barcode.scan().then(barC=>{
+            this.texto=barC.text;
+            this.formato=barC.format;
+            this.cancelado=barC.cancelled;
+    
+           
+         });
+        
+        
+        
+    
+        
+          let flag:boolean=false;
+          if(this.texto.startsWith("Encuesta"))
+          {
+            for (var j = 0; j < this.listadoEncuestas.length; j++) {
+              
+              var element2 = this.listadoEncuestas[j];
+              if(this.texto==element2.codigo)
+              {
+               
+                let textoReal=this.texto.slice(8);
+                  this.navCtrl.push(QrEncuestasPage,{nombreEncuesta:textoReal});
+                  flag=true;
+                  break;
+                 
+            }
+            /*this.resultado="Se han añadido: "+element3.credito+" créditos a su cuenta";
+            this.crearCarga(element3.credito);*/
+          }
+    
+          
+             if(flag==false)
+            { 
+              let alert = this.alertCtrl.create({
+                title: "Alerta",
+                subTitle: "Código desconocido",
+                cssClass:"miClaseDanger",
+              buttons: [{text:'Aceptar'}]});
+              alert.present();
+            }
+        }else{
+    
+        }
+      
+      
+       
+    
+        
+      }
+    
     RedireccionMateria(elemento:any)
     {
       this.navCtrl.push(AulaProfesorPage,{aula:elemento.aula,materia:elemento.materia,profesor:elemento.profesor});

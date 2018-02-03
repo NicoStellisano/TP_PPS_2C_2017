@@ -38,6 +38,10 @@
      
 
   <div *ngIf="seleccion==''">
+      <button ion-button round full large  (click)="escanear()" class="animated flipInX miBoton miButton"> 
+          <ion-icon name="arrow-round-back"></ion-icon> Escanear QR
+        </button>
+
       <button ion-button round full large (click)="lista()" class="animated flipInX miBoton miButton"> 
           <ion-icon name="arrow-round-back"></ion-icon> Lista de Alumnos
         </button>

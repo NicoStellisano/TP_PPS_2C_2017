@@ -4,7 +4,6 @@ import { InicioAdminPage } from './inicio-admin';
 
 @NgModule({
   declarations: [
-    InicioAdminPage,
   ],
   imports: [
     IonicPageModule.forChild(InicioAdminPage),

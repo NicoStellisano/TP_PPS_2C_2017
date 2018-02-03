@@ -25,6 +25,8 @@ export class EncuestasPage {
 
   encuestas: any=[];
 respuesta;
+aula:string;
+materia:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController,private nativeAudio: NativeAudio) {
 
     this.db.list('/encuestas').
@@ -43,11 +45,13 @@ respuesta;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EncuestasPage');
+    this.aula=this.navParams.get('aula');
+    this.materia=this.navParams.get('materia');
   }
 
   RedireccionCrearCuestionario()
   {
-    this.navCtrl.push(EncuestasAltaPage); 
+    this.navCtrl.push(EncuestasAltaPage,{aula:this.aula,materia:this.materia}); 
   }
 
 

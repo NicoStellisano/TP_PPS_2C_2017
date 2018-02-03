@@ -12,7 +12,6 @@ import  firebase  from 'firebase';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
-import { perfilItem } from '../../models/perfil-item/perfil-imte.interface';
 
 import { NotificacionPage } from '../notificacion/notificacion';
 import { MateriaPage } from '../materia/materia';
@@ -21,8 +20,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { TomarListaPage } from '../tomar-lista/tomar-lista';
 import { NativeAudio } from '@ionic-native/native-audio';
-import { AsignarMateriaperfilPage } from '../asignar-materia-perfil/asignar-materia-perfil';
 import { DesasignarMateriaComponent } from '../../components/desasignar-materia/desasignar-materia';
+import { ResultadosVotacionPage } from '../resultados-votacion/resultados-votacion';
+import { RespuestaEncuestaPage } from '../respuesta-encuesta/respuesta-encuesta';
 
 /**
  * Generated class for the QrEncuestasPage page.
@@ -46,17 +46,25 @@ voto:boolean;
 grafico:boolean;
 perfil:string;
 
+respondido:boolean;
+
+
+@ViewChild(Content) content: Content;  
+
+
 
 
 single: any[]=[];
 view: any[] = [700, 400];
-showLegend = true;
+showLegend = false;
 colorScheme = {
   domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
 };
 showLabels = true;
 explodeSlices = false;
 doughnut = false;
+mostrado:boolean;
+listadoAlumnos:any[]=[];
 
 
   constructor( public db: AngularFireDatabase,private nativeAudio: NativeAudio,public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
@@ -67,7 +75,9 @@ doughnut = false;
     }
 
   ionViewDidEnter() {
+    this.respondido=false;
     this.grafico=false;
+    this.mostrado=true;
     this.perfil="";
     this.voto=false;
     if(localStorage.getItem("Perfil")==null || localStorage.getItem("Perfil")==undefined)
@@ -81,7 +91,12 @@ doughnut = false;
       this.perfil="Administrativo";
     }
  
-    this.nombreEncuesta=this.navParams.get("nombreEncuesta");
+    if(this.navParams.get("nombreEncuesta")==null)
+    {
+      this.nombreEncuesta="Legislacion";
+    }else{
+      this.nombreEncuesta=this.navParams.get("nombreEncuesta");
+    }
     this.db.list('/encuestaRespuestas').subscribe(data=>
     {
       this.listaRespuestas=data;
@@ -91,19 +106,34 @@ doughnut = false;
       {
         this.listaEncuestas=data;
       });
-setTimeout(() => {
-  this.activar();
-}, 1000);
+      this.fireService.getAlumnos().subscribe(data=>
+      {
+        this.listadoAlumnos=data;
+      });
+
+      this.applyDimensions();
+      window.addEventListener('resize', () => {
+        this.applyDimensions();
+      }, false);
+
    
   }
-
+  applyDimensions() {
+    const width = this.content.getContentDimensions().contentWidth - 50;
+    this.view = [width, 150];
+  }
   activar()
   {
-    if(this.perfil="Alumno")
+    this.mostrado=false;
+    if(this.perfil=="Alumno")
     {
       for (let i = 0; i < this.listaRespuestas.length; i++) {
         const element = this.listaRespuestas[i];
-        if(element.mailUsuario==this.mailLocal && element.nombreEncuesta==this.nombreEncuesta)
+        if(element.nombreEncuesta==this.nombreEncuesta)
+        {
+          this.respondido=true;
+         
+        if(element.mailUsuario==this.mailLocal)
         {
           this.voto=true;
           for (let j = 0; j < this.listaEncuestas.length; j++) {
@@ -124,12 +154,16 @@ setTimeout(() => {
                 buttons: ['Aceptar']
               });
                alert.present();
+               setTimeout(() => {
+                this.navCtrl.pop();
+                  }, 3000);
                break;
               }
             }
             
           }
         }
+      }
         
       }
       if(this.voto==false)
@@ -137,24 +171,58 @@ setTimeout(() => {
         for (let j = 0; j < this.listaEncuestas.length; j++) {
           const element2 = this.listaEncuestas[j];
           if(element2.nombre==this.nombreEncuesta)
-          {
-            let horaF=new Date(element2.horaFinalizacion);
-            let horaActual=new Date();
-            if(horaF>horaActual)
+          {   
+            let band=false;
+          for (let p = 0; p < this.listadoAlumnos.length; p++) {
+            const elementp = this.listadoAlumnos[p];
+            if(elementp.aula==element2.aula && elementp.materia==element2.materia)
             {
-                this.votar();
-                break;
-            }else{
-              let alert = this.alertCtrl.create({
-                title: "Info!",
-                subTitle: "La encuesta ya expiró",
-                cssClass:"miClaseDanger",
-              buttons: ['Aceptar']
-            });
-             alert.present();
-             break;
+              for (let t = 0; t < elementp.alumnos.length; t++) {
+                const element3 = elementp.alumnos[t];
+             
+                if(element3.mail==localStorage.getItem('mail'))
+                {
+                  band=true;
+                    let horaF=new Date(element2.horaFinalizacion);
+                    let horaActual=new Date();
+                    if(horaF>horaActual)
+                    {
+                        this.votar();
+                        break;
+                    }else if(horaF<horaActual){
+                      this.mostrarGrafico();
+                     break;
+                    }else if(this.respondido==false)
+                    {
+                      this.mostrarGrafico();
+                      break;
+                    }
+                   
+                  }
+                
+
+                }
+
+
+                if(!band)
+                {
+                  let alert = this.alertCtrl.create({
+                    title: "Info!",
+                    subTitle: "No se pueden mostrar los resultados, porque no perteneces a este curso",
+                    cssClass:"miClaseDanger",
+                  buttons: ['Aceptar']
+                });
+                 alert.present();
+                 setTimeout(() => {
+                  this.navCtrl.pop();
+                    }, 3000);
+                }
+
+
+              }
             }
           }
+       
           
         }
       }
@@ -166,7 +234,7 @@ setTimeout(() => {
         const element2 = this.listaEncuestas[j];
         if(element2.nombre==this.nombreEncuesta)
         {
-          if(element2.creador==localStorage.getItem('Email'))
+          if(element2.creadorEncuesta==localStorage.getItem('Email'))
           {
             creador=true;
             this.mostrarGrafico();
@@ -185,6 +253,10 @@ setTimeout(() => {
               buttons: ['Aceptar']
             });
              alert.present();
+
+             setTimeout(() => {
+              this.navCtrl.pop();
+                }, 3000);
              break;
           }
          
@@ -192,12 +264,28 @@ setTimeout(() => {
         }
         
       }
+    }else{
+      let alert = this.alertCtrl.create({
+      title: "Info!",
+      subTitle: "No se pueden mostrar los resultados, porque no le corresponde saberlos",
+      cssClass:"miClaseDanger",
+    buttons: ['Aceptar']
+  });
+   alert.present();
+   setTimeout(() => {
+     this.navCtrl.pop();
+       }, 3000);
     }
  
   }
 
   mostrarGrafico()
-  {let rta1:string;
+
+  
+  {
+    
+    
+    let rta1:string;
     let cont1=0;
     let rta2:string;
     let cont2=0;
@@ -222,6 +310,16 @@ setTimeout(() => {
           }
           
         }
+       
+       if(cont1==0 && cont2==0)
+       {
+         let cantidad=Math.round(Math.random()*30);
+      
+        
+        cont1=Math.round(Math.random()*cantidad/2);
+        cont2=cantidad-cont1;
+       }
+      
         break;
       }
     }
@@ -243,6 +341,7 @@ setTimeout(() => {
   votar()
   {
     //pushear a votacion
+    this.navCtrl.push(RespuestaEncuestaPage);
   }
 
 }
