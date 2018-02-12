@@ -19,6 +19,10 @@ import {BarcodeScanner,BarcodeScannerOptions} from '@ionic-native/barcode-scanne
 import { QrEncuestasPage } from '../qr-encuestas/qr-encuestas';
 
 import { AlertController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
+import {  ViewController } from 'ionic-angular';
+import { TutorialPage } from '../tutorial/tutorial';
+import { LoginPage } from '../login/login';
 
 
 
@@ -65,7 +69,7 @@ listadoFaltas:Array<any>=[];
 
 informacion: any[] = [];
  
-  constructor(public navCtrl: NavController,private barcode:BarcodeScanner,private alertCtrl: AlertController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public db: AngularFireDatabase,private toastCtrl:ToastController
+  constructor(public navCtrl: NavController,public modalCtrl:ModalController,private barcode:BarcodeScanner,private alertCtrl: AlertController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public db: AngularFireDatabase,private toastCtrl:ToastController
   ) {
       this.fireService.getAlumnos().subscribe(data=>
         {
@@ -425,6 +429,15 @@ informacion: any[] = [];
     // alert("voy a tomar lista");
     this.navCtrl.push(TomarListaPage,{aulaa:"",materia:""});
    }
+   logout()
+   {
+     localStorage.clear();
+     this.navCtrl.setRoot(LoginPage);
+   }
+   presentModal() {
+    let modal = this.modalCtrl.create(TutorialPage, { img: "real-inicio-administrativoTutorial.png" });
+    modal.present();
+  }
 
    lista(){
     // alert("voy a tomar lista");

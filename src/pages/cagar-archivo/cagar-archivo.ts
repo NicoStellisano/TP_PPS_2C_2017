@@ -13,6 +13,8 @@ import { AdministrativoItem } from '../../models/administrativo-item/administrat
 
 import { AlertController } from 'ionic-angular';
 import { AsignarMateriaPage } from '../asignar-materia/asignar-materia';
+import {  ViewController } from 'ionic-angular';
+import { TutorialPage } from '../tutorial/tutorial';
 
 export class GeochemComponent implements OnInit {
   
@@ -87,9 +89,22 @@ materia:string="";
       });
     
   }
+  presentModal() {
+    let modal = this.modalCtrl.create(TutorialPage, { img: "cagar-archivoTutorial.png" });
+    modal.present();
+  }
   
   leeArchivos(numarchivo:number,file:any) {
-
+    var fr = new FileReader();
+    fr.readAsText(file,'ISO-8859-4');
+    
+    
+    //console.log(this.listaAlumnos);
+    //console.log(file.name);
+    //console.log(file.size);
+    this.nombreArchivo = file.name;
+    this.sizeArchivo = file.size/1000 + " Kb";
+console.log(this.nombreArchivo);
     if(this.persona=="alumno")
     {
       this.firebaseService.getABMAlumnos().subscribe(data=>
@@ -152,6 +167,9 @@ materia:string="";
 
   }else if(this.persona=="profesor")
   {
+    if(this.nombreArchivo.includes("profesores"))
+    {
+
     let admin = {} as AdministrativoItem;
     let lista:any[] = [];
     var fr = new FileReader();
@@ -206,9 +224,14 @@ materia:string="";
     //this.firebaseService.updateProfesor(lista);
     //console.log(lista);
     //this.database.list('/SiFunca/').push(lista);
-
+  }
+  
   }else if(this.persona=="administrativo")
   {
+    if(this.nombreArchivo.includes("administrativos"))
+    {
+
+    
     let admin = {} as AdministrativoItem;
     let lista:any[] = [];
     var fr = new FileReader();
@@ -263,6 +286,7 @@ materia:string="";
     this.sizeArchivo = file.size/1000 + " Kb";
     //
   }
+}
 }
 
   onFileSelect(input: HTMLInputElement) {
@@ -334,7 +358,7 @@ if(this.persona=="alumno")
       
     }
     if(this.banderita==false)
-    { if(this.aula!="GENERAL" && this.materia!="GENERAL")
+    { if(this.aula!="GENERAL" && this.materia!="GENERAL" && this.aula!=null && this.materia!=null)
     {
 
     
@@ -390,7 +414,7 @@ if(this.persona=="alumno")
       cssClass:"miClaseAlert",
     buttons: [{text:'Aceptar',
     handler: () => {
-      if(this.aula!="GENERAL" && this.materia!="GENERAL")
+      if(this.aula!="GENERAL" && this.materia!="GENERAL" && this.aula!=null && this.materia!=null)
       {
       let profileModal = this.modalCtrl.create(AsignarMateriaPage, {materia:this.listaA.materia,aula:this.listaA.aula});
       profileModal.present();
@@ -407,6 +431,8 @@ if(this.persona=="alumno")
     
   }else if(this.persona=="profesor")
   {
+    if(this.nombreArchivo.includes("profesores"))
+    {
     console.log('---------- ingreso a profesores carga ---------');
     this.firebaseService.updateProfesor(this.listaGen);
     //this.database.list('/profesores/').push(this.listaGen);
@@ -416,9 +442,19 @@ if(this.persona=="alumno")
       cssClass:"miClaseAlert",
     buttons: [{text:'Aceptar'}]});
     alert.present();
+    }else{
+      let alert = this.alertCtrl.create({
+        title: "Error",
+        subTitle: "El archivo no tiene el nombre adecuado",
+        cssClass:"miClaseDanger",
+      buttons: [{text:'Aceptar'}]});
+      alert.present();
+    }
     
   }else if(this.persona=="administrativo")
   {
+    if(this.nombreArchivo.includes("administrativos"))
+    {
     console.log('---------- ingreso a administrativos carga ---------');
     this.firebaseService.updateAdministrativo(this.listaGen);
     let alert = this.alertCtrl.create({
@@ -428,7 +464,15 @@ if(this.persona=="alumno")
     buttons: [{text:'Aceptar'}]});
     alert.present();
     //this.database.list('/administrativos/').push(this.listaGen);
+  }else{
+    let alert = this.alertCtrl.create({
+      title: "Error",
+      subTitle: "El archivo no tiene el nombre adecuado",
+      cssClass:"miClaseDanger",
+    buttons: [{text:'Aceptar'}]});
+    alert.present();
   }
+}
 }
 
   descargarArchivo(){

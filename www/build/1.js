@@ -1,1 +1,40 @@
-webpackJsonp([1],{700:function(o,a,e){"use strict";Object.defineProperty(a,"__esModule",{value:!0});var n=e(0),d=(e(1),e(12),e(211)),m=function(){return function(){}}(),t=e(486),p=e(487),r=e(488),c=e(489),u=e(490),l=e(491),i=e(492),s=e(493),f=e(494),g=e(524),C=e(3),v=e(9),y=e(328),L=e(110);e.d(a,"ResultadosVotacionPageModuleNgFactory",function(){return M});var M=n["ɵcmf"](m,[],function(o){return n["ɵmod"]([n["ɵmpd"](512,n.ComponentFactoryResolver,n["ɵCodegenComponentFactoryResolver"],[[8,[t.a,p.a,r.a,c.a,u.a,l.a,i.a,s.a,f.a,g.a]],[3,n.ComponentFactoryResolver],n.NgModuleRef]),n["ɵmpd"](4608,C.NgLocalization,C.NgLocaleLocalization,[n.LOCALE_ID,[2,C["ɵa"]]]),n["ɵmpd"](4608,v.p,v.p,[]),n["ɵmpd"](4608,v.d,v.d,[]),n["ɵmpd"](512,C.CommonModule,C.CommonModule,[]),n["ɵmpd"](512,v.o,v.o,[]),n["ɵmpd"](512,v.g,v.g,[]),n["ɵmpd"](512,v.m,v.m,[]),n["ɵmpd"](512,y.a,y.a,[]),n["ɵmpd"](512,y.b,y.b,[]),n["ɵmpd"](512,m,m,[]),n["ɵmpd"](256,L.a,d.a,[])])})}});
+webpackJsonp([1],{
+
+/***/ 1086:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TomarListaPageModule", function() { return TomarListaPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tomar_lista__ = __webpack_require__(121);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var TomarListaPageModule = (function () {
+    function TomarListaPageModule() {
+    }
+    TomarListaPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tomar_lista__["a" /* TomarListaPage */]),
+            ],
+        })
+    ], TomarListaPageModule);
+    return TomarListaPageModule;
+}());
+
+//# sourceMappingURL=tomar-lista.module.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=1.js.map

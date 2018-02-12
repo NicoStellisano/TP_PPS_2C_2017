@@ -19,6 +19,26 @@ ion-header,ion-content{
     font-family: 'Kalam', cursive;
 }
 
+.modal-wrapper {
+  height: 85%;
+  width: 85%;
+  display: absolute;
+  margin:auto;
+  top: 7.5%  !important;
+  position:relative;
+ padding:auto;
+  vertical-align: middle !important;
+ 
+}
+
+.fondo{
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  background-size: 85% 85%;
+  //background-size: 50px;
+}
+
 .miButton{
     border-color:white;
     border-width: 2px;

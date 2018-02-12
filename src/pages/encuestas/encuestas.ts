@@ -8,7 +8,9 @@ import  firebase  from 'firebase';
 import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { EncuestasEditarPage } from '../encuestas-editar/encuestas-editar';
 import { NativeAudio } from '@ionic-native/native-audio';
-
+import { ModalController } from 'ionic-angular';
+import {  ViewController } from 'ionic-angular';
+import { TutorialPage } from '../tutorial/tutorial';
 /**
  * Generated class for the EncuestasPage page.
  *
@@ -27,7 +29,7 @@ export class EncuestasPage {
 respuesta;
 aula:string;
 materia:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController,public modalCtrl:ModalController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController,private nativeAudio: NativeAudio) {
 
     this.db.list('/encuestas').
     subscribe( data => {
@@ -47,6 +49,10 @@ materia:string;
     console.log('ionViewDidLoad EncuestasPage');
     this.aula=this.navParams.get('aula');
     this.materia=this.navParams.get('materia');
+  }
+  presentModal() {
+    let modal = this.modalCtrl.create(TutorialPage, { img: "encuestasTutorial.png" });
+    modal.present();
   }
 
   RedireccionCrearCuestionario()

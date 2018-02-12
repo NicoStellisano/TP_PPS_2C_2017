@@ -21,7 +21,7 @@ import { QrEncuestasPage } from '../pages/qr-encuestas/qr-encuestas';
 })
 export class MyApp {
   //rootPage:any = LoginPage;
-  rootPage:any = HomePage; //test
+  rootPage:any = LoginPage; //test
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

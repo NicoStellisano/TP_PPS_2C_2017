@@ -13,6 +13,7 @@ import { MateriaPage } from '../materia/materia';
 import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrativo';
 import {BarcodeScanner,BarcodeScannerOptions} from '@ionic-native/barcode-scanner';
 import { QrEncuestasPage } from '../qr-encuestas/qr-encuestas';
+import { LoginPage } from '../login/login';
 
 import { AlertController } from 'ionic-angular';
 /**
@@ -148,6 +149,11 @@ export class InicioProfesorPage {
     
         }
     */  
+    }
+    logout()
+    {
+      localStorage.clear();
+      this.navCtrl.setRoot(LoginPage);
     }
     
 

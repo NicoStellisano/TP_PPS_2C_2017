@@ -3,10 +3,8 @@ import { NgModule } from '@angular/core';
 import { ButtonRenderComponent } from './button-renderer/button-renderer';
 import { DesasignarMateriaComponent } from './desasignar-materia/desasignar-materia';
 @NgModule({
-	declarations: [ButtonRenderComponent,
-    DesasignarMateriaComponent],
+	declarations: [],
 	imports: [],
-	exports: [ButtonRenderComponent,
-    DesasignarMateriaComponent]
+	exports: []
 })
 export class ComponentsModule {}

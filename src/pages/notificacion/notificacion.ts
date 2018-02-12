@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
 import {MateriasProfesorPage} from '../materias-profesor/materias-profesor';
 import { NativeAudio } from '@ionic-native/native-audio';
+import { ModalController } from 'ionic-angular';
+import {  ViewController } from 'ionic-angular';
+import { TutorialPage } from '../tutorial/tutorial';
 /**
  * Generated class for the NotificacionPage page.
  *
@@ -20,7 +23,7 @@ export class NotificacionPage {
 aula;
 titulo;
 mensaje;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public db: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController,public modalCtrl:ModalController, public navParams: NavParams,public db: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
     console.log("dsadada"+this.aula);
 
@@ -68,6 +71,11 @@ mensaje;
 
 
 
+  }
+
+  presentModal() {
+    let modal = this.modalCtrl.create(TutorialPage, { img: "notificacionTutorial.png" });
+    modal.present();
   }
 
 

@@ -11,6 +11,9 @@ import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-
 
 import { AlertController } from 'ionic-angular';
 import { NativeAudio } from '@ionic-native/native-audio';
+import { ModalController } from 'ionic-angular';
+import {  ViewController } from 'ionic-angular';
+import { TutorialPage } from '../tutorial/tutorial';
 /**
  * Generated class for the TomarListaPage page.
  *
@@ -37,7 +40,7 @@ export class TomarListaPage {
   tomarAlumnos$:FirebaseListObservable<AlumnoItem[]>;
   tomarPresente$:FirebaseObjectObservable<AlumnoItem>;
 
-  constructor(public navCtrl: NavController,private fbService:FireBaseServiceProvider ,
+  constructor(public navCtrl: NavController,public modalCtrl:ModalController,private fbService:FireBaseServiceProvider ,
     public navParams: NavParams,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
     console.log(this.aula);
@@ -72,6 +75,11 @@ export class TomarListaPage {
     console.log(alumno);
 
     this.presentAlert("Asistencia",alumno.nombre +" :Presente");
+  }
+
+  presentModal() {
+    let modal = this.modalCtrl.create(TutorialPage, { img: "tomar-listaTutorial.png" });
+    modal.present();
   }
 
   ausente(key:any,alumno:AlumnoItem){

@@ -52,7 +52,10 @@ import { AbmAlumnosPage } from '../pages/abm-alumnos/abm-alumnos';
 import { AsignarMateriaAlumnoPage } from '../pages/asignar-materia-alumno/asignar-materia-alumno';
 import { QrEncuestasPage } from '../pages/qr-encuestas/qr-encuestas';
 import { ResultadosVotacionPage } from '../pages/resultados-votacion/resultados-votacion';
-
+import { TutorialPage } from '../pages/tutorial/tutorial';
+import { ButtonRenderComponent } from '../components/button-renderer/button-renderer';
+import { DesasignarMateriaComponent } from '../components/desasignar-materia/desasignar-materia';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 
 
@@ -100,7 +103,10 @@ var config = {
     AbmAlumnosPage,
     AsignarMateriaAlumnoPage,
     QrEncuestasPage,
-    ResultadosVotacionPage
+    ResultadosVotacionPage,
+    TutorialPage,
+    ButtonRenderComponent,
+    DesasignarMateriaComponent
   ],
   imports: [
     BrowserModule,
@@ -111,6 +117,7 @@ var config = {
     NgxChartsModule,    
     BrowserAnimationsModule,
     NoopAnimationsModule,
+    IonicImageViewerModule,
     
     AngularFireModule.initializeApp(config)
   ],
@@ -148,7 +155,10 @@ var config = {
     AbmAlumnosPage,
     AsignarMateriaAlumnoPage,
     QrEncuestasPage,
-    ResultadosVotacionPage
+    ResultadosVotacionPage,
+    TutorialPage,
+    ButtonRenderComponent,
+    DesasignarMateriaComponent
   ],
   providers: [
     StatusBar,

@@ -4,6 +4,7 @@ import { MateriaPage } from '../materia/materia';
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
 import {BarcodeScanner,BarcodeScannerOptions} from '@ionic-native/barcode-scanner';
 import { QrEncuestasPage } from '../qr-encuestas/qr-encuestas';
+import { LoginPage } from '../login/login';
 
 import { AlertController } from 'ionic-angular';
 /**
@@ -223,5 +224,10 @@ this.db.list('/alumno-lista').subscribe(data=>
        
   
       }
+    }
+    logout()
+    {
+      localStorage.clear();
+      this.navCtrl.setRoot(LoginPage);
     }
 }

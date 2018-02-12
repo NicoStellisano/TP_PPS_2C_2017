@@ -1,1 +1,40 @@
-webpackJsonp([0],{701:function(o,a,e){"use strict";Object.defineProperty(a,"__esModule",{value:!0});var n=e(0),m=(e(1),e(12),e(131)),d=function(){return function(){}}(),t=e(486),p=e(487),r=e(488),c=e(489),u=e(490),i=e(491),l=e(492),f=e(493),g=e(494),s=e(525),C=e(3),v=e(9),L=e(328),y=e(110);e.d(a,"TomarListaPageModuleNgFactory",function(){return M});var M=n["ɵcmf"](d,[],function(o){return n["ɵmod"]([n["ɵmpd"](512,n.ComponentFactoryResolver,n["ɵCodegenComponentFactoryResolver"],[[8,[t.a,p.a,r.a,c.a,u.a,i.a,l.a,f.a,g.a,s.a]],[3,n.ComponentFactoryResolver],n.NgModuleRef]),n["ɵmpd"](4608,C.NgLocalization,C.NgLocaleLocalization,[n.LOCALE_ID,[2,C["ɵa"]]]),n["ɵmpd"](4608,v.p,v.p,[]),n["ɵmpd"](4608,v.d,v.d,[]),n["ɵmpd"](512,C.CommonModule,C.CommonModule,[]),n["ɵmpd"](512,v.o,v.o,[]),n["ɵmpd"](512,v.g,v.g,[]),n["ɵmpd"](512,v.m,v.m,[]),n["ɵmpd"](512,L.a,L.a,[]),n["ɵmpd"](512,L.b,L.b,[]),n["ɵmpd"](512,d,d,[]),n["ɵmpd"](256,y.a,m.a,[])])})}});
+webpackJsonp([0],{
+
+/***/ 1085:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TutorialPageModule", function() { return TutorialPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tutorial__ = __webpack_require__(52);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var TutorialPageModule = (function () {
+    function TutorialPageModule() {
+    }
+    TutorialPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tutorial__["a" /* TutorialPage */]),
+            ],
+        })
+    ], TutorialPageModule);
+    return TutorialPageModule;
+}());
+
+//# sourceMappingURL=tutorial.module.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=0.js.map

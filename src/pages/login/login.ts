@@ -20,6 +20,8 @@ import { MateriasPage } from '../materias/materias';
 import { EncuestasAltaPage } from '../encuestas-alta/encuestas-alta';
 import { EncuestasPage } from '../encuestas/encuestas';
 import { QrEncuestasPage } from '../qr-encuestas/qr-encuestas';
+import { ModalController, ViewController } from 'ionic-angular';
+import { TutorialPage } from '../tutorial/tutorial';
 
 
 /**
@@ -47,13 +49,13 @@ export class LoginPage {
   google:boolean;
   listaAux: any[]=[];
 
-  oct = {email:'octaviovillegas@gmail.com',password:'28123654'};
+  oct = {email:'octavio.villegas@gmail.com',password:'28123654'};
   dal = {email:'adiliberti@utn',password:'103295'};
   mauroo= {email:'mauro.suppan@gmail.com',password:'28123654'};
   maxii= {email:'maxineiner@gmail.com',password:'29134587'};
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl:LoadingController,public fireService:FireBaseServiceProvider
-    ,public toast:ToastController,public googlePlus:GooglePlus ,private screenOrientation: ScreenOrientation, public alertCtrl:AlertController ) {
+    ,public toast:ToastController,public googlePlus:GooglePlus ,private screenOrientation: ScreenOrientation,  public modalCtrl: ModalController, public alertCtrl:AlertController ) {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
       this.google=false;
        this.fireService.getAdmins().subscribe(data=>
@@ -83,6 +85,12 @@ export class LoginPage {
     this.email = this.dal.email;
     this.password = this.dal.password;
   }
+
+
+  presentModal() {
+     let modal = this.modalCtrl.create(TutorialPage, { img: "loginTutorial.png" });
+     modal.present();
+   }
 
   mauro()
   {

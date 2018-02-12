@@ -17,11 +17,19 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { AsignarMateriaPage } from '../asignar-materia/asignar-materia';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
 import { AsignarMateriaAlumnoPage } from '../asignar-materia-alumno/asignar-materia-alumno';
+import {  ViewController } from 'ionic-angular';
+import { TutorialPage } from '../tutorial/tutorial';
+import { LoginPage } from '../login/login';
 
 
 @IonicPage()
 @Component({
   template: `
+  <ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Control Alumnos<button ion-button color="danger" icon-only style="float:right" (click)='presentModal()'><ion-icon style="size:200%" name="help-circle"></ion-icon></button> </ion-title>  
+  </ion-navbar>
+</ion-header>
   <ion-content padding style="background-image:url('assets/aula-administrativo.jpeg')" class="fondo">
  
 <ion-item>
@@ -179,6 +187,11 @@ loading.present();
     
 
   
+}
+
+presentModal() {
+  let modal = this.modalCtrl.create(TutorialPage, { img: "abm-alumnosTutorial.png" });
+  modal.present();
 }
 activ()
 {

@@ -12,10 +12,18 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { AsignarMateriaPage } from '../asignar-materia/asignar-materia';
 import { CagarArchivoPage } from '../cagar-archivo/cagar-archivo';
+import {  ViewController } from 'ionic-angular';
+import { TutorialPage } from '../tutorial/tutorial';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
   template: `
+  <ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Control Personas<button ion-button color="light" (click)='logout()'>Salir</button> <button ion-button color="danger" icon-only style="float:right" (click)='presentModal()'><ion-icon style="size:200%" name="help-circle"></ion-icon></button> </ion-title>  
+  </ion-navbar>
+</ion-header>
   <ion-content padding style="background-image:url('assets/aula-administrativo.jpeg')" class="fondo">
   
   <ion-item style='float:right'>
@@ -241,6 +249,17 @@ settings2 = {
      
       
     }
+  }
+
+  logout()
+  {
+    localStorage.clear();
+    this.navCtrl.setRoot(LoginPage);
+  }
+
+  presentModal() {
+    let modal = this.modalCtrl.create(TutorialPage, { img: "inicio-adminTutorial.png" });
+    modal.present();
   }
 ionViewDidEnter()
 { 
