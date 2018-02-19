@@ -13,6 +13,8 @@ import { MateriaPage } from '../materia/materia';
 import { AulaAdministrativoPage } from '../aula-administrativo/aula-administrativo';
 import { ActionSheetController } from 'ionic-angular';
 import { SettingProvider } from '../../providers/setting/setting';
+
+import { TemaCustom } from '../../models/tema-custom/tema-custom';
 /**
  * Generated class for the InicioProfesorPage page.
  *
@@ -30,8 +32,25 @@ export class InicioProfesorPage {
   listaMateriasProfesor: any[]=[];
   listaAlumnos: any[]=[];
   apellido:string;
+
   selectTheme:String;
+  miTema:TemaCustom;
+  tema:string="";
+
   constructor(public navCtrl: NavController,private setting: SettingProvider,public actionSheetCtrl: ActionSheetController, public navParams: NavParams,public fireService : FireBaseServiceProvider) {
+    //tema custom
+    this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+    this.tema = localStorage.getItem('tema');
+    console.log("Tema constructor: "+this.tema);
+    if(this.tema == "custom"){
+      console.log("Ingresa a custom");
+      this.miTema = JSON.parse(localStorage.getItem('miTema'));
+    }else{
+      this.miTema.iconoAgregar = "basket";
+      this.miTema.iconoTema = "brush";
+      console.log(this.miTema);
+    }
+    
     console.log("--------------- Estoy en  inicio profesor ------------------");
     this.setting.getActiveProfesional().subscribe(val => this.selectTheme = val);
     this.fireService.getAlumnos().subscribe(data=>
@@ -91,6 +110,14 @@ export class InicioProfesorPage {
               handler: () => {
                 console.log('Archive clicked');
                 this.temaNaif();
+              }
+            },
+            {
+              text: 'Personalizable',
+              handler: () => {
+                console.log('Personalizable clicked');
+                //this.temaArgentina();
+                this.navCtrl.push('CustomizablePage');
               }
             },
             {
