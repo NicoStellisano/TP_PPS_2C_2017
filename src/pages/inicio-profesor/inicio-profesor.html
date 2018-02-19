@@ -1,9 +1,9 @@
-<ion-header>
-  <ion-navbar color="dark">
-    <ion-title>Seleccione una materia</ion-title>
+<ion-header [style.font-family]="miTema.tipoLetra">
+  <ion-navbar [color]="miTema.colorNav" [style.font-size.px]="miTema.sizeLetra">
+    <ion-title [style.color]="miTema.colorLetra">Seleccione una materia</ion-title>
     <ion-buttons end>
       <button (click)="presentActionSheet()" ion-button>
-        <ion-icon name="brush"></ion-icon>
+        <ion-icon [name]="miTema.iconoTema"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -11,10 +11,10 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content padding [ngStyle]="{ 'background-color':+ miTema.colorFondo}" [style.font-family]="miTema.tipoLetra" [style.font-size.px]="miTema.sizeLetra">
   
       <div *ngFor="let lista of listaMateriasProfesor; let i = index"> 
-          <br> <button ion-button round full large class="animated flipInX  miButton" (click)="RedireccionMateria(lista)">{{lista.aula}}, {{lista.materia}}</button> 
+          <br> <button class="animated flipInX  miButton" [ngStyle]="{ 'background-color':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioBoton" [style.color]="miTema.colorFuente" ion-button round full large  (click)="RedireccionMateria(lista)">{{lista.aula}}, {{lista.materia}}</button> 
       </div>
   
   </ion-content>

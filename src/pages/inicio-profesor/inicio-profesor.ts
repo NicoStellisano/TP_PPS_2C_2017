@@ -36,12 +36,15 @@ export class InicioProfesorPage {
   selectTheme:String;
   miTema:TemaCustom;
   tema:string="";
+  
 
   constructor(public navCtrl: NavController,private setting: SettingProvider,public actionSheetCtrl: ActionSheetController, public navParams: NavParams,public fireService : FireBaseServiceProvider) {
     //tema custom
     this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
     this.tema = localStorage.getItem('tema');
-    console.log("Tema constructor: "+this.tema);
+    localStorage.setItem('home',"profesor");
+    console.log("-- *** Tema constructor: "+this.tema);
+    console.log(this.listaMateriasProfesor);
     if(this.tema == "custom"){
       console.log("Ingresa a custom");
       this.miTema = JSON.parse(localStorage.getItem('miTema'));
@@ -58,12 +61,12 @@ export class InicioProfesorPage {
         this.listaAlumnos=data;
       });
       this.apellido=localStorage.getItem("Apellido");                
-      
+      console.log(this.apellido);
       this.listaMateriasProfesor=[];
       for (let i = 0; i < this.listaAlumnos.length; i++) {
         const element = this.listaAlumnos[i];
        if(this.apellido==element.profesor)
-        
+          console.log("es el profesor");
           this.listaMateriasProfesor.push({aula:element.aula,profesor:element.profesor,materia:element.materia});
         
       }
@@ -74,14 +77,17 @@ export class InicioProfesorPage {
       }
 
       temaArgentina(){
+        //localStorage.clear('');
         this.setting.setActiveProfesional('argentina-theme');
       }
     
       temaProfesional(){
+        //localStorage.clear();
         this.setting.setActiveProfesional('profesional-theme');
       }
     
       temaNaif(){
+        //localStorage.clear();
         this.setting.setActiveProfesional('naif-theme');
       }
     
