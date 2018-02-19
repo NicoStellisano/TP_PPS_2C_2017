@@ -33,7 +33,7 @@
       </ion-item>-->
       <ion-item>
         <ion-label [style.color]="miTema.colorLetra">Radio del boton</ion-label>
-        <ion-input type="text" value="10px"[(ngModel)]="miTema.radioButton"></ion-input>
+        <ion-input type="text" value="10px"[(ngModel)]="miTema.radioBoton"></ion-input>
       </ion-item>
       <ion-row>
         <button class="miButton"[ngStyle]="{ 'background-color':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioBoton" [style.color]="miTema.colorFuente" ion-button full (click)="showColorNav()">Color de Nav</button>

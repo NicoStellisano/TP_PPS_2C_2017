@@ -4,6 +4,8 @@ import { AlertController } from 'ionic-angular';
 import { SettingProvider } from '../../providers/setting/setting';
 
 import { TemaCustom } from '../../models/tema-custom/tema-custom';
+import { InicioProfesorPage } from '../inicio-profesor/inicio-profesor';
+
 /**
  * Generated class for the CustomizablePage page.
  *
@@ -21,11 +23,13 @@ export class CustomizablePage {
   selectTheme:String;
   miTema:TemaCustom;
   tema:string="";
+  home:string="";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
     private setting: SettingProvider) {
       this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
       this.tema = localStorage.getItem('tema');
+      this.home = localStorage.getItem('home');
       this.setting.setActiveProfesional('variables.scss'); //elimina estilos previos
       if(this.tema == "custom"){
         console.log("ingresa a custom");
@@ -281,17 +285,36 @@ export class CustomizablePage {
 
   // ------ Funciones para asignacion de datos -------- //
 
+  redireccionar(home){
+    switch (home) {
+      case 'profesor':
+        this.navCtrl.push(InicioProfesorPage);
+        break;
+      case 'administrativo':
+        
+        break;
+      case 'alumno':
+        
+        break;
+      default:
+        break;
+    }
+  }
+
   aceptar(){
     console.log('-------- en aceptar de customizable ----------');
     console.log(this.miTema);
-    localStorage.clear();
+    //localStorage.clear();
     localStorage.setItem('miTema', JSON.stringify(this.miTema));
     localStorage.setItem('tema',"custom");
     
-    this.navCtrl.setRoot('HomePage');
+    this.redireccionar(this.home);
   }
 
+  cancelar(){
+    this.setting.setActiveProfesional(this.tema);
+    this.redireccionar(this.home);
+  }
 
-  
 
 }
