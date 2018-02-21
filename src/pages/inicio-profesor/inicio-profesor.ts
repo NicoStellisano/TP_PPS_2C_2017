@@ -78,16 +78,19 @@ export class InicioProfesorPage {
 
       temaArgentina(){
         //localStorage.clear('');
+        localStorage.setItem('tema',"argentina");
         this.setting.setActiveProfesional('argentina-theme');
       }
     
       temaProfesional(){
         //localStorage.clear();
+        localStorage.setItem('tema',"profesional");
         this.setting.setActiveProfesional('profesional-theme');
       }
     
       temaNaif(){
         //localStorage.clear();
+        localStorage.setItem('tema',"naif");
         this.setting.setActiveProfesional('naif-theme');
       }
     

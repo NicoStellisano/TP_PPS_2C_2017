@@ -5,6 +5,7 @@ import { SettingProvider } from '../../providers/setting/setting';
 
 import { TemaCustom } from '../../models/tema-custom/tema-custom';
 import { InicioProfesorPage } from '../inicio-profesor/inicio-profesor';
+import { RealInicioAdministrativoPage } from '../real-inicio-administrativo/real-inicio-administrativo';
 
 /**
  * Generated class for the CustomizablePage page.
@@ -291,7 +292,7 @@ export class CustomizablePage {
         this.navCtrl.push(InicioProfesorPage);
         break;
       case 'administrativo':
-        
+        this.navCtrl.push(RealInicioAdministrativoPage);
         break;
       case 'alumno':
         

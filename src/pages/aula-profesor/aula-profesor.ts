@@ -14,6 +14,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { TomarListaPage } from '../tomar-lista/tomar-lista';
 import { NativeAudio } from '@ionic-native/native-audio';
+
+import { SettingProvider } from '../../providers/setting/setting';
+
+import { TemaCustom } from '../../models/tema-custom/tema-custom';
 /**
  * Generated class for the AulaProfesorPage page.
  *
@@ -51,21 +55,41 @@ export class AulaProfesorPage {
   informacion: any[] = [];
 listFaltantes:any[]=[];
 
+  selectTheme:String;
+  miTema:TemaCustom;
+  tema:string="";
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio, private toastCtrl:ToastController ) {
+    //tema custom
+    this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+    this.tema = localStorage.getItem('tema');
+    localStorage.setItem('home',"profesor");
+    console.log("-- *** Tema constructor: "+this.tema);
+
+    if(this.tema == "custom"){
+      console.log("Ingresa a custom");
+      this.miTema = JSON.parse(localStorage.getItem('miTema'));
+    }else{
+      this.miTema.iconoAgregar = "basket";
+      this.miTema.iconoTema = "brush";
+      console.log(this.miTema);
+    }
+    
     console.log("--------------- Estoy en aula profesor ------------------");
     this.aula = this.navParams.get('aula');
-this.materia= this.navParams.get('materia');
- 
+    this.materia= this.navParams.get('materia');
+    
 
-this.db.list("/tomarB").subscribe(data=>
-  {
-    this.listFaltantesB=data;
-  });
-  
-this.db.list("/tomarA").subscribe(data=>
-{
-  this.listFaltantes=data;
-});
+    this.db.list("/tomarB").subscribe(data=>
+      {
+        this.listFaltantesB=data;
+      });
+      
+    this.db.list("/tomarA").subscribe(data=>
+    {
+      this.listFaltantes=data;
+    });
     
     this.nativeAudio.preloadComplex('bienvenidoProfesor', 'assets/sonidos/bienvenidoProfesor.mp3', 1, 1, 0);
     this.nativeAudio.play('bienvenidoProfesor');

@@ -11,6 +11,11 @@ import { FireBaseServiceProvider } from '../../providers/fire-base-service/fire-
 
 import { AlertController } from 'ionic-angular';
 import { NativeAudio } from '@ionic-native/native-audio';
+
+import { SettingProvider } from '../../providers/setting/setting';
+
+import { TemaCustom } from '../../models/tema-custom/tema-custom';
+
 /**
  * Generated class for the TomarListaPage page.
  *
@@ -37,9 +42,30 @@ export class TomarListaPage {
   tomarAlumnos$:FirebaseListObservable<AlumnoItem[]>;
   tomarPresente$:FirebaseObjectObservable<AlumnoItem>;
 
+  selectTheme:String;
+  miTema:TemaCustom;
+  tema:string="";
+
+
   constructor(public navCtrl: NavController,private fbService:FireBaseServiceProvider ,
     public navParams: NavParams,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
-    this.aula = this.navParams.get('aulaa');
+    
+     //tema custom
+     this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+     this.tema = localStorage.getItem('tema');
+     localStorage.setItem('home',"profesor");
+     console.log("-- *** Tema constructor: "+this.tema);
+ 
+     if(this.tema == "custom"){
+       console.log("Ingresa a custom");
+       this.miTema = JSON.parse(localStorage.getItem('miTema'));
+     }else{
+       this.miTema.iconoAgregar = "basket";
+       this.miTema.iconoTema = "brush";
+       console.log(this.miTema);
+     }
+    
+      this.aula = this.navParams.get('aulaa');
     console.log(this.aula);
   //  this.persona = this.navParams.get('persona');
     
