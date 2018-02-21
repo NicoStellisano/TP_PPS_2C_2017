@@ -4,38 +4,38 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header [style.font-family]="miTema.tipoLetra">
 
-  <ion-navbar>
-    <ion-title>Cargar Archivo </ion-title>
+  <ion-navbar [color]="miTema.colorNav" [style.font-size.px]="miTema.sizeLetra">
+    <ion-title [style.color]="miTema.colorLetra">Cargar Archivo </ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
-<ion-content padding style="background-image:url('assets/nube.jpg')">
+<!-- padding style="background-image:url('assets/nube.jpg')" -->
+<ion-content padding [ngStyle]="{ 'background-color':+ miTema.colorFondo}" [style.font-family]="miTema.tipoLetra" [style.font-size.px]="miTema.sizeLetra">
 
   <ion-list>
     <ion-item>
       <!--<label>{{label}}</label>-->
       <!--(change)="fileUpload($event)"-->
       <!--<input type='file' name='userFile' id='file' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->
-      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">
+      <input  type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">
       <ion-icon name="cloud-done">Selecionar archivo .csv</ion-icon>
       <!--<button ion-button (click)="onClick()">Cargar</button>-->
     </ion-item>
 
     <ion-item>
-      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>
-      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>
+      <p [style.color]="miTema.colorLetra" *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>
+      <p [style.color]="miTema.colorLetra" *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>
     </ion-item>
   </ion-list>
   
   <div>
-    <button center ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX  miButton"> 
+    <button center [ngStyle]="{ 'background-color':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX  miButton"> 
       <ion-icon name="cloud-done"></ion-icon> Subir
     </button>
-    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX  miButton"> 
+    <button center [ngStyle]="{ 'background-color':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button round full large (click)="descargarArchivo()" class="animated flipInX  miButton"> 
       <ion-icon name="cloud-done"></ion-icon> Descargar
     </button>
   </div>

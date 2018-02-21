@@ -9,6 +9,9 @@ import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/da
 import { EncuestasEditarPage } from '../encuestas-editar/encuestas-editar';
 import { NativeAudio } from '@ionic-native/native-audio';
 
+import { SettingProvider } from '../../providers/setting/setting';
+
+import { TemaCustom } from '../../models/tema-custom/tema-custom';
 /**
  * Generated class for the EncuestasPage page.
  *
@@ -24,8 +27,29 @@ import { NativeAudio } from '@ionic-native/native-audio';
 export class EncuestasPage {
 
   encuestas: any=[];
-respuesta;
+  respuesta;
+
+  selectTheme:String;
+  miTema:TemaCustom;
+  tema:string="";
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController,private nativeAudio: NativeAudio) {
+    
+    //tema custom
+    this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+    this.tema = localStorage.getItem('tema');
+    localStorage.setItem('home',"profesor");
+    console.log("-- *** Tema constructor: "+this.tema);
+
+    if(this.tema == "custom"){
+      console.log("Ingresa a custom");
+      this.miTema = JSON.parse(localStorage.getItem('miTema'));
+    }else{
+      this.miTema.iconoAgregar = "basket";
+      this.miTema.iconoTema = "brush";
+      console.log(this.miTema);
+    }
+    
     console.log("-------------- Estoy en encuesta --------------");
     this.db.list('/encuestas').
     subscribe( data => {

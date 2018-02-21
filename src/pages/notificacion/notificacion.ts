@@ -3,6 +3,10 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import {FirebaseListObservable,AngularFireDatabase} from 'angularfire2/database';
 import {MateriasProfesorPage} from '../materias-profesor/materias-profesor';
 import { NativeAudio } from '@ionic-native/native-audio';
+
+import { SettingProvider } from '../../providers/setting/setting';
+
+import { TemaCustom } from '../../models/tema-custom/tema-custom';
 /**
  * Generated class for the NotificacionPage page.
  *
@@ -20,7 +24,27 @@ export class NotificacionPage {
 aula;
 titulo;
 mensaje;
+
+selectTheme:String;
+miTema:TemaCustom;
+tema:string="";
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public db: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
+    //tema custom
+    this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+    this.tema = localStorage.getItem('tema');
+    localStorage.setItem('home',"profesor");
+    console.log("-- *** Tema constructor: "+this.tema);
+
+    if(this.tema == "custom"){
+      console.log("Ingresa a custom");
+      this.miTema = JSON.parse(localStorage.getItem('miTema'));
+    }else{
+      this.miTema.iconoAgregar = "basket";
+      this.miTema.iconoTema = "brush";
+      console.log(this.miTema);
+    }
+
     this.aula = this.navParams.get('aulaa');
     console.log("dsadada"+this.aula);
 

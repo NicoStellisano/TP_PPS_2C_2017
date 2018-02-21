@@ -21,6 +21,11 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { TomarListaPage } from '../tomar-lista/tomar-lista';
 import { NativeAudio } from '@ionic-native/native-audio';
+
+import { SettingProvider } from '../../providers/setting/setting';
+
+import { TemaCustom } from '../../models/tema-custom/tema-custom';
+
 /**
  * Generated class for the AulaProfesorPage page.
  *
@@ -39,6 +44,11 @@ export class MateriasAdministrativoPage {
   aula:string;
   datosMaterias;
   materia:string;
+
+  selectTheme:String;
+  miTema:TemaCustom;
+  tema:string="";
+  home:string="";
 
   listadoAlumnos:any[] =[];
   listaAux:any[]=[];
@@ -118,6 +128,26 @@ export class MateriasAdministrativoPage {
   constructor( public db: AngularFireDatabase,private nativeAudio: NativeAudio,public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
     public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ,public platform:Platform,public afd:AngularFireDatabase
     ,public alertCtrl:AlertController) {
+
+      //tema custom
+    this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+    this.tema = localStorage.getItem('tema');
+    
+    console.log("-- *** Tema constructor: "+this.tema);
+
+    if(this.tema == "custom"){
+      console.log("Ingresa a custom");
+      this.miTema = JSON.parse(localStorage.getItem('miTema'));
+      if(this.miTema.iconoTema == null){
+        this.miTema.iconoTema = "brush";
+      }
+    }else{
+      this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+
+      this.miTema.iconoAgregar = "basket";
+      this.miTema.iconoTema = "brush";
+      console.log(this.miTema);
+    }
       console.log("--------------- Estoy en materias administrativo ------------------");
       this.db.list("/tomarA").subscribe(data=>
         {

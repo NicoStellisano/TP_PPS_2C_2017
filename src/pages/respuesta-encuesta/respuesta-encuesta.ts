@@ -5,7 +5,9 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import  firebase  from 'firebase';
 import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { MateriaPage } from '../materia/materia';
+import { SettingProvider } from '../../providers/setting/setting';
 
+import { TemaCustom } from '../../models/tema-custom/tema-custom';
 
 /**
  * Generated class for the RespuestaEncuestaPage page.
@@ -28,8 +30,32 @@ respuestaR:any;
 respuestaS:any;
 horaActual:Date;
 
+selectTheme:String;
+miTema:TemaCustom;
+tema:string="";
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController) {
     
+    //tema custom
+    this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+    this.tema = localStorage.getItem('tema');
+    localStorage.setItem('home',"profesor");
+    console.log("-- *** Tema constructor: "+this.tema);
+
+    if(this.tema == "custom"){
+      console.log("Ingresa a custom");
+      this.miTema = JSON.parse(localStorage.getItem('miTema'));
+      if(this.miTema.iconoTema == null){
+        this.miTema.iconoTema = "brush";
+      }
+    }else{
+      this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+
+      this.miTema.iconoAgregar = "basket";
+      this.miTema.iconoTema = "brush";
+      console.log(this.miTema);
+    }
+
     console.log("-------------- Estoy en encuesta respuesta--------------");
     this.horaActual = new Date();
     

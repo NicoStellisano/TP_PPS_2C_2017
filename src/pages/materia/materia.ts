@@ -6,6 +6,10 @@ import { AlumnoItem } from '../../models/alumno-item/alumno-imte.interface';
 import { DescargarArchivoPage } from '../descargar-archivo/descargar-archivo';
 import { NativeAudio } from '@ionic-native/native-audio';
 import { RespuestaEncuestaPage } from '../respuesta-encuesta/respuesta-encuesta';
+
+import { SettingProvider } from '../../providers/setting/setting';
+
+import { TemaCustom } from '../../models/tema-custom/tema-custom';
 /**
  * Generated class for the MateriaPage page.
  *
@@ -25,19 +29,39 @@ export class MateriaPage {
   public codigoScaneado = null;
   public datos;
   aulaMateria:any= {};
-aulaParaQrProfesor;
-perfil='';
-aula:string;
+  aulaParaQrProfesor;
+  perfil='';
+  aula:string;
+
+  selectTheme:String;
+  miTema:TemaCustom;
+  tema:string="";
 
 listaAlumnos:AlumnoItem[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public barcodeScanner: BarcodeScanner,public db: AngularFireDatabase, public alertCtrl: AlertController,private nativeAudio: NativeAudio) {
+    
+    //tema custom
+    this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+    this.tema = localStorage.getItem('tema');
+    localStorage.setItem('home',"profesor");
+    console.log("-- *** Tema constructor: "+this.tema);
+
+    if(this.tema == "custom"){
+      console.log("Ingresa a custom");
+      this.miTema = JSON.parse(localStorage.getItem('miTema'));
+    }else{
+      this.miTema.iconoAgregar = "basket";
+      this.miTema.iconoTema = "brush";
+      console.log(this.miTema);
+    }
+    
     console.log("--------------- Estoy en aula materia ------------------");
     this.materia = this.navParams.get('materiaa');
     //this.curso = this.navParams.get('aulaaa');
-this.curso = localStorage.getItem("curso");
-this.aulaParaQrProfesor = this.navParams.get('aulaa');
-this.perfil=localStorage.getItem("Perfil");
+    this.curso = localStorage.getItem("curso");
+    this.aulaParaQrProfesor = this.navParams.get('aulaa');
+    this.perfil=localStorage.getItem("Perfil");
 
 
   //  console.log("aulaaaaa: "+this.aulaParaQrProfesor);

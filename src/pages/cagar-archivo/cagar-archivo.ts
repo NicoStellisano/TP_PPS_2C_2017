@@ -14,6 +14,10 @@ import { AdministrativoItem } from '../../models/administrativo-item/administrat
 import { AlertController } from 'ionic-angular';
 import { AsignarMateriaPage } from '../asignar-materia/asignar-materia';
 
+import { SettingProvider } from '../../providers/setting/setting';
+
+import { TemaCustom } from '../../models/tema-custom/tema-custom';
+
 export class GeochemComponent implements OnInit {
   
     static muestras:string[][]=[];
@@ -40,15 +44,41 @@ export class CagarArchivoPage {
   sizeArchivo:string;
   aula:string = "";
   persona:string;
-listaProfesores:any[]=[];
-listaAdministrativos:any[]=[];;
+  listaProfesores:any[]=[];
+  listaAdministrativos:any[]=[];;
   alumnoLista$: FirebaseListObservable<AlumnoItem[]>;
   alumnoListaItem$: FirebaseListObservable<AlumnoListaItem[]>;
 
   banderita:boolean;
 
+  selectTheme:String;
+  miTema:TemaCustom;
+  tema:string="";
+  home:string="";
+
   constructor(public navCtrl: NavController, public modalCtrl:ModalController,public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     //this.aula = this.navParams.get('aulaa');
+    
+    //tema custom
+    this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+    this.tema = localStorage.getItem('tema');
+    
+    console.log("-- *** Tema constructor: "+this.tema);
+
+    if(this.tema == "custom"){
+      console.log("Ingresa a custom");
+      this.miTema = JSON.parse(localStorage.getItem('miTema'));
+      if(this.miTema.iconoTema == null){
+        this.miTema.iconoTema = "brush";
+      }
+    }else{
+      this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+
+      this.miTema.iconoAgregar = "basket";
+      this.miTema.iconoTema = "brush";
+      console.log(this.miTema);
+    }
+    
     console.log("--------------- Estoy en cargar-archivo ------------------");
     this.persona = this.navParams.get('persona');
     if(this.persona=="alumno")
