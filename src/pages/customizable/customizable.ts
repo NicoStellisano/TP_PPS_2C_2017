@@ -305,10 +305,9 @@ export class CustomizablePage {
   aceptar(){
     console.log('-------- en aceptar de customizable ----------');
     console.log(this.miTema);
-    //localStorage.clear();
     localStorage.setItem('miTema', JSON.stringify(this.miTema));
     localStorage.setItem('tema',"custom");
-    
+    console.log('home: ' + this.home);
     this.redireccionar(this.home);
   }
 

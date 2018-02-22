@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 1195:
+/***/ 1156:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomizablePageModule", function() { return CustomizablePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customizable__ = __webpack_require__(1217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customizable__ = __webpack_require__(1177);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,17 +38,17 @@ CustomizablePageModule = __decorate([
 
 /***/ }),
 
-/***/ 1217:
+/***/ 1177:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomizablePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_setting_setting__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inicio_profesor_inicio_profesor__ = __webpack_require__(284);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__real_inicio_administrativo_real_inicio_administrativo__ = __webpack_require__(285);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__materias_materias__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_setting_setting__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inicio_profesor_inicio_profesor__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__real_inicio_administrativo_real_inicio_administrativo__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__materias_materias__ = __webpack_require__(108);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -322,9 +322,9 @@ var CustomizablePage = (function () {
     CustomizablePage.prototype.aceptar = function () {
         console.log('-------- en aceptar de customizable ----------');
         console.log(this.miTema);
-        //localStorage.clear();
         localStorage.setItem('miTema', JSON.stringify(this.miTema));
         localStorage.setItem('tema', "custom");
+        console.log('home: ' + this.home);
         this.redireccionar(this.home);
     };
     CustomizablePage.prototype.cancelar = function () {
@@ -335,7 +335,7 @@ var CustomizablePage = (function () {
 }());
 CustomizablePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-customizable',template:/*ion-inline-start:"/Users/ezequielfreire/Documents/GitHub/TP_PPS_2C_2017/src/pages/customizable/customizable.html"*/'<!--\n  Generated template for the CustomizablePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header  [style.font-family]="miTema.tipoLetra">\n\n  <ion-navbar [color]="miTema.colorNav" [style.font-size.px]="miTema.sizeLetra">\n    <ion-title [style.color]="miTema.colorLetra">Personalizar Tema</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding [ngStyle]="{ \'background-color\':+ miTema.colorFondo}" [style.font-family]="miTema.tipoLetra" [style.font-size.px]="miTema.sizeLetra">\n  <ion-card>\n    <ion-card-content>\n      <ion-item>\n        <ion-label [style.color]="miTema.colorLetra">Color de fondo</ion-label>\n        <ion-input type="color" [(ngModel)]="miTema.colorFondo"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label [style.color]="miTema.colorLetra">Color de Letra</ion-label>\n        <ion-input type="color" [(ngModel)]="miTema.colorLetra"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label [style.color]="miTema.colorLetra">Color de Boton</ion-label>\n        <ion-input type="color" [(ngModel)]="miTema.colorBoton"></ion-input>\n      </ion-item>\n      <!--<ion-item>\n        <ion-label>Color de Nav</ion-label>\n        <ion-input type="color" [(ngModel)]="miTema.colorNav"></ion-input>\n      </ion-item>-->\n      <ion-item>\n        <ion-label [style.color]="miTema.colorLetra">Radio del boton</ion-label>\n        <ion-input type="text" value="10px"[(ngModel)]="miTema.radioButton"></ion-input>\n      </ion-item>\n      <ion-row>\n        <button class="miButton"[ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button full (click)="showColorNav()">Color de Nav</button>\n        <button class="miButton"[ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button full (click)="showIcono()">Tipo de Icono</button>\n        <button class="miButton" [ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button full (click)="showFont()">Tipo de Letra</button>\n        <button class="miButton" [ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button full (click)="showSize()">Tamaño de Letra</button>\n      </ion-row>\n      <ion-row>\n\n      </ion-row>\n        <button class="miButton" [ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button block (click)="aceptar()">Aceptar</button>\n        <button class="miButton" [ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button block (click)="cancelar()">Cancelar</button>\n      <ion-row>\n\n      </ion-row>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/ezequielfreire/Documents/GitHub/TP_PPS_2C_2017/src/pages/customizable/customizable.html"*/,
+        selector: 'page-customizable',template:/*ion-inline-start:"/Users/ezequielfreire/Documents/GitHub/TP_PPS_2C_2017/src/pages/customizable/customizable.html"*/'<!--\n  Generated template for the CustomizablePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header  [style.font-family]="miTema.tipoLetra">\n\n  <ion-navbar [color]="miTema.colorNav" [style.font-size.px]="miTema.sizeLetra">\n    <ion-title [style.color]="miTema.colorLetra">Personalizar Tema</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding [ngStyle]="{ \'background-color\': miTema.colorFondo}" [style.font-family]="miTema.tipoLetra" [style.font-size.px]="miTema.sizeLetra">\n  <ion-card>\n    <ion-card-content>\n      <ion-item>\n        <ion-label [style.color]="miTema.colorLetra">Color de fondo</ion-label>\n        <ion-input type="color" [(ngModel)]="miTema.colorFondo"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label [style.color]="miTema.colorLetra">Color de Letra</ion-label>\n        <ion-input type="color" [(ngModel)]="miTema.colorLetra"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label [style.color]="miTema.colorLetra">Color de Boton</ion-label>\n        <ion-input type="color" [(ngModel)]="miTema.colorBoton"></ion-input>\n      </ion-item>\n      <!--<ion-item>\n        <ion-label>Color de Nav</ion-label>\n        <ion-input type="color" [(ngModel)]="miTema.colorNav"></ion-input>\n      </ion-item>-->\n      <ion-item>\n        <ion-label [style.color]="miTema.colorLetra">Radio del boton</ion-label>\n        <ion-input type="text" value="10px"[(ngModel)]="miTema.radioButton"></ion-input>\n      </ion-item>\n      <ion-row>\n        <button class="miButton"[ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button full (click)="showColorNav()">Color de Nav</button>\n        <button class="miButton"[ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button full (click)="showIcono()">Tipo de Icono</button>\n        <button class="miButton" [ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button full (click)="showFont()">Tipo de Letra</button>\n        <button class="miButton" [ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button full (click)="showSize()">Tamaño de Letra</button>\n      </ion-row>\n      <ion-row>\n\n      </ion-row>\n        <button class="miButton" [ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button block (click)="aceptar()">Aceptar</button>\n        <button class="miButton" [ngStyle]="{ \'background-color\':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra" ion-button block (click)="cancelar()">Cancelar</button>\n      <ion-row>\n\n      </ion-row>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/ezequielfreire/Documents/GitHub/TP_PPS_2C_2017/src/pages/customizable/customizable.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
         __WEBPACK_IMPORTED_MODULE_2__providers_setting_setting__["a" /* SettingProvider */]])

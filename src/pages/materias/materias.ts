@@ -103,27 +103,27 @@ console.log(this.curso);
   
 
      temaArgentina(){
-      localStorage.clear();
-      location.reload();
-      //localStorage.removeItem('tema');
+      //localStorage.clear();
+      
+      localStorage.removeItem('tema');
       //localStorage.removeItem('miTema');
       localStorage.setItem('tema',"argentina");
       this.setting.setActiveProfesional('argentina-theme');
     }
   
     temaProfesional(){
-      localStorage.clear();
-      location.reload();
-      //localStorage.removeItem('tema');
+      //localStorage.clear();
+      
+      localStorage.removeItem('tema');
       //localStorage.removeItem('miTema');
       localStorage.setItem('tema',"profesional");
       this.setting.setActiveProfesional('profesional-theme');
     }
   
     temaNaif(){
-      localStorage.clear();
-      location.reload();
-      //localStorage.removeItem('tema');
+      //localStorage.clear();
+      
+      localStorage.removeItem('tema');
       
       //localStorage.removeItem('miTema');
       localStorage.setItem('tema',"naif");
