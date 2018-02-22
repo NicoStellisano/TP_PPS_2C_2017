@@ -128,8 +128,12 @@ settings2 = {
     
 }
 };
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
-    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation,public modalCtrl: ModalController, public alertCtrl:AlertController ) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public fireService : FireBaseServiceProvider,
+    public loadingCtrl:LoadingController,
+    private screenOrientation: ScreenOrientation,
+    public modalCtrl: ModalController, public alertCtrl:AlertController ) {
       this.profesor=true;
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
       
@@ -294,7 +298,7 @@ ionViewDidEnter()
 loading.present();
     setTimeout(() => {
       loading.dismiss();
-    }, 2000);
+    }, 4000);
 
     
 

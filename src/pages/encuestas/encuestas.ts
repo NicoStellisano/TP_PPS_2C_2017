@@ -29,7 +29,11 @@ export class EncuestasPage {
 respuesta;
 aula:string;
 materia:string;
-  constructor(public navCtrl: NavController,public modalCtrl:ModalController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController,
+    public modalCtrl:ModalController, public navParams: NavParams,
+    public fireService : FireBaseServiceProvider, 
+    public db:AngularFireDatabase, public alertCtrl:AlertController,
+    private nativeAudio: NativeAudio) {
 
     this.db.list('/encuestas').
     subscribe( data => {

@@ -29,7 +29,11 @@ respuestaR:any;
 respuestaS:any;
 horaActual:Date;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider, public db:AngularFireDatabase, public alertCtrl:AlertController) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public fireService : FireBaseServiceProvider
+    , public db:AngularFireDatabase, 
+    public alertCtrl:AlertController) {
     
 
     this.horaActual = new Date();

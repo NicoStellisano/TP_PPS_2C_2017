@@ -31,49 +31,27 @@ aula:string;
 
 listaAlumnos:AlumnoItem[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public barcodeScanner: BarcodeScanner,public db: AngularFireDatabase, public alertCtrl: AlertController,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,
+     public barcodeScanner: BarcodeScanner,
+     public db: AngularFireDatabase, 
+     public alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.materia = this.navParams.get('materiaa');
-    //this.curso = this.navParams.get('aulaaa');
 this.curso = localStorage.getItem("curso");
 this.aulaParaQrProfesor = this.navParams.get('aulaa');
 this.perfil=localStorage.getItem("Perfil");
 
 
-  //  console.log("aulaaaaa: "+this.aulaParaQrProfesor);
     console.log("perfik: "+this.perfil);
     
-    //CARGA DATOS EN FIREBASE
-    /*
-    this.db.list('/codigoQrMaterias').push({
-      codigoQr: "4ABaseDeDatos",
-      curso: "4° A",
-      materia: "Base de datos 1",
-      profesor: "Diego Vazquez",
-      primerParcial:"4/8/2017",
-      segundoParcial: "7/11/2017",
-      final: "4/12/2017"
-    //  alumnos:[{nombre:"Juan"},{nombre:"Maria"},{nombre:"Rodrigo"}]
-    
-    }).then( () => {
-      
-    })
-    .catch( () => {
-    });
-    */
+   
 
     this.db.list('/codigoQrMaterias').
     subscribe( data => {
     this.datos=data;
     });
 
-/*
-    this.lista(this.aula).subscribe(dato => {
-      //console.log(dato.values().next().value.alumnos);
-      //lista de alumnos en el aula
-      this.listaAlumnos = dato.values().next().value.alumnos;
-      console.log(this.listaAlumnos);
-    });
-*/
+
     
 this.nativeAudio.preloadComplex('2', 'assets/sonidos/2.mp3', 1, 1, 0);
 this.nativeAudio.play('2');
@@ -103,7 +81,6 @@ this.nativeAudio.play('2');
         
       if(this.datos[i].codigoQr==this.codigoScaneado)
         {
-          //if(this.materia==this.datos[i].materia && this.curso==this.datos[i].curso )
           if(this.curso==this.datos[i].curso )
             {
           this.aulaMateria.curso=this.datos[i].curso;
@@ -113,13 +90,6 @@ this.nativeAudio.play('2');
           this.aulaMateria.segundoParcial = this.datos[i].segundoParcial;
           this.aulaMateria.final = this.datos[i].final;
 
-          //MOSTRAR LISTA DE ALUMNOS
-         /* this.aulaMateria.alumnos = [];
-          for(let j=0;j<this.datos[i].alumnos.length;j++)
-          {
-            this.aulaMateria.alumnos.push(this.datos[i].alumnos[j]);
-          }
-      */
       return;
         }
         else

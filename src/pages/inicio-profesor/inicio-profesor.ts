@@ -29,14 +29,8 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'inicio-profesor.html',
 })
 export class InicioProfesorPage {
-
-  listadoProfesores:any[] =[];
-  listadoAlumnos:any[] =[];
   listadoEncuestas:any[]=[];
-  seleccion:string;
-  listaMaterias: any[] = [];
-  listaAux: any[] = [];
-  datosfaltas;
+
   texto:any;
   formato:any;
   cancelado:any;
@@ -44,7 +38,11 @@ export class InicioProfesorPage {
   listaMateriasProfesor: any[]=[];
   listaAlumnos: any[]=[];
   apellido:string;
-  constructor(public navCtrl: NavController,private barcode:BarcodeScanner,public db: AngularFireDatabase,private alertCtrl: AlertController, public navParams: NavParams,public fireService : FireBaseServiceProvider) {
+
+  constructor(public navCtrl: NavController,
+    private barcode:BarcodeScanner,public db: AngularFireDatabase,
+    private alertCtrl: AlertController, public navParams: NavParams,
+    public fireService : FireBaseServiceProvider) {
     this.fireService.getAlumnos().subscribe(data=>
       {
         this.listaAlumnos=data;

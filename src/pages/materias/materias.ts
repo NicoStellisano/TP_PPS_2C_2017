@@ -33,7 +33,10 @@ export class MateriasPage {
   //HAY QUE CAMBIARLO POR ALGO REAL
   
 public variableGlobal: any;
-    constructor(public navCtrl: NavController,private barcode:BarcodeScanner, public navParams: NavParams, private alertCtrl:AlertController, public db: AngularFireDatabase,private toastCtrl:ToastController ) {
+    constructor(public navCtrl: NavController,
+      private barcode:BarcodeScanner, public navParams: NavParams, 
+      private alertCtrl:AlertController, public db: AngularFireDatabase,
+      private toastCtrl:ToastController ) {
       this.aula = this.navParams.get('aulaa');
 this.curso=localStorage.getItem("curso");
 

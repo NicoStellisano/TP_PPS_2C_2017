@@ -40,7 +40,10 @@ export class EncuestasAltaPage {
   
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,private alertCtrl:AlertController,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public fireService : FireBaseServiceProvider,
+    private alertCtrl:AlertController,private nativeAudio: NativeAudio) {
     this.creadorEncuesta=localStorage.getItem("Email");
     this.nativeAudio.preloadComplex('2', 'assets/sonidos/2.mp3', 1, 1, 0);
     this.nativeAudio.play('2');

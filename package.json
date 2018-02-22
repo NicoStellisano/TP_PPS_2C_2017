@@ -5,6 +5,7 @@
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
+    "compodoc": "./node_modules/.bin/compodoc -p tsconfig.json",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
@@ -61,6 +62,7 @@
   "devDependencies": {
     "@angular/cli": "^1.6.7",
     "@angular/tsc-wrapped": "^4.4.6",
+    "@compodoc/compodoc": "^1.0.7",
     "@ionic/app-scripts": "^3.1.8",
     "node-sass": "^4.6.0",
     "rebuild-node-sass": "^1.1.0",

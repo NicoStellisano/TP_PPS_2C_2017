@@ -49,7 +49,11 @@ listaAdministrativos:any[]=[];;
 materia:string="";
   banderita:boolean;
 
-  constructor(public navCtrl: NavController, public modalCtrl:ModalController,public navParams: NavParams,private firebaseService: FireBaseServiceProvider,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController, 
+    public modalCtrl:ModalController,public navParams: NavParams,
+    private firebaseService: FireBaseServiceProvider
+    ,private database: AngularFireDatabase
+    ,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     //this.aula = this.navParams.get('aulaa');
     this.persona = this.navParams.get('persona');
     if(this.persona=="alumno")

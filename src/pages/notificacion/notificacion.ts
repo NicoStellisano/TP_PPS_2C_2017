@@ -23,7 +23,10 @@ export class NotificacionPage {
 aula;
 titulo;
 mensaje;
-  constructor(public navCtrl: NavController,public modalCtrl:ModalController, public navParams: NavParams,public db: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController,
+    public modalCtrl:ModalController, 
+    public navParams: NavParams,public db: AngularFireDatabase,
+    private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
     console.log("dsadada"+this.aula);
 

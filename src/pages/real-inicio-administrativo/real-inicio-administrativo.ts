@@ -69,8 +69,14 @@ listadoFaltas:Array<any>=[];
 
 informacion: any[] = [];
  
-  constructor(public navCtrl: NavController,public modalCtrl:ModalController,private barcode:BarcodeScanner,private alertCtrl: AlertController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public db: AngularFireDatabase,private toastCtrl:ToastController
-  ) {
+  constructor(public navCtrl: NavController,
+    public modalCtrl:ModalController,
+    private barcode:BarcodeScanner,
+    private alertCtrl: AlertController,
+     public navParams: NavParams,
+     public fireService : FireBaseServiceProvider,
+     public db: AngularFireDatabase,
+     private toastCtrl:ToastController) {
       this.fireService.getAlumnos().subscribe(data=>
         {
           this.listadoAlumnos=data;

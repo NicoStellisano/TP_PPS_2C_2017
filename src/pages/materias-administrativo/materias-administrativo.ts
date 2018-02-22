@@ -45,6 +45,26 @@ export class MateriasAdministrativoPage {
 
   listadoAlumnos:any[] =[];
   listaAux:any[]=[];
+  source:LocalDataSource;
+  source2:LocalDataSource;
+  flag:boolean;
+  seleccion:string;
+
+  @ViewChild(Content) content: Content;  
+  view: number[] = [700, 150];
+  view2: number[] = [700, 150];
+  showXAxisLabel: boolean;
+  showYAxisLabel: boolean;
+  showLegend: boolean;
+  interval: number;
+  listFaltantes:any[] =[];
+  listFaltantesB:any[] =[];
+  
+  
+  listadoFaltas:Array<any>=[];
+  
+
+  informacion: any[] = [];
   settings = {
     actions:{
       columnTitle:'',
@@ -118,30 +138,16 @@ export class MateriasAdministrativoPage {
     
   
 };
-  source:LocalDataSource;
-  source2:LocalDataSource;
-  flag:boolean;
-  seleccion:string;
-
-  @ViewChild(Content) content: Content;  
-  view: number[] = [700, 150];
-  view2: number[] = [700, 150];
-  showXAxisLabel: boolean;
-  showYAxisLabel: boolean;
-  showLegend: boolean;
-  interval: number;
-  listFaltantes:any[] =[];
-  listFaltantesB:any[] =[];
-  
-  
-  listadoFaltas:Array<any>=[];
   
 
-  informacion: any[] = [];
 
-
-  constructor( public db: AngularFireDatabase,private nativeAudio: NativeAudio,public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
-    public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ,public platform:Platform,public afd:AngularFireDatabase
+  constructor( public db: AngularFireDatabase,
+    private nativeAudio: NativeAudio,public navCtrl: NavController, 
+    public navParams: NavParams,
+    public fireService : FireBaseServiceProvider,
+    public loadingCtrl:LoadingController,
+    private screenOrientation: ScreenOrientation ,
+    public platform:Platform,public afd:AngularFireDatabase
     ,public alertCtrl:AlertController,public modalCtrl: ModalController) {
       this.db.list("/tomarA").subscribe(data=>
         {

@@ -58,7 +58,10 @@ export class AulaProfesorPage {
   informacion: any[] = [];
 listFaltantes:any[]=[];
 
-  constructor(public navCtrl: NavController,private barcode:BarcodeScanner,private alertCtrl: AlertController, public navParams: NavParams, public db: AngularFireDatabase,private nativeAudio: NativeAudio, private toastCtrl:ToastController ) {
+  constructor(public navCtrl: NavController,private barcode:BarcodeScanner
+    ,private alertCtrl: AlertController, public navParams: NavParams
+    , public db: AngularFireDatabase,private nativeAudio: NativeAudio
+    , private toastCtrl:ToastController ) {
     this.aula = this.navParams.get('aula');
 this.materia= this.navParams.get('materia');
 

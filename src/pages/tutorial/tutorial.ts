@@ -18,7 +18,8 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
 })
 export class TutorialPage {
 img:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,public viewCtrl: ViewController) {
 this.img=this.navParams.get('img');
 
   }

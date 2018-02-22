@@ -22,7 +22,10 @@ import { NativeAudio } from '@ionic-native/native-audio';
 export class EncuestasEditarPage {
   encuestaAmodificar;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,private alertCtrl:AlertController,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,
+     public fireService : FireBaseServiceProvider,
+     private alertCtrl:AlertController,private nativeAudio: NativeAudio) {
    this.encuestaAmodificar= this.navParams.get('encuesta');
   // console.log(this.encuestaAmodificar)
   this.nativeAudio.preloadComplex('2', 'assets/sonidos/2.mp3', 1, 1, 0);

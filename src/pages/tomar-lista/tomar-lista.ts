@@ -40,8 +40,13 @@ export class TomarListaPage {
   tomarAlumnos$:FirebaseListObservable<AlumnoItem[]>;
   tomarPresente$:FirebaseObjectObservable<AlumnoItem>;
 
-  constructor(public navCtrl: NavController,public modalCtrl:ModalController,private fbService:FireBaseServiceProvider ,
-    public navParams: NavParams,private database: AngularFireDatabase,private alertCtrl: AlertController,private nativeAudio: NativeAudio) {
+  constructor(public navCtrl: NavController,
+    public modalCtrl:ModalController,
+    private fbService:FireBaseServiceProvider ,
+    public navParams: NavParams,
+    private database: AngularFireDatabase,
+    private alertCtrl: AlertController,
+    private nativeAudio: NativeAudio) {
     this.aula = this.navParams.get('aulaa');
     console.log(this.aula);
   //  this.persona = this.navParams.get('persona');

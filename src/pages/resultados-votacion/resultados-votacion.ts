@@ -61,8 +61,12 @@ doughnut = false;
 mostrado:boolean;
 listadoAlumnos:any[]=[];
 
-constructor( public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,
-  public loadingCtrl:LoadingController,private screenOrientation: ScreenOrientation ,public platform:Platform,public afd:AngularFireDatabase
+constructor( public db: AngularFireDatabase,
+  public navCtrl: NavController, public navParams: NavParams,
+  public fireService : FireBaseServiceProvider,
+  public loadingCtrl:LoadingController
+  ,private screenOrientation: ScreenOrientation ,
+  public platform:Platform,public afd:AngularFireDatabase
   ,public alertCtrl:AlertController,public modalCtrl: ModalController) {
     //this.qrCodigo=this.navParams.get("codigo");
     

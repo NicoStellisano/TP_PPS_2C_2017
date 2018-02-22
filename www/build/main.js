@@ -550,455 +550,6 @@ var AsignarMateriaPage = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RespuestaEncuestaPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__resultados_votacion_resultados_votacion__ = __webpack_require__(286);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-/**
- * Generated class for the RespuestaEncuestaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var RespuestaEncuestaPage = (function () {
-    function RespuestaEncuestaPage(navCtrl, navParams, fireService, db, alertCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.fireService = fireService;
-        this.db = db;
-        this.alertCtrl = alertCtrl;
-        this.encuestas = [];
-        this.encuestasRespuestas = [];
-        this.horaActual = new Date();
-    }
-    RespuestaEncuestaPage.prototype.ionViewDidEnter = function () {
-        var _this = this;
-        this.db.list('/encuestas').
-            subscribe(function (data) {
-            if (data)
-                _this.encuestas = data;
-        });
-        this.banderaVoto = false;
-        setTimeout(function () {
-            _this.db.list('/encuestaRespuestas').
-                subscribe(function (data) {
-                if (data)
-                    _this.encuestasRespuestas = data;
-            });
-        }, 1000);
-    };
-    RespuestaEncuestaPage.prototype.responder = function (e) {
-        console.log(e);
-        var bandera = false;
-        var date = new Date(e.horaFinalizacion);
-        if (date > this.horaActual) {
-            for (var i = 0; i < this.encuestasRespuestas.length; i++) {
-                var element = this.encuestasRespuestas[i];
-                console.log(e);
-                console.log(element);
-                if (element.mailUsuario == localStorage.getItem("mail") && element.nombreEncuesta == e.nombre) {
-                    bandera = true;
-                    var alert_1 = this.alertCtrl.create({
-                        title: 'Info!',
-                        subTitle: 'Usted ya voto en esta encuesta!',
-                        cssClass: "miClaseDanger",
-                        buttons: ['Listo']
-                    });
-                    alert_1.present();
-                    return;
-                }
-            }
-            if (bandera == false) {
-                if (e.formato == "Radio botones") {
-                    this.fireService.agregarRespEncuesta({ nombreEncuesta: e.nombre, mailUsuario: localStorage.getItem("mail"), respuesta: this.respuestaR });
-                }
-                else if (e.formato == "Selección de opciones") {
-                    this.fireService.agregarRespEncuesta({ nombreEncuesta: e.nombre, mailUsuario: localStorage.getItem("mail"), respuesta: this.respuestaS });
-                }
-                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__resultados_votacion_resultados_votacion__["a" /* ResultadosVotacionPage */], { nombreEncuesta: e.nombre });
-                var alert_2 = this.alertCtrl.create({
-                    title: 'Exito!',
-                    subTitle: 'Voto con exito!',
-                    cssClass: "miClaseAlert",
-                    buttons: ['Listo']
-                });
-                alert_2.present();
-                bandera = true;
-            }
-        }
-        else {
-            bandera = true;
-            var alert_3 = this.alertCtrl.create({
-                title: 'Info!',
-                subTitle: 'La encuesta ya expiro!!',
-                cssClass: "miClaseDanger",
-                buttons: ['Listo']
-            });
-            alert_3.present();
-        }
-    };
-    RespuestaEncuestaPage.prototype.respuesta1 = function (e) {
-        var bandera = false;
-        var date = new Date(e.horaFinalizacion);
-        if (date > this.horaActual) {
-            for (var i = 0; i < this.encuestasRespuestas.length; i++) {
-                var element = this.encuestasRespuestas[i];
-                if (element.mailUsuario == localStorage.getItem("mail") && element.nombreEncuesta == e.nombre) {
-                    bandera = true;
-                    var alert_4 = this.alertCtrl.create({
-                        title: 'Info!',
-                        subTitle: 'Usted ya voto en esta encuesta!',
-                        cssClass: "miClaseDanger",
-                        buttons: ['Listo']
-                    });
-                    alert_4.present();
-                    break;
-                }
-            }
-            if (bandera == false) {
-                this.fireService.agregarRespEncuesta({ nombreEncuesta: e.nombre, mailUsuario: localStorage.getItem("mail"), respuesta: e.respuesta1 });
-                var alert_5 = this.alertCtrl.create({
-                    title: 'Exito!',
-                    subTitle: 'Voto con exito!',
-                    cssClass: "miClaseAlert",
-                    buttons: ['Listo']
-                });
-                alert_5.present();
-                bandera = true;
-            }
-        }
-        else {
-            bandera = true;
-            var alert_6 = this.alertCtrl.create({
-                title: 'Info!',
-                subTitle: 'La encuesta ya expiro!!',
-                cssClass: "miClaseDanger",
-                buttons: ['Listo']
-            });
-            alert_6.present();
-        }
-        /*for(let i=0;i<this.encuestasRespuestas.length;i++)
-          {
-           
-           
-    
-          
-            
-              if( this.encuestasRespuestas[i].nombreEncuesta == e.nombre && this.encuestasRespuestas[i].voto== "true")
-                {
-                  
-                  let alert = this.alertCtrl.create({
-                    title: 'Info!',
-                    subTitle: 'Usted ya voto en esta encuesta!',
-                    cssClass:"miClaseAlert",
-                  buttons: ['Listo']
-                  });
-                  alert.present();
-                  return;
-                  
-                }
-                  
-                  console.log("no voto, va a votar")
-                  this.fireService.agregarRespEncuesta({nombreEncuesta:e.nombre,mailUsuario:localStorage.getItem("mail"),respuesta:e.respuesta1,voto:"true"});
-                  
-                  let alert = this.alertCtrl.create({
-                    title: 'Exito!',
-                    subTitle: 'Voto con exito!',
-                    cssClass:"miClaseAlert",
-                  buttons: ['Listo']
-                  });
-                  alert.present();
-                  this.navCtrl.push(MateriaPage);
-                  return;
-                
-              
-    
-                
-          }
-    
-     
-    */
-    };
-    RespuestaEncuestaPage.prototype.respuesta2 = function (e) {
-        var bandera = false;
-        var date = new Date(e.horaFinalizacion);
-        if (date > this.horaActual) {
-            for (var i = 0; i < this.encuestasRespuestas.length; i++) {
-                var element = this.encuestasRespuestas[i];
-                if (element.mailUsuario == localStorage.getItem("mail") && element.nombreEncuesta == e.nombre) {
-                    bandera = true;
-                    var alert_7 = this.alertCtrl.create({
-                        title: 'Info!',
-                        subTitle: 'Usted ya voto en esta encuesta!',
-                        cssClass: "miClaseDanger",
-                        buttons: ['Listo']
-                    });
-                    alert_7.present();
-                    break;
-                }
-            }
-            if (bandera == false) {
-                this.fireService.agregarRespEncuesta({ nombreEncuesta: e.nombre, mailUsuario: localStorage.getItem("mail"), respuesta: e.respuesta2 });
-                var alert_8 = this.alertCtrl.create({
-                    title: 'Exito!',
-                    subTitle: 'Voto con exito!',
-                    cssClass: "miClaseAlert",
-                    buttons: ['Listo']
-                });
-                alert_8.present();
-                bandera = true;
-            }
-        }
-        else {
-            bandera = true;
-            var alert_9 = this.alertCtrl.create({
-                title: 'Info!',
-                subTitle: 'La encuesta ya expiro!!',
-                cssClass: "miClaseDanger",
-                buttons: ['Listo']
-            });
-            alert_9.present();
-        }
-        /*for(let i=0;i<this.encuestasRespuestas.length;i++)
-          {
-           
-           
-    
-          
-            
-              if( this.encuestasRespuestas[i].nombreEncuesta == e.nombre && this.encuestasRespuestas[i].voto== "true")
-                {
-                  
-                  let alert = this.alertCtrl.create({
-                    title: 'Info!',
-                    subTitle: 'Usted ya voto en esta encuesta!',
-                    cssClass:"miClaseAlert",
-                  buttons: ['Listo']
-                  });
-                  alert.present();
-                  return;
-                  
-                }
-                  
-                  console.log("no voto, va a votar")
-                  this.fireService.agregarRespEncuesta({nombreEncuesta:e.nombre,mailUsuario:localStorage.getItem("mail"),respuesta:e.respuesta1,voto:"true"});
-                  
-                  let alert = this.alertCtrl.create({
-                    title: 'Exito!',
-                    subTitle: 'Voto con exito!',
-                    cssClass:"miClaseAlert",
-                  buttons: ['Listo']
-                  });
-                  alert.present();
-                  this.navCtrl.push(MateriaPage);
-                  return;
-                
-              
-    
-                
-          }
-    
-     
-        */ 
-    };
-    RespuestaEncuestaPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-respuesta-encuesta',template:/*ion-inline-start:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\respuesta-encuesta\respuesta-encuesta.html"*/'<!--\n\n  Generated template for the RespuestaEncuestaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Encuestas a responder</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/halloween-Materias.png\')" class="fondo">\n\n  \n\n  <div *ngFor="let e of encuestas">\n\n    \n\n         <ion-list >\n\n            <ion-item class="animated flipInY miItem">\n\n                <ion-label class="miLabel" style="color: orange"  floating>Nombre:</ion-label>\n\n                <ion-input type="text" [(ngModel)]="e.nombre" disabled="true"></ion-input>\n\n                </ion-item>\n\n                \n\n             <ion-item class="animated flipInY miItem">\n\n             <ion-label class="miLabel" style="color: orange"  floating>Pregunta:</ion-label>\n\n             <ion-input type="text" [(ngModel)]="e.pregunta" disabled="true"></ion-input>\n\n             </ion-item>\n\n             \n\n             \n\n               <ion-item class="animated flipInY miItem">\n\n                 <ion-label class="miLabel" style="color: orange"  floating>La encuesta finaliza en el horario:</ion-label>\n\n                 <ion-input type="text" [(ngModel)]="e.horaFReal" disabled="true"></ion-input>\n\n                 </ion-item>\n\n\n\n\n\n<!--\n\n                 <ion-item class="animated flipInX miItem">\n\n                     <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de inicio (opcional)</ion-label>\n\n                     <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaInicio" disabled="true"></ion-datetime>\n\n                   </ion-item>\n\n             \n\n                   <ion-item class="animated flipInX miItem">\n\n                       <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de finalización (opcional)</ion-label>\n\n                       <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaFinalizacion" disabled="true"></ion-datetime>\n\n                     </ion-item>\n\n                   -->\n\n\n\n\n\n                 <ion-item *ngIf=\'e.formato == "Botones"\' class="animated flipInY miItem">\n\n                   <ion-list  >\n\n                       <button  class="botones" (click)="respuesta1(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                           Presione para votar: {{e.respuesta1}}\n\n                          </button>\n\n                          <br>\n\n                          <button class="botones" (click)="respuesta2(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                             Presione para votar: {{e.respuesta2}}\n\n                            </button>\n\n\n\n\n\n                     \n\n                       </ion-list>    \n\n                     </ion-item>\n\n        \n\n\n\n                               <ion-list  *ngIf=\'e.formato == "Radio botones"\' (ionChange)="responder(e)" radio-group [(ngModel)]="respuestaR">\n\n                                   <ion-item class="animated flipInY miItem">\n\n                                     <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                     <ion-radio  [value]="e.respuesta1" ></ion-radio>\n\n                                   </ion-item>\n\n                                   <ion-item class="animated flipInY miItem">\n\n                                       <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                       <ion-radio  [value]="e.respuesta2" ></ion-radio>\n\n                                     </ion-item>\n\n                                    \n\n\n\n                                 </ion-list>\n\n\n\n                              <!--   <ion-list  *ngIf=\'e.formato == "Checkbox"\' radio-group [(ngModel)]="respuesta">\n\n                                     <ion-item class="animated flipInY miItem">\n\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>\n\n                                     </ion-item>\n\n                                     <ion-item class="animated flipInY miItem">\n\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta2" ></ion-checkbox>\n\n                                       </ion-item>\n\n                                                 \n\n \n\n                                   </ion-list> -->  \n\n\n\n                                   <ion-list  *ngIf=\'e.formato == "Selección de opciones"\'  >\n\n                                    <ion-item class="animated flipInY miItem" >\n\n                                    <select style="color : rgb(85, 158, 218); width:150px;" (change)="responder(e)" [(ngModel)]="respuestaS"  class="animated flipInY miItem">\n\n  \n\n                                      <option >{{e.respuesta1}} </option>\n\n                                      <option >{{e.respuesta2}} </option>\n\n                                    \n\n                                    </select>\n\n                                  </ion-item>\n\n                                     \n\n\n\n                                  </ion-list>\n\n                                 \n\n\n\n                           \n\n                       \n\n                     \n\n             \n\n               </ion-list> \n\n\n\n         </div>\n\n\n\n  \n\n  </ion-content>'/*ion-inline-end:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\respuesta-encuesta\respuesta-encuesta.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
-    ], RespuestaEncuestaPage);
-    return RespuestaEncuestaPage;
-}());
-
-//# sourceMappingURL=respuesta-encuesta.js.map
-
-/***/ }),
-
-/***/ 167:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificacionPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_audio__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tutorial_tutorial__ = __webpack_require__(52);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-/**
- * Generated class for the NotificacionPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var NotificacionPage = (function () {
-    function NotificacionPage(navCtrl, modalCtrl, navParams, db, alertCtrl, nativeAudio) {
-        this.navCtrl = navCtrl;
-        this.modalCtrl = modalCtrl;
-        this.navParams = navParams;
-        this.db = db;
-        this.alertCtrl = alertCtrl;
-        this.nativeAudio = nativeAudio;
-        this.aula = this.navParams.get('aulaa');
-        console.log("dsadada" + this.aula);
-        this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
-        this.nativeAudio.play('1');
-    }
-    NotificacionPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad NotificacionPage');
-    };
-    NotificacionPage.prototype.Guardar = function () {
-        var _this = this;
-        this.db.list('/notificacionesProfesor/').push({
-            titulo: this.titulo,
-            mensaje: this.mensaje,
-            curso: this.aula
-        }).then(function () {
-            _this.titulo = "";
-            _this.mensaje = "";
-            var alert = _this.alertCtrl.create({
-                title: "Exitosamente!",
-                subTitle: "Se envío el mensaje de importancia",
-                cssClass: "miClaseAlert",
-                buttons: ['Aceptar']
-            });
-            alert.present();
-        })
-            .catch(function () {
-        });
-        //this.navCtrl.setRoot(AulaProfesorPage);
-    };
-    NotificacionPage.prototype.presentModal = function () {
-        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__tutorial_tutorial__["a" /* TutorialPage */], { img: "notificacionTutorial.png" });
-        modal.present();
-    };
-    NotificacionPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-notificacion',template:/*ion-inline-start:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\notificacion\notificacion.html"*/'<!--\n\n  Generated template for the NotificacionPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Creación de notificación<button ion-button color="danger" icon-only style="float:right" (click)=\'presentModal()\'><ion-icon style="size:200%" name="help-circle"></ion-icon></button></ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n  \n\n<ion-list>\n\n<ion-item class="animated flipInX miItem">\n\n<ion-label class="miLabel" floating>Titulo</ion-label>\n\n<ion-input type="text" [(ngModel)]="titulo" disabled="false"></ion-input> \n\n</ion-item>\n\n          \n\n<ion-item class="animated flipInY miItem">\n\n<ion-label class="miLabel" floating>Mensaje</ion-label>\n\n<ion-input type="text" [(ngModel)]="mensaje" disabled="false"></ion-input>\n\n</ion-item>\n\n<button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>\n\n</ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\notificacion\notificacion.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_audio__["a" /* NativeAudio */]])
-    ], NotificacionPage);
-    return NotificacionPage;
-}());
-
-//# sourceMappingURL=notificacion.js.map
-
-/***/ }),
-
-/***/ 168:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InicioAlumnoPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materias_materias__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__editar_perfil_editar_perfil__ = __webpack_require__(292);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/**
- * Generated class for the InicioAlumnoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var InicioAlumnoPage = (function () {
-    function InicioAlumnoPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.listaAulasProfesor = [
-            {
-                "aula": "4A"
-            },
-            {
-                "aula": "4B"
-            }
-        ];
-    }
-    InicioAlumnoPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad InicioAlumnoPage');
-    };
-    InicioAlumnoPage.prototype.RedireccionAula = function (aula) {
-        switch (aula) {
-            case "2° B":
-                // alert("Se redireccionara al aula: 2° B ");
-                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__materias_materias__["a" /* MateriasPage */], { aulaa: aula });
-                break;
-            case "3° A":
-                //redirecciono y paso el aula
-                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__materias_materias__["a" /* MateriasPage */], { aulaa: aula });
-                break;
-            case "4A":
-                //alert("Se redireccionara al aula: 4° A ");
-                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__materias_materias__["a" /* MateriasPage */], { aulaa: aula });
-                break;
-            case "4B":
-                // alert("Se redireccionara al aula: 4° B ");
-                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__materias_materias__["a" /* MateriasPage */], { aulaa: aula });
-                break;
-        }
-    };
-    InicioAlumnoPage.prototype.EditarPerfil = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__editar_perfil_editar_perfil__["a" /* EditarPerfilPage */]);
-    };
-    InicioAlumnoPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-inicio-alumno',template:/*ion-inline-start:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\inicio-alumno\inicio-alumno.html"*/'<!--\n\n  Generated template for the InicioAlumnoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Seleccione un aula</ion-title>\n\n   \n\n  </ion-navbar>\n\n  <button  ion-button round class="botonEditar"  (click)="EditarPerfil()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Editar perfil</button>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenProfesor.jpg\')" class="fondo">\n\n\n\n  \n\n      <div *ngFor="let lista of listaAulasProfesor; let i = index"> \n\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.aula)">{{ lista.aula }}</button> \n\n      </div>\n\n     \n\n  \n\n  </ion-content>\n\n'/*ion-inline-end:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\inicio-alumno\inicio-alumno.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
-    ], InicioAlumnoPage);
-    return InicioAlumnoPage;
-}());
-
-//# sourceMappingURL=inicio-alumno.js.map
-
-/***/ }),
-
-/***/ 169:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AulaAdministrativoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
@@ -1537,6 +1088,455 @@ var AulaAdministrativoPage = (function () {
 }());
 
 //# sourceMappingURL=aula-administrativo.js.map
+
+/***/ }),
+
+/***/ 167:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RespuestaEncuestaPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__resultados_votacion_resultados_votacion__ = __webpack_require__(286);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the RespuestaEncuestaPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var RespuestaEncuestaPage = (function () {
+    function RespuestaEncuestaPage(navCtrl, navParams, fireService, db, alertCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.fireService = fireService;
+        this.db = db;
+        this.alertCtrl = alertCtrl;
+        this.encuestas = [];
+        this.encuestasRespuestas = [];
+        this.horaActual = new Date();
+    }
+    RespuestaEncuestaPage.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        this.db.list('/encuestas').
+            subscribe(function (data) {
+            if (data)
+                _this.encuestas = data;
+        });
+        this.banderaVoto = false;
+        setTimeout(function () {
+            _this.db.list('/encuestaRespuestas').
+                subscribe(function (data) {
+                if (data)
+                    _this.encuestasRespuestas = data;
+            });
+        }, 1000);
+    };
+    RespuestaEncuestaPage.prototype.responder = function (e) {
+        console.log(e);
+        var bandera = false;
+        var date = new Date(e.horaFinalizacion);
+        if (date > this.horaActual) {
+            for (var i = 0; i < this.encuestasRespuestas.length; i++) {
+                var element = this.encuestasRespuestas[i];
+                console.log(e);
+                console.log(element);
+                if (element.mailUsuario == localStorage.getItem("mail") && element.nombreEncuesta == e.nombre) {
+                    bandera = true;
+                    var alert_1 = this.alertCtrl.create({
+                        title: 'Info!',
+                        subTitle: 'Usted ya voto en esta encuesta!',
+                        cssClass: "miClaseDanger",
+                        buttons: ['Listo']
+                    });
+                    alert_1.present();
+                    return;
+                }
+            }
+            if (bandera == false) {
+                if (e.formato == "Radio botones") {
+                    this.fireService.agregarRespEncuesta({ nombreEncuesta: e.nombre, mailUsuario: localStorage.getItem("mail"), respuesta: this.respuestaR });
+                }
+                else if (e.formato == "Selección de opciones") {
+                    this.fireService.agregarRespEncuesta({ nombreEncuesta: e.nombre, mailUsuario: localStorage.getItem("mail"), respuesta: this.respuestaS });
+                }
+                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__resultados_votacion_resultados_votacion__["a" /* ResultadosVotacionPage */], { nombreEncuesta: e.nombre });
+                var alert_2 = this.alertCtrl.create({
+                    title: 'Exito!',
+                    subTitle: 'Voto con exito!',
+                    cssClass: "miClaseAlert",
+                    buttons: ['Listo']
+                });
+                alert_2.present();
+                bandera = true;
+            }
+        }
+        else {
+            bandera = true;
+            var alert_3 = this.alertCtrl.create({
+                title: 'Info!',
+                subTitle: 'La encuesta ya expiro!!',
+                cssClass: "miClaseDanger",
+                buttons: ['Listo']
+            });
+            alert_3.present();
+        }
+    };
+    RespuestaEncuestaPage.prototype.respuesta1 = function (e) {
+        var bandera = false;
+        var date = new Date(e.horaFinalizacion);
+        if (date > this.horaActual) {
+            for (var i = 0; i < this.encuestasRespuestas.length; i++) {
+                var element = this.encuestasRespuestas[i];
+                if (element.mailUsuario == localStorage.getItem("mail") && element.nombreEncuesta == e.nombre) {
+                    bandera = true;
+                    var alert_4 = this.alertCtrl.create({
+                        title: 'Info!',
+                        subTitle: 'Usted ya voto en esta encuesta!',
+                        cssClass: "miClaseDanger",
+                        buttons: ['Listo']
+                    });
+                    alert_4.present();
+                    break;
+                }
+            }
+            if (bandera == false) {
+                this.fireService.agregarRespEncuesta({ nombreEncuesta: e.nombre, mailUsuario: localStorage.getItem("mail"), respuesta: e.respuesta1 });
+                var alert_5 = this.alertCtrl.create({
+                    title: 'Exito!',
+                    subTitle: 'Voto con exito!',
+                    cssClass: "miClaseAlert",
+                    buttons: ['Listo']
+                });
+                alert_5.present();
+                bandera = true;
+            }
+        }
+        else {
+            bandera = true;
+            var alert_6 = this.alertCtrl.create({
+                title: 'Info!',
+                subTitle: 'La encuesta ya expiro!!',
+                cssClass: "miClaseDanger",
+                buttons: ['Listo']
+            });
+            alert_6.present();
+        }
+        /*for(let i=0;i<this.encuestasRespuestas.length;i++)
+          {
+           
+           
+    
+          
+            
+              if( this.encuestasRespuestas[i].nombreEncuesta == e.nombre && this.encuestasRespuestas[i].voto== "true")
+                {
+                  
+                  let alert = this.alertCtrl.create({
+                    title: 'Info!',
+                    subTitle: 'Usted ya voto en esta encuesta!',
+                    cssClass:"miClaseAlert",
+                  buttons: ['Listo']
+                  });
+                  alert.present();
+                  return;
+                  
+                }
+                  
+                  console.log("no voto, va a votar")
+                  this.fireService.agregarRespEncuesta({nombreEncuesta:e.nombre,mailUsuario:localStorage.getItem("mail"),respuesta:e.respuesta1,voto:"true"});
+                  
+                  let alert = this.alertCtrl.create({
+                    title: 'Exito!',
+                    subTitle: 'Voto con exito!',
+                    cssClass:"miClaseAlert",
+                  buttons: ['Listo']
+                  });
+                  alert.present();
+                  this.navCtrl.push(MateriaPage);
+                  return;
+                
+              
+    
+                
+          }
+    
+     
+    */
+    };
+    RespuestaEncuestaPage.prototype.respuesta2 = function (e) {
+        var bandera = false;
+        var date = new Date(e.horaFinalizacion);
+        if (date > this.horaActual) {
+            for (var i = 0; i < this.encuestasRespuestas.length; i++) {
+                var element = this.encuestasRespuestas[i];
+                if (element.mailUsuario == localStorage.getItem("mail") && element.nombreEncuesta == e.nombre) {
+                    bandera = true;
+                    var alert_7 = this.alertCtrl.create({
+                        title: 'Info!',
+                        subTitle: 'Usted ya voto en esta encuesta!',
+                        cssClass: "miClaseDanger",
+                        buttons: ['Listo']
+                    });
+                    alert_7.present();
+                    break;
+                }
+            }
+            if (bandera == false) {
+                this.fireService.agregarRespEncuesta({ nombreEncuesta: e.nombre, mailUsuario: localStorage.getItem("mail"), respuesta: e.respuesta2 });
+                var alert_8 = this.alertCtrl.create({
+                    title: 'Exito!',
+                    subTitle: 'Voto con exito!',
+                    cssClass: "miClaseAlert",
+                    buttons: ['Listo']
+                });
+                alert_8.present();
+                bandera = true;
+            }
+        }
+        else {
+            bandera = true;
+            var alert_9 = this.alertCtrl.create({
+                title: 'Info!',
+                subTitle: 'La encuesta ya expiro!!',
+                cssClass: "miClaseDanger",
+                buttons: ['Listo']
+            });
+            alert_9.present();
+        }
+        /*for(let i=0;i<this.encuestasRespuestas.length;i++)
+          {
+           
+           
+    
+          
+            
+              if( this.encuestasRespuestas[i].nombreEncuesta == e.nombre && this.encuestasRespuestas[i].voto== "true")
+                {
+                  
+                  let alert = this.alertCtrl.create({
+                    title: 'Info!',
+                    subTitle: 'Usted ya voto en esta encuesta!',
+                    cssClass:"miClaseAlert",
+                  buttons: ['Listo']
+                  });
+                  alert.present();
+                  return;
+                  
+                }
+                  
+                  console.log("no voto, va a votar")
+                  this.fireService.agregarRespEncuesta({nombreEncuesta:e.nombre,mailUsuario:localStorage.getItem("mail"),respuesta:e.respuesta1,voto:"true"});
+                  
+                  let alert = this.alertCtrl.create({
+                    title: 'Exito!',
+                    subTitle: 'Voto con exito!',
+                    cssClass:"miClaseAlert",
+                  buttons: ['Listo']
+                  });
+                  alert.present();
+                  this.navCtrl.push(MateriaPage);
+                  return;
+                
+              
+    
+                
+          }
+    
+     
+        */ 
+    };
+    RespuestaEncuestaPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-respuesta-encuesta',template:/*ion-inline-start:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\respuesta-encuesta\respuesta-encuesta.html"*/'<!--\n\n  Generated template for the RespuestaEncuestaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Encuestas a responder</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/halloween-Materias.png\')" class="fondo">\n\n  \n\n  <div *ngFor="let e of encuestas">\n\n    \n\n         <ion-list >\n\n            <ion-item class="animated flipInY miItem">\n\n                <ion-label class="miLabel" style="color: orange"  floating>Nombre:</ion-label>\n\n                <ion-input type="text" [(ngModel)]="e.nombre" disabled="true"></ion-input>\n\n                </ion-item>\n\n                \n\n             <ion-item class="animated flipInY miItem">\n\n             <ion-label class="miLabel" style="color: orange"  floating>Pregunta:</ion-label>\n\n             <ion-input type="text" [(ngModel)]="e.pregunta" disabled="true"></ion-input>\n\n             </ion-item>\n\n             \n\n             \n\n               <ion-item class="animated flipInY miItem">\n\n                 <ion-label class="miLabel" style="color: orange"  floating>La encuesta finaliza en el horario:</ion-label>\n\n                 <ion-input type="text" [(ngModel)]="e.horaFReal" disabled="true"></ion-input>\n\n                 </ion-item>\n\n\n\n\n\n<!--\n\n                 <ion-item class="animated flipInX miItem">\n\n                     <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de inicio (opcional)</ion-label>\n\n                     <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaInicio" disabled="true"></ion-datetime>\n\n                   </ion-item>\n\n             \n\n                   <ion-item class="animated flipInX miItem">\n\n                       <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de finalización (opcional)</ion-label>\n\n                       <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaFinalizacion" disabled="true"></ion-datetime>\n\n                     </ion-item>\n\n                   -->\n\n\n\n\n\n                 <ion-item *ngIf=\'e.formato == "Botones"\' class="animated flipInY miItem">\n\n                   <ion-list  >\n\n                       <button  class="botones" (click)="respuesta1(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                           Presione para votar: {{e.respuesta1}}\n\n                          </button>\n\n                          <br>\n\n                          <button class="botones" (click)="respuesta2(e)" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                             Presione para votar: {{e.respuesta2}}\n\n                            </button>\n\n\n\n\n\n                     \n\n                       </ion-list>    \n\n                     </ion-item>\n\n        \n\n\n\n                               <ion-list  *ngIf=\'e.formato == "Radio botones"\' (ionChange)="responder(e)" radio-group [(ngModel)]="respuestaR">\n\n                                   <ion-item class="animated flipInY miItem">\n\n                                     <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                     <ion-radio  [value]="e.respuesta1" ></ion-radio>\n\n                                   </ion-item>\n\n                                   <ion-item class="animated flipInY miItem">\n\n                                       <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                       <ion-radio  [value]="e.respuesta2" ></ion-radio>\n\n                                     </ion-item>\n\n                                    \n\n\n\n                                 </ion-list>\n\n\n\n                              <!--   <ion-list  *ngIf=\'e.formato == "Checkbox"\' radio-group [(ngModel)]="respuesta">\n\n                                     <ion-item class="animated flipInY miItem">\n\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>\n\n                                     </ion-item>\n\n                                     <ion-item class="animated flipInY miItem">\n\n                                         <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                         <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta2" ></ion-checkbox>\n\n                                       </ion-item>\n\n                                                 \n\n \n\n                                   </ion-list> -->  \n\n\n\n                                   <ion-list  *ngIf=\'e.formato == "Selección de opciones"\'  >\n\n                                    <ion-item class="animated flipInY miItem" >\n\n                                    <select style="color : rgb(85, 158, 218); width:150px;" (change)="responder(e)" [(ngModel)]="respuestaS"  class="animated flipInY miItem">\n\n  \n\n                                      <option >{{e.respuesta1}} </option>\n\n                                      <option >{{e.respuesta2}} </option>\n\n                                    \n\n                                    </select>\n\n                                  </ion-item>\n\n                                     \n\n\n\n                                  </ion-list>\n\n                                 \n\n\n\n                           \n\n                       \n\n                     \n\n             \n\n               </ion-list> \n\n\n\n         </div>\n\n\n\n  \n\n  </ion-content>'/*ion-inline-end:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\respuesta-encuesta\respuesta-encuesta.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+    ], RespuestaEncuestaPage);
+    return RespuestaEncuestaPage;
+}());
+
+//# sourceMappingURL=respuesta-encuesta.js.map
+
+/***/ }),
+
+/***/ 168:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificacionPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_audio__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tutorial_tutorial__ = __webpack_require__(52);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+/**
+ * Generated class for the NotificacionPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var NotificacionPage = (function () {
+    function NotificacionPage(navCtrl, modalCtrl, navParams, db, alertCtrl, nativeAudio) {
+        this.navCtrl = navCtrl;
+        this.modalCtrl = modalCtrl;
+        this.navParams = navParams;
+        this.db = db;
+        this.alertCtrl = alertCtrl;
+        this.nativeAudio = nativeAudio;
+        this.aula = this.navParams.get('aulaa');
+        console.log("dsadada" + this.aula);
+        this.nativeAudio.preloadComplex('1', 'assets/sonidos/1.mp3', 1, 1, 0);
+        this.nativeAudio.play('1');
+    }
+    NotificacionPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad NotificacionPage');
+    };
+    NotificacionPage.prototype.Guardar = function () {
+        var _this = this;
+        this.db.list('/notificacionesProfesor/').push({
+            titulo: this.titulo,
+            mensaje: this.mensaje,
+            curso: this.aula
+        }).then(function () {
+            _this.titulo = "";
+            _this.mensaje = "";
+            var alert = _this.alertCtrl.create({
+                title: "Exitosamente!",
+                subTitle: "Se envío el mensaje de importancia",
+                cssClass: "miClaseAlert",
+                buttons: ['Aceptar']
+            });
+            alert.present();
+        })
+            .catch(function () {
+        });
+        //this.navCtrl.setRoot(AulaProfesorPage);
+    };
+    NotificacionPage.prototype.presentModal = function () {
+        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__tutorial_tutorial__["a" /* TutorialPage */], { img: "notificacionTutorial.png" });
+        modal.present();
+    };
+    NotificacionPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-notificacion',template:/*ion-inline-start:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\notificacion\notificacion.html"*/'<!--\n\n  Generated template for the NotificacionPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Creación de notificación<button ion-button color="danger" icon-only style="float:right" (click)=\'presentModal()\'><ion-icon style="size:200%" name="help-circle"></ion-icon></button></ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-administrativo.jpeg\')" class="fondo">\n\n  \n\n<ion-list>\n\n<ion-item class="animated flipInX miItem">\n\n<ion-label class="miLabel" floating>Titulo</ion-label>\n\n<ion-input type="text" [(ngModel)]="titulo" disabled="false"></ion-input> \n\n</ion-item>\n\n          \n\n<ion-item class="animated flipInY miItem">\n\n<ion-label class="miLabel" floating>Mensaje</ion-label>\n\n<ion-input type="text" [(ngModel)]="mensaje" disabled="false"></ion-input>\n\n</ion-item>\n\n<button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>\n\n</ion-list>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\notificacion\notificacion.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_audio__["a" /* NativeAudio */]])
+    ], NotificacionPage);
+    return NotificacionPage;
+}());
+
+//# sourceMappingURL=notificacion.js.map
+
+/***/ }),
+
+/***/ 169:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InicioAlumnoPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materias_materias__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__editar_perfil_editar_perfil__ = __webpack_require__(292);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the InicioAlumnoPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var InicioAlumnoPage = (function () {
+    function InicioAlumnoPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.listaAulasProfesor = [
+            {
+                "aula": "4A"
+            },
+            {
+                "aula": "4B"
+            }
+        ];
+    }
+    InicioAlumnoPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad InicioAlumnoPage');
+    };
+    InicioAlumnoPage.prototype.RedireccionAula = function (aula) {
+        switch (aula) {
+            case "2° B":
+                // alert("Se redireccionara al aula: 2° B ");
+                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__materias_materias__["a" /* MateriasPage */], { aulaa: aula });
+                break;
+            case "3° A":
+                //redirecciono y paso el aula
+                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__materias_materias__["a" /* MateriasPage */], { aulaa: aula });
+                break;
+            case "4A":
+                //alert("Se redireccionara al aula: 4° A ");
+                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__materias_materias__["a" /* MateriasPage */], { aulaa: aula });
+                break;
+            case "4B":
+                // alert("Se redireccionara al aula: 4° B ");
+                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__materias_materias__["a" /* MateriasPage */], { aulaa: aula });
+                break;
+        }
+    };
+    InicioAlumnoPage.prototype.EditarPerfil = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__editar_perfil_editar_perfil__["a" /* EditarPerfilPage */]);
+    };
+    InicioAlumnoPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-inicio-alumno',template:/*ion-inline-start:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\inicio-alumno\inicio-alumno.html"*/'<!--\n\n  Generated template for the InicioAlumnoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Seleccione un aula</ion-title>\n\n   \n\n  </ion-navbar>\n\n  <button  ion-button round class="botonEditar"  (click)="EditarPerfil()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Editar perfil</button>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenProfesor.jpg\')" class="fondo">\n\n\n\n  \n\n      <div *ngFor="let lista of listaAulasProfesor; let i = index"> \n\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionAula(lista.aula)">{{ lista.aula }}</button> \n\n      </div>\n\n     \n\n  \n\n  </ion-content>\n\n'/*ion-inline-end:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\inicio-alumno\inicio-alumno.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
+    ], InicioAlumnoPage);
+    return InicioAlumnoPage;
+}());
+
+//# sourceMappingURL=inicio-alumno.js.map
 
 /***/ }),
 
@@ -2666,7 +2666,7 @@ var InicioAdminPage = (function () {
         loading.present();
         setTimeout(function () {
             loading.dismiss();
-        }, 2000);
+        }, 4000);
     };
     InicioAdminPage.prototype.ionViewWillLeave = function () {
         this.screenOrientation.unlock();
@@ -2918,8 +2918,12 @@ var InicioAdminPage = (function () {
             template: "\n  <ion-header>\n  <ion-navbar color=\"dark\">\n    <ion-title>Control Personas<button ion-button color=\"light\" (click)='logout()'>Salir</button> <button ion-button color=\"danger\" icon-only style=\"float:right\" (click)='presentModal()'><ion-icon style=\"size:200%\" name=\"help-circle\"></ion-icon></button> </ion-title>  \n  </ion-navbar>\n</ion-header>\n  <ion-content padding style=\"background-image:url('assets/aula-administrativo.jpeg')\" class=\"fondo\">\n  \n  <ion-item style='float:right'>\n  <ion-label>Personas</ion-label>\n  <ion-select interface='action-sheet' [(ngModel)]=\"personas\">\n    <ion-option (ionSelect)=\"changeList('p')\" value=\"p\">Profesores</ion-option>\n    <ion-option (ionSelect)=\"changeList('a')\" value=\"a\">Administrativos</ion-option>\n  </ion-select>\n</ion-item>\n<ion-item>\n<div style='width:100%;height:100%' *ngIf='profesor'>\n  <ng2-smart-table style='width:100%;height:100%' [settings]=\"settings\" [source]=\"source\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div></ion-item>\n  <ion-item>\n  <div style='width:100%;height:100%' *ngIf='!profesor'>\n  <ng2-smart-table style='width:100%;height:100%'  [settings]=\"settings2\" [source]=\"source2\" (deleteConfirm)=\"onDeleteConfirm($event)\"\n  (editConfirm)=\"onSaveConfirm($event)\"\n  (createConfirm)=\"onCreateConfirm($event)\"></ng2-smart-table></div></ion-item>\n\n  <button ion-button round full *ngIf='profesor' large (click)=\"cargarLista()\" class=\"animated flipInX miBoton miButton\"> \n  <ion-icon name=\"arrow-round-back\"></ion-icon> Cargar Profesores\n</button>\n<button ion-button round full *ngIf='!profesor' large (click)=\"cargarLista()\" class=\"animated flipInX miBoton miButton\"> \n<ion-icon name=\"arrow-round-back\"></ion-icon> Cargar Administrativos\n</button>\n</ion-content>\n",
             selector: 'page-inicio-admin',
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_screen_orientation__["a" /* ScreenOrientation */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_screen_orientation__["a" /* ScreenOrientation */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], InicioAdminPage);
     return InicioAdminPage;
 }());
@@ -3129,7 +3133,7 @@ var InicioProfesorPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cagar_archivo_cagar_archivo__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__notificacion_notificacion__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__notificacion_notificacion__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__materia_materia__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__encuestas_encuestas__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__tomar_lista_tomar_lista__ = __webpack_require__(121);
@@ -3402,7 +3406,10 @@ var AulaProfesorPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-aula-profesor',template:/*ion-inline-start:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/'<!--\n\n  Generated template for the AulaProfesorPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Aula:{{aula}}, Materia {{materia}}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding style="background-image:url(\'assets/aula-profesor.jpg\')" class="fondo">\n\n\n\n <!--gi <ion-list>\n\n              \n\n    <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Divicion</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.division" disabled="true"></ion-input> \n\n    </ion-item>\n\n                    \n\n    <ion-item class="animated flipInY miItem">\n\n      <ion-label class="miLabel" floating>Materia</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.materia" disabled="true"></ion-input>\n\n    </ion-item>\n\n                \n\n    <ion-item class="animated flipInX miItem" >\n\n      <ion-label class="miLabel" floating >Cantidad de Alumnos</ion-label>\n\n      <ion-input type="text" [(ngModel)]="miAulaProfesor.cantidadAlumno" disabled="true"></ion-input>\n\n    </ion-item> \n\n  \n\n  </ion-list>-->\n\n\n\n   \n\n    <button ion-button round full large (click)="crearNotificacion()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Crear Notificacion\n\n    </button>\n\n    <!--<button ion-button round full large (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Cargar Alumnos\n\n    </button>-->\n\n   \n\n      <button ion-button round full large  (click)="Encuestas()" class="animated flipInX miBoton miButton"> \n\n        <ion-icon name="arrow-round-back"></ion-icon> Ver Encuestas\n\n      </button>\n\n\n\n    <button ion-button round full large  (click)="tomaLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="arrow-round-back"></ion-icon> Tomar Lista\n\n    </button>\n\n    <br><br>\n\n\n\n<div style="width:100%">\n\n  <ion-grid style="background-color:white;">\n\n    <h4>Faltas</h4>\n\n     <ion-row >\n\n       <ion-col >\n\n         <ngx-charts-bar-horizontal \n\n           [view]="view"\n\n           [results]="informacion"\n\n           xAxis="true"\n\n           yAxis="true"\n\n         >\n\n         </ngx-charts-bar-horizontal>\n\n       </ion-col>\n\n     </ion-row>\n\n   </ion-grid>\n\n  </div>\n\n  <!--  [legend]="showLegend"\n\n           legendTitle="Votos"\n\n           [showXAxisLabel]="showXAxisLabel"\n\n           [showYAxisLabel]="showYAxisLabel"\n\n           xAxisLabel="votos"\n\n           yAxisLabel="resultado" -->\n\n           <br>\n\n    \n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\aula-profesor\aula-profesor.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_9__ionic_native_barcode_scanner__["a" /* BarcodeScanner */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_native_audio__["a" /* NativeAudio */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* ToastController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_9__ionic_native_barcode_scanner__["a" /* BarcodeScanner */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_native_audio__["a" /* NativeAudio */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* ToastController */]])
     ], AulaProfesorPage);
     return AulaProfesorPage;
 }());
@@ -3544,7 +3551,10 @@ var EncuestasAltaPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-encuestas-alta',template:/*ion-inline-start:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\encuestas-alta\encuestas-alta.html"*/'<!--\n\n  Generated template for the EncuestasAltaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Crear encuesta</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n\n   \n\n  <ion-card-content>\n\n    \n\n    <ion-list >  \n\n      <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Nombre de la encuesta</ion-label>\n\n      <ion-input type="text" [(ngModel)]="nombre" disabled="false"></ion-input> \n\n      </ion-item>\n\n    \n\n  \n\n      <ion-item class="animated flipInX miItem">\n\n      <ion-label class="miLabel" floating>Pregunta</ion-label>\n\n      <ion-input type="text" [(ngModel)]="pregunta" disabled="false"></ion-input> \n\n      </ion-item>\n\n\n\n      <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Primera opción</ion-label>\n\n        <ion-input type="text" [(ngModel)]="respuesta1" disabled="false"></ion-input> \n\n        </ion-item>\n\n\n\n        <ion-item class="animated flipInX miItem">\n\n          <ion-label class="miLabel" floating>Segunda opción</ion-label>\n\n          <ion-input type="text" [(ngModel)]="respuesta2" disabled="false"></ion-input> \n\n          </ion-item>\n\n\n\n          <ion-item class="animated flipInX miItem">\n\n            <ion-label class="miLabel" floating>Formato</ion-label>\n\n          <ion-select [(ngModel)]="formato">\n\n         \n\n            <ion-option>Radio botones</ion-option> \n\n           <!-- <ion-option>Checkbox</ion-option> -->\n\n            <ion-option>Botones</ion-option> \n\n            <ion-option>Selección de opciones</ion-option> \n\n          </ion-select>\n\n        </ion-item>\n\n\n\n      <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Duración</ion-label>\n\n      <ion-select [(ngModel)]="duracion">\n\n      \n\n        <ion-option >5 minutos</ion-option> \n\n        <ion-option >30 minutos</ion-option> \n\n        <ion-option >60 minutos</ion-option> \n\n      </ion-select>\n\n    </ion-item>\n\n     <!-- <ion-item class="animated flipInX miItem">\n\n          <ion-label class="miLabel" floating>Fecha de Inicio</ion-label>\n\n          <ion-datetime displayFormat="D/M/YYYY HH:mm:ss" [(ngModel)]="horaAux"></ion-datetime>\n\n        </ion-item>-->\n\n    \n\n\n\n    <!--\n\n    <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Fecha y hora de inicio (opcional)</ion-label>\n\n        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="fechaInicio"></ion-datetime>\n\n      </ion-item>\n\n\n\n      <ion-item class="animated flipInX miItem">\n\n          <ion-label class="miLabel" floating>Fecha y hora de finalización (opcional)</ion-label>\n\n          <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="fechaFinalizacion"></ion-datetime>\n\n        </ion-item>\n\n      -->\n\n\n\n\n\n    <button  ion-button round class="botonGuardar"  (click)="Guardar()"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar</button>\n\n\n\n\n\n    </ion-list>\n\n\n\n\n\n          </ion-card-content>\n\n\n\n\n\n\n\n          \n\n        </ion-content>\n\n'/*ion-inline-end:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\encuestas-alta\encuestas-alta.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */]])
     ], EncuestasAltaPage);
     return EncuestasAltaPage;
 }());
@@ -3613,7 +3623,10 @@ var EncuestasEditarPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-encuestas-editar',template:/*ion-inline-start:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\encuestas-editar\encuestas-editar.html"*/'<!--\n\n  Generated template for the EncuestasEditarPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n    <ion-navbar color="dark">\n\n      <ion-title>Editar encuesta "{{encuestaAmodificar.nombre}}"</ion-title>\n\n    </ion-navbar>\n\n  </ion-header>\n\n  \n\n  \n\n  <ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n\n     \n\n    <ion-card-content>\n\n      \n\n      <ion-list >  \n\n        <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Nombre de la encuesta</ion-label>\n\n        <ion-input type="text" [(ngModel)]="encuestaAmodificar.nombre" disabled="false"></ion-input> \n\n        </ion-item>\n\n      \n\n    \n\n        <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Pregunta</ion-label>\n\n        <ion-input type="text" [(ngModel)]="encuestaAmodificar.pregunta" disabled="false"></ion-input> \n\n        </ion-item>\n\n  \n\n        <ion-item class="animated flipInX miItem">\n\n          <ion-label class="miLabel" floating>Primera opción</ion-label>\n\n          <ion-input type="text" [(ngModel)]="encuestaAmodificar.respuesta1" disabled="false"></ion-input> \n\n          </ion-item>\n\n  \n\n          <ion-item class="animated flipInX miItem">\n\n            <ion-label class="miLabel" floating>Segunda opción</ion-label>\n\n            <ion-input type="text" [(ngModel)]="encuestaAmodificar.respuesta2" disabled="false"></ion-input> \n\n            </ion-item>\n\n  \n\n            <ion-item class="animated flipInX miItem">\n\n              <ion-label class="miLabel" floating>Formato</ion-label>\n\n            <ion-select [(ngModel)]="encuestaAmodificar.formato">\n\n           \n\n              <ion-option>Radio botones</ion-option> \n\n             <!-- <ion-option>Checkbox</ion-option> -->\n\n              <ion-option>Botones</ion-option> \n\n              <ion-option>Selección de opciones</ion-option> \n\n            </ion-select>\n\n          </ion-item>\n\n  <!--\n\n          <ion-item class="animated flipInX miItem">\n\n            <ion-label class="miLabel" floating>Duración</ion-label>\n\n          <ion-select [(ngModel)]="encuestaAmodificar.duracion">\n\n          \n\n            <ion-option>5 minutos</ion-option> \n\n            <ion-option>30 minutos</ion-option> \n\n            <ion-option>55 minutos</ion-option> \n\n          </ion-select>\n\n        </ion-item>\n\n      -->\n\n\n\n      <!--\n\n    <ion-item class="animated flipInX miItem">\n\n        <ion-label class="miLabel" floating>Fecha y hora de inicio (opcional)</ion-label>\n\n        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="encuestaAmodificar.fechaInicio"></ion-datetime>\n\n      </ion-item>\n\n\n\n      <ion-item class="animated flipInX miItem">\n\n          <ion-label class="miLabel" floating>Fecha y hora de finalización (opcional)</ion-label>\n\n          <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="encuestaAmodificar.fechaFinalizacion"></ion-datetime>\n\n        </ion-item>\n\n      -->        \n\n  \n\n  \n\n      <button  ion-button round class="botonGuardar"  (click)="EditarEncuestaa(encuestaAmodificar)"><ion-icon ios="ios-brush" md="md-brush"></ion-icon>Guardar Modificación</button>\n\n  \n\n  \n\n      </ion-list>\n\n  \n\n  \n\n            </ion-card-content>\n\n  \n\n  \n\n  \n\n            \n\n          </ion-content>\n\n  '/*ion-inline-end:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\encuestas-editar\encuestas-editar.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_audio__["a" /* NativeAudio */]])
     ], EncuestasEditarPage);
     return EncuestasEditarPage;
 }());
@@ -3630,7 +3643,7 @@ var EncuestasEditarPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inicio_alumno_inicio_alumno__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inicio_alumno_inicio_alumno__ = __webpack_require__(169);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3706,7 +3719,7 @@ var EditarPerfilPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_fire_base_service_fire_base_service__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__aula_administrativo_aula_administrativo__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__aula_administrativo_aula_administrativo__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__materias_administrativo_materias_administrativo__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__cagar_archivo_cagar_archivo__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__tomar_lista_tomar_lista__ = __webpack_require__(121);
@@ -4194,7 +4207,7 @@ var RealInicioAdministrativoPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_screen_orientation__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__notificacion_notificacion__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__notificacion_notificacion__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__materia_materia__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__encuestas_encuestas__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__tomar_lista_tomar_lista__ = __webpack_require__(121);
@@ -4542,19 +4555,19 @@ var map = {
 		30
 	],
 	"../pages/asignar-materia-alumno/asignar-materia-alumno.module": [
-		1057,
+		1058,
 		29
 	],
 	"../pages/asignar-materia/asignar-materia.module": [
-		1058,
+		1057,
 		28
 	],
 	"../pages/aula-administrativo/aula-administrativo.module": [
-		1060,
+		1059,
 		27
 	],
 	"../pages/aula-alumno/aula-alumno.module": [
-		1059,
+		1060,
 		26
 	],
 	"../pages/aula-profesor/aula-profesor.module": [
@@ -4562,15 +4575,15 @@ var map = {
 		25
 	],
 	"../pages/cagar-archivo/cagar-archivo.module": [
-		1064,
+		1062,
 		24
 	],
 	"../pages/cuestionarios/cuestionarios.module": [
-		1062,
+		1063,
 		23
 	],
 	"../pages/descargar-archivo/descargar-archivo.module": [
-		1063,
+		1064,
 		22
 	],
 	"../pages/editar-perfil/editar-perfil.module": [
@@ -4590,11 +4603,11 @@ var map = {
 		18
 	],
 	"../pages/inicio-admin/inicio-admin.module": [
-		1069,
+		1070,
 		17
 	],
 	"../pages/inicio-administrativo/inicio-administrativo.module": [
-		1070,
+		1069,
 		16
 	],
 	"../pages/inicio-alumno/inicio-alumno.module": [
@@ -4606,11 +4619,11 @@ var map = {
 		14
 	],
 	"../pages/login/login.module": [
-		1076,
+		1074,
 		13
 	],
 	"../pages/materia/materia.module": [
-		1074,
+		1073,
 		12
 	],
 	"../pages/materias-administrativo/materias-administrativo.module": [
@@ -4618,43 +4631,43 @@ var map = {
 		11
 	],
 	"../pages/materias-profesor/materias-profesor.module": [
-		1073,
+		1076,
 		10
 	],
 	"../pages/materias/materias.module": [
-		1079,
+		1077,
 		9
 	],
 	"../pages/notificacion/notificacion.module": [
-		1077,
+		1078,
 		8
 	],
 	"../pages/perfil/perfil.module": [
-		1078,
+		1079,
 		7
 	],
 	"../pages/qr-encuestas/qr-encuestas.module": [
-		1080,
+		1081,
 		6
 	],
 	"../pages/qrencuesta/qrencuesta.module": [
-		1081,
+		1080,
 		5
 	],
 	"../pages/real-inicio-administrativo/real-inicio-administrativo.module": [
-		1082,
+		1086,
 		4
 	],
 	"../pages/respuesta-encuesta/respuesta-encuesta.module": [
-		1083,
+		1082,
 		3
 	],
 	"../pages/resultados-votacion/resultados-votacion.module": [
-		1084,
+		1083,
 		2
 	],
 	"../pages/tomar-lista/tomar-lista.module": [
-		1086,
+		1084,
 		1
 	],
 	"../pages/tutorial/tutorial.module": [
@@ -5004,7 +5017,7 @@ var CuestionariosPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InicioAdministrativoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aula_administrativo_aula_administrativo__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__aula_administrativo_aula_administrativo__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_audio__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -5335,9 +5348,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_inicio_admin_inicio_admin__ = __webpack_require__(287);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_inicio_administrativo_inicio_administrativo__ = __webpack_require__(543);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_inicio_profesor_inicio_profesor__ = __webpack_require__(288);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_inicio_alumno_inicio_alumno__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_inicio_alumno_inicio_alumno__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_aula_alumno_aula_alumno__ = __webpack_require__(541);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_aula_administrativo_aula_administrativo__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_aula_administrativo_aula_administrativo__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_aula_profesor_aula_profesor__ = __webpack_require__(289);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angularfire2_database__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_angularfire2__ = __webpack_require__(740);
@@ -5356,7 +5369,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_editar_perfil_editar_perfil__ = __webpack_require__(292);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_descargar_archivo_descargar_archivo__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_perfil_perfil__ = __webpack_require__(545);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_notificacion_notificacion__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_notificacion_notificacion__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_real_inicio_administrativo_real_inicio_administrativo__ = __webpack_require__(293);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_asignar_materia_asignar_materia__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pages_encuestas_encuestas__ = __webpack_require__(97);
@@ -5364,7 +5377,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_encuestas_editar_encuestas_editar__ = __webpack_require__(291);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_tomar_lista_tomar_lista__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__ionic_native_native_audio__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_respuesta_encuesta_respuesta_encuesta__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_respuesta_encuesta_respuesta_encuesta__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__swimlane_ngx_charts__ = __webpack_require__(741);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_41__swimlane_ngx_charts__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__angular_platform_browser_animations__ = __webpack_require__(525);
@@ -5498,36 +5511,36 @@ var AppModule = (function () {
                     links: [
                         { loadChildren: '../pages/abm-alumnos/abm-alumnos.module#AbmAlumnosPageModule', name: 'AbmAlumnosPage', segment: 'abm-alumnos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/alumnos/alumnos.module#AlumnosPageModule', name: 'AlumnosPage', segment: 'alumnos', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/asignar-materia-alumno/asignar-materia-alumno.module#AsignarMateriaAlumnoPageModule', name: 'AsignarMateriaAlumnoPage', segment: 'asignar-materia-alumno', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asignar-materia/asignar-materia.module#AsignarMateriaPageModule', name: 'AsignarMateriaPage', segment: 'asignar-materia', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/aula-alumno/aula-alumno.module#AulaAlumnoPageModule', name: 'AulaAlumnoPage', segment: 'aula-alumno', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/asignar-materia-alumno/asignar-materia-alumno.module#AsignarMateriaAlumnoPageModule', name: 'AsignarMateriaAlumnoPage', segment: 'asignar-materia-alumno', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/aula-administrativo/aula-administrativo.module#AulaAdministrativoPageModule', name: 'AulaAdministrativoPage', segment: 'aula-administrativo', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/aula-alumno/aula-alumno.module#AulaAlumnoPageModule', name: 'AulaAlumnoPage', segment: 'aula-alumno', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/aula-profesor/aula-profesor.module#AulaProfesorPageModule', name: 'AulaProfesorPage', segment: 'aula-profesor', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/cagar-archivo/cagar-archivo.module#CagarArchivoPageModule', name: 'CagarArchivoPage', segment: 'cagar-archivo', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/cuestionarios/cuestionarios.module#CuestionariosPageModule', name: 'CuestionariosPage', segment: 'cuestionarios', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/descargar-archivo/descargar-archivo.module#DescargarArchivoPageModule', name: 'DescargarArchivoPage', segment: 'descargar-archivo', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/cagar-archivo/cagar-archivo.module#CagarArchivoPageModule', name: 'CagarArchivoPage', segment: 'cagar-archivo', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/editar-perfil/editar-perfil.module#EditarPerfilPageModule', name: 'EditarPerfilPage', segment: 'editar-perfil', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/encuestas-alta/encuestas-alta.module#EncuestasAltaPageModule', name: 'EncuestasAltaPage', segment: 'encuestas-alta', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/encuestas-editar/encuestas-editar.module#EncuestasEditarPageModule', name: 'EncuestasEditarPage', segment: 'encuestas-editar', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/encuestas/encuestas.module#EncuestasPageModule', name: 'EncuestasPage', segment: 'encuestas', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/inicio-admin/inicio-admin.module#InicioAdminPageModule', name: 'InicioAdminPage', segment: 'inicio-admin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/inicio-administrativo/inicio-administrativo.module#InicioAdministrativoPageModule', name: 'InicioAdministrativoPage', segment: 'inicio-administrativo', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/inicio-admin/inicio-admin.module#InicioAdminPageModule', name: 'InicioAdminPage', segment: 'inicio-admin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/inicio-alumno/inicio-alumno.module#InicioAlumnoPageModule', name: 'InicioAlumnoPage', segment: 'inicio-alumno', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/inicio-profesor/inicio-profesor.module#InicioProfesorPageModule', name: 'InicioProfesorPage', segment: 'inicio-profesor', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/materias-profesor/materias-profesor.module#MateriasProfesorPageModule', name: 'MateriasProfesorPage', segment: 'materias-profesor', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/materia/materia.module#MateriaPageModule', name: 'MateriaPage', segment: 'materia', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/materias-administrativo/materias-administrativo.module#MateriasAdministrativoPageModule', name: 'MateriasAdministrativoPage', segment: 'materias-administrativo', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/materias-administrativo/materias-administrativo.module#MateriasAdministrativoPageModule', name: 'MateriasAdministrativoPage', segment: 'materias-administrativo', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/materias-profesor/materias-profesor.module#MateriasProfesorPageModule', name: 'MateriasProfesorPage', segment: 'materias-profesor', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/materias/materias.module#MateriasPageModule', name: 'MateriasPage', segment: 'materias', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notificacion/notificacion.module#NotificacionPageModule', name: 'NotificacionPage', segment: 'notificacion', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/perfil/perfil.module#PerfilPageModule', name: 'PerfilPage', segment: 'perfil', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/materias/materias.module#MateriasPageModule', name: 'MateriasPage', segment: 'materias', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/qr-encuestas/qr-encuestas.module#QrEncuestasPageModule', name: 'QrEncuestasPage', segment: 'qr-encuestas', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/qrencuesta/qrencuesta.module#QrencuestaPageModule', name: 'QrencuestaPage', segment: 'qrencuesta', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/real-inicio-administrativo/real-inicio-administrativo.module#RealInicioAdministrativoPageModule', name: 'RealInicioAdministrativoPage', segment: 'real-inicio-administrativo', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/qr-encuestas/qr-encuestas.module#QrEncuestasPageModule', name: 'QrEncuestasPage', segment: 'qr-encuestas', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/respuesta-encuesta/respuesta-encuesta.module#RespuestaEncuestaPageModule', name: 'RespuestaEncuestaPage', segment: 'respuesta-encuesta', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/resultados-votacion/resultados-votacion.module#ResultadosVotacionPageModule', name: 'ResultadosVotacionPage', segment: 'resultados-votacion', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tomar-lista/tomar-lista.module#TomarListaPageModule', name: 'TomarListaPage', segment: 'tomar-lista', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tutorial/tutorial.module#TutorialPageModule', name: 'TutorialPage', segment: 'tutorial', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tomar-lista/tomar-lista.module#TomarListaPageModule', name: 'TomarListaPage', segment: 'tomar-lista', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/real-inicio-administrativo/real-inicio-administrativo.module#RealInicioAdministrativoPageModule', name: 'RealInicioAdministrativoPage', segment: 'real-inicio-administrativo', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_15_angularfire2_database__["b" /* AngularFireDatabaseModule */],
@@ -6040,7 +6053,11 @@ var CagarArchivoPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-cagar-archivo',template:/*ion-inline-start:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/'<!--\n\n  Generated template for the CagarArchivoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="dark">\n\n    <ion-title>Cargar Archivo <button ion-button color="danger" icon-only style="float:right" (click)=\'presentModal()\'><ion-icon style="size:200%" name="help-circle"></ion-icon></button> </ion-title>  \n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/nube.jpg\')" class="fondo">\n\n\n\n  <ion-list>\n\n    <ion-item>\n\n      <!--<label>{{label}}</label>-->\n\n      <!--(change)="fileUpload($event)"-->\n\n      <!--<input type=\'file\' name=\'userFile\' id=\'file\' (change)="onFileSelect($event.target)" style="display: none" multiple> #fileInp-->\n\n      <input type="file" (change)="onFileSelect($event.target)" id="file-input"  style="opacity: 0">\n\n      <ion-icon name="cloud-done">Selecionar archivo .csv</ion-icon>\n\n      <!--<button ion-button (click)="onClick()">Cargar</button>-->\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <p *ngIf="nombreArchivo">Nombre: {{nombreArchivo}}</p>\n\n      <p *ngIf="sizeArchivo">Tamaño: {{sizeArchivo}}</p>\n\n    </ion-item>\n\n  </ion-list>\n\n  \n\n  <div>\n\n    <button center ion-button round full large *ngIf="nombreArchivo!=null" (click)="cargarLista()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Subir\n\n    </button>\n\n    <button center ion-button round full large (click)="descargarArchivo()" class="animated flipInX miBoton miButton"> \n\n      <ion-icon name="cloud-done"></ion-icon> Descargar\n\n    </button>\n\n  </div>\n\n  \n\n  \n\n</ion-content>\n\n'/*ion-inline-end:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\cagar-archivo\cagar-archivo.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__["a" /* NativeAudio */]])
     ], CagarArchivoPage);
     return CagarArchivoPage;
 }());
@@ -6058,7 +6075,7 @@ var CagarArchivoPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inicio_admin_inicio_admin__ = __webpack_require__(287);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inicio_profesor_inicio_profesor__ = __webpack_require__(288);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inicio_alumno_inicio_alumno__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inicio_alumno_inicio_alumno__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_fire_base_service_fire_base_service__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_firebase__ = __webpack_require__(698);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_firebase__);
@@ -6596,7 +6613,7 @@ var HomePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__descargar_archivo_descargar_archivo__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__respuesta_encuesta_respuesta_encuesta__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__respuesta_encuesta_respuesta_encuesta__ = __webpack_require__(167);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6755,7 +6772,7 @@ var MateriaPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_screen_orientation__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_audio__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__respuesta_encuesta_respuesta_encuesta__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__respuesta_encuesta_respuesta_encuesta__ = __webpack_require__(167);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7139,7 +7156,11 @@ var EncuestasPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-encuestas',template:/*ion-inline-start:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\encuestas\encuestas.html"*/'<!--\n\n  Generated template for the EncuestasPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar color="dark">\n\n    <ion-title>Encuestas<button ion-button color="danger" icon-only style="float:right" (click)=\'presentModal()\'><ion-icon style="size:200%" name="help-circle"></ion-icon></button> \n\n  </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding style="background-image:url(\'assets/hallowenCuestionarios.jpg\')" class="fondo">\n\n          <br> <button ion-button round full large style="margin:auto;text-align:center;display:block;background-color:rgba(0, 0, 0, 0.747)" (click)="RedireccionCrearCuestionario()">Crear cuestionario</button> \n\n         <br>\n\n          \n\n          <div *ngFor="let e of encuestas; let i = index">\n\n     \n\n          <ion-list >\n\n              <div>\n\n          <ion-item class="animated flipInX miItem">\n\n              <ion-label class="miLabel" style="color: orange" floating>Nombre:</ion-label>\n\n              <ion-input type="text" [(ngModel)]="e.nombre" disabled="true"></ion-input> \n\n              <button style="color: yellow" ion-button clear item-end icon-only (click)="modificarEncuesta(e)" >\n\n                  <ion-icon style="width:50px" name="md-create"></ion-icon>\n\n                </button>\n\n                <button style="color: red" ion-button clear item-end icon-only (click)="eliminarEncuesta(e)">\n\n                  <ion-icon style="width:50px" name="trash"></ion-icon>\n\n                </button>\n\n              </ion-item>\n\n            </div>\n\n                 \n\n              <ion-item class="animated flipInY miItem">\n\n              <ion-label class="miLabel" style="color: orange"  floating>Pregunta:</ion-label>\n\n              <ion-input type="text" [(ngModel)]="e.pregunta" disabled="true"></ion-input>\n\n              </ion-item>\n\n              \n\n              \n\n                <ion-item class="animated flipInY miItem">\n\n                  <ion-label class="miLabel" style="color: orange"  floating>La encuesta finaliza en el horario:</ion-label>\n\n                  <ion-input type="text" [(ngModel)]="e.horaFReal" disabled="true"></ion-input>\n\n                  </ion-item>\n\n\n\n\n\n<!--\n\n                  <ion-item class="animated flipInX miItem">\n\n                      <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de inicio (opcional)</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaInicio" disabled="true"></ion-datetime>\n\n                    </ion-item>\n\n              \n\n                    <ion-item class="animated flipInX miItem">\n\n                        <ion-label class="miLabel" style="color: orange"  floating>Fecha y hora de finalización (opcional)</ion-label>\n\n                        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="e.fechaFinalizacion" disabled="true"></ion-datetime>\n\n                      </ion-item>\n\n                    -->\n\n\n\n\n\n                  <ion-item *ngIf=\'e.formato == "Botones"\' class="animated flipInY miItem">\n\n                    <ion-list  >\n\n                        <button  class="botones" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                            Presione para votar: {{e.respuesta1}}\n\n                           </button>\n\n                           <br>\n\n                           <button class="botones" style="color: rgb(85, 158, 218)" ion-button clear item-end >\n\n                              Presione para votar: {{e.respuesta2}}\n\n                             </button>\n\n\n\n\n\n                      \n\n                        </ion-list>    \n\n                      </ion-item>\n\n         \n\n                   \n\n                   <!-- \n\n                      <ion-list radio-group [(ngModel)]="respuesta" *ngIf=\'e.formato == "Radio button"\'>\n\n                          \n\n                            <ion-label style="color : white">{{e.respuesta1}}</ion-label>\n\n                            <ion-radio style="color : rgb(233, 67, 67)" value="e.respuesta1" ></ion-radio>\n\n\n\n                            <ion-label style="color : white">{{e.respuesta2}}</ion-label>\n\n                            <ion-radio style="color : rgb(233, 67, 67)" value="e.respuesta2" ></ion-radio>\n\n                          \n\n                          </ion-list>\n\n                        -->\n\n\n\n                  \n\n\n\n                                <ion-list  *ngIf=\'e.formato == "Radio botones"\' radio-group [(ngModel)]="respuesta">\n\n                                    <ion-item class="animated flipInY miItem">\n\n                                      <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                      <ion-radio  value="e.respuesta1" ></ion-radio>\n\n                                    </ion-item>\n\n                                    <ion-item class="animated flipInY miItem">\n\n                                        <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                        <ion-radio  value="e.respuesta2" ></ion-radio>\n\n                                      </ion-item>\n\n                                     \n\n\n\n                                  </ion-list>\n\n\n\n                                  <ion-list  *ngIf=\'e.formato == "Checkbox"\' radio-group [(ngModel)]="respuesta">\n\n                                      <ion-item class="animated flipInY miItem">\n\n                                          <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta1}}</ion-label>\n\n                                          <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta1"></ion-checkbox>\n\n                                      </ion-item>\n\n                                      <ion-item class="animated flipInY miItem">\n\n                                          <ion-label style="color : rgb(85, 158, 218)">{{e.respuesta2}}</ion-label>\n\n                                          <ion-checkbox  style="color : rgb(85, 158, 218)" [(ngModel)]="e.respuesta2" ></ion-checkbox>\n\n                                        </ion-item>\n\n                                       \n\n  \n\n                                    </ion-list>\n\n\n\n                                    <ion-list  *ngIf=\'e.formato == "Selección de opciones"\'  >\n\n                                      <ion-item class="animated flipInY miItem" >\n\n                                      <select style="color : rgb(85, 158, 218); width:150px;" [(ngModel)]="respuesta"  class="animated flipInY miItem">\n\n    \n\n                                        <option >{{e.respuesta1}} </option>\n\n                                        <option >{{e.respuesta2}} </option>\n\n                                      \n\n                                      </select>\n\n                                    </ion-item>\n\n                                       \n\n  \n\n                                    </ion-list>\n\n\n\n                                  \n\n                                    \n\n\n\n\n\n                                  \n\n\n\n                            \n\n                        \n\n                      \n\n              \n\n                </ion-list> \n\n\n\n          </div>\n\n\n\n\n\n\n\n        </ion-content>'/*ion-inline-end:"D:\Nico\Descargas\TP_PPS_2C_2017\src\pages\encuestas\encuestas.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_native_audio__["a" /* NativeAudio */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_fire_base_service_fire_base_service__["a" /* FireBaseServiceProvider */],
+            __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_6__ionic_native_native_audio__["a" /* NativeAudio */]])
     ], EncuestasPage);
     return EncuestasPage;
 }());
