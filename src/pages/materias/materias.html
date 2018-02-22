@@ -4,23 +4,23 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-  <ion-navbar >
-    <ion-title>Materias</ion-title>
+<ion-header [style.font-family]="miTema.tipoLetra">
+  <ion-navbar [color]="miTema.colorNav" [style.font-size.px]="miTema.sizeLetra">
+    <ion-title  [style.color]="miTema.colorLetra">Materias</ion-title>
 
     <ion-buttons end>
       <button (click)="presentActionSheet()" ion-button>
-        <ion-icon name="brush"></ion-icon>
+        <ion-icon [name]="miTema.iconoTema"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding >
+<ion-content padding [ngStyle]="{ 'background-color':+ miTema.colorFondo}" [style.font-family]="miTema.tipoLetra" [style.font-size.px]="miTema.sizeLetra" >
   
       <div *ngFor="let lista of listaMateriasAlumno; let i = index"> 
-          <br> <button ion-button round full large class="animated flipInX miButton" (click)="RedireccionMateria('PPS')">{{ lista.materia }}</button> 
+          <br> <button ion-button round full large class="animated flipInX miButton" (click)="RedireccionMateria('PPS')" [ngStyle]="{ 'background-color':+ miTema.colorBoton}" [style.font-size.px]="miTema.sizeLetra" [style.border-radius]="miTema.radioButton" [style.color]="miTema.colorLetra">{{ lista.materia }}</button> 
       </div>
   
   </ion-content>

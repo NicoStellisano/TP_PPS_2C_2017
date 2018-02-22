@@ -44,7 +44,7 @@ listaAlumnos:AlumnoItem[] = [];
     //tema custom
     this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
     this.tema = localStorage.getItem('tema');
-    localStorage.setItem('home',"profesor");
+   
     console.log("-- *** Tema constructor: "+this.tema);
 
     if(this.tema == "custom"){

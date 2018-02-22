@@ -9,6 +9,9 @@ import {FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/da
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { MateriaPage } from '../materia/materia';
 import { ViewController } from 'ionic-angular';
+import { SettingProvider } from '../../providers/setting/setting';
+
+import { TemaCustom } from '../../models/tema-custom/tema-custom';
 /* Generated class for the AsignarMateriaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
@@ -29,9 +32,26 @@ listaAux:any[]=[];
 listaProfesores:any[]=[];
 
 profesor:any;
-
+selectTheme:String;
+miTema:TemaCustom;
+tema:string="";
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public fireService : FireBaseServiceProvider,public viewCtrl: ViewController,public alertCtrl:AlertController) {
+    //tema custom
+    this.miTema = {colorFondo:"",colorLetra:"",colorBoton:"",colorNav:"",sizeLetra:"",tipoLetra:"",radioButton:"",iconoAgregar:"",iconoTema:""};
+    this.tema = localStorage.getItem('tema');
+
+    console.log("-- *** Tema constructor: "+this.tema);
+   
+    if(this.tema == "custom"){
+      console.log("Ingresa a custom");
+      this.miTema = JSON.parse(localStorage.getItem('miTema'));
+    }else{
+      this.miTema.iconoAgregar = "basket";
+      this.miTema.iconoTema = "brush";
+      console.log(this.miTema);
+    }
+    
     this.materiaD=this.navParams.get("materia");
     this.aula=this.navParams.get("aula");
 
