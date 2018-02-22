@@ -3,5 +3,5 @@ TP Final de la practica profesional supervisada
 
 Stellisano Nicolás 4ºA<br/>
 Documentación:
-PHPDOCS:
-COMPODOC:
+PHPDOCS:  https://stellisano.000webhostapp.com
+COMPODOC: https://stellisano.000webhostapp.com/documentation
